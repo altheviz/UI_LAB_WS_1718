@@ -4,7 +4,10 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.nativescript.diverstale"
+    "id": "org.nativescript.diverstale",
+    "tns-ios": {
+      "version": "3.2.0"
+    }
   },
   "scripts": {
     "lint": "tslint \"app/**/*.ts\""
