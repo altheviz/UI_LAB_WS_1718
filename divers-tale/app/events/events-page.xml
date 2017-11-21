@@ -1,0 +1,41 @@
+<Page
+  class="page"
+  navigatingTo="onNavigatingTo"  
+  xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+  xmlns:myDrawer="shared/my-drawer"
+  xmlns="http://www.nativescript.org/tns.xsd">
+  <ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"/>
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"/>
+    <ActionItem>
+      <Label text="&#xf067;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="newEvent"/>
+    </ActionItem>
+    <Label class="action-bar-title" text="Events"/>
+  </ActionBar>
+  <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+
+    <nsDrawer:RadSideDrawer.drawerTransition>
+      <nsDrawer:SlideInOnTopTransition/>
+    </nsDrawer:RadSideDrawer.drawerTransition>
+    
+    <nsDrawer:RadSideDrawer.drawerContent>
+      <StackLayout>
+        <myDrawer:MyDrawer selectedPage="Events"/>
+      </StackLayout>
+    </nsDrawer:RadSideDrawer.drawerContent>
+
+    <nsDrawer:RadSideDrawer.mainContent>
+      <ListView items="{{ eventsModel }}">
+        <ListView.itemTemplate>
+          <GridLayout rows="auto, auto, auto, auto" columns="*, 5*, *">
+            <Label text="{{ name }}" style="font-weight: bold; margin: 10px" colSpan="2" textWrap="true" />
+            <Label visibility="{{ canceled ? 'visible' : 'collapse' }}" text="Abgesagt!" style="color: #c42323; margin: 10px" colSpan="2" textWrap="true" row="1"/>
+            <Label visibility="{{ canceled ? 'collapsed' : 'visible' }}" text="{{ date + ' um ' + time + ' Uhr'}}" style="margin: 10px" row="2" colSpan="2" textWrap="true"/>
+            <Label visibility="{{ divesite === null ? 'collapsed' : 'visible' }}" text="{{ divesite.name }}" style="margin: 10px" row="3" colSpan="2" textWrap="true"/>
+            <Label text="&#xf061;" class="font-awesome" col="3" rowSpan="4" tap="viewDetails" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </nsDrawer:RadSideDrawer.mainContent>
+  </nsDrawer:RadSideDrawer>
+</Page>

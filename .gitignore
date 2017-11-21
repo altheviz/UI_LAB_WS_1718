@@ -4,3 +4,5 @@ platforms/
 divers-tale/app**/*.android.css
 divers-tale/app**/*.ios.css
 divers-tale/app**/*.js
+
+!divers-tale/app/events**/*.js
