@@ -12,4 +12,7 @@ if ((global).TNS_WEBPACK) {
     global.registerModule("featured/featured-page", () => require("./featured/featured-page"));
     global.registerModule("search/search-page", () => require("./search/search-page"));
     global.registerModule("settings/settings-page", () => require("./settings/settings-page"));
+
+    // register map
+    global.registerModule("divesite/map-page", () => require("./divesite/map-page"));
 }
