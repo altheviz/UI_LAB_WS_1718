@@ -1,14 +1,26 @@
 <!-- /app/main-page.xml -->
- <Page 
-    xmlns="http://www.nativescript.org/tns.xsd"
-    xmlns:maps="nativescript-google-maps-sdk"
-    >
-  <GridLayout>
-    <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}" 
-    								zoom="{{ zoom }}" bearing="{{ bearing }}" 
-    								tilt="{{ tilt }}" padding="{{ padding }}" mapReady="onMapReady"  
-   								markerSelect="onMarkerSelect" markerBeginDragging="onMarkerBeginDragging"
-   								markerEndDragging="onMarkerEndDragging" markerDrag="onMarkerDrag"
-   								cameraChanged="onCameraChanged" />
-  </GridLayout>
+<Page 
+  xmlns="http://www.nativescript.org/tns.xsd" 
+  xmlns:maps="nativescript-google-maps-sdk">
+  <TabView>
+    <TabView.items>
+      <TabViewItem title="Map">
+        <TabViewItem.view>
+          <GridLayout>cd
+            <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}" zoom="{{ zoom }}" bearing="{{ bearing }}" tilt="{{ tilt }}" padding="{{ padding }}" mapReady="onMapReady" markerSelect="onMarkerSelect" markerBeginDragging="onMarkerBeginDragging" markerEndDragging="onMarkerEndDragging" markerDrag="onMarkerDrag" cameraChanged="onCameraChanged" />
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="Favorites">
+        <TabViewItem.view>
+          <Label text="Label in Tab2" />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="Search">
+        <TabViewItem.view>
+          <Label text="Label in Tab3" />
+        </TabViewItem.view>
+      </TabViewItem>
+    </TabView.items>
+  </TabView>
 </Page>
