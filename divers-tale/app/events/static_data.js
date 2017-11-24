@@ -1,19 +1,10 @@
+var divebuddies = require("../divebuddies/static_data.js")
+
+exports.divebuddies_data = divebuddies;
+
 exports.user_data = {
-  id: 1,
-  divebuddies: [
-  { 
-    id: 2,
-    name: "Mauro Greco"
-  },{
-    id: 3,
-    name: "Deine Mutter",
-  },{
-    id: 5,
-    name: "Max Mustermann",
-  },{
-    id: 6,
-    name: "Noch Jemand",
-  }]
+  id: 0,
+  divebuddies: divebuddies.divebuddies_data
 }
 
 exports.divesites_data = [
@@ -52,7 +43,7 @@ exports.events_data = [{
   canceled: false,
   canceledDate: null,
   participants: [{id: 1, status: "Ja"}, {id: 2, status: "Nein"}, {id: 4, status: "Vielleicht"}],
-  creator: 1
+  creator: 0
 },{
   id: 5,
   name: "Weihnachtsfeier",
@@ -63,5 +54,5 @@ exports.events_data = [{
   canceled: false,
   canceledDate: null,
   participants: [{id: 5, status: "Ja"}],
-  creator: 1
+  creator: 0
 }];
