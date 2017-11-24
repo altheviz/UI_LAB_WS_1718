@@ -36,16 +36,6 @@ function createEventData(event) {
   return res;
 }
 
-function getDiveBuddyById(id) {
-  for (var i = 0; i < data.user_data.divebuddies.length; i++) {
-    var divebuddy = data.user_data.divebuddies[i];
-    if (divebuddy.id === id) {
-      return divebuddy;
-    }
-  }
-  return null;
-}
-
 function EventsViewModel() {
 
   var viewModel = new ObservableArray();
@@ -128,7 +118,7 @@ function EventsViewModel() {
   viewModel.getParticipants = function(event) {
     var participants = [];
     event.participants.forEach(function(element) {
-      var divebuddy = getDiveBuddyById(element.id);
+      var divebuddy = viewModel.getDiveBuddyById(element.id);
       if (divebuddy !== null) {
         participants.push({id: element.id, name: divebuddy.name, status: element.status});
       }
@@ -184,6 +174,16 @@ function EventsViewModel() {
     return null;
   }
 
+  viewModel.getDiveBuddyById = function(id) {
+    for (var i = 0; i < data.user_data.divebuddies.length; i++) {
+      var divebuddy = data.user_data.divebuddies[i];
+      if (divebuddy.id === id) {
+        return divebuddy;
+      }
+    }
+    return null;
+  }
+
   viewModel.getNewEventId = function() {
     var id = 0;
     viewModel.forEach(function(element) {
@@ -192,6 +192,16 @@ function EventsViewModel() {
       }
     });
     return id + 1;
+  }
+
+  viewModel.getCertificateById = function(id) {
+    for (var i = 0; i < data.divebuddies_data.certification_data.length; i++) {
+      var certification = data.divebuddies_data.certification_data[i];
+      if (certification.id === id) {
+          return certification;
+      }
+    }
+    return null;
   }
 
   return viewModel;

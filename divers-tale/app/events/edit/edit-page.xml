@@ -13,15 +13,19 @@
       </ActionItem>
     </ActionBar>
   </Page.actionBar>
-  <ScrollView>
-    <GridLayout rows="auto, auto, auto, auto, auto, auto, 50, auto">
-      <TextField hint="Name" text="{{ event.name }}"/>
-      <TextView hint="Kommentar" text="{{ event.comment }}" row="1"/>
-      <TextField id="dateField" hint="Tag" editable="false" text="{{ event.date }}" tap="selectDate" row="2"/>
-      <TextField id="timeField" hint="Uhrzeit" editable="false" text="{{ event.time }}" tap="selectTime" row="3" />
-      <dd:DropDown hint="Typ" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" class="dropdown" row="4"/>
-      <dd:DropDown id="divesitesDD" hint="Veranstaltungsort" selectedIndex="{{ selectedDivesite }}" selectedIndexChanged="divesiteChanged" class="dropdown" row="5"/>
-      <Button visibility="{{ cancelVisible }}" text="Event absagen" tap="cancelEvent" row="7"/>
-    </GridLayout>
-  </ScrollView>
+  <GridLayout rows="*, 60">
+    <ScrollView>
+      <GridLayout rows="auto, auto, auto, auto, auto, auto, 100">
+        <TextField hint="Name" text="{{ event.name }}"/>
+        <TextView hint="Kommentar" text="{{ event.comment }}" row="1"/>
+        <TextField id="dateField" hint="Tag" editable="false" text="{{ event.date }}" tap="selectDate" row="2"/>
+        <TextField id="timeField" hint="Uhrzeit" editable="false" text="{{ event.time }}" tap="selectTime" row="3" />
+        <dd:DropDown hint="Typ" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" class="dropdown" row="4"/>
+        <dd:DropDown id="divesitesDD" hint="Veranstaltungsort" selectedIndex="{{ selectedDivesite }}" selectedIndexChanged="divesiteChanged" class="dropdown" row="5"/>
+      </GridLayout>
+    </ScrollView>
+    <StackLayout row="1" orientation="horizontal">
+      <Button text="Event absagen" visibility="{{ cancelVisible }}" width="100%" tap="cancelEvent"/>
+    </StackLayout>
+  </GridLayout>
 </Page>

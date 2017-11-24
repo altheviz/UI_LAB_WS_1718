@@ -43,6 +43,11 @@ exports.onNavigatingTo = function(args) {
 
   var selectedDivesite = 0;
   var divesites = eventsModel.getAllDivesites();
+  divesites.sort(function(a,b) {
+      if (a.name > b.name) return 1;
+      if (b.name > a.name) return -1;
+      return 0;
+    });
 
   for (var i = 0; i < divesites.length; i++) {
     divesiteItemSource.push({ value: divesites[i].id, display: divesites[i].name });
@@ -150,18 +155,27 @@ exports.saveChanges = function() {
 }
 
 exports.cancelEvent = function() {
-  var date = new Date();
-  var canceledDate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
-  event.canceled = true;
-  event.canceledDate = canceledDate;
-  eventsModel.update(event);
+  dialogs.confirm({
+    title: "Event absagen",
+    message: "Sind sie sicher, dass sie das Event '" + event.name + "' absagen wollen?",
+    okButtonText: "Ja",
+    cancelButtonText: "Nein"
+  }).then(function (result) {
+    if (result) {
+      var date = new Date();
+      var canceledDate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+      event.canceled = true;
+      event.canceledDate = canceledDate;
+      eventsModel.update(event);
 
-  var navigationOptions = {
-    moduleName: "events/details/details-page",
-    context: { event: event, eventsModel: eventsModel },
-    backstackVisible: false
-  }
-  frameModule.topmost().navigate(navigationOptions);
+      var navigationOptions = {
+        moduleName: "events/details/details-page",
+        context: { event: event, eventsModel: eventsModel },
+        backstackVisible: false
+      }
+      frameModule.topmost().navigate(navigationOptions);
+    }
+  });
 }
 
 exports.selectDate = function() {

@@ -1,6 +1,7 @@
 var frameModule = require("ui/frame");
 var observableModule = require("data/observable")
 var application = require("application");
+var dialogs = require("ui/dialogs");
 
 var ObservableArray = require("data/observable-array").ObservableArray;
 
@@ -9,7 +10,6 @@ var event;
 var eventsModel;
 
 var status = new ObservableArray(["Ja", "Nein", "Vielleicht"]);
-
 
 function handleBackButton(args) {
   args.cancel = true;
@@ -91,12 +91,17 @@ exports.viewDivesite = function() {
 
 exports.viewDivebuddy = function(args) {
   var divebuddy = args.view.bindingContext;
-  console.log("Go to divebuddy " + divebuddy.id +" [" + divebuddy.name + "]");
-  // var navigationOptions = {
-  //   moduleName: "divebuddies/divebuddies-page",
-  //   context: { divebuddy: divebuddy.id }
-  // }
-  // frameModule.topmost().navigate(navigationOptions);
+  var user = eventsModel.getDiveBuddyById(divebuddy.id);
+  var certifications = [];
+  user.certificates.forEach(function(id) {
+    certifications.push(eventsModel.getCertificateById(id))
+  });
+
+  var navigationOptions = {
+    moduleName: "divebuddies/user-details/user-details-page",
+    context: { user: user, certifications: certifications }
+  }
+  frameModule.topmost().navigate(navigationOptions);
 };
 
 exports.statusChanged = function(args) {
@@ -104,6 +109,15 @@ exports.statusChanged = function(args) {
 }
 
 exports.deleteEvent = function() {
-  eventsModel.delete(event);
-  module.exports.goBack();
+  dialogs.confirm({
+    title: "Event löschen",
+    message: "Sind sie sicher, dass sie das Event '" + event.name + "' löschen wollen?",
+    okButtonText: "Ja",
+    cancelButtonText: "Nein"
+  }).then(function (result) {
+    if (result) {
+      eventsModel.delete(event);
+      module.exports.goBack();
+    }
+  });
 }
