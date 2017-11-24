@@ -19,8 +19,8 @@
             ios.position="left">
         </ActionItem>
 
-        <ActionItem>
-            <Label text="&#xf0c0;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="newGroup"/>
+        <ActionItem visibility="{{ groupTabSelected ? 'visible' : 'collapse' }}">
+            <Label text="&#xf0c0;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="newGroup" />
         </ActionItem>
 
 
@@ -63,7 +63,7 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-            <TabView>
+            <TabView selectedIndexChanged="onSelectedIndexChanged">
                 <TabView.items>
                 <TabViewItem title="Buddies">
                     <TabViewItem.view>

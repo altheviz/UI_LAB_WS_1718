@@ -9,6 +9,7 @@ var dialogs = require("ui/dialogs");
 
 var divebuddiesModel = new DivebuddiesViewModel();
 var myDivebuddies;
+var groupTabSelected = false;
 
 var id;
 var page;
@@ -27,6 +28,7 @@ function onNavigatingTo(args) {
     var pageData = new observableModule.fromObject({
         myDivebuddies: myDivebuddies,
         myGroups: divebuddiesModel.getMyGroups(id),
+        groupTabSelected: groupTabSelected,
         sex: sex
 
     });
@@ -150,6 +152,14 @@ function onDrawerButtonTap(args) {
     sideDrawer.showDrawer();
 }
 
+function onSelectedIndexChanged(args){
+    if(args.newIndex == 1){
+        page.bindingContext.groupTabSelected = true
+    } else {
+        page.bindingContext.groupTabSelected = false
+    }
+}
+
 exports.onNavigatingTo = onNavigatingTo;
 exports.onDrawerButtonTap = onDrawerButtonTap;
 exports.viewGroupDetails = viewGroupDetails;
@@ -158,3 +168,4 @@ exports.search = search;
 exports.newGroup = newGroup;
 exports.deleteGroup = deleteGroup;
 exports.addToGroup = addToGroup;
+exports.onSelectedIndexChanged = onSelectedIndexChanged;
