@@ -42,6 +42,12 @@ Feel free to customize layouts and components to change how your app drawer look
                 <Label row="0" col="1" text="Events" class="p-r-10" />
             </GridLayout>
 
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Divebuddies' ? ' selected': '') }}"
+                route="divebuddies/divebuddies-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf0c0;" class="fa" />
+                <Label row="0" col="1" text="Divebuddies" class="p-r-10" />
+            </GridLayout>
+
             <StackLayout class="hr-light"></StackLayout>
 
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"

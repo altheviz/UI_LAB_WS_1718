@@ -1,0 +1,23 @@
+<Page
+  class="page"
+  navigatingTo="onNavigatingTo"
+  navigatingFrom="onNavigatingFrom"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:dd="nativescript-drop-down">
+  <Page.actionBar>
+    <ActionBar class="action-bar" title="Results">
+      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+    </ActionBar>
+  </Page.actionBar>
+  <ScrollView>
+    <ListView items="{{ searchedUser }}">
+        <ListView.itemTemplate>
+        <GridLayout columns="auto, *,auto, auto">
+            <Label text="{{ nickname }}" textWrap="true" />
+            <Label text="&#xf067;" class="font-awesome" col="2" tap="addUser" />
+            <Label text="&#xf061;" class="font-awesome" col="3" tap="viewUserDetails" />
+        </GridLayout>
+        </ListView.itemTemplate>
+    </ListView>
+  </ScrollView>
+</Page>

@@ -1,0 +1,19 @@
+<Page
+  class="page"
+  navigatingTo="onNavigatingTo"
+  navigatingFrom="onNavigatingFrom"
+  xmlns="http://www.nativescript.org/tns.xsd">
+  <Page.actionBar>
+    <ActionBar class="action-bar" title="{{ group.name }}">
+      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+    </ActionBar>
+  </Page.actionBar>
+    <ListView items="{{ divebuddiesOfGroup }}">
+        <ListView.itemTemplate>
+        <GridLayout columns="auto, *, auto">
+            <Label text="{{ nickname }}" textWrap="true" />
+            <Label text="&#xf061;" class="font-awesome" col="3" rowSpan="4" tap="viewUserDetails" />
+        </GridLayout>
+        </ListView.itemTemplate>
+    </ListView>
+</Page>
