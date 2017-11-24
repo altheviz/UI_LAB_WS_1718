@@ -85,7 +85,7 @@
                                 <ListView.itemTemplate>
                                 <GridLayout columns="auto, *,auto, auto">
                                     <Label text="{{ name }}" textWrap="true" />
-                                    <Label text="&#xf068;" class="font-awesome" col="2" tap="deleteGroup" />
+                                    <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" />
                                     <Label text="&#xf061;" class="font-awesome" col="3" tap="viewGroupDetails" />
                                 </GridLayout>
                                 </ListView.itemTemplate>
