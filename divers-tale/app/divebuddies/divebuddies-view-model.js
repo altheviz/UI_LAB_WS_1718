@@ -220,6 +220,18 @@ function DivebuddiesViewModel() {
             }
         })
     }
+    
+
+    viewModel.deleteUserFromGroup = function(ownuserid, groupid, userid){
+        var user = getDiveBuddyById(ownuserid);
+        user.groups.forEach(function(groupelement){
+            if(groupelement.id == groupid){
+                var elementposition = groupelement.divebuddies.indexOf(userid);
+                groupelement.divebuddies.splice(elementposition, 1);
+            }
+        })
+    }
+
     return viewModel;
 }
 

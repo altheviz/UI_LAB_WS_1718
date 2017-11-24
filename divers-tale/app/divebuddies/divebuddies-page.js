@@ -49,7 +49,7 @@ function viewGroupDetails(args) {
     var group = args.view.bindingContext;
     var navigationOptions = {
         moduleName: "divebuddies/group-details/group-details-page",
-        context: { group: group, divebuddiesOfGroup: divebuddiesModel.getDivebuddiesOfGroup(group), divebuddiesModel: divebuddiesModel }
+        context: { id: id, group: group, divebuddiesOfGroup: divebuddiesModel.getDivebuddiesOfGroup(group), divebuddiesModel: divebuddiesModel }
     }
     frameModule.topmost().navigate(navigationOptions);
 };

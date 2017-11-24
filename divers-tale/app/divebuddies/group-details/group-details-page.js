@@ -3,10 +3,11 @@ var observableModule = require("data/observable")
 var application = require("application");
 
 var ObservableArray = require("data/observable-array").ObservableArray;
+var dialogs = require("ui/dialogs");
 
 var page;
-var user;
-
+var group;
+var id;
 var divebuddiesOfGroup;
 var divebuddiesModel;
 
@@ -35,13 +36,13 @@ exports.onNavigatingTo = function(args) {
 
   page = args.object;
 
+  id = page.navigationContext.id;
   group = page.navigationContext.group;
   divebuddiesOfGroup = page.navigationContext.divebuddiesOfGroup;
   divebuddiesModel = page.navigationContext.divebuddiesModel;
 
 
   var pageData = new observableModule.fromObject({
-    group: group,
     divebuddiesOfGroup: divebuddiesOfGroup
   });
 
@@ -57,6 +58,20 @@ exports.viewUserDetails = function(args) {
   frameModule.topmost().navigate(navigationOptions);
 };
 
+exports.deleteUser = function(args) {
+  var user = args.view.bindingContext;
+  dialogs.confirm({
+    title: "Delete " + user.nickname,
+    message: "Are you sure that you want to remove " + user.nickname + " from the group " + group.name + "?",
+    okButtonText: "Yes",
+    cancelButtonText: "No"
+}).then(function (result) {
+    if (result) {
+        divebuddiesModel.deleteUserFromGroup(id, group.id, user.id);
+        page.bindingContext.divebuddiesOfGroup = divebuddiesModel.getDivebuddiesOfGroup(group)
+    }
+});
+};
 
 
 exports.goBack = function() {
