@@ -1,0 +1,4 @@
+<GridLayout 
+  xmlns:maps="nativescript-google-maps-sdk" navigatingTo="onNavigatingTo" class="page-content" loaded="onLoaded">
+  <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}" mapAnimationsEnabled="{{ mapAnimationsEnabled }}" zoom="{{ zoom }}" bearing="{{ bearing }}" tilt="{{ tilt }}" padding="{{ padding }}" mapReady="onMapReady" markerSelect="onMarkerSelect" markerBeginDragging="onMarkerBeginDragging" markerEndDragging="onMarkerEndDragging" markerDrag="onMarkerDrag" cameraChanged="onCameraChanged" />
+</GridLayout>
