@@ -4,6 +4,28 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 var data = require("./static_data");
 var divebuddies_data = data.divebuddies_data;
 
+function getDiveBuddyById(id) {
+    for (var i = 0; i < data.divebuddies_data.length; i++) {
+        var divebuddy = data.divebuddies_data[i];
+        if (divebuddy.id === id) {
+            return divebuddy;
+        }
+    }
+    return null;
+}
+
+
+
+function getCertificateById(id) {
+    for (var i = 0; i < data.certification_data.length; i++) {
+        var certification = data.certification_data[i];
+        if (certification.id === id) {
+            return certification;
+        }
+    }
+    return null;
+}
+
 function DivebuddiesViewModel() {
 
     var viewModel = new ObservableArray();
@@ -233,28 +255,6 @@ function DivebuddiesViewModel() {
     }
 
     return viewModel;
-}
-
-function getDiveBuddyById(id) {
-    for (var i = 0; i < data.divebuddies_data.length; i++) {
-        var divebuddy = data.divebuddies_data[i];
-        if (divebuddy.id === id) {
-            return divebuddy;
-        }
-    }
-    return null;
-}
-
-
-
-function getCertificateById(id) {
-    for (var i = 0; i < data.certification_data.length; i++) {
-        var certification = data.certification_data[i];
-        if (certification.id === id) {
-            return certification;
-        }
-    }
-    return null;
 }
 
 module.exports = DivebuddiesViewModel;
