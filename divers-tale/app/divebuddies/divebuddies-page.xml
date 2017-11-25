@@ -69,10 +69,12 @@
                     <TabViewItem.view>
                     <ListView items="{{ myDivebuddies }}">
                         <ListView.itemTemplate>
-                        <GridLayout columns="auto, *,auto, auto">
+                        <GridLayout columns="auto, *,auto, auto, auto, auto">
                             <Label text="{{ nickname }}" textWrap="true" />
-                            <Label text="&#xf067;" class="font-awesome" col="2" tap="addToGroup" visibility="{{ groupable ? 'visible' : 'collapse' }}" />
-                            <Label text="&#xf061;" class="font-awesome" col="3" tap="viewUserDetails" />
+                            <Label text="&#xf235;" class="font-awesome" col="2" tap="removeBuddy" />
+                            <Label text="&#xf067;" class="font-awesome" col="3" style="color: rgba(0, 0, 0, 0.0);" visibility="{{ groupable ? 'collapse' : 'visible' }}" />
+                            <Label text="&#xf067;" class="font-awesome" col="4" tap="addToGroup" visibility="{{ groupable ? 'visible' : 'collapse' }}" />
+                            <Label text="&#xf061;" class="font-awesome" col="5" tap="viewUserDetails" />
                         </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>

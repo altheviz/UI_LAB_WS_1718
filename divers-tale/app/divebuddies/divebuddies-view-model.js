@@ -254,6 +254,16 @@ function DivebuddiesViewModel() {
         })
     }
 
+    viewModel.removeDivebuddy = function(ownuserid, userid){
+        var user = getDiveBuddyById(ownuserid);
+        for (var i = 0; i < user.divebuddies.length; i++) {
+            if(user.divebuddies[i] === userid ){
+                elementposition = i;
+            }
+        }
+        user.divebuddies.splice(elementposition, 1);
+    }
+
     return viewModel;
 }
 

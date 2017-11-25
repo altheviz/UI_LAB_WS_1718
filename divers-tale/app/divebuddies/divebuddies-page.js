@@ -142,6 +142,22 @@ function addToGroup(args) {
 
 }
 
+function removeBuddy(args){
+    var user = args.view.bindingContext;
+    dialogs.confirm({
+        title: "Delete " + user.nickname,
+        message: "Are you sure that you want to remove " + user.nickname + "?",
+        okButtonText: "Yes",
+        cancelButtonText: "No"
+    }).then(function (result) {
+        if (result) {
+            divebuddiesModel.removeDivebuddy(id, user.id);
+            refreshMydivebuddies()
+            page.bindingContext.myDivebuddies = myDivebuddies
+        }
+    });
+}
+
 /* ***********************************************************
  * According to guidelines, if you have a drawer on your page, you should always
  * have a button that opens it. Get a reference to the RadSideDrawer view and
@@ -189,3 +205,4 @@ exports.newGroup = newGroup;
 exports.deleteGroup = deleteGroup;
 exports.addToGroup = addToGroup;
 exports.onSelectedIndexChanged = onSelectedIndexChanged;
+exports.removeBuddy = removeBuddy;
