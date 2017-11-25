@@ -2,7 +2,6 @@ import { EventData } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
-
 import { MapViewModel } from "./map-view-model";
 
 /* ***********************************************************
@@ -31,3 +30,36 @@ export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
+
+/*******************
+* Map specific content
+*/
+
+var mapsModule = require("nativescript-google-maps-sdk");
+
+function onMapReady(args) {
+  var mapView = args.object;
+
+  console.log("Setting a marker...");
+  var marker = new mapsModule.Marker();
+  marker.position = mapsModule.Position.positionFromLatLng(-33.86, 151.20);
+  marker.title = "Sydney";
+  marker.snippet = "Australia";
+  marker.userData = { index : 1};
+  mapView.addMarker(marker);
+
+  // Disabling zoom gestures
+  mapView.settings.zoomGesturesEnabled = true;
+}
+
+function onMarkerSelect(args) {
+   console.log("Clicked on " +args.marker.title);
+}
+
+function onCameraChanged(args) {
+    console.log("Camera changed: " + JSON.stringify(args.camera));
+}
+
+exports.onMapReady = onMapReady;
+exports.onMarkerSelect = onMarkerSelect;
+exports.onCameraChanged = onCameraChanged;
