@@ -3,14 +3,20 @@
 import {DivelogListItem} from "./divelog-list-item";
 
 export class DivelogService {
-    private data;
+    private listData;
+    private logData;
 
     constructor() {
-        this.data = require("./divelog-list-test-data.json");
+        this.listData = require("./divelog-list-test-data.json");
+        this.logData = require("./divelog-test-data.json");
     }
 
 
     loadList(){
-        return this.data;
+        return this.listData;
+    }
+
+    loadDivelog() {
+        return this.logData;
     }
 }

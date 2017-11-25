@@ -118,7 +118,7 @@ Always wrap content in a layout component.
     <StackLayout>
         <ListView items="{{ divelogs }}">
             <ListView.itemTemplate>
-                <FlexboxLayout tap="onItemTap" flexDirection="column" route="divelog/divelog-page">
+                <FlexboxLayout tap="onItemTap" flexDirection="column" route="divelog/divelog-view-page">
                 <FlexboxLayout flexDirection="row">
                     <Label id="location" class="fa" text="&#xf041;"/>
                     <Label id="diveSite" text="{{diveSite}}"/>
