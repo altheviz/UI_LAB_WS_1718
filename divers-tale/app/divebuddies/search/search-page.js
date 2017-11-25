@@ -33,6 +33,16 @@ exports.onNavigatingTo = function(args) {
 
   searchedUser = page.navigationContext.searchedUser;
   divebuddiesModel = page.navigationContext.divebuddiesModel;
+  id = page.navigationContext.id;
+  var divebuddies = divebuddiesModel.getMyDiveBuddies(id);
+  searchedUser.forEach(function(elementuser){
+    elementuser.addable = true;
+    divebuddies.forEach(function(divebuddyelement){
+      if(elementuser.id == divebuddyelement.id){
+        elementuser.addable = false;
+      }
+    })
+  });
 
   var pageData = new observableModule.fromObject({
     searchedUser: searchedUser,

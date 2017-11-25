@@ -24,10 +24,11 @@ function onNavigatingTo(args) {
 
 
     id = 1;//Wird über Session (oder so) übergeben
-    myDivebuddies = divebuddiesModel.getMyDiveBuddies(id);
+    refreshMydivebuddies()
+
     var pageData = new observableModule.fromObject({
         myDivebuddies: myDivebuddies,
-        myGroups: divebuddiesModel.getMyGroups(id),
+        myGroups: myGroups,
         groupTabSelected: groupTabSelected,
         sex: sex
 
@@ -73,7 +74,8 @@ function search(args) {
             searchedUser: divebuddiesModel.getSearchedUser(id, page.getViewById("nickname").text,
                 sexValue, page.getViewById("age").text, page.getViewById("city").text, page.getViewById("region").text, page.getViewById("country").text,
                 page.getViewById("experience").text, page.getViewById("certificate").text),
-            divebuddiesModel: divebuddiesModel
+            divebuddiesModel: divebuddiesModel,
+            id: id
         }
     }
     frameModule.topmost().navigate(navigationOptions);
@@ -93,12 +95,14 @@ function newGroup(args) {
             var added = divebuddiesModel.addnewGroup(id, r.text);
             if (added) {
                 page.bindingContext.myGroups = divebuddiesModel.getMyGroups(id)
+                refreshMydivebuddies()
+                page.bindingContext.myDivebuddies = myDivebuddies
             }
             else {
                 dialogs.alert({
                     title: "Error",
                     message: "Group already exists"
-                  });
+                });
             }
 
         }
@@ -117,6 +121,8 @@ function deleteGroup(args) {
         if (result) {
             divebuddiesModel.deleteGroup(id, group.id);
             page.bindingContext.myGroups = divebuddiesModel.getMyGroups(id)
+            refreshMydivebuddies()
+            page.bindingContext.myDivebuddies = myDivebuddies
         }
     });
 }
@@ -124,21 +130,15 @@ function deleteGroup(args) {
 function addToGroup(args) {
     var user = args.view.bindingContext;
     var availablegroups = divebuddiesModel.getavailableGroups(id, user.id)
-    if(availablegroups.length === 0){
-        dialogs.alert({
-            title: "Error",
-            message: "No Groupe available to add the User"
-          });
-    } else {
-        dialogs.action({
-            message: "Which Group do you want to add " + user.nickname + "?",
-            cancelButtonText: "Cancel",
-            actions: availablegroups
-        }).then(function (result) {
-            divebuddiesModel.addUsertoGroup(id, user.id, result);
-        });
-    }
-
+    dialogs.action({
+        message: "Which Group do you want to add " + user.nickname + "?",
+        cancelButtonText: "Cancel",
+        actions: availablegroups
+    }).then(function (result) {
+        divebuddiesModel.addUsertoGroup(id, user.id, result);
+        refreshMydivebuddies()
+        page.bindingContext.myDivebuddies = myDivebuddies
+    });
 
 }
 
@@ -152,12 +152,32 @@ function onDrawerButtonTap(args) {
     sideDrawer.showDrawer();
 }
 
-function onSelectedIndexChanged(args){
-    if(args.newIndex == 1){
+function onSelectedIndexChanged(args) {
+    if (args.newIndex == 1) {
         page.bindingContext.groupTabSelected = true
     } else {
         page.bindingContext.groupTabSelected = false
     }
+}
+
+function refreshMydivebuddies() {
+    myDivebuddies = divebuddiesModel.getMyDiveBuddies(id);
+    myGroups = divebuddiesModel.getMyGroups(id);
+    myDivebuddies.forEach(function (elementUser) {
+        elementUser.groupable = true;
+        var count = 0;
+        for (var i = 0; i < myGroups.length; i++) {
+            myGroups[i].divebuddies.forEach(function (divebuddyId) {
+                if (elementUser.id == divebuddyId) {
+                    count++;
+                }
+            })
+        }
+        if (count == myGroups.length) {
+            elementUser.groupable = false;
+        }
+
+    });
 }
 
 exports.onNavigatingTo = onNavigatingTo;

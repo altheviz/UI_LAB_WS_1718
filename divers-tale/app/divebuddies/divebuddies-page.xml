@@ -20,7 +20,7 @@
         </ActionItem>
 
         <ActionItem visibility="{{ groupTabSelected ? 'visible' : 'collapse' }}">
-            <Label text="&#xf0c0;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="newGroup" />
+            <Label text="&#xf067;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="newGroup" />
         </ActionItem>
 
 
@@ -71,7 +71,7 @@
                         <ListView.itemTemplate>
                         <GridLayout columns="auto, *,auto, auto">
                             <Label text="{{ nickname }}" textWrap="true" />
-                            <Label text="&#xf234;" class="font-awesome" col="2" tap="addToGroup" />
+                            <Label text="&#xf067;" class="font-awesome" col="2" tap="addToGroup" visibility="{{ groupable ? 'visible' : 'collapse' }}" />
                             <Label text="&#xf061;" class="font-awesome" col="3" tap="viewUserDetails" />
                         </GridLayout>
                         </ListView.itemTemplate>
@@ -80,20 +80,15 @@
                 </TabViewItem>
                 <TabViewItem title="Groups">
                     <TabViewItem.view>
-                        <!--<GridLayout columns="auto">-->
-                            <ListView items="{{ myGroups }}" row="0" id="groupview">
-                                <ListView.itemTemplate>
-                                <GridLayout columns="auto, *,auto, auto">
-                                    <Label text="{{ name }}" textWrap="true" />
-                                    <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" />
-                                    <Label text="&#xf061;" class="font-awesome" col="3" tap="viewGroupDetails" />
-                                </GridLayout>
-                                </ListView.itemTemplate>
-                            </ListView>
-                            <!--<StackLayout orientation="vertical" row="1">
-                                <Button cssClass="test" text="Refresh" tap="refresh"></Button>
-                            </StackLayout>
-                        </GridLayout>-->
+                        <ListView items="{{ myGroups }}">
+                            <ListView.itemTemplate>
+                            <GridLayout columns="auto, *,auto, auto">
+                                <Label text="{{ name }}" textWrap="true" />
+                                <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" />
+                                <Label text="&#xf061;" class="font-awesome" col="3" tap="viewGroupDetails" />
+                            </GridLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
                     </TabViewItem.view>
                 </TabViewItem>
                 <TabViewItem title="Search">
