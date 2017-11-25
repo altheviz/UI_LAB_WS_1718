@@ -116,11 +116,13 @@ Always wrap content in a layout component.
 </nsDrawer:RadSideDrawer.drawerContent>
 <nsDrawer:RadSideDrawer.mainContent>
     <StackLayout>
-        <Label text="foo"></Label>
         <ListView items="{{ divelogs }}">
             <ListView.itemTemplate>
                 <FlexboxLayout flexDirection="column">
-                    <Label id="diveSite" class="fa" text="&#xf041; {{diveSite}}"/>
+                <FlexboxLayout flexDirection="row">
+                    <Label id="location" class="fa" text="&#xf041;"/>
+                    <Label id="diveSite" text="{{diveSite}}"/>
+                </FlexboxLayout>
                     <Label id="date" text="{{date}}"/>
                 </FlexboxLayout>
             </ListView.itemTemplate>

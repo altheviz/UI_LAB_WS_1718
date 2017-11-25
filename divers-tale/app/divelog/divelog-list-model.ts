@@ -7,7 +7,6 @@ export class DivelogListModel extends Observable {
 
     constructor() {
         super();
-        console.log("hallo");
         let service = new DivelogService();
         this.divelogs = service.loadList();
     }
