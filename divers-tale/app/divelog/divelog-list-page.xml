@@ -68,7 +68,8 @@ class="page"
 navigatingTo="onNavigatingTo"
 xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
 xmlns:myDrawer="shared/my-drawer"
-xmlns="http://www.nativescript.org/tns.xsd">
+xmlns="http://www.nativescript.org/tns.xsd"
+xmlns:FAB="nativescript-floatingactionbutton">
 <ActionBar class="action-bar">
     <!--
     Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
@@ -127,6 +128,11 @@ Always wrap content in a layout component.
                 </FlexboxLayout>
             </ListView.itemTemplate>
         </ListView>
+        <FAB:fab tap="onFabTap" width="70"
+                 height="70"
+                 marginLeft="300"
+                 rippleColor="#f1f1f1"
+                 class="fab-button" route="divelog/divelog-add-page"/>
     </StackLayout>
 </nsDrawer:RadSideDrawer.mainContent>
 </nsDrawer:RadSideDrawer>

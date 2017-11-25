@@ -43,5 +43,16 @@ export function onItemTap(args: EventData) {
     });
 }
 
+export function onFabTap(args: EventData) {
+    const component = <FlexboxLayout>args.object;
+    const componentRoute = component.get("route");
+    topmost().navigate({
+        moduleName: componentRoute,
+        transition: {
+            name: "fade"
+        }
+    });
+}
+
 
 
