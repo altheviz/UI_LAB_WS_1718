@@ -1,3 +1,9 @@
-<GridLayout>
-    <Label text="Label in Favorite" />
-</GridLayout>
+<ListView id="listview" items="{{ myItems }}" loaded="onPageLoaded">
+  <ListView.itemTemplate>
+      <GridLayout columns="auto, *, auto" rows="auto, 25">
+        <!--<Image id="fav-icon" src="{{ src }}" row="0" col="0" rowSpan="2" width="72" height="72" margin="10"/>-->
+        <Label id="fav-icon" text="{{ unicode }}"  row="0" col="0" rowSpan="2" margin="10"/>
+        <Label id="fav-label" text="{{ title }}"  row="0" col="1" rowSpan="2" margin="10"/>
+      </GridLayout>
+  </ListView.itemTemplate>
+</ListView>

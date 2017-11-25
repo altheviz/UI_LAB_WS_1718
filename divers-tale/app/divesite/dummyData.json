@@ -1,1 +1,167 @@
-[{"name":"Deglersee","description":"Der Deglersee, besser bekannt als der See Plittersdorf, bietet hervorragende Taucherlebnisse in einer sehr schönen Unterwasserwelt. Die Annehmlichkeiten des Campingplatzes (Duschen, WC) dürfen mit dem Erwerb einer Taucherlaubnis in Anspruch genommen werden. Als Ausbildungssee darf der Deglersee nur in gestatteten Ausnahmefällen genutzt werden.","location":"Rastatt","country":"Deutschland","geoData":{"gpsCoordLength":8.146019,"gpsCoordWidth":48.872054,"sizeInQm":8000,"lengthInM":496,"widthInM":205,"depthAvgInM":11,"depthMaxInM":24,"heightInM":113},"extraInfo":{"forBeginners":true,"trainingAllowed":false,"iceDivingAllowed":false,"airStationAvailable":true,"interestingFauna":true,"interestingFlora":true,"nightdivingAllowed":false,"registrationMandatory":false,"parkingAvailable":true,"divingAllowed":true,"toilettShowerAvailable":true,"entryFee":false,"wrackDiving":false,"caveDiving":false,"currentExits":false}},{"name":"Sämannsee-Süd","description":"Der See liegt 500 m vom Rhein entfernt. Im Norden gibt es einen direkten Zufluss zum Sämannsee-Nord (KA90-1).","location":"Rastatt","country":"Deutschland","geoData":{"gpsCoordLength":8.119067,"gpsCoordWidth":48.830051,"sizeInQm":21000,"lengthInM":608,"widthInM":492,"depthAvgInM":13,"depthMaxInM":33,"heightInM":114},"extraInfo":{"forBeginners":false,"trainingAllowed":false,"iceDivingAllowed":false,"airStationAvailable":false,"interestingFauna":false,"interestingFlora":false,"nightdivingAllowed":false,"registrationMandatory":false,"parkingAvailable":true,"divingAllowed":true,"toilettShowerAvailable":true,"entryFee":false,"wrackDiving":false,"caveDiving":false,"currentExits":false}},{"name":"Stürmlinger See","description":"Östlich von Durmersheim. Tauchen verboten.","location":"Durmersheim","country":"Deutschland","geoData":{"gpsCoordLength":8.28958,"gpsCoordWidth":48.92913,"sizeInQm":44000,"lengthInM":1084,"widthInM":540,"depthAvgInM":11,"depthMaxInM":32,"heightInM":118},"extraInfo":{"forBeginners":false,"trainingAllowed":false,"iceDivingAllowed":false,"airStationAvailable":false,"interestingFauna":false,"interestingFlora":false,"nightdivingAllowed":false,"registrationMandatory":false,"parkingAvailable":false,"divingAllowed":true,"toilettShowerAvailable":true,"entryFee":false,"wrackDiving":false,"caveDiving":false,"currentExits":false}},{"name":"Wendelinus-Baggersee","description":"Der Wendelinus Baggersee liegt östlich der Autobahn. Mit seinen westlichen und nördlichen Ufern liegt der See im Büchenauer Wald. Im Osten befindet sich die Badezone.","location":"Bruchsal","country":"Deutschland","geoData":{"gpsCoordLength":8.548841,"gpsCoordWidth":49.097528,"sizeInQm":20000,"lengthInM":660,"widthInM":435,"depthAvgInM":13,"depthMaxInM":26,"heightInM":110},"extraInfo":{"forBeginners":true,"trainingAllowed":false,"iceDivingAllowed":false,"airStationAvailable":false,"interestingFauna":true,"interestingFlora":true,"nightdivingAllowed":false,"registrationMandatory":false,"parkingAvailable":true,"divingAllowed":true,"toilettShowerAvailable":false,"entryFee":false,"wrackDiving":false,"caveDiving":false,"currentExits":false}},{"name":"Alte Allmend, Büchenauer Baggersee","description":"Im Büchenauer Baggersee ist die Gemeingebrauchszone genau festgelegt. Innerhalb dieser ist sowohl das Tauchen sowie die Ausübung anderer Sportarten gestattet. Alle anderen Bereiche unterliegen anderer Regelungen. Zur Verbesserung der sehr angespannten Situation werden alle Taucher gebeten, die Rechtsverordnung zur Nutzung des Sees einzuhalten. Das bedeutet: Tauchen bitte auf den zugelassenen Bereich beschränken! Es ist ein Missverständnis, dass der Tauchereinstieg nur für die Taucher angelegt wurde. Er ist gleichzeitig auch Badeeinstieg. Die Wiese um diesen Einstieg herum sollte nicht mit Taucherkisten belegt werden, weil sie auch als Liegewiese für Badegäste angelegt wurde. Parken bitte nicht im Wohngebiet, sondern NUR auf dem Parkplatz an der Mehrzweckhalle.  Achtung! Es wurden in der Vergangenheit Diebstäle von abgelegten Tauchflaschen und Autoeinbrüche festgestellt.","location":"Bruchsal","country":"Deutschland","geoData":{"gpsCoordLength":8.535563,"gpsCoordWidth":49.09877,"sizeInQm":11000,"lengthInM":786,"widthInM":190,"depthAvgInM":9,"depthMaxInM":25,"heightInM":113},"extraInfo":{"forBeginners":true,"trainingAllowed":false,"iceDivingAllowed":false,"airStationAvailable":false,"interestingFauna":false,"interestingFlora":false,"nightdivingAllowed":false,"registrationMandatory":false,"parkingAvailable":true,"divingAllowed":true,"toilettShowerAvailable":false,"entryFee":false,"wrackDiving":false,"caveDiving":false,"currentExits":false}}]
+[
+    {
+        "name": "Deglersee",
+        "description": "Der Deglersee, besser bekannt als der See Plittersdorf, bietet hervorragende Taucherlebnisse in einer sehr schönen Unterwasserwelt. Die Annehmlichkeiten des Campingplatzes (Duschen, WC) dürfen mit dem Erwerb einer Taucherlaubnis in Anspruch genommen werden. Als Ausbildungssee darf der Deglersee nur in gestatteten Ausnahmefällen genutzt werden.",
+        "location": "Rastatt",
+        "country": "Deutschland",
+        "geoData": {
+            "gpsCoordLength": 8.146019,
+            "gpsCoordWidth": 48.872054,
+            "sizeInQm": 8000,
+            "lengthInM": 496,
+            "widthInM": 205,
+            "depthAvgInM": 11,
+            "depthMaxInM": 24,
+            "heightInM": 113
+        },
+        "extraInfo": {
+            "forBeginners": true,
+            "trainingAllowed": false,
+            "iceDivingAllowed": false,
+            "airStationAvailable": true,
+            "interestingFauna": true,
+            "interestingFlora": true,
+            "nightdivingAllowed": false,
+            "registrationMandatory": false,
+            "parkingAvailable": true,
+            "divingAllowed": true,
+            "toilettShowerAvailable": true,
+            "entryFee": false,
+            "wrackDiving": false,
+            "caveDiving": false,
+            "currentExits": false
+        }
+    },
+    {
+        "name": "Sämannsee-Süd",
+        "description": "Der See liegt 500 m vom Rhein entfernt. Im Norden gibt es einen direkten Zufluss zum Sämannsee-Nord (KA90-1).",
+        "location": "Rastatt",
+        "country": "Deutschland",
+        "geoData": {
+            "gpsCoordLength": 8.119067,
+            "gpsCoordWidth": 48.830051,
+            "sizeInQm": 21000,
+            "lengthInM": 608,
+            "widthInM": 492,
+            "depthAvgInM": 13,
+            "depthMaxInM": 33,
+            "heightInM": 114
+        },
+        "extraInfo": {
+            "forBeginners": false,
+            "trainingAllowed": false,
+            "iceDivingAllowed": false,
+            "airStationAvailable": false,
+            "interestingFauna": false,
+            "interestingFlora": false,
+            "nightdivingAllowed": false,
+            "registrationMandatory": false,
+            "parkingAvailable": true,
+            "divingAllowed": true,
+            "toilettShowerAvailable": true,
+            "entryFee": false,
+            "wrackDiving": false,
+            "caveDiving": false,
+            "currentExits": false
+        }
+    },
+    {
+        "name": "Stürmlinger See",
+        "description": "Östlich von Durmersheim. Tauchen verboten.",
+        "location": "Durmersheim",
+        "country": "Deutschland",
+        "geoData": {
+            "gpsCoordLength": 8.28958,
+            "gpsCoordWidth": 48.92913,
+            "sizeInQm": 44000,
+            "lengthInM": 1084,
+            "widthInM": 540,
+            "depthAvgInM": 11,
+            "depthMaxInM": 32,
+            "heightInM": 118
+        },
+        "extraInfo": {
+            "forBeginners": false,
+            "trainingAllowed": false,
+            "iceDivingAllowed": false,
+            "airStationAvailable": false,
+            "interestingFauna": false,
+            "interestingFlora": false,
+            "nightdivingAllowed": false,
+            "registrationMandatory": false,
+            "parkingAvailable": false,
+            "divingAllowed": true,
+            "toilettShowerAvailable": true,
+            "entryFee": false,
+            "wrackDiving": false,
+            "caveDiving": false,
+            "currentExits": false
+        }
+    },
+    {
+        "name": "Wendelinus-Baggersee",
+        "description": "Der Wendelinus Baggersee liegt östlich der Autobahn. Mit seinen westlichen und nördlichen Ufern liegt der See im Büchenauer Wald. Im Osten befindet sich die Badezone.",
+        "location": "Bruchsal",
+        "country": "Deutschland",
+        "geoData": {
+            "gpsCoordLength": 8.548841,
+            "gpsCoordWidth": 49.097528,
+            "sizeInQm": 20000,
+            "lengthInM": 660,
+            "widthInM": 435,
+            "depthAvgInM": 13,
+            "depthMaxInM": 26,
+            "heightInM": 110
+        },
+        "extraInfo": {
+            "forBeginners": true,
+            "trainingAllowed": false,
+            "iceDivingAllowed": false,
+            "airStationAvailable": false,
+            "interestingFauna": true,
+            "interestingFlora": true,
+            "nightdivingAllowed": false,
+            "registrationMandatory": false,
+            "parkingAvailable": true,
+            "divingAllowed": true,
+            "toilettShowerAvailable": false,
+            "entryFee": false,
+            "wrackDiving": false,
+            "caveDiving": false,
+            "currentExits": false
+        }
+    },
+    {
+        "name": "Alte Allmend, Büchenauer Baggersee",
+        "description": "Im Büchenauer Baggersee ist die Gemeingebrauchszone genau festgelegt. Innerhalb dieser ist sowohl das Tauchen sowie die Ausübung anderer Sportarten gestattet. Alle anderen Bereiche unterliegen anderer Regelungen. Zur Verbesserung der sehr angespannten Situation werden alle Taucher gebeten, die Rechtsverordnung zur Nutzung des Sees einzuhalten. Das bedeutet: Tauchen bitte auf den zugelassenen Bereich beschränken! Es ist ein Missverständnis, dass der Tauchereinstieg nur für die Taucher angelegt wurde. Er ist gleichzeitig auch Badeeinstieg. Die Wiese um diesen Einstieg herum sollte nicht mit Taucherkisten belegt werden, weil sie auch als Liegewiese für Badegäste angelegt wurde. Parken bitte nicht im Wohngebiet, sondern NUR auf dem Parkplatz an der Mehrzweckhalle.  Achtung! Es wurden in der Vergangenheit Diebstäle von abgelegten Tauchflaschen und Autoeinbrüche festgestellt.",
+        "location": "Bruchsal",
+        "country": "Deutschland",
+        "geoData": {
+            "gpsCoordLength": 8.535563,
+            "gpsCoordWidth": 49.09877,
+            "sizeInQm": 11000,
+            "lengthInM": 786,
+            "widthInM": 190,
+            "depthAvgInM": 9,
+            "depthMaxInM": 25,
+            "heightInM": 113
+        },
+        "extraInfo": {
+            "forBeginners": true,
+            "trainingAllowed": false,
+            "iceDivingAllowed": false,
+            "airStationAvailable": false,
+            "interestingFauna": false,
+            "interestingFlora": false,
+            "nightdivingAllowed": false,
+            "registrationMandatory": false,
+            "parkingAvailable": true,
+            "divingAllowed": true,
+            "toilettShowerAvailable": false,
+            "entryFee": false,
+            "wrackDiving": false,
+            "caveDiving": false,
+            "currentExits": false
+        }
+    }
+]
