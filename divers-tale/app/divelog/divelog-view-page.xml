@@ -17,7 +17,7 @@
                     tap="onDrawerButtonTap"
                     ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Divelogs"></Label>
+        <Label class="action-bar-title" text="Divelog"></Label>
     </ActionBar>
 
     <!--
@@ -47,7 +47,7 @@
                 Learn more about custom components and how they can be used in this documentation article:
                 http://docs.nativescript.org/ui/basics#custom-components
                 -->
-                <myDrawer:MyDrawer selectedPage="Divelogs"/>
+                <myDrawer:MyDrawer selectedPage="Divelog"/>
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
 
@@ -82,7 +82,7 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 tap="onDrawerButtonTap"
                 ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="Divelogs"></Label>
+    <Label class="action-bar-title" text="Divelog"></Label>
 </ActionBar>
 <!--
    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
@@ -111,7 +111,7 @@ xmlns="http://www.nativescript.org/tns.xsd">
             Learn more about custom components and how they can be used in this documentation article:
             http://docs.nativescript.org/ui/basics#custom-components
             -->
-            <myDrawer:MyDrawer selectedPage="Divelogs"/>
+            <myDrawer:MyDrawer selectedPage="Divelog"/>
         </StackLayout>
     </nsDrawer:RadSideDrawer.drawerContent>
     <nsDrawer:RadSideDrawer.mainContent>
