@@ -119,7 +119,7 @@ function EventsViewModel() {
     var participants = [];
     event.participants.forEach(function(element) {
       var divebuddy = viewModel.getDiveBuddyById(element.id);
-      if (divebuddy !== null) {
+      if (divebuddy !== null && divebuddy.id !== viewModel.getUserId()) {
         participants.push({id: element.id, name: divebuddy.name, status: element.status});
       }
     });
@@ -175,8 +175,8 @@ function EventsViewModel() {
   }
 
   viewModel.getDiveBuddyById = function(id) {
-    for (var i = 0; i < data.user_data.divebuddies.length; i++) {
-      var divebuddy = data.user_data.divebuddies[i];
+    for (var i = 0; i < data.divebuddies_data.divebuddies_data.length; i++) {
+      var divebuddy = data.divebuddies_data.divebuddies_data[i];
       if (divebuddy.id === id) {
         return divebuddy;
       }
