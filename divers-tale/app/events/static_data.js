@@ -3,8 +3,8 @@ var divebuddies = require("../divebuddies/static_data.js")
 exports.divebuddies_data = divebuddies;
 
 exports.user_data = {
-  id: 0,
-  divebuddies: divebuddies.divebuddies_data
+  id: 1,
+  divebuddies: [2, 3, 5, 6]
 }
 
 exports.divesites_data = [
@@ -43,7 +43,7 @@ exports.events_data = [{
   canceled: false,
   canceledDate: null,
   participants: [{id: 1, status: "Ja"}, {id: 2, status: "Nein"}, {id: 4, status: "Vielleicht"}],
-  creator: 0
+  creator: 1
 },{
   id: 5,
   name: "Weihnachtsfeier",
@@ -54,5 +54,5 @@ exports.events_data = [{
   canceled: false,
   canceledDate: null,
   participants: [{id: 5, status: "Ja"}],
-  creator: 0
+  creator: 1
 }];
