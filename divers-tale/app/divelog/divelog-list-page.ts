@@ -3,6 +3,7 @@ import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import {DivelogListModel} from "./divelog-list-model";
+import {FlexboxLayout} from "tns-core-modules/ui/layouts/flexbox-layout";
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -29,6 +30,17 @@ export function onNavigatingTo(args: NavigatedData) {
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
+}
+
+export function onItemTap(args: EventData) {
+    const component = <FlexboxLayout>args.object;
+    const componentRoute = component.get("route");
+    topmost().navigate({
+        moduleName: componentRoute,
+        transition: {
+            name: "fade"
+        }
+    });
 }
 
 
