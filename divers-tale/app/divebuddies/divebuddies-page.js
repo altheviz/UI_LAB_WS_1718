@@ -19,6 +19,15 @@ var sex = new ObservableArray(["", "Männlich", "Weiblich"]);
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
 function onNavigatingTo(args) {
+    page = args.object;
+    var nickname = page.getViewById("nickname").text;
+    var age = page.getViewById("age").text;
+    var city = page.getViewById("city").text;
+    var region = page.getViewById("region").text;
+    var country = page.getViewById("country").text;
+    var experience = page.getViewById("experience").text;
+    var certificate = page.getViewById("certificate").text;
+
     divebuddiesModel.empty();
     divebuddiesModel.load();
 
@@ -34,9 +43,15 @@ function onNavigatingTo(args) {
 
     });
 
-    page = args.object;
+    
     page.bindingContext = pageData;
-
+    page.getViewById("nickname").text = nickname;
+    page.getViewById("age").text = age;
+    page.getViewById("city").text = city;
+    page.getViewById("region").text = region;
+    page.getViewById("country").text = country;
+    page.getViewById("experience").text = experience;
+    page.getViewById("certificate").text = certificate;
 }
 
 function viewUserDetails(args) {
