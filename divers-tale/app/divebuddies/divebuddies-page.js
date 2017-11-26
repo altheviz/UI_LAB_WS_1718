@@ -92,19 +92,26 @@ function newGroup(args) {
         inputType: dialogs.inputType.text
     }).then(function (r) {
         if (r.result) {
-            var added = divebuddiesModel.addnewGroup(id, r.text);
-            if (added) {
-                page.bindingContext.myGroups = divebuddiesModel.getMyGroups(id)
-                refreshMydivebuddies()
-                page.bindingContext.myDivebuddies = myDivebuddies
+            if (r.text != "") {
+                var added = divebuddiesModel.addnewGroup(id, r.text);
+                if (added) {
+                    page.bindingContext.myGroups = divebuddiesModel.getMyGroups(id)
+                    refreshMydivebuddies()
+                    page.bindingContext.myDivebuddies = myDivebuddies
+                }
+                else {
+                    dialogs.alert({
+                        title: "Fehler",
+                        message: "Gruppe existiert bereits."
+                    });
+                }
             }
             else {
                 dialogs.alert({
                     title: "Fehler",
-                    message: "Gruppe existiert bereits."
+                    message: "Gruppe hat leeren Namen."
                 });
             }
-
         }
 
     });
@@ -142,7 +149,7 @@ function addToGroup(args) {
 
 }
 
-function removeBuddy(args){
+function removeBuddy(args) {
     var user = args.view.bindingContext;
     dialogs.confirm({
         title: "Löschen " + user.nickname,

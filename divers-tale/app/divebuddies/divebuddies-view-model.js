@@ -159,7 +159,7 @@ function DivebuddiesViewModel() {
                     check = false
                     element.certificates.forEach(function (certificateId) {
                         certificateElement = getCertificateById(certificateId)
-                        if (certificateElement.name.indexOf(certificate) != -1) {
+                        if (certificateElement.name.toLowerCase().indexOf(certificate.toLowerCase()) != -1) {
                             check = true
                         }
                     })
