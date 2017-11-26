@@ -249,7 +249,10 @@ function DivebuddiesViewModel() {
         user.groups.forEach(function(groupelement){
             if(groupelement.id == groupid){
                 var elementposition = groupelement.divebuddies.indexOf(userid);
-                groupelement.divebuddies.splice(elementposition, 1);
+                if(elementposition != -1) {
+                    groupelement.divebuddies.splice(elementposition, 1);
+                }
+                
             }
         })
     }
@@ -262,6 +265,12 @@ function DivebuddiesViewModel() {
             }
         }
         user.divebuddies.splice(elementposition, 1);
+        user.groups.forEach(function(groupelement){
+            var elementposition = groupelement.divebuddies.indexOf(userid);
+            if(elementposition != -1) {
+                groupelement.divebuddies.splice(elementposition, 1);
+            }
+        })
     }
 
     return viewModel;
