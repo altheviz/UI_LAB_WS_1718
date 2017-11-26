@@ -100,7 +100,7 @@
                                 <Label text="Benutzername: " row="0" col="0" textWrap="true" colSpan="1" length="20" style="margin: 10;" />
                                 <TextField id="nickname" text="{{ nickname }}" autocorrect="false" autocapitalizationType="none" row="0" col="1" width="600px" />
                                 <Label text="Geschlecht: " row="1" col="0" textWrap="true" colSpan="1" length="20" style="margin: 10;" />
-                                <dd:DropDown id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" col="1" />
+                                <dd:DropDown id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" col="1" class="dropdown" />
                                 <Label text="Alter: " row="2" col="0" textWrap="true" colSpan="1" length="20" style="margin: 10;" />
                                 <TextField id="age" text="{{ age }}" autocorrect="false" autocapitalizationType="none" row="2" col="1" width="600px" keyboardType="number" />       
                                 <Label text="Stadt: " row="3" col="0" textWrap="true" colSpan="1" length="20" style="margin: 10;" />
