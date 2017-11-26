@@ -14,7 +14,7 @@ var groupTabSelected = false;
 var id;
 var page;
 
-var sex = new ObservableArray(["", "Male", "Female"]);
+var sex = new ObservableArray(["", "Männlich", "Weiblich"]);
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -84,10 +84,10 @@ function search(args) {
 
 function newGroup(args) {
     dialogs.prompt({
-        title: "Create new group",
-        message: "Enter name for new group",
+        title: "Neue Gruppe erstellen",
+        message: "Bitte den Namen der neuen Gruppe eingeben:",
         okButtonText: "Ok",
-        cancelButtonText: "Cancel",
+        cancelButtonText: "Abbrechen",
 
         inputType: dialogs.inputType.text
     }).then(function (r) {
@@ -100,8 +100,8 @@ function newGroup(args) {
             }
             else {
                 dialogs.alert({
-                    title: "Error",
-                    message: "Group already exists"
+                    title: "Fehler",
+                    message: "Gruppe existiert bereits."
                 });
             }
 
@@ -113,10 +113,10 @@ function newGroup(args) {
 function deleteGroup(args) {
     var group = args.view.bindingContext;
     dialogs.confirm({
-        title: "Delete " + group.name,
-        message: "Are you sure that you want to delete " + group.name + "?",
-        okButtonText: "Yes",
-        cancelButtonText: "No"
+        title: "Gruppe löschen",
+        message: "Sind sie sicher dass sie die Gruppe '" + group.name + "' löschen wollen?",
+        okButtonText: "Ja",
+        cancelButtonText: "Nein"
     }).then(function (result) {
         if (result) {
             divebuddiesModel.deleteGroup(id, group.id);
@@ -131,8 +131,8 @@ function addToGroup(args) {
     var user = args.view.bindingContext;
     var availablegroups = divebuddiesModel.getavailableGroups(id, user.id)
     dialogs.action({
-        message: "Which Group do you want to add " + user.nickname + "?",
-        cancelButtonText: "Cancel",
+        message: "Welcher Gruppe wollen sie '" + user.nickname + "' hinzufügen?",
+        cancelButtonText: "Abbrechen",
         actions: availablegroups
     }).then(function (result) {
         divebuddiesModel.addUsertoGroup(id, user.id, result);
@@ -145,10 +145,10 @@ function addToGroup(args) {
 function removeBuddy(args){
     var user = args.view.bindingContext;
     dialogs.confirm({
-        title: "Delete " + user.nickname,
-        message: "Are you sure that you want to remove " + user.nickname + "?",
-        okButtonText: "Yes",
-        cancelButtonText: "No"
+        title: "Löschen " + user.nickname,
+        message: "Sind sie sicher dass sie '" + user.nickname + "' entfernen wollen?",
+        okButtonText: "Ja",
+        cancelButtonText: "Nein"
     }).then(function (result) {
         if (result) {
             divebuddiesModel.removeDivebuddy(id, user.id);

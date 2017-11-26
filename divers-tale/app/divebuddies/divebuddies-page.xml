@@ -24,7 +24,7 @@
         </ActionItem>
 
 
-        <Label class="action-bar-title" text="Dive Buddies"></Label>
+        <Label class="action-bar-title" text="Divebuddies"></Label>
     </ActionBar>
 
     <!--
@@ -80,7 +80,7 @@
                     </ListView>
                     </TabViewItem.view>
                 </TabViewItem>
-                <TabViewItem title="Groups">
+                <TabViewItem title="Gruppen">
                     <TabViewItem.view>
                         <ListView items="{{ myGroups }}">
                             <ListView.itemTemplate>
@@ -93,27 +93,27 @@
                         </ListView>
                     </TabViewItem.view>
                 </TabViewItem>
-                <TabViewItem title="Search">
+                <TabViewItem title="Suche">
                     <TabViewItem.view>
                         <ScrollView>
                            <GridLayout horizontalAlignment="center" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, auto">
-                                <Label text="Nickname: " row="0" col="0" textWrap="true" colSpan="1" length="20" />
+                                <Label text="Benutzername: " row="0" col="0" textWrap="true" colSpan="1" length="20" />
                                 <TextField id="nickname" text="{{ nickname }}" autocorrect="false" autocapitalizationType="none" row="0" col="1" width="600px" />
-                                <Label text="Sex: " row="1" col="0" textWrap="true" colSpan="1" length="20" />
+                                <Label text="Geschlecht: " row="1" col="0" textWrap="true" colSpan="1" length="20" />
                                 <dd:DropDown id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" col="1" />
-                                <Label text="Age: " row="2" col="0" textWrap="true" colSpan="1" length="20" />
+                                <Label text="Alter: " row="2" col="0" textWrap="true" colSpan="1" length="20" />
                                 <TextField id="age" text="{{ age }}" autocorrect="false" autocapitalizationType="none" row="2" col="1" width="600px" keyboardType="number" />       
-                                <Label text="City: " row="3" col="0" textWrap="true" colSpan="1" length="20" />
+                                <Label text="Stadt: " row="3" col="0" textWrap="true" colSpan="1" length="20" />
                                 <TextField id="city" text="{{ city }}" autocorrect="false" autocapitalizationType="none" row="3" col="1" width="600px" />     
                                 <Label text="Region: " row="4" col="0" textWrap="true" colSpan="1" length="20" />
                                 <TextField id="region" text="{{ region }}" autocorrect="false" autocapitalizationType="none" row="4" col="1" width="600px" />  
-                                <Label text="Country: " row="5" col="0" textWrap="true" colSpan="1" length="20" />
+                                <Label text="Land: " row="5" col="0" textWrap="true" colSpan="1" length="20" />
                                 <TextField id="country" text="{{ country }}" autocorrect="false" autocapitalizationType="none" row="5" col="1" width="600px" />             
-                                <Label text="Experience: " row="6" col="0" textWrap="true" colSpan="1" length="20" />
+                                <Label text="Tauchgänge: " row="6" col="0" textWrap="true" colSpan="1" length="20" />
                                 <TextField id="experience" text="{{ experience }}" autocorrect="false" autocapitalizationType="none" row="6" col="1" width="600px" keyboardType="number" />                               
-                                <Label text="Certificate: " row="7" col="0" textWrap="true" colSpan="1" length="20" />
+                                <Label text="Zertifikate: " row="7" col="0" textWrap="true" colSpan="1" length="20" />
                                 <TextField id="certificate" text="{{ certificate }}" autocorrect="false" autocapitalizationType="none" row="7" col="1" width="600px" />  
-                                <Button text="Search" tap="search" colSpan="2" row="8" col="0" />                             
+                                <Button text="Suchen" tap="search" colSpan="2" row="8" col="0" />                             
                             </GridLayout>
                         </ScrollView>
                     </TabViewItem.view>

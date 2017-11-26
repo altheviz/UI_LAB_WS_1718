@@ -5,7 +5,7 @@
   xmlns="http://www.nativescript.org/tns.xsd">
   <Page.actionBar>
     <ActionBar class="action-bar" title="{{ group.name }}">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+      <NavigationButton text="Zurück" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
     </ActionBar>
   </Page.actionBar>
     <ListView items="{{ divebuddiesOfGroup }}">

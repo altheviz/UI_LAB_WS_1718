@@ -120,7 +120,7 @@ function DivebuddiesViewModel() {
 
                 var check = true;
                 if (nickname != "") {
-                    if (element.nickname.indexOf(nickname) == -1) {
+                    if (element.nickname.toLowerCase().indexOf(nickname.toLowerCase()) == -1) {
                         check = false;
                     }
                 }
@@ -138,19 +138,19 @@ function DivebuddiesViewModel() {
                 }
 
                 if (city != "") {
-                    if (element.city.indexOf(city) == -1) {
+                    if (element.city.toLowerCase().indexOf(city.toLowerCase()) == -1) {
                         check = false;
                     }
                 }
 
                 if (region != "") {
-                    if (element.region.indexOf(region) == -1) {
+                    if (element.region.toLowerCase().indexOf(region.toLowerCase()) == -1) {
                         check = false;
                     }
                 }
 
                 if (country != "") {
-                    if (element.country.indexOf(country) == -1) {
+                    if (element.country.toLowerCase().indexOf(country.toLowerCase()) == -1) {
                         check = false;
                     }
                 }

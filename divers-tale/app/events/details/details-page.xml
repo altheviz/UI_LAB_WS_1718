@@ -6,7 +6,7 @@
   xmlns:dd="nativescript-drop-down">
   <Page.actionBar>
     <ActionBar class="action-bar" title="Details">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+      <NavigationButton text="Zurück" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
       <ActionItem visibility="{{ editButtonVisible }}">
         <Label text="&#xf040;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="editEvent"/>
       </ActionItem>

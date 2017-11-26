@@ -6,35 +6,35 @@
   xmlns:dd="nativescript-drop-down">
   <Page.actionBar>
     <ActionBar class="action-bar" title="{{ user.nickname }}">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+      <NavigationButton text="Zurück" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
     </ActionBar>
   </Page.actionBar>
   <TabView>
     <TabView.items>
-      <TabViewItem title="User">
+      <TabViewItem title="Benutzer">
         <TabViewItem.view>
           <ScrollView>
             <GridLayout horizontalAlignment="center" rows="200, auto, auto, auto, auto, auto, auto, auto" columns="auto, auto">
               <Image row="0" col="0" width="200" height="150" src="{{ user.profileimage }}" colSpan="2" />
               <Label text="Name: " row="1" col="0" textWrap="true" colSpan="1" />
               <Label text="{{ user.name }}" row="1" col="1" textWrap="true" colSpan="1" />
-              <Label text="Sex: " row="2" col="0" textWrap="true" colSpan="1" />
+              <Label text="Geschlecht: " row="2" col="0" textWrap="true" colSpan="1" />
               <Label text="{{ user.sex }}" row="2" col="1" textWrap="true" colSpan="1" />
-              <Label text="Age: " row="3" col="0" textWrap="true" colSpan="1" />
+              <Label text="Alter: " row="3" col="0" textWrap="true" colSpan="1" />
               <Label text="{{ user.age }}" row="3" col="1" textWrap="true" colSpan="1" />
-              <Label text="City: " row="4" col="0" textWrap="true" colSpan="1" />
+              <Label text="Stadt: " row="4" col="0" textWrap="true" colSpan="1" />
               <Label text="{{ user.city }}" row="4" col="1" textWrap="true" colSpan="1" />
               <Label text="Region: " row="5" col="0" textWrap="true" colSpan="1" />
               <Label text="{{ user.region }}" row="5" col="1" textWrap="true" colSpan="1" />
-              <Label text="Country: " row="6" col="0" textWrap="true" colSpan="1" />
+              <Label text="Land: " row="6" col="0" textWrap="true" colSpan="1" />
               <Label text="{{ user.country }}" row="6" col="1" textWrap="true" colSpan="1" />
-              <Label text="Experience: " row="7" col="0" textWrap="true" colSpan="1" />
+              <Label text="Tauchgänge: " row="7" col="0" textWrap="true" colSpan="1" />
               <Label text="{{ user.experience }}" row="7" col="1" textWrap="true" colSpan="1" />
             </GridLayout>
           </ScrollView>
         </TabViewItem.view>
       </TabViewItem>
-      <TabViewItem title="Certificates">
+      <TabViewItem title="Zertifikate">
         <TabViewItem.view>
           <ListView items="{{ certifications }}">
             <ListView.itemTemplate>

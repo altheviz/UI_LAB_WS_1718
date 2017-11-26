@@ -11,9 +11,6 @@ var id;
 var divebuddiesOfGroup;
 var divebuddiesModel;
 
-
-
-
 function handleBackButton(args) {
   args.cancel = true;
   module.exports.goBack();
@@ -43,7 +40,8 @@ exports.onNavigatingTo = function(args) {
 
 
   var pageData = new observableModule.fromObject({
-    divebuddiesOfGroup: divebuddiesOfGroup
+    divebuddiesOfGroup: divebuddiesOfGroup,
+    group: group
   });
 
   page.bindingContext = pageData;
@@ -61,10 +59,10 @@ exports.viewUserDetails = function(args) {
 exports.deleteUser = function(args) {
   var user = args.view.bindingContext;
   dialogs.confirm({
-    title: "Delete " + user.nickname,
-    message: "Are you sure that you want to remove " + user.nickname + " from the group " + group.name + "?",
-    okButtonText: "Yes",
-    cancelButtonText: "No"
+    title: "Benutzer entfernen",
+    message: "Sind sie sicher, dass sie '" + user.nickname + "' von der Gruppe '" + group.name + "' entfernen wollen?",
+    okButtonText: "Ja",
+    cancelButtonText: "Nein"
 }).then(function (result) {
     if (result) {
         divebuddiesModel.deleteUserFromGroup(id, group.id, user.id);
