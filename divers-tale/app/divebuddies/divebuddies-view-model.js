@@ -14,8 +14,6 @@ function getDiveBuddyById(id) {
     return null;
 }
 
-
-
 function getCertificateById(id) {
     for (var i = 0; i < data.certification_data.length; i++) {
         var certification = data.certification_data[i];
@@ -255,6 +253,16 @@ function DivebuddiesViewModel() {
                 
             }
         })
+    }
+
+    viewModel.addDiveBuddy = function(ownId, buddyId) {
+        var user = getDiveBuddyById(ownId);
+        if(user.divebuddies.indexOf(ownId) === -1) {
+            user.divebuddies.push(buddyId);
+            return true;
+        }
+
+        return false;
     }
 
     viewModel.removeDivebuddy = function(ownuserid, userid){

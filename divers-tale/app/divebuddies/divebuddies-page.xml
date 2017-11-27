@@ -18,6 +18,9 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
+        <ActionItem visibility="{{ invitations.length ? 'visible' : 'collapse' }}"  tap="toInvitations">
+            <Button text="{{ invitations.length }}"  backgroundColor="red" textAlignment="center" width="40" height="40" borderBottomLeftRadius="20" borderBottomRightRadius="20" borderTopLeftRadius="20" borderTopRightRadius="20" />
+        </ActionItem>
 
         <ActionItem visibility="{{ groupTabSelected ? 'visible' : 'collapse' }}">
             <Label text="&#xf067;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="newGroup" />
@@ -65,7 +68,7 @@
         <nsDrawer:RadSideDrawer.mainContent>
             <TabView selectedIndexChanged="onSelectedIndexChanged">
                 <TabView.items>
-                <TabViewItem title="Buddies">
+                <TabViewItem title="Buddies" textTransform="lowercase">
                     <TabViewItem.view>
                     <ListView items="{{ myDivebuddies }}">
                         <ListView.itemTemplate>
@@ -80,9 +83,9 @@
                     </ListView>
                     </TabViewItem.view>
                 </TabViewItem>
-                <TabViewItem title="Gruppen">
+                <TabViewItem title="Gruppen" textTransform="lowercase">
                     <TabViewItem.view>
-                        <ListView items="{{ myGroups }}">
+                        <ListView items="{{ myGroups }}" >
                             <ListView.itemTemplate>
                             <GridLayout columns="auto, *,auto, auto">
                                 <Label text="{{ name }}" textWrap="true" style="margin: 10;" />
@@ -93,7 +96,7 @@
                         </ListView>
                     </TabViewItem.view>
                 </TabViewItem>
-                <TabViewItem title="Suche">
+                <TabViewItem title="Suche" textTransform="lowercase">
                     <TabViewItem.view>
                         <ScrollView>
                            <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">

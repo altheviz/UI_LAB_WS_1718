@@ -1,0 +1,95 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+        <!-- <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton> -->
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Anfragen"></Label>
+    </ActionBar>
+
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="Anfrage"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.mainContent>
+			<TabView>
+				<TabView.items>
+					<TabViewItem title="bekommen" textTransform="lowercase" style="font-size: 16;">
+						<TabViewItem.view>
+							<ListView items="{{ receivedInvitations }}" visibility="{{ receivedInvitations.length > 0 ? 'visible' : 'hidden' }}">
+								<ListView.itemTemplate>
+									<GridLayout rows="auto, auto, auto" columns="*, auto, auto">
+										<Label text="{{ fromUser.nickname }}" style="font-weight: bold; margin: 10px" row="0" col="0" ></Label>
+										<Label text="{{ invitationDate, 'StartDatum: ' + invitationDate }}" row="1" col="0" ></Label>
+										<Label text="{{ invitationDate,  endDate ? 'Ablaufdatum: ' + endDate : '' }}" row="2" col="0" ></Label>
+										<Label text="&#xf061;" class="font-awesome" col="3" tap="details" />
+									</GridLayout>
+								</ListView.itemTemplate>
+							</ListView>
+						</TabViewItem.view>
+					</TabViewItem>
+					<TabViewItem title="gesendet" textTransform="lowercase" style="font-size: 16;" >
+						<TabViewItem.view>
+							<ListView items=" {{ sendInvitations }}" visibility="{{ sendInvitations.length > 0 ? 'visible' : 'hidden' }}">
+								<ListView.itemTemplate style="margin: 10px;">
+									<GridLayout rows="auto, auto, auto" columns="*, auto">
+										<Label text="{{ toUser.nickname }}" style="font-weight: bold; font-size: 18;" row="0" col="0" ></Label>
+										<Label text="{{ invitationDate, 'Startdatum: ' + invitationDate }}" row="1" col="0" ></Label>
+										<Label text="{{ endDate,  endDate ? 'Ablaufdatum: ' + endDate : '' }}" row="2" col="0" ></Label>
+										<Label text="{{ status }}" rowSpan="3" col="1" color=" {{ statusStyle.textColor }} " style="font-size: 20; font-weight:bold"/>
+									</GridLayout>
+								</ListView.itemTemplate>
+							</ListView>
+						</TabViewItem.view>
+					</TabViewItem>
+				</TabView.items>
+			</TabView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

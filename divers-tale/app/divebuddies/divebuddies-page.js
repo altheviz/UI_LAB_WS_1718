@@ -1,18 +1,20 @@
 const frameModule = require("ui/frame");
 
 const DivebuddiesViewModel = require("./divebuddies-view-model");
-
+const InvitationViewModel = require('../invitations/invitations-view-model');
 var observableModule = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
 var view = require("ui/core/view");
 var dialogs = require("ui/dialogs");
 
 var divebuddiesModel = new DivebuddiesViewModel();
+var invitationModel = new InvitationViewModel();
 var myDivebuddies;
 var groupTabSelected = false;
 
 var id;
 var page;
+var invitations;
 
 var sex = new ObservableArray(["", "Männlich", "Weiblich"]);
 /* ***********************************************************
@@ -30,16 +32,19 @@ function onNavigatingTo(args) {
 
     divebuddiesModel.empty();
     divebuddiesModel.load();
+    
 
 
     id = 1;//Wird über Session (oder so) übergeben
     refreshMydivebuddies()
-
+    
+    invitations = invitationModel.getReceivedInvitations(id);
     var pageData = new observableModule.fromObject({
         myDivebuddies: myDivebuddies,
         myGroups: myGroups,
         groupTabSelected: groupTabSelected,
-        sex: sex
+        sex: sex,
+        invitations: invitations
 
     });
 
@@ -90,6 +95,7 @@ function search(args) {
                 sexValue, page.getViewById("age").text, page.getViewById("city").text, page.getViewById("region").text, page.getViewById("country").text,
                 page.getViewById("experience").text, page.getViewById("certificate").text),
             divebuddiesModel: divebuddiesModel,
+            invitationModel: invitationModel,
             id: id
         }
     }
@@ -218,6 +224,20 @@ function refreshMydivebuddies() {
     });
 }
 
+function toInvitations() {
+    var navigationOptions = {
+        moduleName: "invitations/invitations-page",
+        context: {
+            invitations: invitations,
+            divebuddiesModel: divebuddiesModel,
+            invitationModel: invitationModel,
+            id: id
+        }
+    }
+    frameModule.topmost().navigate(navigationOptions);
+}
+
+exports.toInvitations = toInvitations;
 exports.onNavigatingTo = onNavigatingTo;
 exports.onDrawerButtonTap = onDrawerButtonTap;
 exports.viewGroupDetails = viewGroupDetails;

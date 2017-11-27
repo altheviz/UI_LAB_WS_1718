@@ -11,7 +11,7 @@ exports.divebuddies_data = [
     country: "USA",
     certificates: [1, 2],
     experience: 2,
-    divebuddies: [2, 3, 5, 6],
+    divebuddies: [5, 6],
     groups: [{
       id: 1,
       name: "GruppeEins",
@@ -19,7 +19,7 @@ exports.divebuddies_data = [
     }, {
       id: 2,
       name: "GruppeZwei",
-      divebuddies: [5, 2]
+      divebuddies: [2]
     }]
   }, {
     id: 2,

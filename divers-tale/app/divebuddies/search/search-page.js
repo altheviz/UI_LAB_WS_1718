@@ -6,6 +6,7 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 
 var page;
 var user;
+var id;
 
 var divebuddiesModel;
 
@@ -21,9 +22,9 @@ exports.onNavigatingFrom = function() {
 }
 
 exports.onNavigatingTo = function(args) {
-  if (args.isBackNavigation) {
-    return;
-  }
+  // if (args.isBackNavigation) {
+  //   return;
+  // }
 
   if (application.android) {
     application.android.on(application.AndroidApplication.activityBackPressedEvent, handleBackButton);
@@ -33,12 +34,13 @@ exports.onNavigatingTo = function(args) {
 
   searchedUser = page.navigationContext.searchedUser;
   divebuddiesModel = page.navigationContext.divebuddiesModel;
+  invitationModel = page.navigationContext.invitationModel;
   id = page.navigationContext.id;
   var divebuddies = divebuddiesModel.getMyDiveBuddies(id);
   searchedUser.forEach(function(elementuser){
     elementuser.addable = true;
     divebuddies.forEach(function(divebuddyelement){
-      if(elementuser.id == divebuddyelement.id){
+      if(elementuser.id == divebuddyelement.id || invitationModel.contains(id, elementuser.id)){
         elementuser.addable = false;
       }
     })
@@ -60,6 +62,20 @@ exports.viewUserDetails = function(args) {
   frameModule.topmost().navigate(navigationOptions);
 };
 
+exports.inviteUser = function(args) {
+  var user = args.view.bindingContext;
+  var navigationOptions = {
+    moduleName: "invitations/invite/invite-page",
+    context: { 
+      fromUser: id, 
+      toUser: user, // id of the logged user should be passed
+      divebuddiesModel : divebuddiesModel
+    }
+  }
+  frameModule.topmost().navigate(navigationOptions);
+
+};
+
 exports.goBack = function() {
   frameModule.topmost().goBack();
-}
+};
