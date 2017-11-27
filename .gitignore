@@ -7,3 +7,4 @@ divers-tale/app**/*.js
 
 !divers-tale/app/events**/*.js
 !divers-tale/app/divebuddies**/*.js
+!divers-tale/app/invitations**/*.js
