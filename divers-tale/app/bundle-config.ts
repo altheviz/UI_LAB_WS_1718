@@ -10,6 +10,6 @@ if ((global).TNS_WEBPACK) {
     global.registerModule("home/home-page", () => require("./home/home-page"));
     global.registerModule("browse/browse-page", () => require("./browse/browse-page"));
     global.registerModule("featured/featured-page", () => require("./featured/featured-page"));
-    global.registerModule("search/search-page", () => require("./search/search-page"));
+    global.registerModule("certificates/certificates-page", () => require("./certificates/certificates-page"));
     global.registerModule("settings/settings-page", () => require("./settings/settings-page"));
 }
