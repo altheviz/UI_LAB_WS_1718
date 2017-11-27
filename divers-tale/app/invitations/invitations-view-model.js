@@ -64,7 +64,7 @@ function InvitationViewModel() {
 	viewModel.getSendInvitations = function (userId) {
 		var returnValue = new ObservableArray();
 		invitations.forEach(function(invitation) {
-			if(invitation.from === userId && invitation.status !== "ACCEPTED") {
+			if(invitation.from === userId) {
 				invitation.invitationDate = formatDate(invitation.invitationDate);
 				invitation.endDate = formatDate(invitation.endDate);
 				users.forEach(function(user) {
@@ -84,7 +84,7 @@ function InvitationViewModel() {
 	viewModel.getReceivedInvitations = function (userId) {
 		var returnValue = new ObservableArray();
 		invitations.forEach(function (invitation) {
-			if (invitation.to === userId && invitation.status === "PENDING") {
+			if (invitation.to === userId && invitation.status === "ANSTEHEND") {
 				invitation.invitationDate = formatDate(invitation.invitationDate);
 				invitation.endDate = formatDate(invitation.endDate);
 				users.forEach(function (user) {

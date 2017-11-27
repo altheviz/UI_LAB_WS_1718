@@ -11,6 +11,18 @@ var divebuddiesModel;
 var sendInvitations;
 var receivedInvitations;
 
+
+function filterInvitationByStatus(array, status) {
+	var newArray = new ObservableArray();
+	array.forEach(function(invitation) {
+		if (invitation.status === status) {
+			newArray.push(invitation);
+		}
+	});
+	return newArray;
+}
+
+
 function onNavigatingTo(args) {
 	page = args.object;
 
@@ -20,31 +32,15 @@ function onNavigatingTo(args) {
 
 	sendInvitations = invitationModel.getSendInvitations(ownId);
 	receivedInvitations = invitationModel.getReceivedInvitations(ownId);
-	sendInvitations.forEach(function(invitation) {
-		switch (invitation.status) {
-			case "PENDING":
-				invitation.statusStyle = {
-					textColor: '#b38600'
-				}
-				break;
-			case "ACCEPTED":
-				invitation.statusStyle = {
-					textColor: '#009900'
-				}
-			case "REJECTED":
-				invitation.statusStyle = {
-					textColor: 'red'
-				}
-			default:
-				break;
-		}
-	});
 	var pageData = new ObservableModule.fromObject({
-		sendInvitations: sendInvitations,
-		receivedInvitations: receivedInvitations
+		receivedInvitations: receivedInvitations,
+		pending: filterInvitationByStatus(sendInvitations, 'ANSTEHEND'),
+		accepted: filterInvitationByStatus(sendInvitations, 'ANGENOMMEN'),
+		declined: filterInvitationByStatus(sendInvitations, 'ABGELEHNT')
 	});
 	page.bindingContext = pageData;
 }
+
 
 // function removeFromLocalList(invitationObj, list) {
 // 	for (var i = 0; i < list.length; i++) {
@@ -80,6 +76,7 @@ function goBack() {
 	frameModule.topmost().goBack();
 };
 
+exports.filterInvitationByStatus = filterInvitationByStatus;
 exports.onDrawerButtonTap = onDrawerButtonTap;
 exports.details = details;
 exports.onNavigatingTo = onNavigatingTo;

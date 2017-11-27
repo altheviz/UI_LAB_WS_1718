@@ -15,11 +15,11 @@ exports.divebuddies_data = [
     groups: [{
       id: 1,
       name: "GruppeEins",
-      divebuddies: [2, 3]
+      divebuddies: [5, 6]
     }, {
       id: 2,
       name: "GruppeZwei",
-      divebuddies: [2]
+      divebuddies: [5]
     }]
   }, {
     id: 2,
