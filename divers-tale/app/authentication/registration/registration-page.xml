@@ -1,0 +1,27 @@
+<Page class="page" loaded="loaded">
+    
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="Registration"></Label>
+    </ActionBar>
+
+    <GridLayout backgroundColor="#ccc">
+        <ScrollView>
+            <StackLayout margin="10" verticalAlignment="center">
+                <StackLayout class="form" padding="15" backgroundColor="#fff">
+                    <StackLayout class="input-field">
+                        <Label text="Name" class="label font-weight-bold m-b-5"></Label>
+                        <TextField class="input" text="{{ name }}" hint="John Doe"></TextField>
+                        <StackLayout class="hr-light"></StackLayout>
+                    </StackLayout>
+                    <StackLayout class="input-field">
+                        <Label text="Email" class="label font-weight-bold m-b-5"></Label>
+                        <TextField class="input" text="{{ email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john.doe@foo.com"></TextField>
+                        <StackLayout class="hr-light"></StackLayout>
+                    </StackLayout>
+                    <Button class="btn btn-primary w-full" text="Register" tap="register"></Button>
+                    <Label text="Already a member? Login here." class="text-center footnote" tap="login"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>
