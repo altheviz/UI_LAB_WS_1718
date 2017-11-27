@@ -1,3 +1,5 @@
 <GridLayout>
-    <Label text="Label in Search" />
+    <StackLayout class="p-20">
+        <SearchBar id="searchBar" hint="Search" text="" clear="onClear" submit="onSubmit" />
+    </StackLayout>
 </GridLayout>
