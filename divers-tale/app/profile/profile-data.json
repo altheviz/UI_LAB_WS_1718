@@ -1,0 +1,13 @@
+[
+    {
+        "UserId": 1,
+        "birthDate" : "1988-11-24",
+        "name": "Muster Mann",
+        "nickname": "Mustann",
+        "city": "Karlsruhe",
+        "region": "BW",
+        "country": "Germany",
+        "sex": "man",
+        "email": "muster.mann@test.com"
+    }
+]
