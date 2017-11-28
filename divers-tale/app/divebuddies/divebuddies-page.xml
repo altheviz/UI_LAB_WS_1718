@@ -96,6 +96,7 @@
                 </TabViewItem>
                 <TabViewItem title="Suche" textTransform="none">
                     <TabViewItem.view>
+                        <StackLayout>
                         <ScrollView>
                            <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
                                 <Label text="Benutzername: " row="0" col="0" textWrap="true" style="margin: 10;" />
@@ -117,6 +118,7 @@
                                 <Button text="Suchen" tap="search" colSpan="2" row="8" col="0" />                             
                             </GridLayout>
                         </ScrollView>
+                        </StackLayout>
                     </TabViewItem.view>
                 </TabViewItem>
                 </TabView.items>

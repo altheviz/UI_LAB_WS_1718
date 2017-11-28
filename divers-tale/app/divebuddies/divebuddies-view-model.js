@@ -173,25 +173,25 @@ function DivebuddiesViewModel() {
                 if (check) {
                     searchedUser.push(element)
                 }
-                
+
             }
         })
         return searchedUser;
     }
 
-    viewModel.addnewGroup = function(userid, groupname){
+    viewModel.addnewGroup = function (userid, groupname) {
         var user = getDiveBuddyById(userid);
         var maxid = 0;
         var added = true;
-        user.groups.forEach(function(groupelement){
-            if(groupelement.id > maxid){
+        user.groups.forEach(function (groupelement) {
+            if (groupelement.id > maxid) {
                 maxid = groupelement.id;
             }
-            if(groupelement.name == groupname){
+            if (groupelement.name == groupname) {
                 added = false;
             }
         })
-        if(!added){
+        if (!added) {
             return added
         }
         maxid = maxid + 1;
@@ -204,60 +204,60 @@ function DivebuddiesViewModel() {
         return true;
     }
 
-    viewModel.deleteGroup = function(userid, groupid){
+    viewModel.deleteGroup = function (userid, groupid) {
         var user = getDiveBuddyById(userid);
         var elementposition = 0;
         for (var i = 0; i < user.groups.length; i++) {
-            if(user.groups[i].id === groupid ){
+            if (user.groups[i].id === groupid) {
                 elementposition = i;
             }
         }
         user.groups.splice(elementposition, 1);
     }
 
-    viewModel.getavailableGroups = function(ownuserid, adduserid){
+    viewModel.getavailableGroups = function (ownuserid, adduserid) {
         var groups = [];
         var user = getDiveBuddyById(ownuserid);
-        user.groups.forEach(function(groupelement){
+        user.groups.forEach(function (groupelement) {
             var available = true;
-            groupelement.divebuddies.forEach(function(divebuddyid){
-                if(divebuddyid === adduserid){
+            groupelement.divebuddies.forEach(function (divebuddyid) {
+                if (divebuddyid === adduserid) {
                     available = false;
                 }
             })
-            if(available){
+            if (available) {
                 groups.push(groupelement.name)
             }
         })
         return groups;
     }
 
-    viewModel.addUsertoGroup = function(ownuserid, adduserid, groupname){
+    viewModel.addUsertoGroup = function (ownuserid, adduserid, groupname) {
         var user = getDiveBuddyById(ownuserid);
-        user.groups.forEach(function(groupelement){
-            if(groupelement.name == groupname){
+        user.groups.forEach(function (groupelement) {
+            if (groupelement.name == groupname) {
                 groupelement.divebuddies.push(adduserid)
             }
         })
     }
-    
 
-    viewModel.deleteUserFromGroup = function(ownuserid, groupid, userid){
+
+    viewModel.deleteUserFromGroup = function (ownuserid, groupid, userid) {
         var user = getDiveBuddyById(ownuserid);
-        user.groups.forEach(function(groupelement){
-            if(groupelement.id == groupid){
+        user.groups.forEach(function (groupelement) {
+            if (groupelement.id == groupid) {
                 var elementposition = groupelement.divebuddies.indexOf(userid);
-                if(elementposition != -1) {
+                if (elementposition != -1) {
                     groupelement.divebuddies.splice(elementposition, 1);
                 }
-                
+
             }
         })
     }
 
-    viewModel.addDiveBuddy = function(ownId, buddyId) {
+    viewModel.addDiveBuddy = function (ownId, buddyId) {
         var user = getDiveBuddyById(ownId);
-        if(user.divebuddies.indexOf(ownId) === -1) {
+        if (user.divebuddies.indexOf(ownId) === -1) {
             user.divebuddies.push(buddyId);
             return true;
         }
@@ -265,20 +265,45 @@ function DivebuddiesViewModel() {
         return false;
     }
 
-    viewModel.removeDivebuddy = function(ownuserid, userid){
+    viewModel.removeDivebuddy = function (ownuserid, userid) {
         var user = getDiveBuddyById(ownuserid);
         for (var i = 0; i < user.divebuddies.length; i++) {
-            if(user.divebuddies[i] === userid ){
+            if (user.divebuddies[i] === userid) {
                 elementposition = i;
             }
         }
         user.divebuddies.splice(elementposition, 1);
-        user.groups.forEach(function(groupelement){
+        user.groups.forEach(function (groupelement) {
             var elementposition = groupelement.divebuddies.indexOf(userid);
-            if(elementposition != -1) {
+            if (elementposition != -1) {
                 groupelement.divebuddies.splice(elementposition, 1);
             }
         })
+    }
+
+    viewModel.getavailableUsersforGroup = function (ownuserid, groupid) {
+        var availableUsers = [];
+        var availableUserIds = [];
+        var user = getDiveBuddyById(ownuserid);
+        var group;
+        user.groups.forEach(function (groupelement) {
+            if (groupelement.id == groupid) {
+                group = groupelement;
+            }
+        })
+        availableUserIds = user.divebuddies.slice();
+        group.divebuddies.forEach(function (buddyId) {
+            for (var i = 0; i < availableUserIds.length; i++) {
+                if (availableUserIds[i] == buddyId) {
+                    availableUserIds.splice(i, 1);
+                }
+            }
+        })
+
+        availableUserIds.forEach(function(ids){
+            availableUsers.push(getDiveBuddyById(ids))
+        })
+        return availableUsers;
     }
 
     return viewModel;

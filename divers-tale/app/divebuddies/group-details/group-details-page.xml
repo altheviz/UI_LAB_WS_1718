@@ -6,6 +6,10 @@
   <Page.actionBar>
     <ActionBar class="action-bar" title="{{ group.name }}">
       <NavigationButton text="Zurück" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+      
+      <ActionItem>
+        <Label text="&#xf067;" class="font-awesome" style="color: #ffffff; padding-right: 35px; padding-left: 35px; padding-top: 20px; font-size: 25;" tap="addUsersToGroup" />
+      </ActionItem>
     </ActionBar>
   </Page.actionBar>
     <ListView items="{{ divebuddiesOfGroup }}">

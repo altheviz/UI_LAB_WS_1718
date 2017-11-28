@@ -4,12 +4,14 @@ var application = require("application");
 
 var ObservableArray = require("data/observable-array").ObservableArray;
 var dialogs = require("ui/dialogs");
+var view = require("ui/core/view");
 
 var page;
 var group;
 var id;
 var divebuddiesOfGroup;
 var divebuddiesModel;
+var users;
 
 function handleBackButton(args) {
   args.cancel = true;
@@ -24,8 +26,6 @@ exports.onNavigatingFrom = function () {
 
 exports.onNavigatingTo = function (args) {
   if (args.isBackNavigation) {
-    group = page.navigationContext.group;
-    page.bindingContext.divebuddiesOfGroup = divebuddiesModel.getDivebuddiesOfGroup(group);
     return;
   }
 
@@ -39,11 +39,10 @@ exports.onNavigatingTo = function (args) {
   group = page.navigationContext.group;
   divebuddiesOfGroup = page.navigationContext.divebuddiesOfGroup;
   divebuddiesModel = page.navigationContext.divebuddiesModel;
-
+  users = page.navigationContext.users;
 
   var pageData = new observableModule.fromObject({
-    divebuddiesOfGroup: divebuddiesOfGroup,
-    group: group
+    users: users
   });
 
   page.bindingContext = pageData;
@@ -58,33 +57,23 @@ exports.viewUserDetails = function (args) {
   frameModule.topmost().navigate(navigationOptions);
 };
 
-exports.deleteUser = function (args) {
-  var user = args.view.bindingContext;
-  dialogs.confirm({
-    title: "Benutzer entfernen",
-    message: "Sind sie sicher, dass sie '" + user.nickname + "' von der Gruppe '" + group.name + "' entfernen wollen?",
-    okButtonText: "Ja",
-    cancelButtonText: "Nein"
-  }).then(function (result) {
-    if (result) {
-      divebuddiesModel.deleteUserFromGroup(id, group.id, user.id);
-      page.bindingContext.divebuddiesOfGroup = divebuddiesModel.getDivebuddiesOfGroup(group)
+exports.addUsersToGroup = function (args) {
+  var checkboxwaschecked = false;
+  users.forEach(element => {
+    var checkbox = view.getViewById(page, element.id);
+    if (checkbox.checked) {
+      checkboxwaschecked = true;
+      divebuddiesModel.addUsertoGroup(id, element.id, group.name)
     }
   });
-};
+  if (checkboxwaschecked) {
+    
+    frameModule.topmost().goBack();
 
-exports.addUsersToGroup = function (args) {
-  var users = divebuddiesModel.getavailableUsersforGroup(id, group.id);
-  if (users.length > 0) {
-    var navigationOptions = {
-      moduleName: "divebuddies/addusers/addusers-page",
-      context: { users: users, divebuddiesModel: divebuddiesModel, id: id, group: group }
-    }
-    frameModule.topmost().navigate(navigationOptions);
   } else {
     dialogs.alert({
       title: "Fehler",
-      message: "Sie können keine weiteren Buddies in dieser Gruppe hinzufügen."
+      message: "Keinen Divebuddy ausgewählt."
     });
   }
 

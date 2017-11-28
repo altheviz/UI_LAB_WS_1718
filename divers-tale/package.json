@@ -16,6 +16,7 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
+    "nativescript-checkbox": "^3.0.3",
     "nativescript-drop-down": "^3.2.0",
     "nativescript-modal-datetimepicker": "^1.0.3",
     "nativescript-pro-ui": "3.2.0",
