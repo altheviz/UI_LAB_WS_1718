@@ -1,10 +1,10 @@
 import { Observable } from "data/observable";
 
 // TODO extract into constant into single module
-const diveSitesText = "Dive Sites1";
-const mapText = "Map1";
-const favoriteText = "Favorite1";
-const searchText = "Search1";
+const diveSitesText = "Dive Sites";
+const mapText = "Map";
+const favoriteText = "Favorite";
+const searchText = "Search";
 
 export class DiveSiteViewModel extends Observable {
     constructor() {

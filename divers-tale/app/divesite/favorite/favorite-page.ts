@@ -38,14 +38,16 @@ function onPageLoaded(args) {
   var array = new observableArray.ObservableArray();
 
   //array.push({unicode: '&#x2460', title: "Title1", src: 'http://master-technology.com/images/demos/Apps-TurnItOffLogo.gif'});
-  array.push({unicode: "\u2460", title: "Title1"});
-  array.push({unicode: "\u2461", title: "Title2"});
-  array.push({unicode: "\u2462", title: "Title3"});
-  array.push({unicode: "\u2463", title: "Title4"});
-  array.push({unicode: "\u2464", title: "Title5"});
-  array.push({unicode: "\u2465", title: "Title6"});
+  array.push({unicode: "\u24B6", title: "Alte Allmend"});
+  array.push({unicode: "\u24B6", title: "Auewaldsee"});
+  array.push({unicode: "\u24B7", title: "Badsee Buchtzig"});
+  array.push({unicode: "\u24B7", title: "Baggersee Staffort"});
+  array.push({unicode: "\u24B7", title: "Bodensee"});
+  array.push({unicode: "\u24BC", title: "Gifizsee"});
   
+  page.bindingContext = new FavoriteViewModel();
 
   page.bindingContext = {myItems: array};
+
 }
 exports.onPageLoaded = onPageLoaded;
