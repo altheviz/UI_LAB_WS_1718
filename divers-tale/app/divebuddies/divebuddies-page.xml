@@ -18,12 +18,12 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <ActionItem visibility="{{ invitations.length ? 'visible' : 'collapse' }}"  tap="toInvitations">
-            <Button text="{{ invitations.length }}"  backgroundColor="red" textAlignment="center" width="40" height="40" borderBottomLeftRadius="20" borderBottomRightRadius="20" borderTopLeftRadius="20" borderTopRightRadius="20" />
+        <ActionItem  tap="toInvitations" style="">
+            <Button text="{{ invitations.length }}"  style="font-size: 20; font-weight: bold; padding-top:20px " backgroundColor="red" textAlignment="center" width="38" height="40" borderBottomLeftRadius="20" borderBottomRightRadius="20" borderTopLeftRadius="20" borderTopRightRadius="20" />
         </ActionItem>
 
         <ActionItem visibility="{{ groupTabSelected ? 'visible' : 'collapse' }}">
-            <Label text="&#xf067;" class="font-awesome" style="color: #ffffff; padding-right: 35px; font-size: 25;" tap="newGroup" />
+            <Label text="&#xf067;" class="font-awesome" style="color: #ffffff; padding-right: 35px; padding-left: 35px; padding-top: 20px; font-size: 25;" tap="newGroup" />
         </ActionItem>
 
 
@@ -68,7 +68,7 @@
         <nsDrawer:RadSideDrawer.mainContent>
             <TabView selectedIndexChanged="onSelectedIndexChanged">
                 <TabView.items>
-                <TabViewItem title="Buddies" textTransform="lowercase">
+                <TabViewItem title="Buddies" textTransform="none" >
                     <TabViewItem.view>
                     <ListView items="{{ myDivebuddies }}">
                         <ListView.itemTemplate>
@@ -83,7 +83,7 @@
                     </ListView>
                     </TabViewItem.view>
                 </TabViewItem>
-                <TabViewItem title="Gruppen" textTransform="lowercase">
+                <TabViewItem title="Gruppen" textTransform="none" >
                     <TabViewItem.view>
                         <ListView items="{{ myGroups }}" >
                             <ListView.itemTemplate>
@@ -96,7 +96,7 @@
                         </ListView>
                     </TabViewItem.view>
                 </TabViewItem>
-                <TabViewItem title="Suche" textTransform="lowercase">
+                <TabViewItem title="Suche" textTransform="none">
                     <TabViewItem.view>
                         <ScrollView>
                            <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">

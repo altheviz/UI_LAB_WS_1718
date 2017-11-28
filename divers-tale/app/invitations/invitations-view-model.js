@@ -47,7 +47,7 @@ function InvitationViewModel() {
 	viewModel.haveReceived = function(ownId, buddyId) {
 		for (var i = 0; i < invitations.length; i++) {
 			var element = invitations[i];
-			if (element.to === ownId && element.from === buddyId && element.status === "PENDING") {
+			if (element.to === ownId && element.from === buddyId && element.status === "ANSTEHEND") {
 				return true;
 			}
 		}

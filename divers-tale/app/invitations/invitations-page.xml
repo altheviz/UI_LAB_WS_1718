@@ -60,28 +60,27 @@
         <nsDrawer:RadSideDrawer.mainContent>
 			<TabView>
 				<TabView.items>
-					<TabViewItem title="bekommen" textTransform="lowercase" style="font-size: 16;">
+					<TabViewItem title="Bekommen" textTransform="none" style="font-size: 18;">
 						<TabViewItem.view>
 							<ListView items="{{ receivedInvitations }}" visibility="{{ receivedInvitations.length > 0 ? 'visible' : 'hidden' }}">
-								<ListView.itemTemplate>
-									<GridLayout rows="auto, auto, auto" columns="*, auto, auto">
-										<Label text="{{ fromUser.nickname }}" style="font-weight: bold; margin: 10px" row="0" col="0" ></Label>
-										<Label text="{{ invitationDate, 'StartDatum: ' + invitationDate }}" row="1" col="0" ></Label>
-										<Label text="{{ invitationDate,  endDate ? 'Ablaufdatum: ' + endDate : '' }}" row="2" col="0" ></Label>
-										<Label text="&#xf061;" class="font-awesome" col="3" tap="details" />
+								<ListView.itemTemplate >
+									<GridLayout rows="auto, auto, auto" tap="details">
+										<Label text="{{ fromUser.nickname }}" style="font-weight: bold; margin: 10px" row="0" ></Label>
+										<Label text="{{ invitationDate, 'StartDatum: ' + invitationDate }}" row="1" ></Label>
+										<Label text="{{ invitationDate,  endDate ? 'Ablaufdatum: ' + endDate : '' }}" row="2" ></Label>
 									</GridLayout>
 								</ListView.itemTemplate>
 							</ListView>
 						</TabViewItem.view>
 					</TabViewItem>
-					<TabViewItem title="gesendet" textTransform="lowercase" style="font-size: 16;">
+					<TabViewItem title="Gesendet" textTransform="none" style="font-size: 18;">
                         <TabViewItem.view>
                             <TabView>
                                 <TabView.items>
-                                    <TabViewItem title="anstehend" visibility="{{ pending.length > 0 ? 'visible':'hidden' }}" textTransform="lowercase" style="font-size: 16;">
+                                    <TabViewItem title="Anstehend" textTransform="none">
                                         <TabViewItem.view>
                                             <ListView items=" {{ pending }}" >
-                                                <ListView.itemTemplate style="margin: 10px;">
+                                                <ListView.itemTemplate>
                                                     <GridLayout rows="auto, auto, auto" columns="*, auto">
                                                         <Label text="{{ toUser.nickname }}" style="font-weight: bold; font-size: 18;" row="0" col="0" ></Label>
                                                         <Label text="{{ invitationDate, 'Startdatum: ' + invitationDate }}" row="1" col="0" ></Label>
@@ -92,10 +91,10 @@
                                             </ListView>
                                         </TabViewItem.view>
                                     </TabViewItem>
-                                    <TabViewItem title="angenommen" visibility="{{ accepted.length > 0 ? 'visible':'hidden' }}" textTransform="lowercase" style="font-size: 16;">
+                                    <TabViewItem title="Angenommen" textTransform="none">
                                         <TabViewItem.view>
                                             <ListView items=" {{ accepted }}" >
-                                                <ListView.itemTemplate style="margin: 10px;">
+                                                <ListView.itemTemplate>
                                                     <GridLayout rows="auto, auto, auto" columns="*, auto">
                                                         <Label text="{{ toUser.nickname }}" style="font-weight: bold; font-size: 18;" row="0" col="0" ></Label>
                                                         <Label text="{{ invitationDate, 'Startdatum: ' + invitationDate }}" row="1" col="0" ></Label>
@@ -106,10 +105,10 @@
                                             </ListView>
                                         </TabViewItem.view>
                                     </TabViewItem>
-                                    <TabViewItem title="abgelehnt" isCollapsed="true" textTransform="lowercase" style="font-size: 16;" >
+                                    <TabViewItem title="Abgelehnt" textTransform="none" >
                                         <TabViewItem.view>
                                             <ListView items=" {{ declined }}">
-                                                <ListView.itemTemplate style="margin: 10px;">
+                                                <ListView.itemTemplate>
                                                     <GridLayout rows="auto, auto, auto" columns="*, auto">
                                                         <Label text="{{ toUser.nickname }}" style="font-weight: bold; font-size: 18;" row="0" col="0" ></Label>
                                                         <Label text="{{ invitationDate, 'Startdatum: ' + invitationDate }}" row="1" col="0" ></Label>

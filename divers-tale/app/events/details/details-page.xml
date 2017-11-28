@@ -17,7 +17,7 @@
   </Page.actionBar>
   <TabView>
     <TabView.items>
-      <TabViewItem title="Event">
+      <TabViewItem title="Event" textTransform="none">
         <TabViewItem.view>
           <ScrollView>
             <GridLayout rows="auto, auto, auto, auto, auto, auto, auto" columns="auto, *, auto">
@@ -33,7 +33,7 @@
           </ScrollView>
         </TabViewItem.view>
       </TabViewItem>
-      <TabViewItem title="Buddies">
+      <TabViewItem title="Buddies" textTransform="none">
         <TabViewItem.view>
           <ListView items="{{ divebuddiesList }}">
             <ListView.itemTemplate>

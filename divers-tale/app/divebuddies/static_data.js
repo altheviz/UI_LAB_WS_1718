@@ -91,6 +91,20 @@ exports.divebuddies_data = [
     experience: 3,
     divebuddies: [1],
     groups: []
+  }, {
+    id: 7,
+    name: "Nico Brandt",
+    nickname: "brni",
+    profileimage: "~/images/profile.png",
+    sex: "Männlich",
+    age: 30,
+    city: "Weingarten",
+    region: "Baden-Württemberg",
+    country: "Deutschland",
+    certificates: [4, 3],
+    experience: 3,
+    divebuddies: [1],
+    groups: []
   }]
 
 exports.certification_data = [
