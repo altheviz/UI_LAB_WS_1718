@@ -18,12 +18,9 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <ActionItem  tap="toInvitations" style="">
-            <Button text="{{ invitations.length }}"  style="font-size: 20; font-weight: bold; padding-top:20px " backgroundColor="red" textAlignment="center" width="38" height="40" borderBottomLeftRadius="20" borderBottomRightRadius="20" borderTopLeftRadius="20" borderTopRightRadius="20" />
-        </ActionItem>
+        <ActionItem  tap="toInvitations">
 
-        <ActionItem visibility="{{ groupTabSelected ? 'visible' : 'collapse' }}">
-            <Label text="&#xf067;" class="font-awesome" style="color: #ffffff; padding-right: 35px; padding-left: 35px; padding-top: 20px; font-size: 25;" tap="newGroup" />
+            <Button text="{{ invitations.length }}" style="font-size: 20; font-weight: bold; padding-top:10px" backgroundColor="#e83622" textAlignment="center" width="35" height="35" borderBottomLeftRadius="20" borderBottomRightRadius="20" borderTopLeftRadius="20" borderTopRightRadius="20" />
         </ActionItem>
 
 
@@ -84,6 +81,7 @@
                 </TabViewItem>
                 <TabViewItem title="Gruppen" textTransform="none" >
                     <TabViewItem.view>
+                      <GridLayout rows="*, 60">
                         <ListView items="{{ myGroups }}" >
                             <ListView.itemTemplate>
                             <GridLayout columns="auto, *,auto, auto" tap="viewGroupDetails">
@@ -92,11 +90,15 @@
                             </GridLayout>
                             </ListView.itemTemplate>
                         </ListView>
+                        <StackLayout row="1" orientation="horizontal">
+                          <Button text="Gruppe hinzufügen" width="100%" tap="newGroup" textTransform="none"/>
+                        </StackLayout>
+                      </GridLayout>
                     </TabViewItem.view>
                 </TabViewItem>
                 <TabViewItem title="Suche" textTransform="none">
                     <TabViewItem.view>
-                        <StackLayout>
+                      <GridLayout rows="*, 60">
                         <ScrollView>
                            <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
                                 <Label text="Benutzername: " row="0" col="0" textWrap="true" style="margin: 10;" />
@@ -115,10 +117,12 @@
                                 <TextField id="experience" text="{{ experience }}" autocorrect="false" autocapitalizationType="none" row="6" col="1" keyboardType="number" />                               
                                 <Label text="Zertifikate: " row="7" col="0" textWrap="true" style="margin: 10;" />
                                 <TextField id="certificate" text="{{ certificate }}" autocorrect="false" autocapitalizationType="none" row="7" col="1" />  
-                                <Button text="Suchen" tap="search" colSpan="2" row="8" col="0" />                             
                             </GridLayout>
                         </ScrollView>
+                        <StackLayout row="1" orientation="horizontal">
+                            <Button text="Suchen" tap="search" colSpan="2" width="100%" row="8" col="0" textTransform="none"/>                             
                         </StackLayout>
+                      </GridLayout>
                     </TabViewItem.view>
                 </TabViewItem>
                 </TabView.items>

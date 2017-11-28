@@ -28,7 +28,10 @@ function updateInvitation (status) {
 	if (invitationModel.updateInvitationStatus(invitation, status)) {
 		frameModule.topmost().goBack();
 	} else {
-		dialogs.alert(invitation.toUser.nickname + " wurde nicht in ihre buddy Liste nicht hinzugefügt, denn diese Anfrage existiert nicht.").then(function (result) {
+		dialogs.alert({
+      title: "Fehler",
+      message: "Diese Anfrage existiert nicht."
+    }).then(function (result) {
 		})
 	}
 }

@@ -1,6 +1,7 @@
 var frameModule = require("ui/frame");
 var observableModule = require("data/observable")
 var dialogs = require("ui/dialogs");
+var toast = require("nativescript-toast");
 
 var ValueList = require("nativescript-drop-down").ValueList;
 var ModalPicker = require("nativescript-modal-datetimepicker").ModalDatetimepicker;
@@ -36,7 +37,7 @@ exports.onNavigatingTo = function(args) {
   event = page.navigationContext.event;
 
   divesiteItemSource = new ValueList();
-  divesiteItemSource.push({ value: null, display: "<Nichts ausgewählt>" });
+  divesiteItemSource.push({ value: null, display: "<Keiner>" });
 
   var divesitesDD = page.getViewById("divesitesDD");
   divesitesDD.items = divesiteItemSource;
@@ -72,7 +73,8 @@ exports.onNavigatingTo = function(args) {
       participants: [],
       creator: eventsModel.getUserId(),
       canceled: false,
-      canceledDate: null
+      canceledDate: null,
+      image: "~/images/event.png"
     }
 
     selectedType = null;
@@ -92,7 +94,8 @@ exports.onNavigatingTo = function(args) {
       participants: event.participants,
       creator: event.creator,
       canceled: event.canceled,
-      canceledDate: event.canceledDate
+      canceledDate: event.canceledDate,
+      image: event.image
     }
 
     selectedType = types.indexOf(event.type);
@@ -134,10 +137,7 @@ exports.discardChanges = function() {
 
 exports.saveChanges = function() {
   if (!validateEvent()) {
-    dialogs.alert({
-      title: "Fehler",
-      message: "Nicht alle Felder ausgefüllt."
-    });
+    toast.makeText("Bitte alle Felder ausfüllen").show();
     return;
   }
   if (isNewEvent) {

@@ -4,12 +4,16 @@
       		<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
 			<Label class="action-bar-title" text="Anfrage senden"></Label>
     	</ActionBar>
-		
 	</Page.actionBar>
-	<StackLayout orientation="vertical" > 
-		<Label horizontalAlignment="center" fontSize="18" text="{{ heading }}" height="50" />       
-        <TextView id="message" text="{{ invitation.message }}" hint="Nachricht" height="110" />
-        <TextField id="dateField" hint="Ablaufsdatum" editable="false"  tap="selectDate"/>
-		<Button text="Anfragen"  color="white" backgroundColor="#3A53FF" tap="invite" />
+
+  <GridLayout rows="*, 60">
+  <StackLayout orientation="vertical" > 
+    <Label horizontalAlignment="center" fontSize="18" text="{{ heading }}" height="50" />       
+      <TextView id="message" text="{{ invitation.message }}" hint="Nachricht"/>
+      <TextField id="dateField" hint="Ablaufdatum" editable="false"  tap="selectDate"/>
     </StackLayout>
+    <StackLayout row="1" orientation="horizontal">
+      <Button text="Anfrage senden" color="white" backgroundColor="#3A53FF" tap="invite" width="100%" textTransform="none"/>
+    </StackLayout>
+  </GridLayout>
 </Page>

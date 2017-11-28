@@ -27,12 +27,11 @@
     <nsDrawer:RadSideDrawer.mainContent>
       <ListView items="{{ eventsModel }}">
         <ListView.itemTemplate>
-          <GridLayout rows="auto, auto, auto, auto" columns="*, 5*, *">
-            <Label text="{{ name }}" style="font-weight: bold; margin: 10px" colSpan="2" textWrap="true" />
-            <Label visibility="{{ canceled ? 'visible' : 'collapse' }}" text="Abgesagt!" style="color: #c42323; margin: 10px" colSpan="2" textWrap="true" row="1"/>
-            <Label visibility="{{ canceled ? 'collapsed' : 'visible' }}" text="{{ date + ' um ' + time + ' Uhr'}}" style="margin: 10px" row="2" colSpan="2" textWrap="true"/>
-            <Label visibility="{{ divesite === null ? 'collapsed' : 'visible' }}" text="{{ divesite.name }}" style="margin: 10px" row="3" colSpan="2" textWrap="true"/>
-            <Label text="&#xf061;" class="font-awesome" col="3" rowSpan="4" tap="viewDetails" />
+          <GridLayout rows="auto, auto" columns="auto, auto, auto" tap="viewDetails">
+            <Image width="100" heiht="100" stretch="aspectFill" src="{{ image }}" style="margin-top: 15px; margin-bottom: 15px;" rowSpan="2"/>
+            <Label text="{{ name }}" style="font-weight: bold; margin: 10px" col="1" textWrap="true" />
+            <Label visibility="{{ canceled ? 'visible' : 'collapse' }}" text="Abgesagt!" style="color: #c42323; margin: 10px" row="1" col="1" textWrap="true"/>
+            <Label visibility="{{ canceled ? 'collapsed' : 'visible' }}" text="{{ date + ' um ' + time + ' Uhr'}}" style="margin: 10px" row="1" col="1" textWrap="true"/>
           </GridLayout>
         </ListView.itemTemplate>
       </ListView>

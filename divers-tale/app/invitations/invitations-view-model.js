@@ -70,6 +70,10 @@ function InvitationViewModel() {
 				users.forEach(function(user) {
 					if(user.id === invitation.to) {
 						invitation.toUser = user;
+						invitation.title = invitation.title.replace('${nickname}', user.nickname);
+						invitation.details = invitation.details.replace('${city}', user.city);
+						invitation.details = invitation.details.replace('${country}', user.country);
+						invitation.details = invitation.details.replace('${experience}', user.experience);
 					} else if (user.id === invitation.from) {
 						invitation.fromUser = user;
 					}
@@ -92,6 +96,10 @@ function InvitationViewModel() {
 						invitation.toUser = user;
 					} else if( user.id === invitation.from) {
 						invitation.fromUser = user;
+						invitation.title = invitation.title.replace('${nickname}', user.nickname);
+						invitation.details = invitation.details.replace('${city}', user.city);
+						invitation.details = invitation.details.replace('${country}', user.country);
+						invitation.details = invitation.details.replace('${experience}', user.experience);
 					}
 				}, this);
 				returnValue.push(invitation);
