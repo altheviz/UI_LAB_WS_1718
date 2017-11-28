@@ -10,7 +10,7 @@
     </ActionBar>
   </Page.actionBar>
   <ScrollView>
-    <ListView items="{{ searchedUser }}">
+    <ListView id="listView" items="{{ searchedUser }}">
         <ListView.itemTemplate>
           <GridLayout columns="auto, *,auto, auto" tap="viewUserDetails">
               <Label text="{{ nickname }}" textWrap="true" />

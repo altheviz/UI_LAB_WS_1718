@@ -8,9 +8,9 @@
 <ScrollView>
 	<StackLayout orientation="vertical">
 			<GridLayout rows="auto" columns="*">
-				<Label text=" {{ invitation.title }}" style="font-size: 22;" row="0" colSpan="2" textWrap="true" height="80"></Label>
+				<Label text=" {{ invitation.title }}" style="font-size: 22;" row="0" colSpan="2" textWrap="true" height="50"></Label>
 			</GridLayout>
-			<GridLayout rows="auto, auto, auto, auto" style="font-size: 19.5;" columns="*, 2*" height="200">
+			<GridLayout rows="auto, auto, auto, auto" style="font-size: 19.5;" columns="*, 2*">
 				<Label text="Details: " row="0" col="0"  textWrap="true" style="font-weight:bold" colSpan="1" />
 				<Label text="{{ invitation.details }}" row="0" col="1" textWrap="true" colSpan="1" />
 				<Label text="Message: " row="1" col="0" textWrap="true" style="font-weight:bold" colSpan="1" />

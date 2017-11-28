@@ -72,8 +72,6 @@
                         <GridLayout columns="auto, *,auto, auto, auto, auto" tap="viewUserDetails">
                             <Label text="{{ nickname }}" textWrap="true" style="margin: 10;" />
                             <Label text="&#xf235;" class="font-awesome" col="2" tap="removeBuddy" style="margin: 10;" />
-                            <Label text="&#xf067;" class="font-awesome" col="3" style="color: rgba(0, 0, 0, 0.0);margin: 10;" visibility="{{ groupable ? 'collapse' : 'visible' }}" />
-                            <Label text="&#xf067;" class="font-awesome" col="4" tap="addToGroup" visibility="{{ groupable ? 'visible' : 'collapse' }}" style="margin: 10;" />
                         </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>

@@ -11,7 +11,7 @@
   </Page.actionBar>
   <TabView>
     <TabView.items>
-      <TabViewItem title="Benutzer">
+      <TabViewItem title="Benutzer" textTransform="none">
         <TabViewItem.view>
           <ScrollView>
             <GridLayout horizontalAlignment="center" rows="200, auto, auto, auto, auto, auto, auto, auto" columns="auto, auto">
@@ -34,7 +34,7 @@
           </ScrollView>
         </TabViewItem.view>
       </TabViewItem>
-      <TabViewItem title="Zertifikate">
+      <TabViewItem title="Zertifikate" textTransform="none">
         <TabViewItem.view>
           <ListView items="{{ certifications }}">
             <ListView.itemTemplate>

@@ -30,8 +30,8 @@ function onNavigatingTo(args) {
 			to: user.id,
 			title: "${nickname} will mit dir befreundet sein.",
 			details: "Aus ${city}, ${country} mit ${expertience} Tauchgang",
-			message: "Hi " + user.nickname + ". Ich bins, . Lass uns doch mal tauchen gehen.",
-			invitationDate: date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate(),
+			message: "",
+			invitationDate: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
 			status: "ANSTEHEND",
 			endDate: ""
 		} 
@@ -39,7 +39,7 @@ function onNavigatingTo(args) {
 		var pageData = new observableModule.fromObject({
 			invitation : invitationObj,
 			user: user,
-			heading: "Schreib '" + user.nickname + "' eine Nachricht."
+			heading: "Schicke '" + user.nickname + "' eine Anfrage."
 		});
 
 		page.bindingContext = pageData;
@@ -59,31 +59,32 @@ function goBack() {
 
 function invite() {
 	var invalid = false;
-	if(invitationObj.message === "") {
+	if(invitationObj.message === "" || invitationObj.endDate === "") {
 		invalid = true;
-		Toast.makeText("Bitte eine Nachricht eingeben", 'long').show();
+		Toast.makeText("Bitte alle Felder ausfüllen.", 'long').show();
 	}
-	if(invitationObj.endDate === "") {
-		invalid = true;
-		Toast.makeText("Bitte ein Ablaufsdatum eingeben", 'long').show();
-	}
+
 	if(!invalid) {
 		var added = invitationModel.addInvitation(invitationObj);
 		if(!added) {
-			dialogs.alert("Ein Fehler ist bei sended aufgetreten. Bitte später versuchen.").then(function (result) {
+			dialogs.alert({
+	      title: "Achtung",
+	      message: "Sie haben bereits eine Freundschaftsanfrage an diesen Nutzer versendet."
+    	}).then(function (result) {
 			});
 		} else {
-			Toast.makeText('Ihre Anfrage wurde gesendet.')
+			Toast.makeText('Ihre Anfrage wurde versendet.').show();
 		}
 		frameModule.topmost().goBack();
 	}
 }
 
 function selectDate() {
+	var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 	picker.pickDate({
 		title: "Bitte Datum auswählen:",
 		theme: "light",
-		minDate: new Date()
+		minDate: tomorrow
 	}).then(function (result) {
 		invitationObj.endDate = result.year + "-" + result.month + "-" + result.day;
 		var dateField = page.getViewById("dateField");

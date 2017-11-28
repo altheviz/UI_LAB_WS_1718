@@ -25,16 +25,10 @@ function goBack() {
 }
 
 function updateInvitation (status) {
-	if (invitationModel.updateInvitationStatus(invitation, status)) {
-		frameModule.topmost().goBack();
-	} else {
-		dialogs.alert({
-      title: "Fehler",
-      message: "Diese Anfrage existiert nicht."
-    }).then(function (result) {
-		})
-	}
+	invitationModel.updateInvitationStatus(invitation, status);
+	frameModule.topmost().goBack();
 }
+
 function accept() {
 	updateInvitation("ACCEPTED");
 }

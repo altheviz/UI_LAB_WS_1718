@@ -32,6 +32,9 @@ exports.onNavigatingTo = function(args) {
 
   page = args.object;
 
+  var listView = page.getViewById("listView");
+  listView.refresh();
+
   searchedUser = page.navigationContext.searchedUser;
   divebuddiesModel = page.navigationContext.divebuddiesModel;
   invitationModel = page.navigationContext.invitationModel;
@@ -47,7 +50,7 @@ exports.onNavigatingTo = function(args) {
   });
 
   var pageData = new observableModule.fromObject({
-    searchedUser: searchedUser,
+    searchedUser: searchedUser
   });
 
   page.bindingContext = pageData;
