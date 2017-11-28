@@ -1,6 +1,7 @@
 var frameModule = require("ui/frame");
 var observableModule = require("data/observable")
 var dialogs = require("ui/dialogs");
+var toast = require("nativescript-toast");
 
 var ValueList = require("nativescript-drop-down").ValueList;
 var ModalPicker = require("nativescript-modal-datetimepicker").ModalDatetimepicker;
@@ -136,10 +137,7 @@ exports.discardChanges = function() {
 
 exports.saveChanges = function() {
   if (!validateEvent()) {
-    dialogs.alert({
-      title: "Fehler",
-      message: "Nicht alle Felder ausgefüllt."
-    });
+    toast.makeText("Bitte alle Felder ausfüllen").show();
     return;
   }
   if (isNewEvent) {
