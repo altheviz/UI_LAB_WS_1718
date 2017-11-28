@@ -118,6 +118,8 @@ function InvitationViewModel() {
 						if (user.id === invitationObj.to) {
 							// add invitation sender into my list of buddies.
 							user.divebuddies.push(invitationObj.from);
+						}else if(user.id === invitationObj.from) {
+							user.divebuddies.push(invitationObj.to);
 						}
 					});
 				}
