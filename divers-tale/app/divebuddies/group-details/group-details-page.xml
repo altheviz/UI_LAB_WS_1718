@@ -10,10 +10,9 @@
   </Page.actionBar>
     <ListView items="{{ divebuddiesOfGroup }}">
         <ListView.itemTemplate>
-          <GridLayout columns="auto, *,auto, auto">
+          <GridLayout columns="auto, *,auto, auto" tap="viewUserDetails">
               <Label text="{{ nickname }}" textWrap="true" />
               <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteUser" />
-              <Label text="&#xf061;" class="font-awesome" col="3" tap="viewUserDetails" />
           </GridLayout>
         </ListView.itemTemplate>
     </ListView>

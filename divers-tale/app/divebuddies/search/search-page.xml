@@ -12,10 +12,9 @@
   <ScrollView>
     <ListView items="{{ searchedUser }}">
         <ListView.itemTemplate>
-          <GridLayout columns="auto, *,auto, auto">
+          <GridLayout columns="auto, *,auto, auto" tap="viewUserDetails">
               <Label text="{{ nickname }}" textWrap="true" />
               <Label text="&#xf234;" class="font-awesome" col="2" tap="inviteUser" visibility="{{ addable ? 'visible' : 'collapse' }}" />
-              <Label text="&#xf061;" class="font-awesome" col="3" tap="viewUserDetails" />
           </GridLayout>
         </ListView.itemTemplate>
     </ListView>
