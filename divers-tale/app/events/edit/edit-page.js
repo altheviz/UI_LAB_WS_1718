@@ -36,7 +36,7 @@ exports.onNavigatingTo = function(args) {
   event = page.navigationContext.event;
 
   divesiteItemSource = new ValueList();
-  divesiteItemSource.push({ value: null, display: "<Nichts ausgewählt>" });
+  divesiteItemSource.push({ value: null, display: "<Keiner>" });
 
   var divesitesDD = page.getViewById("divesitesDD");
   divesitesDD.items = divesiteItemSource;
@@ -72,7 +72,8 @@ exports.onNavigatingTo = function(args) {
       participants: [],
       creator: eventsModel.getUserId(),
       canceled: false,
-      canceledDate: null
+      canceledDate: null,
+      image: "~/images/event.png"
     }
 
     selectedType = null;
@@ -92,7 +93,8 @@ exports.onNavigatingTo = function(args) {
       participants: event.participants,
       creator: event.creator,
       canceled: event.canceled,
-      canceledDate: event.canceledDate
+      canceledDate: event.canceledDate,
+      image: event.image
     }
 
     selectedType = types.indexOf(event.type);

@@ -36,12 +36,15 @@ function onNavigatingTo(args) {
 		var pageData = new observableModule.fromObject({
 			invitation : invitationObj,
 			user: user,
-			heading: "Schreib " + user.nickname + " eine Nachricht"
+			heading: "Schreib '" + user.nickname + "' eine Nachricht."
 		});
 
 		page.bindingContext = pageData;
 	} else {
-		dialogs.alert("Sie haben eine buddy Anfrage von " + user.nickname + " schon bekommen. Schauen ihre Anfrageliste.").then(function (result) {
+		dialogs.alert({
+      title: "Achtung",
+      message: "Sie haben bereits eine Freundschaftsanfrage von '" + user.nickname + "' bekommen, bitte bestätigen Sie diese."
+    }).then(function (result) {
 			frameModule.topmost().goBack();
 		});
 	}
@@ -54,7 +57,7 @@ function goBack() {
 function invite() {
 	var added = invitationModel.addInvitation(invitationObj);
 	if(!added) {
-		dialogs.alert("Ihre Anfrage konnte nicht gesendet werden. Bitte später versuchen.").then(function (result) {
+		dialogs.alert("Eine Anfrage wurde bereits gesendet.").then(function (result) {
 		});
 	}
 	frameModule.topmost().goBack();

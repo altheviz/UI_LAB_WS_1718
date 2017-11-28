@@ -15,14 +15,14 @@
 				<Label text="{{ invitation.details }}" row="0" col="1" textWrap="true" colSpan="1" />
 				<Label text="Message: " row="1" col="0" textWrap="true" style="font-weight:bold" colSpan="1" />
 				<Label text="{{ invitation.message }}" row="1" col="1" textWrap="true" colSpan="1" />
-				<Label text="Startdatum: " row="2" col="0" textWrap="true" style="font-weight:bold" colSpan="1" />
+				<Label text="Gesendet: " row="2" col="0" textWrap="true" style="font-weight:bold" colSpan="1" />
 				<Label text="{{ invitation.invitationDate }}" row="2" col="1"  textWrap="true" colSpan="1" />
 				<Label text="Ablaufdatum: " visibility="{{ invitation.endDate != '' ? 'visible': 'hidden' }}" style="font-weight:bold" row="3" col="0" textWrap="true" colSpan="1" />
 				<Label text="{{ invitation.endDate }}" visibility="{{ invitation.endDate != '' ? 'visible': 'hidden' }}" row="3" col="1" textWrap="true" colSpan="1" />
 			</GridLayout>
 			<GridLayout rows="auto" columns="*, *">
-				<Button text="Annehmen" backgroundColor="#3A53FF" color="white" tap="accept" row="5" col="0"></Button>
-				<Button text="Ablehnen"  tap="decline" row="5" col="1"></Button>
+				<Button text="Annehmen" backgroundColor="#3A53FF" color="white" tap="accept" row="5" col="0" textTransform="none"></Button>
+				<Button text="Ablehnen"  tap="decline" row="5" col="1" textTransform="none"></Button>
 			</GridLayout>
 	</StackLayout>
 </ScrollView>

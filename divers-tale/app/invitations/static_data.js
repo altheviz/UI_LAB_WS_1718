@@ -2,8 +2,8 @@ exports.invitationsData = [
     {
         from: 1,
         to: 2,
-        title: "Heisenberg will mit dir befreundet sein",
-        details: "Aus Albuquerque in USA mit 2 Taucherfahrungen",
+        title: "Heisenberg will mit dir befreundet sein.",
+        details: "Aus Albuquerque, USA mit 2 Tauchgängen",
         message: "Hi Maxi1980. Ich bins, Heisenberg. Lass uns doch mal tauchen gehen.",
         invitationDate: "2017-11-25 08:00:00",
         status: "ANSTEHEND",
@@ -12,8 +12,8 @@ exports.invitationsData = [
     {
         from: 3,
         to: 1,
-        title: "LisaLisa will mit dir befreundet sein",
-        details: "Aus Karlsruhe in Deutschland mit 3 Taucherfahrungen",
+        title: "LisaLisa will mit dir befreundet sein.",
+        details: "Aus Karlsruhe, Deutschland mit 3 Tachgängen.",
         message: "Hi Heisenberg. Ich bins, LisaLisa. Lass uns doch mal tauchen gehen.",
         invitationDate: "2017-11-25 08:00:00",
         status: "ANSTEHEND",
@@ -23,8 +23,8 @@ exports.invitationsData = [
     {
         from: 1,
         to: 4,
-        title: "ThoKal wants to add you as a buddy",
-        details: "Aus Mannheim in Deutschland mit 1 Taucherfahrung",
+        title: "ThoKalwill mit dir befreundet sein.",
+        details: "Aus Mannheim, Deutschland mit 1 Tauchgang",
         message: "Hi Heisenberg. Ich bins, ThoKal. Lass uns doch mal tauchen gehen.",
         invitationDate: "2017-11-25 08:00:00",
         status: "ANGENOMMEN",

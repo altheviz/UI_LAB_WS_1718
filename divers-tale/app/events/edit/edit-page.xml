@@ -25,7 +25,7 @@
       </GridLayout>
     </ScrollView>
     <StackLayout row="1" orientation="horizontal">
-      <Button text="Event absagen" visibility="{{ cancelVisible }}" width="100%" tap="cancelEvent"/>
+      <Button text="Event absagen" visibility="{{ cancelVisible }}" width="100%" tap="cancelEvent" textTransform="none"/>
     </StackLayout>
   </GridLayout>
 </Page>

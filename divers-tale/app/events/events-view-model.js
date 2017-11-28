@@ -31,7 +31,8 @@ function createEventData(event) {
     canceled: event.canceled,
     canceledDate: canceledDate,
     participants: event.participants,
-    creator: event.creator
+    creator: event.creator,
+    image: event.image
   }
   return res;
 }
@@ -62,7 +63,8 @@ function EventsViewModel() {
         canceled: element.canceled,
         canceledDate: canceledDate,
         participants: element.participants,
-        creator: element.creator
+        creator: element.creator,
+        image: element.image
       });
     });
 
