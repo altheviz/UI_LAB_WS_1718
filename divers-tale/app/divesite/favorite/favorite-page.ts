@@ -35,19 +35,8 @@ export function onDrawerButtonTap(args: EventData) {
 var observableArray = require("data/observable-array");
 function onPageLoaded(args) {
   var page = args.object;
-  var array = new observableArray.ObservableArray();
-
-  //array.push({unicode: '&#x2460', title: "Title1", src: 'http://master-technology.com/images/demos/Apps-TurnItOffLogo.gif'});
-  array.push({unicode: "\u24B6", title: "Alte Allmend"});
-  array.push({unicode: "\u24B6", title: "Auewaldsee"});
-  array.push({unicode: "\u24B7", title: "Badsee Buchtzig"});
-  array.push({unicode: "\u24B7", title: "Baggersee Staffort"});
-  array.push({unicode: "\u24B7", title: "Bodensee"});
-  array.push({unicode: "\u24BC", title: "Gifizsee"});
-  
   page.bindingContext = new FavoriteViewModel();
-
-  page.bindingContext = {myItems: array};
 
 }
 exports.onPageLoaded = onPageLoaded;
+exports.onNavigatingTo = onNavigatingTo;
