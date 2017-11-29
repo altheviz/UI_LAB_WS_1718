@@ -4,6 +4,8 @@ import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import { MapViewModel } from "./map-view-model";
 
+import {MapMarkerItem } from "./map-marker-item";
+
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -40,15 +42,17 @@ var mapsModule = require("nativescript-google-maps-sdk");
 function onMapReady(args) {
   var mapView = args.object;
 
-  console.log("Setting a marker...");
-  var marker = new mapsModule.Marker();
-  marker.position = mapsModule.Position.positionFromLatLng(-33.86, 151.20);
-  marker.title = "Sydney";
-  marker.snippet = "Australia";
-  marker.userData = { index : 1};
-  mapView.addMarker(marker);
+  var mapModel = new MapViewModel();
+  
+  //add markers for each item to map
+  mapModel.getMarker().forEach(mapMarkerItem => {
+    var marker = new mapsModule.Marker();
+    marker.position = mapsModule.Position.positionFromLatLng(mapMarkerItem.getGpsCoordWidth(), mapMarkerItem.getGpsCoordLength());
+    marker.title = mapMarkerItem.getTitle();
+    mapView.addMarker(marker);
+  });
 
-  // Disabling zoom gestures
+  // Enable zoom gestures
   mapView.settings.zoomGesturesEnabled = true;
 }
 
