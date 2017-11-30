@@ -52,8 +52,14 @@ function onMapReady(args) {
     mapView.addMarker(marker);
   });
 
+  //center on HSKA
+  mapView.latitude = 49.01566599999999;
+  mapView.longitude = 8.389605999999958;
+  mapView.zoom = 9;
+
   // Enable zoom gestures
   mapView.settings.zoomGesturesEnabled = true;
+
 }
 
 function onMarkerSelect(args) {

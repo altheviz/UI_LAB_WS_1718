@@ -16,7 +16,7 @@
         </nsDrawer:RadSideDrawer.drawerTransition>
         <nsDrawer:RadSideDrawer.drawerContent>
             <StackLayout>
-                <myDrawer:MyDrawer selectedPage="Map"/>
+                <myDrawer:MyDrawer selectedPage="Dive Sites"/>
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
         <nsDrawer:RadSideDrawer.mainContent>
