@@ -1,6 +1,6 @@
 import { Observable } from "data/observable";
 import {FavoriteListItem} from "./favorite-list-item";
-import {FavoriteService} from "./favorite-service";
+import {DataService} from "./../data-service";
 
 
 export class FavoriteViewModel extends Observable {
@@ -10,7 +10,7 @@ export class FavoriteViewModel extends Observable {
     constructor() {
         super();
         // apply text for UI elements
-        let service = new FavoriteService();
+        let service = new DataService();
         this.favorites = service.loadList();
 
         //for each item get first letter

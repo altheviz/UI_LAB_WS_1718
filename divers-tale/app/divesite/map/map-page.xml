@@ -1,4 +1,4 @@
 <GridLayout 
   xmlns:maps="nativescript-google-maps-sdk" navigatingTo="onNavigatingTo" class="page-content" loaded="onLoaded">
-  <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}" zoom="{{ zoom }}" bearing="{{ bearing }}" mapAnimationsEnabled="{{ mapAnimationsEnabled }}" tilt="{{ tilt }}" i-padding="50,50,50,50" padding="{{ padding }}" mapReady="onMapReady" markerSelect="onMarkerEvent" markerBeginDragging="onMarkerEvent" markerEndDragging="onMarkerEvent" markerDrag="onMarkerEvent" markerInfoWindowTapped="onMarkerEvent" coordinateTapped="onCoordinateTapped" cameraChanged="onCameraChanged"/>
+  <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}" zoom="{{ zoom }}" bearing="{{ bearing }}" mapAnimationsEnabled="{{ mapAnimationsEnabled }}" tilt="{{ tilt }}" i-padding="50,50,50,50" padding="{{ padding }}" mapReady="onMapReady" markerSelect="onMarkerSelect" markerBeginDragging="onMarkerEvent" markerEndDragging="onMarkerEvent" markerDrag="onMarkerEvent" markerInfoWindowTapped="onMarkerEvent" coordinateTapped="onCoordinateTapped" cameraChanged="onCameraChanged"/>
   </GridLayout>

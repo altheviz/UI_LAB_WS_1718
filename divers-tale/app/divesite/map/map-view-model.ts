@@ -1,7 +1,7 @@
 import { Observable } from "data/observable";
 import { MapMarkerItem } from "./map-marker-item";
 
-import {FavoriteService} from "./../favorite/favorite-service";
+import {DataService} from "./../data-service";
 
 export class MapViewModel extends Observable {
 
@@ -11,7 +11,7 @@ export class MapViewModel extends Observable {
         super();
 
         this.markers = new Array<MapMarkerItem>();
-        let service = new FavoriteService();
+        let service = new DataService();
         var data = service.loadList();
         data.forEach(element => {
             var mapitem : MapMarkerItem = new MapMarkerItem(element.geoData.gpsCoordLength, element.geoData.gpsCoordWidth, element.name);
