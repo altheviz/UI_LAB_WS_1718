@@ -1,4 +1,4 @@
-<ListView id="listview" items="{{ favorites }}" navigatingTo="onNavigatingTo" loaded="onPageLoaded">
+<ListView id="listview" items="{{ favorites }}" navigatingTo="onNavigatingTo" loaded="onPageLoaded" itemTap="openListItem">
   <ListView.itemTemplate>
       <GridLayout columns="auto, *, auto" rows="auto, 25" class="page-content">
         <!--<Image id="fav-icon" src="{{ src }}" row="0" col="0" rowSpan="2" width="72" height="72" margin="10"/>-->

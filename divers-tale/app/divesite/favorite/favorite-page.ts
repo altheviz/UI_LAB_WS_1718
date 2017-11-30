@@ -32,11 +32,20 @@ export function onDrawerButtonTap(args: EventData) {
     sideDrawer.showDrawer();
 }
 
-var observableArray = require("data/observable-array");
+var frame = require('ui/frame');
 function onPageLoaded(args) {
-  var page = args.object;
-  page.bindingContext = new FavoriteViewModel();
-
+    var page = args.object;
+    page.bindingContext = new FavoriteViewModel();
 }
 exports.onPageLoaded = onPageLoaded;
 exports.onNavigatingTo = onNavigatingTo;
+
+function openListItem(args: EventData) {
+    var navigationEntry = {
+        moduleName: "divesite/favorite/favorite-detail/favoriteMonitoring-page",
+        //context: {info: "something you want to pass to your page"},
+    };
+    topmost().navigate(navigationEntry);
+}
+
+exports.openListItem = openListItem;

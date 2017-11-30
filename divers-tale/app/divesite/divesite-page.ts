@@ -31,3 +31,11 @@ export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
+
+export function onAdd(args: EventData) {
+    console.log("Add action item tapped.");
+}
+
+export function onDelete(args: EventData) {
+    console.log("Delete action item tapped.");
+}
