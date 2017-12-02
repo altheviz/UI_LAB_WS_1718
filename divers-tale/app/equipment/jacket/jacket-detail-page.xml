@@ -1,10 +1,7 @@
-<Page
-    class="page"
-    navigatingTo="onNavigatingTo"  
-    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
-    xmlns:myDrawer="shared/my-drawer"
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
+    xmlns:myDrawer="shared/my-drawer" 
     xmlns="http://www.nativescript.org/tns.xsd">
-
     <ActionBar class="action-bar">
         <!-- 
         Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
@@ -13,14 +10,9 @@
         <!-- 
         Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
         -->
-        <ActionItem icon="res://navigation/menu" 
-            android:visibility="collapsed" 
-            tap="onDrawerButtonTap"
-            ios.position="left">
-        </ActionItem>
-        <Label class="action-bar-title" text="Eqipment"></Label>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <Label class="action-bar-title" text="Details"></Label>
     </ActionBar>
-
     <!--
     RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
     Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
@@ -35,7 +27,6 @@
         <nsDrawer:RadSideDrawer.drawerTransition>
             <nsDrawer:SlideInOnTopTransition/>
         </nsDrawer:RadSideDrawer.drawerTransition>
-
         <!--
         Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
         Always wrap content in a layout component.
@@ -51,19 +42,36 @@
                 <myDrawer:MyDrawer selectedPage="Equipment"/>
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
-
         <!--
         Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-        <StackLayout orientation="vertical">
-            <Button text="Jacket" tap="jacket"/>
-            <Button text="Wetsuite" tap="wetsuite"/>
-            <Button text="Regulator" tap="regulator"/>
-            <Button text="Computer" tap="computer"/>
-            <Button text="Tank" tap="tank"/>
-        </StackLayout>
+            <scroll-view>
+                <stack-layout>
+                    <StackLayout orientation="horizontal" style="padding: 5">
+                        <Label text="Name: " class="name"/>
+                        <Label text="{{ fItem.name }}" class="name"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" style="padding: 5">
+                        <Label text="Bezeichnung: " class="name"/>
+                        <Label text="{{ fItem.description }}" textWrap="true" />
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" style="padding: 5">
+                        <Label text="Kaufdatum: " class="name"/>
+                        <Label text="{{ fItem.purchaseDate }}" class="name"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" style="padding: 5">
+                        <Label text="Kaufpreis: " class="name"/>
+                        <Label text="{{ fItem.purchasePrice }}" class="name" />
+                        <Label text=" €" class="name"/>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal" style="padding: 5">
+                        <Label text="Inspektionsdatum: " class="name"/>
+                        <Label text="{{ fItem.nextInspection }}" class="name" />
+                    </StackLayout>
+                    <stack-layout height="400px"/></stack-layout>
+            </scroll-view>
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>
