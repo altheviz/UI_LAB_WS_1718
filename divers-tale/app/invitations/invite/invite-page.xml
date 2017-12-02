@@ -10,7 +10,6 @@
   <StackLayout orientation="vertical" > 
     <Label horizontalAlignment="center" fontSize="18" text="{{ heading }}" height="50" />       
       <TextView id="message" text="{{ invitation.message }}" hint="Nachricht"/>
-      <TextField id="dateField" hint="Ablaufdatum" editable="false"  tap="selectDate"/>
     </StackLayout>
     <StackLayout row="1" orientation="horizontal">
       <Button text="Anfrage senden" color="white" backgroundColor="#3A53FF" tap="invite" width="100%" textTransform="none"/>

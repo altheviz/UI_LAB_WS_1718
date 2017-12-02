@@ -22,6 +22,7 @@ function onNavigatingTo(args) {
 	divebuddiesModel = page.navigationContext.divebuddiesModel;
 
 	// var fromUser = // get fromUser information.
+
 	 // logged user's id
 	var date = new Date();
 	if (!invitationModel.haveReceived(ownId, user.id)) {
@@ -45,9 +46,10 @@ function onNavigatingTo(args) {
 		page.bindingContext = pageData;
 	} else {
 		dialogs.alert({
-      title: "Achtung",
-      message: "Sie haben bereits eine Freundschaftsanfrage von '" + user.nickname + "' bekommen, bitte bestätigen Sie diese."
-    }).then(function (result) {
+			title: "Achtung",
+			message: "Sie haben bereits eine Freundschaftsanfrage von '" + user.nickname + "' bekommen, bitte bestätigen Sie diese.",
+			okButtonText: "Ok"
+		}).then(function (result) {
 			frameModule.topmost().goBack();
 		});
 	}
@@ -59,7 +61,7 @@ function goBack() {
 
 function invite() {
 	var invalid = false;
-	if(invitationObj.message === "" || invitationObj.endDate === "") {
+	if(invitationObj.message === "") {
 		invalid = true;
 		Toast.makeText("Bitte alle Felder ausfüllen.", 'long').show();
 	}
@@ -79,22 +81,6 @@ function invite() {
 	}
 }
 
-function selectDate() {
-	var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-	picker.pickDate({
-		title: "Bitte Datum auswählen:",
-		theme: "light",
-		minDate: tomorrow
-	}).then(function (result) {
-		invitationObj.endDate = result.year + "-" + result.month + "-" + result.day;
-		var dateField = page.getViewById("dateField");
-		dateField.text = result.day + "-" + result.month + "-" + result.year;
-	}).catch(function (error) {
-		console.log("DatePicker error: " + error);
-	});
-};
-
 exports.onNavigatingTo = onNavigatingTo;
 exports.goBack = goBack;
 exports.invite = invite;
-exports.selectDate = selectDate;

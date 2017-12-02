@@ -31,10 +31,10 @@ function InvitationViewModel() {
 		}, this);
 	}
 
-	viewModel.contains = function (ownId, buddyId) {
+	viewModel.contains = function (ownId, userId) {
 		for (var i = 0; i < invitations.length; i++) {
 			var element = invitations[i];
-			if (element.from === ownId && element.to === buddyId && element.status !== "ACCEPTED")	 {
+			if (element.from === ownId && element.to === userId && element.status !== "ABGELEHNT")	 {
 				return true;
 			}
 		}
