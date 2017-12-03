@@ -66,7 +66,7 @@
 								<ListView.itemTemplate >
 									<GridLayout rows="auto, auto, auto" tap="details">
 										<Label text="{{ fromUser.nickname }}" style="font-weight: bold; margin: 10px" row="0" ></Label>
-										<Label text="{{ showInvitationDate, 'StartDatum: ' + showInvitationDate }}" row="1" ></Label>
+										<Label text="{{ showInvitationDate, 'Anfrage gesendet: ' + showInvitationDate }}" row="1" ></Label>
 									</GridLayout>
 								</ListView.itemTemplate>
 							</ListView>
