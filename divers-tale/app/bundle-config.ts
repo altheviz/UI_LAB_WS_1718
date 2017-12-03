@@ -12,4 +12,7 @@ if ((global).TNS_WEBPACK) {
     global.registerModule("featured/featured-page", () => require("./featured/featured-page"));
     global.registerModule("search/search-page", () => require("./search/search-page"));
     global.registerModule("settings/settings-page", () => require("./settings/settings-page"));
+    global.registerModule("events/events-page", () => require("./events/events-page"));
+    global.registerModule("divebuddies/divebuddies-page", () => require("./divebuddies/divebuddies-page"));
+    global.registerModule("invitations/invitations-page", () => require("./invitations/invitations-page"));
 }

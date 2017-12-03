@@ -18,24 +18,6 @@ Feel free to customize layouts and components to change how your app drawer look
                 <Label row="0" col="1" text="Home" class="p-r-10" />
             </GridLayout>
 
-            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
-                route="browse/browse-page" tap="onNavigationItemTap">
-                <Label row="0" col="0" text="&#xf1ea;" class="fa" />
-                <Label row="0" col="1" text="Browse" class="p-r-10" />
-            </GridLayout>
-
-            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
-                route="search/search-page" tap="onNavigationItemTap">
-                <Label row="0" col="0" text="&#xf002;" class="fa" />
-                <Label row="0" col="1" text="Search" class="p-r-10" />
-            </GridLayout>
-
-            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
-                route="featured/featured-page" tap="onNavigationItemTap">
-                <Label row="0" col="0" text="&#xf005;" class="fa" />
-                <Label row="0" col="1" text="Featured" class="p-r-10" />
-            </GridLayout>
-
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Divelogs' ? ' selected': '') }}"
                 route="divelog/divelog-list-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf02d;" class="fa" />
@@ -58,6 +40,18 @@ Feel free to customize layouts and components to change how your app drawer look
                 route="checklist/checklist-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf005;" class="fa" />
                 <Label row="0" col="1" text="Checklist" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Events' ? ' selected': '') }}"
+                route="events/events-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf073;" class="fa" />
+                <Label row="0" col="1" text="Events" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Divebuddies' ? ' selected': '') }}"
+                route="divebuddies/divebuddies-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf0c0;" class="fa" />
+                <Label row="0" col="1" text="Divebuddies" class="p-r-10" />
             </GridLayout>
 
             <StackLayout class="hr-light"></StackLayout>

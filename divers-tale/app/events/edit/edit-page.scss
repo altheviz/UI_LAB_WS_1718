@@ -1,0 +1,28 @@
+Page {
+  background-color: white;
+  font-size: 20;
+}
+
+Label {
+  margin: 10;
+  horizontal-align: left;
+  vertical-align: center;
+}
+
+Button {
+  background-color: #c42323;
+  color: #ffffff;
+}
+
+.font-awesome {
+  font-family: "FontAwesome";
+  font-size: 30;
+  padding-left: 30px;
+  padding-right: 50px;
+  color: #ffffff;
+}
+
+.dropdown {
+  color: black;
+  margin-left: -15px;
+}
