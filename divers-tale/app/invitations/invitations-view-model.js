@@ -8,9 +8,9 @@ var invitations = data.invitationsData;
 var users = userData.divebuddies_data;
 
 function formatDate(date) {
-	var formatDate = new Date(date);
-	var month = formatDate.getMonth() + 1;
-	return formatDate.getFullYear() + "-" + month + "-" + formatDate.getDate();
+	var formatedDate = new Date(date);
+	var month = formatedDate.getMonth() + 1;
+	return formatedDate.getDate() + "." + month + "." + formatedDate.getFullYear();
 }
 
 function InvitationViewModel() {
@@ -65,8 +65,8 @@ function InvitationViewModel() {
 		var returnValue = new ObservableArray();
 		invitations.forEach(function(invitation) {
 			if(invitation.from === userId) {
-				invitation.invitationDate = formatDate(invitation.invitationDate);
-				invitation.endDate = formatDate(invitation.endDate);
+				invitation.showInvitationDate = formatDate(invitation.invitationDate);
+				invitation.showEndDate = formatDate(invitation.endDate);
 				users.forEach(function(user) {
 					if(user.id === invitation.to) {
 						invitation.toUser = user;
@@ -89,8 +89,8 @@ function InvitationViewModel() {
 		var returnValue = new ObservableArray();
 		invitations.forEach(function (invitation) {
 			if (invitation.to === userId && invitation.status === "ANSTEHEND") {
-				invitation.invitationDate = formatDate(invitation.invitationDate);
-				invitation.endDate = formatDate(invitation.endDate);
+				invitation.showInvitationDate = formatDate(invitation.invitationDate);
+				invitation.showEndDate = formatDate(invitation.endDate);
 				users.forEach(function (user) {
 					if (user.id === invitation.to) {
 						invitation.toUser = user;

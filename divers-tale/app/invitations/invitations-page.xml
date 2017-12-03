@@ -66,7 +66,7 @@
 								<ListView.itemTemplate >
 									<GridLayout rows="auto, auto, auto" tap="details">
 										<Label text="{{ fromUser.nickname }}" style="font-weight: bold; margin: 10px" row="0" ></Label>
-										<Label text="{{ invitationDate, 'StartDatum: ' + invitationDate }}" row="1" ></Label>
+										<Label text="{{ showInvitationDate, 'StartDatum: ' + showInvitationDate }}" row="1" ></Label>
 									</GridLayout>
 								</ListView.itemTemplate>
 							</ListView>
@@ -82,7 +82,7 @@
                                                 <ListView.itemTemplate>
                                                     <GridLayout rows="auto, auto, auto" columns="*, auto">
                                                         <Label text="{{ toUser.nickname }}" style="font-weight: bold; font-size: 18; margin: 10px" row="0" col="0" ></Label>
-                                                        <Label text="{{ invitationDate, 'Anfrage gesendet: ' + invitationDate }}" row="1" col="0" ></Label>
+                                                        <Label text="{{ showInvitationDate, 'Anfrage gesendet: ' + showInvitationDate }}" row="1" col="0" ></Label>
                                                     </GridLayout>
                                                 </ListView.itemTemplate>
                                             </ListView>
@@ -94,7 +94,7 @@
                                                 <ListView.itemTemplate>
                                                     <GridLayout rows="auto, auto, auto" columns="*, auto">
                                                         <Label text="{{ toUser.nickname }}" style="font-weight: bold; font-size: 18; margin: 10px" row="0" col="0" ></Label>
-                                                        <Label text="{{ invitationDate, 'Anfrage gesendet: ' + invitationDate }}" row="1" col="0" ></Label>
+                                                        <Label text="{{ showInvitationDate, 'Anfrage gesendet: ' + showInvitationDate }}" row="1" col="0" ></Label>
                                                     </GridLayout>
                                                 </ListView.itemTemplate>
                                             </ListView>
@@ -106,7 +106,7 @@
                                                 <ListView.itemTemplate>
                                                     <GridLayout rows="auto, auto, auto" columns="*, auto">
                                                         <Label text="{{ toUser.nickname }}" style="font-weight: bold; font-size: 18; margin: 10px" row="0" col="0" ></Label>
-                                                        <Label text="{{ invitationDate, 'Anfrage gesendet: ' + invitationDate }}" row="1" col="0" ></Label>
+                                                        <Label text="{{ showInvitationDate, 'Anfrage gesendet: ' + showInvitationDate }}" row="1" col="0" ></Label>
                                                     </GridLayout>
                                                 </ListView.itemTemplate>
                                             </ListView>
