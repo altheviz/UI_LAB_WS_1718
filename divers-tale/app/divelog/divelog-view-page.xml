@@ -1,0 +1,423 @@
+<Page
+        class="page"
+        navigatingTo="onNavigatingTo"
+        xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+        xmlns:myDrawer="shared/my-drawer"
+        xmlns="http://www.nativescript.org/tns.xsd">
+    <ActionBar class="action-bar">
+        <!--
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!--
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu"
+                    android:visibility="collapsed"
+                    tap="onDrawerButtonTap"
+                    ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Divelog"></Label>
+    </ActionBar>
+
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="Divelog"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.mainContent>
+            <GridLayout class="page-content">
+                <TextField id="diveId" hint="Dive #" keyboardType="number" autocorrect="false" autocapitalizationType="none" />
+                <TextField id="diveLocation" hint="Location"/>
+            </GridLayout>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>
+<Page
+class="page"
+navigatingTo="onNavigatingTo"
+xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+xmlns:myDrawer="shared/my-drawer"
+xmlns="http://www.nativescript.org/tns.xsd">
+<ActionBar class="action-bar">
+    <!--
+    Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+    <!--
+    Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu"
+                android:visibility="collapsed"
+                tap="onDrawerButtonTap"
+                ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Divelog"></Label>
+</ActionBar>
+<!--
+   RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+   Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+   http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+   The RadSideDrawer component is designed to be used as a root element to the <Page> and
+   it shouldn't have any other siblings other than the <ActionBar> component.
+   -->
+<nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+    <!--
+    Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+    -->
+    <nsDrawer:RadSideDrawer.drawerTransition>
+        <nsDrawer:SlideInOnTopTransition/>
+    </nsDrawer:RadSideDrawer.drawerTransition>
+
+    <!--
+    Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+    Always wrap content in a layout component.
+    -->
+    <nsDrawer:RadSideDrawer.drawerContent>
+        <StackLayout>
+            <!--
+            Use {N} custom components to reuse UI across your mobile app.
+            The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+            Learn more about custom components and how they can be used in this documentation article:
+            http://docs.nativescript.org/ui/basics#custom-components
+            -->
+            <myDrawer:MyDrawer selectedPage="Divelog"/>
+        </StackLayout>
+    </nsDrawer:RadSideDrawer.drawerContent>
+    <nsDrawer:RadSideDrawer.mainContent>
+        <ScrollView>
+        <StackLayout>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Dive number: "/>
+                    <Label id="diveNumber" text="{{diveNumber}}"/>
+                    </FlexboxLayout>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Location: "/>
+                    <Label id="diveNumber" text="{{ location }}"/>
+                </FlexboxLayout>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Date: "/>
+                    <Label id="date" text="{{ date }}"/>
+                </FlexboxLayout>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Dive site:"/>
+                    <Label id="diveSite" text="{{ diveSite }}"/>
+                </FlexboxLayout>
+
+            <FlexboxLayout>
+                    <Label text="SI: "/>
+                    <Label id="si" text="{{ si }}"/>
+                </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Entry: "/>
+                <Label id="firstEntryTime" text="{{ firstEntryTime }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="PG: "/>
+                <Label id="firstPg" text="{{ firstPg }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="RNT: "/>
+                <Label id="rnt" text="{{ rnt }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Pres: "/>
+                <Label id="firstPressure" text="{{ firstPressure }}"/>
+                <Label text=" bar/psi"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Bottom Time: "/>
+                <Label id="bottomTime" text="{{ bottomTime }}"/>
+                <Label text=" min"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Average: "/>
+                <Label id="average1" text="{{ average1 }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Average: "/>
+                <Label id="average2" text="{{ average2 }}"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Safety Stop Time: "/>
+                <Label id="safetyTime" text="{{ safetyTime }}"/>
+                <Label text=" min"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Safety Stop Level: "/>
+                <Label id="safetyLevel" text="{{ safetyLevel }}"/>
+                <Label text=" m/ft"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Entry Time: "/>
+                <Label id="secondEntryTime" text="{{ secondEntryTime }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="PG: "/>
+                <Label id="secondPg" text="{{ secondPg }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="O2%: "/>
+                <Label id="oxygenPercentage" text="{{ oxygenPercentage }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Pres: "/>
+                <Label id="secondPressure" text="{{ secondPressure }}"/>
+                <Label text=" bar/psi"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Ditch: "/>
+                <Label id="ditch" text="{{ ditch }}"/>
+                <Label text=" kg/lbs"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Trim: "/>
+                <Label id="trim" text="{{ trim }}"/>
+                <Label text=" kg/lbs"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Air: "/>
+                <Label id="air" text="{{ air }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="EAN: "/>
+                <Label id="ean" text="{{ ean }}"/>
+                <Label id="eanText" text="{{ eanText }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Type: "/>
+                <Label id="tankType" text="{{ tankType }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Size: "/>
+                <Label id="tankSize" text="{{ tankSize }}"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Helmet: "/>
+                <Label id="wetSuitHelmet" text="{{ wetSuitHelmet }}"/>
+                <Label text=" mm"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Gloves: "/>
+                <Label id="wetSuitGloves" text="{{ wetSuitGloves }}"/>
+                <Label text=" mm"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Shoes: "/>
+                <Label id="wetSuitShoes" text="{{ wetSuitShoes }}"/>
+                <Label text=" mm"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Short Suit: "/>
+                <Label id="wetSuitShortSuit" text="{{ wetSuitShortSuit }}"/>
+                <Label text=" mm"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Underwear: "/>
+                <Label id="wetSuitUnderwear" text="{{ wetSuitUnderwear }}"/>
+                <Label text=" mm"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Long Suit: "/>
+                <Label id="wetSuitLongSuit" text="{{ wetSuitLongSuit }}"/>
+                <Label text=" mm"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Gloves: "/>
+                <Label id="drySuitGloves" text="{{ drySuitGloves }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Shoes: "/>
+                <Label id="drySuitShoes" text="{{ drySuitShoes }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Suit: "/>
+                <Label id="drySuit" text="{{ drySuit }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Liner: "/>
+                <Label id="drySuitLiner" text="{{ drySuitLiner }}"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Viz: "/>
+                <Label id="viz" text="{{ viz }}"/>
+                <Label text=" m/ft"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Current: "/>
+                <Label id="current" text="{{ current }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Sunny: "/>
+                <Label id="sunny" text="{{ sunny }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Sun Cloud: "/>
+                <Label id="sunCloud" text="{{ sunCloud }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Clouds: "/>
+                <Label id="cloud" text="{{ cloud }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Rain: "/>
+                <Label id="rain" text="{{ rain }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Fresh: "/>
+                <Label id="fresh" text="{{ fresh }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Salt: "/>
+                <Label id="salt" text="{{ salt }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Boat: "/>
+                <Label id="boat" text="{{ boat }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Night: "/>
+                <Label id="night" text="{{ night }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Surf: "/>
+                <Label id="surf" text="{{ surf }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Waves: "/>
+                <Label id="waves" text="{{ waves }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Surge: "/>
+                <Label id="surge" text="{{ surge }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Wreck: "/>
+                <Label id="wreck" text="{{ wreck }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Reef: "/>
+                <Label id="reef" text="{{ reef }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Deep: "/>
+                <Label id="deep" text="{{ deep }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Photo: "/>
+                <Label id="photo" text="{{ photo }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Drift: "/>
+                <Label id="drift" text="{{ drift }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Training: "/>
+                <Label id="training" text="{{ training }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Survey: "/>
+                <Label id="survey" text="{{ survey }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Recovery: "/>
+                <Label id="recovery" text="{{ recovery }}"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Temp. above: "/>
+                <Label id="aboveSurface" text="{{ aboveSurface }}"/>
+                <Label text=" °C/°F"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Temp. below: "/>
+                <Label id="belowSurface" text="{{ belowSurface }}"/>
+                <Label text=" °C/°F"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Temp. ground: "/>
+                <Label id="groundLevel" text="{{ groundLevel }}"/>
+                <Label text=" °C/°F"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Comments: "/>
+                <Label id="comment" text="{{ comment }}"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Previous Time: "/>
+                <Label id="previousTime" text="{{ previousTime }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="This Time: "/>
+                <Label id="thisDive" text="{{ thisDive }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Total Time: "/>
+                <Label id="totalTime" text="{{ totalTime }}"/>
+            </FlexboxLayout>
+
+            <FlexboxLayout flexDirection="row">
+                <Label text="Name: "/>
+                <Label id="verificatorName" text="{{ verificatorName }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Instructor: "/>
+                <Label id="instructor" text="{{ instructor }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Divemaster: "/>
+                <Label id="diveMaster" text="{{ diveMaster }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Buddy: "/>
+                <Label id="buddy" text="{{ buddy }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Certification #: "/>
+                <Label id="certificationNumber" text="{{ certificationNumber }}"/>
+            </FlexboxLayout>
+        </StackLayout>
+        </ScrollView>
+    </nsDrawer:RadSideDrawer.mainContent>
+</nsDrawer:RadSideDrawer>
+</Page>
