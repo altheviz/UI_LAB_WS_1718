@@ -1,6 +1,6 @@
 import { Observable } from "data/observable";
 import {FavoriteListItem} from "./favorite-list-item";
-import {DataService} from "./../data-service";
+import {DataService} from "../data-service";
 
 
 export class FavoriteViewModel extends Observable {
