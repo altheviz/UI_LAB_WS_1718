@@ -116,24 +116,29 @@ Always wrap content in a layout component.
     </StackLayout>
 </nsDrawer:RadSideDrawer.drawerContent>
 <nsDrawer:RadSideDrawer.mainContent>
-    <StackLayout>
+    <GridLayout>
         <ListView items="{{ divelogs }}">
             <ListView.itemTemplate>
                 <FlexboxLayout tap="onItemTap" flexDirection="column" route="divelog/divelog-view-page">
-                <FlexboxLayout flexDirection="row">
-                    <Label id="location" class="fa" text="&#xf041;"/>
-                    <Label id="diveSite" text="{{diveSite}}"/>
-                </FlexboxLayout>
-                    <Label id="date" text="{{date}}"/>
+                    <FlexboxLayout flexDirection="row">
+                        <Label id="image" class="fa page-icon" text="&#xf03e;"/>
+                        <FlexboxLayout flexDirection="column" class="text-flex">
+                        <FlexboxLayout flexDirection="row">
+                            <Label id="location" class="fa fa-2x" text="&#xf041;"/>
+                            <Label id="diveSite" text=" {{diveSite}}"/>
+                        </FlexboxLayout>
+                            <Label id="date" text="{{date}}"/>
+                        </FlexboxLayout>
+                    </FlexboxLayout>
                 </FlexboxLayout>
             </ListView.itemTemplate>
         </ListView>
         <FAB:fab tap="onFabTap" width="70"
                  height="70"
-                 marginLeft="300"
+                 icon="res://white_plus"
                  rippleColor="#f1f1f1"
-                 class="fab-button" route="divelog/divelog-add-page"/>
-    </StackLayout>
+                 class="fab-button fa" route="divelog/divelog-add-page"/>
+    </GridLayout>
 </nsDrawer:RadSideDrawer.mainContent>
 </nsDrawer:RadSideDrawer>
 </Page>
