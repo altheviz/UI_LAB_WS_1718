@@ -1,0 +1,21 @@
+.name {
+    font-size: 30;
+    margin-top: 20px;
+}
+
+Label{
+    font-size: 20;
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.hyperlink{
+    color: #0023e7;
+    text-decoration: underline;
+}
+
+.tags{
+    font-size: 15;
+}
+

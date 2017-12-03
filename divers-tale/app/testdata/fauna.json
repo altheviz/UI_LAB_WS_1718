@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Sonnenbarsche",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Enneacanthus_chaetodon_03.jpg/300px-Enneacanthus_chaetodon_03.jpg",
+        "details": "https://de.wikipedia.org/wiki/Sonnenbarsche",
+        "description": "Die Sonnenbarsche (Centrarchidae; zusammengesetzt aus centr-, centro- ) sind eine Fischfamilie der Barschverwandten (Percomorphaceae) mit über 35 Arten.",
+        "tags": "Centrarchidae; zusammengesetzt aus centr-, centro- , Percomorphaceae",
+        "type": "fresh"
+    },
+    {
+        "name": "Schwarzspitzen-Riffhai",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Carcharhinus_melanopterus2.jpg/300px-Carcharhinus_melanopterus2.jpg",
+        "details": "https://de.wikipedia.org/wiki/Schwarzspitzen-Riffhai",
+        "description": "Der Schwarzspitzen-Riffhai (Carcharhinus melanopterus) ist ein Hai aus der Familie der Requiem- oder Grauhaie.",
+        "tags": "Carcharhinus melanopterus",
+        "type": "salt"
+    },
+    {
+        "name": "Franzosen-Kaiserfisch",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Pomacanthus_paru.JPG/300px-Pomacanthus_paru.JPG",
+        "details": "https://de.wikipedia.org/wiki/Franzosen-Kaiserfisch",
+        "description": "Der Franzosen-Kaiserfisch (Pomacanthus paru) ist eine Art der Gattung Pomacanthus aus der Familie der Kaiserfische (Pomacanthidae). Er ist ein naher Verwandter des Grauen Kaiserfisches (Pomacanthus arcuatus).",
+        "tags": "Pomacanthus paru, Pomacanthidae, Pomacanthus arcuatus",
+        "type": "salt"
+    },
+    {
+        "name": "Kupferstreifen-Pinzettfisch",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Chelmon_rostratus_Luc_Viatour.jpg/300px-Chelmon_rostratus_Luc_Viatour.jpg",
+        "details": "https://de.wikipedia.org/wiki/Kupferstreifen-Pinzettfisch",
+        "description": "Der Kupferstreifen-Pinzettfisch (Chelmon rostratus) ist eine Art aus der Familie der Falterfische.",
+        "tags": "Chelmon rostratus",
+        "type": "salt"
+    },
+    {
+        "name": "Seefledermäuse",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Ogcocephalus_parvus.jpg/300px-Ogcocephalus_parvus.jpg",
+        "details": "https://de.wikipedia.org/wiki/Seeflederm%C3%A4use",
+        "description": "Die Seefledermäuse (Ogcocephalidae) sind bodenbewohnende Fische aus der Ordnung der Armflosser (Lophiiformes).",
+        "tags": "Ogcocephalidae, Lophiiformes",
+        "type": "salt"
+    },
+    {
+        "name": "Weißer Hai",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/300px-White_shark.jpg",
+        "details": "https://de.wikipedia.org/wiki/Wei%C3%9Fer_Hai",
+        "description": "Der Weiße Hai (Carcharodon carcharias), seltener auch als Weißhai oder Menschenhai bezeichnet, ist die einzige Art der Gattung Carcharodon aus der Familie der Makrelenhaie (Lamnidae). Der Trivialname bezieht sich auf die auffällig helle Bauchfärbung der Tiere. Die Art kommt fast weltweit vor und besiedelt bevorzugt gemäßigte Küstengewässer. Als die größte Haiart, die sich nicht von Plankton ernährt, ist der Weiße Hai der größte Raubfisch und kann auch Menschen gefährlich werden. Er ist im gesamten Verbreitungsgebiet selten und gilt heute durch Beifang in der kommerziellen Fischerei sowie gezielte Bejagung zum Gewinn von Trophäen als im Bestand bedroht.",
+        "tags": "Carcharodon carcharias, Lamnidae",
+        "type": "salt"
+    },
+    {
+        "name": "Atlantischer Hering",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Heringsfass.JPG/300px-Heringsfass.JPG",
+        "details": "https://de.wikipedia.org/wiki/Atlantischer_Hering",
+        "description": "Der Atlantische Hering (Clupea harengus) ist einer der häufigsten Fische der Welt, einer der bedeutendsten Speisefische und gehört zur Gattung der Echten Heringe. Er wird seit Menschengedenken besonders an seinen Laichplätzen gefangen. Viele Städte wurden in der Nähe der Laichplätze und Durchzugsgebiete gegründet. Für die Hanse war der Atlantische Hering eines der wichtigsten Handelsgüter. Noch bis in das 20. Jahrhundert hinein war der Atlantische Heringso häufig, dass er als „Arme-Leute-Essen“ galt. Heute sind die Bestände durch starke Befischung und ökologische Probleme in der Ostsee deutlich zurückgegangen.",
+        "tags": "Clupea harengus",
+        "type": "salt"
+    },
+    {
+        "name": "Blaupunktrochen",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Taeniura_lymma2a.jpg/300px-Taeniura_lymma2a.jpg",
+        "details": "https://de.wikipedia.org/wiki/Blaupunktrochen",
+        "description": "Der Blaupunktrochen (Taeniura lymma) ist eine Fischartaus der Gattung der Fleckenstechrochen (Taeniura) in der Familie der Stechrochen (Dasyatidae).",
+        "tags": "Taeniura lymma, Taeniura, Dasyatidae",
+        "type": "salt"
+    },
+    {
+        "name": "Flussbarsch",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Perca_fluviatilis.jpg/300px-Perca_fluviatilis.jpg",
+        "details": "https://de.wikipedia.org/wiki/Flussbarsch",
+        "description": "Der Flussbarsch (Perca fluviatilis), am Bodensee Kretzer, inder Schweiz auch Egli genannt, ist ein in ganz Europa vorkommender Süßwasserfisch. Von der IUCN wird der Flussbarsch als „nicht gefährdet“ eingestuft.",
+        "tags": "Perca fluviatilis",
+        "type": "salt"
+    },
+    {
+        "name": "Seestichling",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Spinachia_spinachia_01.jpg/300px-Spinachia_spinachia_01.jpg",
+        "details": "https://de.wikipedia.org/wiki/Seestichling",
+        "description": "Der Seestichling (Spinachia spinachia) ist ein ausschließlich im Salzwasser vorkommender Vertreter der Stichlinge.",
+        "tags": "Spinachia spinachia",
+        "type": "fresh"
+    },
+    {
+        "name": "Gestreifter Knurrhahn",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Chelidonichthys_lastoviza2.jpg/300px-Chelidonichthys_lastoviza2.jpg",
+        "details": "https://de.wikipedia.org/wiki/Gestreifter_Knurrhahn",
+        "description": "Der Gestreifte Knurrhahn (Trigloporus lastoviza) ist eine Art der Knurrhähne innerhalb der Barschartigen. Sein Verbreitungsgebiet reicht von Großbritannien bis Südafrika, zudem ist er in der Nordsee und im Mittelmeer anzutreffen.",
+        "tags": "Trigloporus lastoviza",
+        "type": "salt"
+    }
+]
