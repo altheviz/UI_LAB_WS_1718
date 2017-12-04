@@ -15,4 +15,5 @@ if ((global).TNS_WEBPACK) {
     global.registerModule("events/events-page", () => require("./events/events-page"));
     global.registerModule("divebuddies/divebuddies-page", () => require("./divebuddies/divebuddies-page"));
     global.registerModule("invitations/invitations-page", () => require("./invitations/invitations-page"));
+    global.registerModule("divesite/divesite-page", () => require("./divesite/divesite-page"));
 }
