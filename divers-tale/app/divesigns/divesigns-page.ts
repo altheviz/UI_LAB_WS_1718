@@ -5,6 +5,7 @@ import { NavigatedData, Page } from "ui/page";
 
 import { DivesignsViewModel } from "./divesigns-view-model";
 
+const vm = new DivesignsViewModel();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -18,8 +19,9 @@ export function onNavigatingTo(args: NavigatedData) {
         return;
     }
 
+    vm.initData();
     const page = <Page>args.object;
-    page.bindingContext = new DivesignsViewModel();
+    page.bindingContext = vm;
 }
 
 /* ***********************************************************
