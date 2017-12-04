@@ -18,7 +18,7 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Eqipment"></Label>
+        <Label class="action-bar-title" text="Equipment"></Label>
     </ActionBar>
 
     <!--
@@ -57,13 +57,18 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-        <StackLayout orientation="vertical">
-            <Button text="Jacket" tap="jacket"/>
-            <Button text="Wetsuite" tap="wetsuite"/>
-            <Button text="Regulator" tap="regulator"/>
-            <Button text="Computer" tap="computer"/>
-            <Button text="Tank" tap="tank"/>
-        </StackLayout>
+         <stack-layout>
+        <ListView items="{{ fList }}" id="fList" itemTap="openListItem">
+          <ListView.itemTemplate>
+              <GridLayout rows="auto, auto" columns="160px, *" class="listitem">
+                <Label text="{{ name }}" row="0" col="1"/>
+              </GridLayout>
+              
+          </ListView.itemTemplate>
+        </ListView>
+        <Button dock="bottom" text="Add Equipment" tap="jacket"></Button>
+      </stack-layout>
+       
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>

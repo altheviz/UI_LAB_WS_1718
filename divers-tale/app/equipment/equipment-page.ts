@@ -3,8 +3,10 @@ import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 
-//import { FeaturedViewModel } from "./equipment-view-model";
+import { EquipmentViewModel } from "./equipment-view-model";
 
+
+const vm = new EquipmentViewModel();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -17,9 +19,31 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-
+    const pageName: string = "Equipment";
+    vm.set("selectedPage", pageName);
+    vm.set("titel", pageName.substring(1));
     const page = <Page>args.object;
-  //  page.bindingContext = new FeaturedViewModel();
+    vm.setupSearch(pageName);
+    let view = page.getViewById("textFieldSearch");
+    if (view) {
+        view.on("textChange", (data: EventData) => {
+            vm.search(data["value"]);
+        }, this);
+    }
+    page.bindingContext = vm;
+
+}
+
+export function openListItem(args: EventData){
+    var navigationEntry = {
+        moduleName: "equipment/equipment-detail-page",
+        context: {
+            fItem: vm.get("fList")[args["index"]],
+            parentPageName: vm.get("selectedPage")
+        },
+        animated: false
+    };
+    topmost().navigate(navigationEntry);
 }
 
 /* ***********************************************************
@@ -32,27 +56,6 @@ export function onDrawerButtonTap(args: EventData) {
     sideDrawer.showDrawer();
 }
 
-
-var frameModule = require("ui/frame");
-
 exports.jacket = function() {
-    console.log("hello jacket"); 
-    var topmost = frameModule.topmost();
-    topmost.navigate("equipment/jacket/jacket-page");
-}; 
-
-exports.wetsuite = function() {
-    console.log("hello wetsuite");
-}; 
-
-exports.regulator = function() {
-    console.log("hello regulator");
-}; 
-
-exports.Computer = function() {
-    console.log("hello Computer");
-}; 
-
-exports.Tank = function() {
-    console.log("hello Tank");
+    console.log("hello jacket Detail page");
 }; 

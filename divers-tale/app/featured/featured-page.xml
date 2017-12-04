@@ -57,10 +57,13 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-            <GridLayout class="page-content">
-                <Label class="page-icon fa" text="&#xf005;"></Label>
-                <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-            </GridLayout>
+        <StackLayout orientation="vertical">
+            <Button text="Jacket" tap="jacket"/>
+            <Button text="Wetsuite" tap="wetsuite"/>
+            <Button text="Regulator" tap="regulator"/>
+            <Button text="Computer" tap="computer"/>
+            <Button text="Tank" tap="tank"/>
+        </StackLayout>
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>
