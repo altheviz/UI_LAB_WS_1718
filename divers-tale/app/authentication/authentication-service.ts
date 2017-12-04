@@ -24,6 +24,8 @@ export function login(user) {
     });
 }
 
-export function logout(user) {
-    console.log("logout");
+export function logout() {
+    return new Promise<undefined>((resolve, reject) => {
+        resolve();
+    });
 }
