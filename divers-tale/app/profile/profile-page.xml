@@ -1,0 +1,109 @@
+<Page
+  class="page"
+  navigatingTo="onNavigatingTo"
+  xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+  xmlns:myDrawer="shared/my-drawer"
+  xmlns="http://www.nativescript.org/tns.xsd">
+  <ActionBar class="action-bar">
+    <!--
+    Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+    -->
+  <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+    <!--
+      Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+    -->
+  <ActionItem icon="res://navigation/menu" android:visibility="collapsed"
+    tap="onDrawerButtonTap" ios.position="left">
+  </ActionItem>
+  <action-item tap="newButtonTap" ios.systemIcon="4" android.systemIcon="ic_menu_add" ios.position="right"
+    visibility="{{  'visible' }}" />
+  <Label class="action-bar-title" text="Profile"></Label>
+  </ActionBar>
+
+  <!--
+  RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+  Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+  http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+  The RadSideDrawer component is designed to be used as a root element to the <Page> and
+  it shouldn't have any other siblings other than the <ActionBar> component.
+  -->
+  <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+    <!--
+    Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+    -->
+    <nsDrawer:RadSideDrawer.drawerTransition>
+      <nsDrawer:SlideInOnTopTransition/>
+    </nsDrawer:RadSideDrawer.drawerTransition>
+
+    <!--
+    Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+    Always wrap content in a layout component.
+    -->
+    <nsDrawer:RadSideDrawer.drawerContent>
+      <StackLayout>
+        <!--
+        Use {N} custom components to reuse UI across your mobile app.
+        The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+        Learn more about custom components and how they can be used in this documentation article:
+        http://docs.nativescript.org/ui/basics#custom-components
+        -->
+        <myDrawer:MyDrawer selectedPage="Profile"/>
+      </StackLayout>
+    </nsDrawer:RadSideDrawer.drawerContent>
+
+    <!--
+    Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+    Always wrap content in a layout component.
+    -->
+    <nsDrawer:RadSideDrawer.mainContent>
+      <ScrollView>
+        <StackLayout orientation="vertical">
+          <Image src="~/images/apple.jpg" width="100" height="100"/>>
+          <!--  <img width="100" height="100" alt="FPO lady" src="../../images/apple.jpg"/>
+          </Image>-->
+          <FlexboxLayout flexDirection="row">
+            <Label text="Name: "/>
+            <Label id="name" text="{{name}}"/>
+          </FlexboxLayout>
+          <FlexboxLayout flexDirection="row">
+            <Label text="Nickname: "/>
+            <Label id="nickname" text="{{nickname}}"/>
+          </FlexboxLayout>
+
+          <FlexboxLayout flexDirection="row">
+            <Label text="Email:"/>
+            <Label id="email" text="{{email}}"/>
+          </FlexboxLayout>
+
+          <FlexboxLayout flexDirection="row">
+            <Label text="City: "/>
+            <Label id="city" text="{{city}}"/>
+          </FlexboxLayout>
+          <FlexboxLayout flexDirection="row">
+            <Label text="Region:"/>
+            <Label id="region" text="{{region}}"/>
+          </FlexboxLayout>
+          <FlexboxLayout flexDirection="row">
+            <Label text="Country:"/>
+            <Label id="country" text="{{country}}"/>
+          </FlexboxLayout>
+
+          <FlexboxLayout flexDirection="row">
+            <Label text="Sex:"/>
+            <Label id="sex" text="{{sex}}"/>
+          </FlexboxLayout>
+          <FlexboxLayout flexDirection="row">
+            <Label text="Date of birth:"/>
+            <Label id="birthDate" text="{{birthDate}}"/>
+          </FlexboxLayout>
+
+          <Button text="Buddys" />
+          <Button text="Equipment" />
+          <Button text="Dive History" />
+          <Button text="Certifications" />
+          <Button text="Documents" />
+        </StackLayout>
+      </ScrollView>
+    </nsDrawer:RadSideDrawer.mainContent>
+  </nsDrawer:RadSideDrawer>
+</Page>

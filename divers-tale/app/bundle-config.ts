@@ -14,4 +14,5 @@ if ((global).TNS_WEBPACK) {
     global.registerModule("featured/featured-page", () => require("./featured/featured-page"));
     global.registerModule("certificates/certificates-page", () => require("./certificates/certificates-page"));
     global.registerModule("settings/settings-page", () => require("./settings/settings-page"));
+    global.registerModule("profile-page", () => require("./certificates/profile-page"));
 }
