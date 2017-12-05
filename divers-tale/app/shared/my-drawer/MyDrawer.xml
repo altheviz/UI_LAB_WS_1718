@@ -24,10 +24,16 @@ Feel free to customize layouts and components to change how your app drawer look
                 <Label row="0" col="1" text="Browse" class="p-r-10" />
             </GridLayout>
 
-            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
+			<GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
                 route="search/search-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf002;" class="fa" />
                 <Label row="0" col="1" text="Search" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Documents' ? ' selected': '') }}"
+                route="documents/documents-page"  tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf1ea;;" class="fa" />
+                <Label row="0" col="1" text="Documents" class="p-r-10" />
             </GridLayout>
 
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
