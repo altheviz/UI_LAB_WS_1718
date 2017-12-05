@@ -16,23 +16,23 @@
   </Page.actionBar>
   <GridLayout rows="*, 60">
     <ScrollView>
-      <GridLayout rows="auto, auto, auto, auto, auto, auto, 100" columns="auto, *">
-        <TIL:TextInputLayout hint="Name" colSpan="2">
+      <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, 100">
+        <TIL:TextInputLayout hint="Name">
           <TextField text="{{ event.name }}"/>
         </TIL:TextInputLayout>
-        <TIL:TextInputLayout hint="Kommentar" row="1" colSpan="2">
+        <TIL:TextInputLayout hint="Kommentar" row="1">
           <TextView text="{{ event.comment }}"/>
         </TIL:TextInputLayout>
-        <TIL:TextInputLayout hint="Tag" row="2" colSpan="2">
+        <TIL:TextInputLayout hint="Tag" row="2">
           <TextField id="dateField" editable="false" text="{{ event.date }}" tap="selectDate"/>
         </TIL:TextInputLayout>
-        <TIL:TextInputLayout hint="Uhrzeit" row="3" colSpan="2">
+        <TIL:TextInputLayout hint="Uhrzeit" row="3">
           <TextField id="timeField" editable="false" text="{{ event.time }}" tap="selectTime"/>
         </TIL:TextInputLayout>
-        <Label text="Typ:" row="4"/>
-        <dd:DropDown hint="Event-Typ" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" class="dropdown" row="4" col="1"/>
-        <Label text="Ort:" row="5"/>
-        <dd:DropDown hint="Veranstaltungsort" id="divesitesDD" selectedIndex="{{ selectedDivesite }}" selectedIndexChanged="divesiteChanged" class="dropdown" row="5" col="1"/>
+        <Label text="Typ" visibility="{{ typeLabelVisible ? 'visible' : 'collapse' }}" style="font-size: 12p; margin: 0, 0, -4, 5" row="4"/>
+        <dd:DropDown hint="Typ" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" class="dropdown" row="5"/>
+        <Label text="Veranstaltungsort" visibility="{{ divesiteLabelVisible ? 'visible' : 'collapse' }}" style="font-size: 12p; margin: 0, 0, -4, 5" row="6"/>
+        <dd:DropDown hint="Veranstaltungsort" id="divesitesDD" selectedIndex="{{ selectedDivesite }}" selectedIndexChanged="divesiteChanged" class="dropdown" row="7"/>
       </GridLayout>
     </ScrollView>
     <StackLayout row="1" orientation="horizontal">
