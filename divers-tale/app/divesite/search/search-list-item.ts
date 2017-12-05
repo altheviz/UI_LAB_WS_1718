@@ -6,7 +6,6 @@ export class SearchListItem {
     constructor(name: string, location: string) {
         this.name = name;
         this.location = location;
+        this.firstletter = this.name.charAt(0);
     }
-
-
 }

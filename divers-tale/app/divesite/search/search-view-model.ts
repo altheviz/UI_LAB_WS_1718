@@ -1,53 +1,59 @@
-import { Observable } from "data/observable";
-import { SearchListItem } from "./search-list-item";
 import { DataService } from "../data-service";
-import { ObservableArray} from "data/observable-array";
+import { Observable } from "data/observable";
+import { ObservableArray } from "data/observable-array";
+import { SearchListItem } from "./search-list-item";
 
 export class SearchViewModel extends Observable {
-    public searchResults: ObservableArray<SearchListItem>;
-    
+    searchResults: ObservableArray<SearchListItem> = new ObservableArray<SearchListItem>();
+
     constructor() {
         super();
-        // apply text for UI elements
-        let service = new DataService();
-        this.searchResults = service.loadList();
 
-        //for each item get first letter
-        this.searchResults.forEach(element => {
-            element.firstletter = element.name.charAt(0);
-        });
-
-        //sort 
-        this.searchResults.sort(this.compare);
+        this.loadList();
     }
 
     /**
      * filterSearchList
      */
-    public filterSearchList(searchText: string) {
-        console.log("Trying to filter: "+searchText);
+    filterSearchList(searchText: string) {
+        console.log("Trying to filter: " + searchText);
 
-        const result = this.searchResults.filter(element => element.name.toLowerCase().startsWith(searchText.toLowerCase()));
+        const result = this.searchResults.filter(element =>
+            element.name.toLowerCase().includes(searchText.toLowerCase())
+        );
 
         while (this.searchResults.length > 0) {
             this.searchResults.pop();
-        };
+        }
 
         result.forEach(element => {
             this.searchResults.push(element);
         });
 
         this.searchResults.sort(this.compare);
-
-        //console.dir(this.searchResults);
     }
 
-    compare(a,b) {
-        if (a.firstletter < b.firstletter)
-          return -1;
-        if (a.firstletter > b.firstletter)
-          return 1;
+    loadList() {
+        let service = new DataService();
+        let result = service.loadList();
+        this.updateSearchResults(result);
+    }
+
+    private compare(a, b) {
+        if (a.name.charAt(0) < b.name.charAt(0)) { return -1; }
+        if (a.name.charAt(0) > b.name.charAt(0)) { return 1; }
+
         return 0;
+    }
+
+    private updateSearchResults(newList) {
+        while (this.searchResults.length > 0) {
+            this.searchResults.pop();
+        }
+
+        newList.forEach(element => this.searchResults.push(element));
+
+        this.searchResults.sort(this.compare);
     }
 }
 

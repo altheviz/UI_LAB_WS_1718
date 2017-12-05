@@ -1,5 +1,5 @@
 <StackLayout orientation="vertical">
-    <SearchBar id="searchBar" hint="Search" text="" clear="onClear" submit="onSubmit" />
+    <SearchBar id="searchBar" hint="Search" text="" loaded="sBLoaded" clear="onClear" submit="onSubmit" />
     <ListView id="listview" items="{{ searchResults }}" navigatingTo="onNavigatingTo" loaded="onPageLoaded" itemTap="openListItem">
         <ListView.itemTemplate>
             <GridLayout columns="auto, *, auto" rows="auto, 25" class="page-content">

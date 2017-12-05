@@ -4,12 +4,9 @@ import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import { SearchViewModel } from "./search-view-model";
 
-// import * as searchBarModule from "ui/search-bar";
-// import * as listViewModule from "ui/list-view";
-// import * as observableArray from "data/observable-array";
-// import * as labelModule from "ui/label";
 import { SearchBar } from "ui/search-bar";
 import { ListView } from "ui/list-view";
+import { isAndroid } from "platform";
 
 var model = new SearchViewModel();
 
@@ -29,6 +26,7 @@ export function onNavigatingTo(args: NavigatedData) {
 
     const page = <Page>args.object;
     page.bindingContext = model;
+    model.set("searchResults", model.searchResults);
 }
 
 /* ***********************************************************
@@ -44,17 +42,29 @@ export function onDrawerButtonTap(args: EventData) {
 export function onSubmit(args) {
     var searchBar:SearchBar = <SearchBar>args.object;
     console.log("Search submit result: "+searchBar.text);
+
     model.filterSearchList(searchBar.text);
-    var listView = <ListView>topmost().getViewById("listview");
-    listView.refresh();
-    console.dir(model.searchResults);
+    searchBar.dismissSoftInput();
+
+    model.set("searchResults", model.searchResults);
 }
 
 export function onClear(args) {
     console.log("clear search-bar text");
+    var searchBar:SearchBar = <SearchBar>args.object;
+    
+    model.loadList();
+    searchBar.dismissSoftInput();
 }
 
 export function onPageLoaded(args) {
     const page = <Page>args.object;
     page.bindingContext = model;
+    model.set("searchResults", model.searchResults);
+
+}
+
+export function sBLoaded(args){
+    var searchBar:SearchBar = <SearchBar>args.object;
+    if (isAndroid) { searchBar.android.clearFocus(); }
 }
