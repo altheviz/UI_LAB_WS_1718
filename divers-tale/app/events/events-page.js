@@ -7,7 +7,7 @@ var page;
 
 var eventsModel = new EventsViewModel();
 
-exports.onNavigatingTo = function(args) {
+function loadItems() {
   eventsModel.empty();
   eventsModel.load();
 
@@ -15,8 +15,12 @@ exports.onNavigatingTo = function(args) {
     eventsModel: eventsModel
   });
 
-  page = args.object;
   page.bindingContext = pageData;
+}
+
+exports.onNavigatingTo = function(args) {
+  page = args.object;
+  loadItems(args);
 }
 
 exports.onDrawerButtonTap = function(args) {
@@ -40,4 +44,11 @@ exports.newEvent = function() {
     backstackVisible: false
   }
   frameModule.topmost().navigate(navigationOptions);  
+}
+
+exports.refreshList = function(args) {
+  var pullRefresh = args.object;
+  //make sure we have a timeout somewhere later
+  loadItems();
+  pullRefresh.refreshing = false;
 }

@@ -2,7 +2,8 @@
   class="page"
   navigatingTo="onNavigatingTo"
   xmlns="http://www.nativescript.org/tns.xsd"
-  xmlns:dd="nativescript-drop-down">
+  xmlns:dd="nativescript-drop-down"
+  xmlns:TIL="nativescript-textinputlayout">
   <Page.actionBar>
     <ActionBar class="action-bar" title="{{ isNewEvent ? 'Neues Event' : 'Event editieren' }}">
       <ActionItem>
@@ -15,13 +16,23 @@
   </Page.actionBar>
   <GridLayout rows="*, 60">
     <ScrollView>
-      <GridLayout rows="auto, auto, auto, auto, auto, auto, 100">
-        <TextField hint="Name" text="{{ event.name }}"/>
-        <TextView hint="Kommentar" text="{{ event.comment }}" row="1"/>
-        <TextField id="dateField" hint="Tag" editable="false" text="{{ event.date }}" tap="selectDate" row="2"/>
-        <TextField id="timeField" hint="Uhrzeit" editable="false" text="{{ event.time }}" tap="selectTime" row="3" />
-        <dd:DropDown hint="Typ" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" class="dropdown" row="4"/>
-        <dd:DropDown id="divesitesDD" hint="Veranstaltungsort" selectedIndex="{{ selectedDivesite }}" selectedIndexChanged="divesiteChanged" class="dropdown" row="5"/>
+      <GridLayout rows="auto, auto, auto, auto, auto, auto, 100" columns="auto, *">
+        <TIL:TextInputLayout hint="Name" colSpan="2">
+          <TextField text="{{ event.name }}"/>
+        </TIL:TextInputLayout>
+        <TIL:TextInputLayout hint="Kommentar" row="1" colSpan="2">
+          <TextView text="{{ event.comment }}"/>
+        </TIL:TextInputLayout>
+        <TIL:TextInputLayout hint="Tag" row="2" colSpan="2">
+          <TextField id="dateField" editable="false" text="{{ event.date }}" tap="selectDate"/>
+        </TIL:TextInputLayout>
+        <TIL:TextInputLayout hint="Uhrzeit" row="3" colSpan="2">
+          <TextField id="timeField" editable="false" text="{{ event.time }}" tap="selectTime"/>
+        </TIL:TextInputLayout>
+        <Label text="Typ:" row="4"/>
+        <dd:DropDown hint="Event-Typ" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" class="dropdown" row="4" col="1"/>
+        <Label text="Ort:" row="5"/>
+        <dd:DropDown hint="Veranstaltungsort" id="divesitesDD" selectedIndex="{{ selectedDivesite }}" selectedIndexChanged="divesiteChanged" class="dropdown" row="5" col="1"/>
       </GridLayout>
     </ScrollView>
     <StackLayout row="1" orientation="horizontal">
