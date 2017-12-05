@@ -1,13 +1,17 @@
-
 import { EventData } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
+import observableArray = require("data/observable-array");
+import pages = require("ui/page");
+import { SelectedIndexChangedEventData } from "nativescript-drop-down";
+import observable = require("data/observable");
+import { EquipmentViewModel } from "./equipment-view-model";
+import { DropDown } from "nativescript-drop-down";
 
-import { JacketViewModel } from "./jacket-view-model";
 
-
-const vm = new JacketViewModel();
+const vm = new EquipmentViewModel();
+var viewModel: observable.Observable;
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -20,31 +24,27 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-    const pageName: string = "Jacket";
-    vm.set("selectedPage", pageName);
-    vm.set("titel", pageName.substring(1));
-    const page = <Page>args.object;
-    vm.setupSearch(pageName);
-    let view = page.getViewById("textFieldSearch");
-    if (view) {
-        view.on("textChange", (data: EventData) => {
-            vm.search(data["value"]);
-        }, this);
-    }
-    page.bindingContext = vm;
-
+pageLoaded(args);
+    
 }
 
-export function openListItem(args: EventData){
-    var navigationEntry = {
-        moduleName: "equipment/jacket/jacket-detail-page",
-        context: {
-            fItem: vm.get("fList")[args["index"]],
-            parentPageName: vm.get("selectedPage")
-        },
-        animated: false
-    };
-    topmost().navigate(navigationEntry);
+export function pageLoaded(args: observable.EventData) {
+    var page = <pages.Page>args.object;
+    var items = new observableArray.ObservableArray();
+
+    viewModel = new observable.Observable();
+
+        items.push("Jacket");
+        items.push("Wetsuite");
+        items.push("Regulator");
+        items.push("Computer");
+        items.push("Tank");
+    
+
+    viewModel.set("items", items);
+    viewModel.set("selectedIndex", 0);
+
+    page.bindingContext = viewModel;
 }
 
 /* ***********************************************************
@@ -57,7 +57,19 @@ export function onDrawerButtonTap(args: EventData) {
     sideDrawer.showDrawer();
 }
 
-
 exports.jacket = function() {
-    console.log("hello jacket Detail page");
+    console.log("entries saved");
 }; 
+
+
+export function dropDownOpened(args: EventData) {
+    console.log("Drop Down opened");
+}
+ 
+export function dropDownClosed(args: EventData) {
+    console.log("Drop Down closed");
+}
+ 
+export function dropDownSelectedIndexChanged(args: SelectedIndexChangedEventData) {
+    console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
+}

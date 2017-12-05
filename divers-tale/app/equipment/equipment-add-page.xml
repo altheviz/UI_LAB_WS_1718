@@ -3,7 +3,8 @@
     navigatingTo="onNavigatingTo"  
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
-    xmlns="http://www.nativescript.org/tns.xsd">
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:dd="nativescript-drop-down" loaded="pageLoaded">
 
     <ActionBar class="action-bar">
         <!-- 
@@ -18,7 +19,7 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Details"></Label>
+        <Label class="action-bar-title" text="Equipment"></Label>
     </ActionBar>
 
     <!--
@@ -57,18 +58,23 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-         <stack-layout>
-        <ListView items="{{ fList }}" id="fList" itemTap="openListItem">
-          <ListView.itemTemplate>
-              <GridLayout rows="auto, auto" columns="160px, *" class="listitem">
-                <Label text="{{ name }}" row="0" col="1"/>
-              </GridLayout>
-              
-          </ListView.itemTemplate>
-        </ListView>
-        <Button dock="bottom" text="Add Jacket" tap="jacket"></Button>
-      </stack-layout>
-       
+        <StackLayout>
+        <AbsoluteLayout>
+            <TextField colspan="2" left="10" top="50" width="100%" id="name" autocorrect="false" hint="TEST" autocapitalizationType="none" />
+            <TextField colspan="2" left="10" top="100" width="100%" id="description" hint="Beschreibung" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
+            <TextField colspan="2" left="10" top="150" width="100%" id="purchaseDate" hint="Einkaufsdatum" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" />
+            <TextField colspan="2" left="10" top="200" width="100%" id="purchasePrice" hint="Einkaufspreis" keyboardType="number" autocorrect="false" autocapitalizationType="none" />
+            <TextField colspan="2" left="10" top="250" width="100%" id="nextInspection" hint="Nächste Inspektion" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" />
+        </AbsoluteLayout>
+        
+        <GridLayout rows="auto, auto, *" columns="auto, *">
+            <dd:DropDown items="{{ items }}" selectedIndex="{{ selectedIndex }}" 
+                 opened="dropDownOpened" closed="dropDownClosed" 
+                 selectedIndexChanged="dropDownSelectedIndexChanged"
+                 row="0" colSpan="2" />  
+        </GridLayout>
+        </StackLayout>
+                 
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>

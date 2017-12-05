@@ -57,5 +57,9 @@ export function onDrawerButtonTap(args: EventData) {
 }
 
 exports.jacket = function() {
-    console.log("hello jacket Detail page");
+    var navigationEntry = {
+        moduleName: "equipment/equipment-add-page",
+        animated: false
+    };
+    topmost().navigate(navigationEntry);
 }; 
