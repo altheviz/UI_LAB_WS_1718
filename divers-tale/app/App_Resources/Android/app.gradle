@@ -9,8 +9,8 @@ android {
   defaultConfig {
     generatedDensities = []
     applicationId = "org.nativescript.diverstale"  
-  }
-  aaptOptions {
-    additionalParameters "--no-version-vectors"
-  }
-}
+  }  
+  aaptOptions {  
+    additionalParameters "--no-version-vectors"  
+  }  
+} 

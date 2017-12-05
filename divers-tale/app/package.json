@@ -4,5 +4,8 @@
   },
   "main": "app.js",
   "name": "tns-template-drawer-navigation-ts",
-  "version": "3.3.2"
+  "version": "3.3.2",
+  "dependencies": {
+    "email-validator": "^1.1.1"
+  }
 }
