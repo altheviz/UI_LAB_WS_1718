@@ -59,6 +59,8 @@ exports.onNavigatingTo = function(args) {
 
   var selectedType;
   var cancelVisible;
+  var typeLabelVisible;
+  var divesiteLabelVisible;
 
   if (isNewEvent) {
 
@@ -80,6 +82,8 @@ exports.onNavigatingTo = function(args) {
     selectedType = null;
     selectedDivesite = null;
     cancelVisible = "collapse";
+    typeLabelVisible = false;
+    divesiteLabelVisible = false;
 
   } else {
 
@@ -100,6 +104,8 @@ exports.onNavigatingTo = function(args) {
 
     selectedType = types.indexOf(event.type);
     cancelVisible = "visible";
+    typeLabelVisible = true;
+    divesiteLabelVisible = true;
   }
 
   var pageData = new observableModule.fromObject({
@@ -108,17 +114,21 @@ exports.onNavigatingTo = function(args) {
     selectedType: selectedType,
     selectedDivesite: selectedDivesite,
     cancelVisible: cancelVisible,
-    isNewEvent: isNewEvent
+    isNewEvent: isNewEvent,
+    typeLabelVisible: typeLabelVisible,
+    divesiteLabelVisible: divesiteLabelVisible
   });  
 
   page.bindingContext = pageData;
 }
 
 exports.typeChanged = function(args) {
+  page.bindingContext.typeLabelVisible = true;
   newEvent.type = types.getItem(args.newIndex);
 }
 
 exports.divesiteChanged = function(args) {
+  page.bindingContext.divesiteLabelVisible = true;
   newEvent.divesite = eventsModel.getDiveSiteById(divesiteItemSource.getValue(args.newIndex));
 }
 

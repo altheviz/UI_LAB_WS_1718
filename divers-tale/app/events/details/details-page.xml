@@ -24,7 +24,7 @@
               <Image  stretch="aspectFill" src="{{ event.image }}" row="0" colSpan="3"/>
               <Label text="{{ 'Event abgesagt am ' + event.canceledDate }}" style="color: #c42323" textWrap="true" visibility="{{ event.canceled ? 'visible' : 'collapsed' }}" row="1" colSpan="3"/>
               <Label text="{{ event.name }}" style="font-weight: bold" row="2" textWrap="true" colSpan="3"/>
-              <Label visibility="{{ event.divesite === null ? 'collapsed' : 'visible' }}" text="{{ 'Ort: ' + event.divesite.name + '  &#xf041;' }}" class="font-awesome" row="3" textWrap="true" colSpan="3" tap="viewDivesite"/>
+              <Label visibility="{{ event.divesite === null ? 'collapsed' : 'visible' }}" text="{{ event.divesite.name + '  &#xf041;' }}" class="font-awesome" style="color: #326ee5" row="3" textWrap="true" colSpan="3" tap="viewDivesite"/>
               <Label text="{{ 'Datum: ' + event.date + ' um ' + event.time + ' Uhr'}}" row="4" textWrap="true" colSpan="3"/>
               <Label text="{{ 'Typ: ' + event.type }}" row="5" textWrap="true" colSpan="3"/>
               <Label text="{{ '&quot;' + event.comment + '&quot;' }}" textWrap="true" row="6" colSpan="3"/>
