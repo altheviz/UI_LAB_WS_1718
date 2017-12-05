@@ -3,7 +3,10 @@
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
     xmlns="http://www.nativescript.org/tns.xsd"
-    xmlns:dd="nativescript-drop-down">
+    xmlns:dd="nativescript-drop-down"
+    xmlns:FAB="nativescript-floatingactionbutton"
+    xmlns:PullRefresh="nativescript-pulltorefresh"
+    xmlns:TIL="nativescript-textinputlayout">
 
     <ActionBar class="action-bar">
         <!-- 
@@ -65,64 +68,74 @@
         <nsDrawer:RadSideDrawer.mainContent>
             <TabView selectedIndexChanged="onSelectedIndexChanged">
                 <TabView.items>
-                <TabViewItem title="Buddies" textTransform="none" >
-                    <TabViewItem.view>
-                    <ListView items="{{ myDivebuddies }}">
-                        <ListView.itemTemplate>
-                        <GridLayout columns="auto, *,auto, auto, auto, auto" tap="viewUserDetails">
-                            <Label text="{{ nickname }}" textWrap="true" style="margin: 10;" />
-                            <Label text="&#xf235;" class="font-awesome" col="2" tap="removeBuddy" style="margin: 10;" />
+                    <TabViewItem title="Buddies" textTransform="none" >
+                        <TabViewItem.view>
+                            <PullRefresh:PullToRefresh refresh="refreshBuddies">
+                                <ListView items="{{ myDivebuddies }}">
+                                    <ListView.itemTemplate>
+                                    <GridLayout columns="auto, *,auto, auto, auto, auto" tap="viewUserDetails">
+                                        <Label text="{{ nickname }}" textWrap="true" style="margin: 10;" />
+                                        <Label text="&#xf235;" class="font-awesome" col="2" tap="removeBuddy" style="margin: 10;" />
+                                    </GridLayout>
+                                    </ListView.itemTemplate>
+                                </ListView>
+                            </PullRefresh:PullToRefresh> 
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Gruppen" textTransform="none" >
+                        <TabViewItem.view>
+                        <GridLayout rows="*, 60">
+                            <ListView items="{{ myGroups }}" >
+                                <ListView.itemTemplate>
+                                <GridLayout columns="auto, *,auto, auto" tap="viewGroupDetails">
+                                    <Label text="{{ name }}" textWrap="true" style="margin: 10;" />
+                                    <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" style="margin: 10;" />
+                                </GridLayout>
+                                </ListView.itemTemplate>
+                            </ListView>
+                            <FAB:fab row="1" tap="newGroup" rippleColor="#f1f1f1" class="fab-button" icon="res://ic_add_white"/>
+                        <!--    <StackLayout row="1" orientation="horizontal">
+                            <Button text="Gruppe hinzufügen" width="100%" tap="newGroup" textTransform="none"/>
+                            </StackLayout>-->
                         </GridLayout>
-                        </ListView.itemTemplate>
-                    </ListView>
-                    </TabViewItem.view>
-                </TabViewItem>
-                <TabViewItem title="Gruppen" textTransform="none" >
-                    <TabViewItem.view>
-                      <GridLayout rows="*, 60">
-                        <ListView items="{{ myGroups }}" >
-                            <ListView.itemTemplate>
-                            <GridLayout columns="auto, *,auto, auto" tap="viewGroupDetails">
-                                <Label text="{{ name }}" textWrap="true" style="margin: 10;" />
-                                <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" style="margin: 10;" />
-                            </GridLayout>
-                            </ListView.itemTemplate>
-                        </ListView>
-                        <StackLayout row="1" orientation="horizontal">
-                          <Button text="Gruppe hinzufügen" width="100%" tap="newGroup" textTransform="none"/>
-                        </StackLayout>
-                      </GridLayout>
-                    </TabViewItem.view>
-                </TabViewItem>
-                <TabViewItem title="Suche" textTransform="none">
-                    <TabViewItem.view>
-                      <GridLayout rows="*, 60">
-                        <ScrollView>
-                           <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
-                                <Label text="Benutzername: " row="0" col="0" textWrap="true" style="margin: 10;" />
-                                <TextField id="nickname" text="{{ nickname }}" autocorrect="false" autocapitalizationType="none" row="0" col="1"  />
-                                <Label text="Geschlecht: " row="1" col="0" textWrap="true" style="margin: 10;" />
-                                <dd:DropDown id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" col="1" class="dropdown" />
-                                <Label text="Alter: " row="2" col="0" textWrap="true" style="margin: 10;" />
-                                <TextField id="age" text="{{ age }}" autocorrect="false" autocapitalizationType="none" row="2" col="1" keyboardType="number" />       
-                                <Label text="Stadt: " row="3" col="0" textWrap="true" style="margin: 10;" />
-                                <TextField id="city" text="{{ city }}" autocorrect="false" autocapitalizationType="none" row="3" col="1"  />     
-                                <Label text="Region: " row="4" col="0" textWrap="true" style="margin: 10;" />
-                                <TextField id="region" text="{{ region }}" autocorrect="false" autocapitalizationType="none" row="4" col="1" />  
-                                <Label text="Land: " row="5" col="0" textWrap="true" style="margin: 10;" />
-                                <TextField id="country" text="{{ country }}" autocorrect="false" autocapitalizationType="none" row="5" col="1" />             
-                                <Label text="Tauchgänge: " row="6" col="0" textWrap="true" style="margin: 10;" />
-                                <TextField id="experience" text="{{ experience }}" autocorrect="false" autocapitalizationType="none" row="6" col="1" keyboardType="number" />                               
-                                <Label text="Zertifikate: " row="7" col="0" textWrap="true" style="margin: 10;" />
-                                <TextField id="certificate" text="{{ certificate }}" autocorrect="false" autocapitalizationType="none" row="7" col="1" />  
-                            </GridLayout>
-                        </ScrollView>
-                        <StackLayout row="1" orientation="horizontal">
-                            <Button text="Suchen" tap="search" colSpan="2" width="100%" row="8" col="0" textTransform="none"/>                             
-                        </StackLayout>
-                      </GridLayout>
-                    </TabViewItem.view>
-                </TabViewItem>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Suche" textTransform="none">
+                        <TabViewItem.view>
+                        <GridLayout rows="*, 60">
+                            <ScrollView>
+                            <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
+                                    <TIL:TextInputLayout hint="Nickname" colSpan="2">
+                                        <TextField id="nickname" text="{{ nickname }}" autocorrect="false" autocapitalizationType="none" row="0"  />
+                                    </TIL:TextInputLayout>
+                                    <Label text="Geschlecht: " row="1" col="0" textWrap="true" style="margin: 5;margin-top: 10;" />
+                                    <dd:DropDown id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" col="1" class="dropdown" />
+                                    <TIL:TextInputLayout hint="Alter" row="2" colSpan="2">
+                                        <TextField id="age" text="{{ age }}" autocorrect="false" autocapitalizationType="none" row="2" col="1" keyboardType="number" />       
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Stadt" row="3" colSpan="2">
+                                        <TextField id="city" text="{{ city }}" autocorrect="false" autocapitalizationType="none" row="3" col="1"  />     
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Region" row="4" colSpan="2">
+                                    <TextField id="region" text="{{ region }}" autocorrect="false" autocapitalizationType="none" row="4" col="1" />  
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Land" row="5" colSpan="2">
+                                        <TextField id="country" text="{{ country }}" autocorrect="false" autocapitalizationType="none" row="5" col="1" />             
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Tauchgänge" row="6" colSpan="2">
+                                        <TextField id="experience" text="{{ experience }}" autocorrect="false" autocapitalizationType="none" row="6" col="1" keyboardType="number" />                               
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Zertifikate" row="7" colSpan="2">
+                                        <TextField id="certificate" text="{{ certificate }}" autocorrect="false" autocapitalizationType="none" />  
+                                    </TIL:TextInputLayout>
+                                </GridLayout>
+                            </ScrollView>
+                            <StackLayout row="1" orientation="horizontal">
+                                <Button text="Suchen" tap="search" colSpan="2" width="100%" row="8" col="0" textTransform="none"/>                             
+                            </StackLayout>
+                        </GridLayout>
+                        </TabViewItem.view>
+                    </TabViewItem>
                 </TabView.items>
             </TabView>
         </nsDrawer:RadSideDrawer.mainContent>
