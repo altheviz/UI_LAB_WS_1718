@@ -1,14 +1,1 @@
-Label {
-    font-size: 20;
-    margin:20px;
-}
-
-
-Image {
-    margin: 10px;
-}
-
-.titel{
-    font-size: 25;
-    margin-bottom: 30px;
-}
+Label{font-size:20;margin:20px}Image{margin:10px}.titel{font-size:25;margin-bottom:30px}.icon{font-size:30}

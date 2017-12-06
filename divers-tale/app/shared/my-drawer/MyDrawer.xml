@@ -54,6 +54,12 @@ Feel free to customize layouts and components to change how your app drawer look
                 <Label row="0" col="1" text="Divebuddies" class="p-r-10" />
             </GridLayout>
 
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Divesigns' ? ' selected': '') }}"
+                route="divesigns/divesigns-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf259;" class="fa" />
+                <Label row="0" col="1" text="Divesigns" class="p-r-10" />
+            </GridLayout>
+
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Dive Sites' ? ' selected': '') }}"
                 route="divesite/divesite-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf279;" class="fa" />
