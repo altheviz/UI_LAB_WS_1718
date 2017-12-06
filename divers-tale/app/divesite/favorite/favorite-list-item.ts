@@ -7,6 +7,4 @@ export class FavoriteListItem {
         this.name = name;
         this.location = location;
     }
-
-
 }
