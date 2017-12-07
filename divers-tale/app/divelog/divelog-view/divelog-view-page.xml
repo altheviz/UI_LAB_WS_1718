@@ -447,7 +447,7 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text="Divemaster: "/>
                 <Label id="diveMaster" text="{{ diveMaster }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" tap="onBuddyClicked">
                 <Label text="Buddy: "/>
                 <Label id="buddy" text="{{ buddy }}"/>
             </FlexboxLayout>
