@@ -1,5 +1,3 @@
-//import "rxjs/add/operator/map";
-//import {Observable} from "rxjs/Rx";
 import {DivelogListItem} from "./divelog-list/divelog-list-item";
 
 export class DivelogService {
