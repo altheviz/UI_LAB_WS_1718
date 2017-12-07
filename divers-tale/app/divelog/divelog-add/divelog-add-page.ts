@@ -8,7 +8,7 @@ import observableArray = require("data/observable-array");
 import pages = require("ui/page");
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 
-import { DivelogViewModel } from "./divelog-view-model";
+import {DivelogViewModel} from "../divelog-view/divelog-view-model"
 
 import * as switchModule from "tns-core-modules/ui/switch";
 import * as textViewModule from "tns-core-modules/ui/text-view";

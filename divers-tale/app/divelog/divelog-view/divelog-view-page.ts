@@ -8,7 +8,7 @@ import { DivelogViewModel } from "./divelog-view-model";
 
 import * as switchModule from "tns-core-modules/ui/switch";
 import * as textViewModule from "tns-core-modules/ui/text-view";
-import {DivelogService} from "./divelog-service";
+import {DivelogService} from "../divelog-service";
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
