@@ -38,3 +38,15 @@ export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
+
+export function onOpenDivesiteClicked(args: EventData) {
+    const component = <FlexboxLayout>args.object;
+    const componentRoute = component.get("route");
+    topmost().navigate( {
+        moduleName: "divesite/favorite/favorite-detail/favoriteMonitoring-page",
+        //context: {info: "something you want to pass to your page"},
+        transition: {
+            name: "fade"
+        }
+    });
+}

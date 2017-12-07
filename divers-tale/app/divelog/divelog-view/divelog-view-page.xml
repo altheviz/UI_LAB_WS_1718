@@ -118,23 +118,25 @@ xmlns="http://www.nativescript.org/tns.xsd">
         <ScrollView>
         <StackLayout class="container">
             <Label text="General" class="settings-category"></Label>
-            <FlexboxLayout flexDirection="row">
-                <Label text="Dive number: "/>
-                <Label id="diveNumber" text="{{diveNumber}}"/>
+            <FlexboxLayout flexDirection="column" tap="onOpenDivesiteClicked">
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Dive number: "/>
+                    <Label id="diveNumber" text="{{diveNumber}}"/>
+                    </FlexboxLayout>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Location: "/>
+                    <Label id="diveNumber" text="{{ location }}"/>
                 </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
-                <Label text="Location: "/>
-                <Label id="diveNumber" text="{{ location }}"/>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Date: "/>
+                    <Label id="date" text="{{ date }}"/>
+                </FlexboxLayout>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Dive site:"/>
+                    <Label id="diveSite" text="{{ diveSite }}"/>
+                </FlexboxLayout>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
-                <Label text="Date: "/>
-                <Label id="date" text="{{ date }}"/>
-            </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
-                <Label text="Dive site:"/>
-                <Label id="diveSite" text="{{ diveSite }}"/>
-            </FlexboxLayout>
-
+            
             <StackLayout height="1px" class="separation-line"></StackLayout>
             <Label text="Entry" class="settings-category"></Label>                
 
