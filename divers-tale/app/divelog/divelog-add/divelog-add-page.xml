@@ -1,0 +1,472 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd">
+    
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Divelog"></Label>
+    </ActionBar>
+
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="Divelog"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.mainContent>
+            <GridLayout class="page-content">
+                <TextField id="diveId" hint="Dive #" keyboardType="number" autocorrect="false" autocapitalizationType="none" />
+                <TextField id="diveLocation" hint="Location"/>
+            </GridLayout>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:TIL="nativescript-textinputlayout"
+    xmlns:dd="nativescript-drop-down"
+    loaded="pageLoaded">
+    
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Divelog"></Label>
+    </ActionBar>
+
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="Divelog"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.mainContent>
+            <ScrollView>
+                <StackLayout class="page-content">
+
+                    <Label class="settings-category" text="General"></Label>
+                    <TIL:TextInputLayout hint="Dive#">
+                        <TextField text="" keyboardType="number" autocorrect="false" autocapitalizationType="none"/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Location">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Date">
+                        <TextField text="" keyboardType="datetime"/>
+                    </TIL:TextInputLayout>
+                    
+                    <TIL:TextInputLayout hint="Dive Site">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Entry" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="SI">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Time">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="PG">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="RNT">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Pressure (bar/psi)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Time" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="RNT">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Bottom Time (min)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Avg (m/ft)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Depth (m/ft)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Safety Stop" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Duration (min)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Level (m/ft)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Entry" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Time">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+                    <TIL:TextInputLayout hint="PG">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+                    <TIL:TextInputLayout hint="O2%">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+                    <TIL:TextInputLayout hint="Pressure (bar/psi)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Weight" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Ditch (kg/lbs)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+                    <TIL:TextInputLayout hint="Trim (kg/lbs)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Tank/Gas" class="settings-category"></Label>
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Air" row="0" col="0"></Label>
+                        <Switch checked="false" row="0" col="1"/>
+                    </GridLayout>
+                    <GridLayout row="auto" columns="* auto">
+                        <TIL:TextInputLayout hint="EAN">
+                            <TextField row="0" col="2"/>
+                        </TIL:TextInputLayout>
+                        <Switch checked="false" row="0" col="1"/>
+                    </GridLayout>
+
+                    <TIL:TextInputLayout hint="Type">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+                    <TIL:TextInputLayout hint="Size">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Wet Suit" class="settings-category"></Label>
+                    <FlexboxLayout flexDirection="row">
+                        <Label class="fa" text="&#xf2cd;"></Label>
+                        <TextField hint="Helmet"></TextField>
+                        <Label text="mm"></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row">
+                        <Label class="fa" text="&#xf2cd;"></Label>
+                        <TextField hint="Glove"></TextField>
+                        <Label text="mm"></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row">
+                        <Label class="fa" text="&#xf2cd;"></Label>
+                        <TextField hint="Shoe"></TextField>
+                        <Label text="mm"></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row">
+                        <Label class="fa" text="&#xf2cd;"></Label>
+                        <TextField hint="Short suit"></TextField>
+                        <Label text="mm"></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row">
+                        <Label class="fa" text="&#xf2cd;"></Label>
+                        <TextField hint="Suit underwear"></TextField>
+                        <Label text="mm"></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row">
+                        <Label class="fa" text="&#xf2cd;"></Label>
+                        <TextField hint="Long suit"></TextField>
+                        <Label text="mm"></Label>
+                    </FlexboxLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Dry Suit" class="settings-category"></Label>
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Gloves"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Shoes"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <TIL:TextInputLayout hint="Suit">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Liner">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Conditions" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Viz (m/ft)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Current">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Sunny"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Sun/Cloud"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Cloud"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Rain"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Fresh"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Salt"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Boat"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Night"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Surf"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Waves"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Surge"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Wreck"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Reef"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Deep"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Photo"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Drift"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Training"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Survey"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <GridLayout row="auto" columns="* auto">
+                        <Label text="Recovery"></Label>
+                        <Switch checked="false"/>
+                    </GridLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Temperature" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Above surface">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Below surface">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Ground level">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Ground level">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Comment" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Comment">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Time" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Previous time">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="This dive">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Total time">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+
+                    <StackLayout height="1px" class="separation-line"></StackLayout>
+
+                    <Label text="Verification" class="settings-category"></Label>
+                    <TIL:TextInputLayout hint="Verficator name">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <GridLayout rows="auto, auto, *" columns="auto, *">
+                        <dd:DropDown items="{{ items }}" selectedIndex="{{ selectedIndex }}"
+                                    opened="dropDownOpened" closed="dropDownClosed"
+                                    selectedIndexChanged="dropDownSelectedIndexChanged"
+                                    row="0" colSpan="2" />
+                    </GridLayout>
+
+                    <TIL:TextInputLayout hint="Certification #">
+                        <TextField text="" keyboardType="number"/>
+                    </TIL:TextInputLayout>
+                </StackLayout>
+            </ScrollView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

@@ -19,7 +19,7 @@ Feel free to customize layouts and components to change how your app drawer look
             </GridLayout>
 
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Divelogs' ? ' selected': '') }}"
-                route="divelog/divelog-list-page" tap="onNavigationItemTap">
+                route="divelog/divelog-list/divelog-list-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf02d;" class="fa" />
                 <Label row="0" col="1" text="Divelogs" class="p-r-10" />
             </GridLayout>

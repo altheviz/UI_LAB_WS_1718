@@ -116,23 +116,27 @@ xmlns="http://www.nativescript.org/tns.xsd">
     </nsDrawer:RadSideDrawer.drawerContent>
     <nsDrawer:RadSideDrawer.mainContent>
         <ScrollView>
-        <StackLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Dive number: "/>
-                    <Label id="diveNumber" text="{{diveNumber}}"/>
-                    </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Location: "/>
-                    <Label id="diveNumber" text="{{ location }}"/>
+        <StackLayout class="container">
+            <Label text="General" class="settings-category"></Label>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Dive number: "/>
+                <Label id="diveNumber" text="{{diveNumber}}"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Date: "/>
-                    <Label id="date" text="{{ date }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Dive site:"/>
-                    <Label id="diveSite" text="{{ diveSite }}"/>
-                </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Location: "/>
+                <Label id="diveNumber" text="{{ location }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Date: "/>
+                <Label id="date" text="{{ date }}"/>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+                <Label text="Dive site:"/>
+                <Label id="diveSite" text="{{ diveSite }}"/>
+            </FlexboxLayout>
+
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Entry" class="settings-category"></Label>                
 
             <FlexboxLayout>
                     <Label text="SI: "/>
@@ -156,6 +160,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text=" bar/psi"/>
             </FlexboxLayout>
 
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Time" class="settings-category"></Label>   
+
             <FlexboxLayout flexDirection="row">
                 <Label text="Bottom Time: "/>
                 <Label id="bottomTime" text="{{ bottomTime }}"/>
@@ -170,6 +177,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label id="average2" text="{{ average2 }}"/>
             </FlexboxLayout>
 
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Stops" class="settings-category"></Label>   
+
             <FlexboxLayout flexDirection="row">
                 <Label text="Safety Stop Time: "/>
                 <Label id="safetyTime" text="{{ safetyTime }}"/>
@@ -180,6 +190,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label id="safetyLevel" text="{{ safetyLevel }}"/>
                 <Label text=" m/ft"/>
             </FlexboxLayout>
+
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Entry" class="settings-category"></Label>   
 
             <FlexboxLayout flexDirection="row">
                 <Label text="Entry Time: "/>
@@ -199,6 +212,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text=" bar/psi"/>
             </FlexboxLayout>
 
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Weight" class="settings-category"></Label>   
+
             <FlexboxLayout flexDirection="row">
                 <Label text="Ditch: "/>
                 <Label id="ditch" text="{{ ditch }}"/>
@@ -209,6 +225,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label id="trim" text="{{ trim }}"/>
                 <Label text=" kg/lbs"/>
             </FlexboxLayout>
+
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Tank/Gas" class="settings-category"></Label>   
 
             <FlexboxLayout flexDirection="row">
                 <Label text="Air: "/>
@@ -227,6 +246,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text="Size: "/>
                 <Label id="tankSize" text="{{ tankSize }}"/>
             </FlexboxLayout>
+
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Wet Suit" class="settings-category"></Label>   
 
             <FlexboxLayout flexDirection="row">
                 <Label text="Helmet: "/>
@@ -259,6 +281,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text=" mm"/>
             </FlexboxLayout>
 
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Dry Suit" class="settings-category"></Label>   
+
             <FlexboxLayout flexDirection="row">
                 <Label text="Gloves: "/>
                 <Label id="drySuitGloves" text="{{ drySuitGloves }}"/>
@@ -275,6 +300,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text="Liner: "/>
                 <Label id="drySuitLiner" text="{{ drySuitLiner }}"/>
             </FlexboxLayout>
+
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Conditions" class="settings-category"></Label>   
 
             <FlexboxLayout flexDirection="row">
                 <Label text="Viz: "/>
@@ -362,6 +390,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label id="recovery" text="{{ recovery }}"/>
             </FlexboxLayout>
 
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Temperature" class="settings-category"></Label>   
+            
             <FlexboxLayout flexDirection="row">
                 <Label text="Temp. above: "/>
                 <Label id="aboveSurface" text="{{ aboveSurface }}"/>
@@ -383,6 +414,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label id="comment" text="{{ comment }}"/>
             </FlexboxLayout>
 
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Time" class="settings-category"></Label>   
+
             <FlexboxLayout flexDirection="row">
                 <Label text="Previous Time: "/>
                 <Label id="previousTime" text="{{ previousTime }}"/>
@@ -395,6 +429,9 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text="Total Time: "/>
                 <Label id="totalTime" text="{{ totalTime }}"/>
             </FlexboxLayout>
+
+            <StackLayout height="1px" class="separation-line"></StackLayout>
+            <Label text="Verification" class="settings-category"></Label>   
 
             <FlexboxLayout flexDirection="row">
                 <Label text="Name: "/>
