@@ -9,10 +9,8 @@
         <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
         <Label class="action-bar-title" text="{{ diveSites }}"></Label>
-        <!-- Add visibility tag to ensure this is only activated in favorite tab?
-             visibility="{{ receivedInvitations.length > 0 ? 'visible' : 'hidden' }}
-        -->
-        <ActionItem id="myaction" tap="onDelete" ios.systemIcon="16" ios.position="right" text="{{ mycaption }}" android.position="popup"></ActionItem>
+        <ActionItem id="deleteAction" tap="onDelete" ios.systemIcon="16" ios.position="right" text="Delete" android.position="popup" visibility="{{ isDelete ? 'visible' : 'hidden' }}"></ActionItem>
+        <ActionItem id="addAction" tap="onAdd" ios.systemIcon="4" ios.position="right" text="Add" android.position="popup" visibility="{{ isAdd ? 'visible' : 'hidden' }}"></ActionItem>
     </ActionBar>
     <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
         <nsDrawer:RadSideDrawer.drawerTransition>

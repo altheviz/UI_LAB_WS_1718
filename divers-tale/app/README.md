@@ -28,3 +28,7 @@ Each component including the drawer custom component has 3 style files located i
 - `_page-name.scss` - the component common style sheet. These style rules are applied to both Android and iOS.
 - `page-name.android.scss` - the component Android style sheet. These style rules are applied to Android only.
 - `page-name.ios.scss` - the component iOS style sheet. These style rules are applied to iOS only.
+
+
+# Workaround
+If map is not shown inside divesites remove platform with 'tns platform remove android' and add it again. 
