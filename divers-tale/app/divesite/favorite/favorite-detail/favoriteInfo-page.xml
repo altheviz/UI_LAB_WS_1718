@@ -20,7 +20,15 @@
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
         <nsDrawer:RadSideDrawer.mainContent>
-            <Label text="Hello, world!"/>
+            <scroll-view>
+                <stack-layout>
+                    <Label id="favInfo-name" text="{{ infos.name }}"/>
+                    <Label id="favInfo-description" text="{{ infos.description }}"/>
+                    <Label id="favInfo-location" text="{{ infos.location }}"/>
+                    <Label id="favInfo-country" text="{{ infos.country }}"/>
+                    </stack-layout>
+            </scroll-view>
+            <!--<ListView id="favoriteInfo-listview" items="{{ infos }}" navigatingTo="onNavigatingTo" loaded="onPageLoaded" itemTap="openListItem"><ListView.itemTemplate><GridLayout columns="auto, *, auto" rows="auto, 25" class="page-content"><Label id="favInfo-name" text="{{ name }}" row="0" col="0" rowSpan="2" margin="10"/><Label id="favInfo-description" text="{{ description }}" row="0" col="1" rowSpan="2" margin="10"/><Label id="favInfo-location" text="{{ location }}" row="0" col="1" rowSpan="2" margin="10"/><Label id="favInfo-country" text="{{ country }}" row="0" col="1" rowSpan="2" margin="10"/></GridLayout></ListView.itemTemplate></ListView>-->
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>

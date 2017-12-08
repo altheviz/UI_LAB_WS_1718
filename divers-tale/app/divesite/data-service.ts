@@ -9,4 +9,8 @@ export class DataService {
     loadList(){
         return this.listData;
     }
+
+    loadEntry(index: number) {
+        return this.listData[index];
+    } 
 }

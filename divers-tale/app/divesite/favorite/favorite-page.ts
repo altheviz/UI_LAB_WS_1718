@@ -37,10 +37,10 @@ export function onPageLoaded(args) {
     page.bindingContext = new FavoriteViewModel();
 }
 
-export function openListItem(args: EventData) {
+export function openListItem(args) {
     var navigationEntry = {
-        moduleName: "divesite/favorite/favorite-detail/favoriteMonitoring-page",
-        //clearHistory: true
+        moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
+        context: {index: args.index}, //pass actual index
     };
     topmost().navigate(navigationEntry);
 }
