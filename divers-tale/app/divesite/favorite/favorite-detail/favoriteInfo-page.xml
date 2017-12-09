@@ -20,15 +20,29 @@
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
         <nsDrawer:RadSideDrawer.mainContent>
-            <scroll-view>
-                <stack-layout>
-                    <Label id="favInfo-name" text="{{ infos.name }}"/>
-                    <Label id="favInfo-description" text="{{ infos.description }}"/>
-                    <Label id="favInfo-location" text="{{ infos.location }}"/>
-                    <Label id="favInfo-country" text="{{ infos.country }}"/>
-                    </stack-layout>
-            </scroll-view>
-            <!--<ListView id="favoriteInfo-listview" items="{{ infos }}" navigatingTo="onNavigatingTo" loaded="onPageLoaded" itemTap="openListItem"><ListView.itemTemplate><GridLayout columns="auto, *, auto" rows="auto, 25" class="page-content"><Label id="favInfo-name" text="{{ name }}" row="0" col="0" rowSpan="2" margin="10"/><Label id="favInfo-description" text="{{ description }}" row="0" col="1" rowSpan="2" margin="10"/><Label id="favInfo-location" text="{{ location }}" row="0" col="1" rowSpan="2" margin="10"/><Label id="favInfo-country" text="{{ country }}" row="0" col="1" rowSpan="2" margin="10"/></GridLayout></ListView.itemTemplate></ListView>-->
+            <!-- TODO show Pin on map inside actionitem -->
+            <ScrollView orientation="vertical">
+                <GridLayout columns="auto, *" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto">
+                    <Label text="Name: " col="0" row="0"/>
+                    <Label id="favInfo-name" text="{{ infos.name }}" col="1" row="0"/>
+                    <Label text="Location: " col="0" row="1"/>
+                    <Label id="favInfo-location" text="{{ infos.location }}" col="1" row="1"/>
+                    <Label text="Country: " col="0" row="2"/>
+                    <Label id="favInfo-country" text="{{ infos.country }}" col="1" row="2"/>
+                    <Label text="Description: " col="0" row="3"/>
+                    <Label id="favInfo-description" text="{{ infos.description }}" col="1" row="3" textWrap="true"/>
+                    <Label text="Width (m): " col="0" row="4"/>
+                    <Label id="favInfo-width" text="{{ infos.geoData.widthInM }}" col="1" row="4"/>
+                    <Label text="Length (m): " col="0" row="5"/>
+                    <Label id="favInfo-length" text="{{ infos.geoData.lengthInM }}" col="1" row="5"/>
+                    <Label text="Avg. Depth (m): " col="0" row="6"/>
+                    <Label id="favInfo-depthAvg" text="{{ infos.geoData.depthAvgInM }}" col="1" row="6"/>
+                    <Label text="Max. Depth (m): " col="0" row="7"/>
+                    <Label id="favInfo-depthMax" text="{{ infos.geoData.depthMaxInM }}" col="1" row="7"/>
+                    <Label text="Height (m): " col="0" row="8"/>
+                    <Label id="favInfo-height" text="{{ infos.geoData.heightInM }}" col="1" row="8"/>
+                </GridLayout>
+            </ScrollView >
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>

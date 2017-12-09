@@ -4,7 +4,7 @@ import {DataService} from "../../data-service";
 
 export class FavoriteInfoViewModel extends Observable {
 
-    public infos: Observable;
+    public infos: FavoriteInfoListItem;
 
     constructor(index: number) {
         super();
