@@ -1,14 +1,12 @@
 <Page 
     xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" 
-    xmlns:mapTab="divesite/map" 
-    xmlns:favoriteTab="divesite/favorite" 
-    xmlns:searchTab="divesite/search" 
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
     xmlns:myDrawer="shared/my-drawer">>
     <ActionBar class="action-bar">
         <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
         <Label class="action-bar-title" text="{{ diveSites }}"></Label>
+        <ActionItem id="deleteAction" tap="onMap" ios.systemIcon="16" ios.position="right" text="Show on Map" android.position="popup"></ActionItem>
     </ActionBar>
     <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
         <nsDrawer:RadSideDrawer.drawerTransition>
@@ -42,7 +40,7 @@
                     <Label text="Height (m): " col="0" row="8"/>
                     <Label id="favInfo-height" text="{{ infos.geoData.heightInM }}" col="1" row="8"/>
                 </GridLayout>
-            </ScrollView >
+            </ScrollView>
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>
