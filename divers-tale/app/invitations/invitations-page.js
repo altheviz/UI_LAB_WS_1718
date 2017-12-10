@@ -41,7 +41,21 @@ function onNavigatingTo(args) {
 	page.bindingContext = pageData;
 }
 
+function refreshReceivedInvitations (args) {
+	var pullRefresh = args.object;
+	page.bindingContext.receivedInvitations = invitationModel.getReceivedInvitations(ownId);
+	pullRefresh.refreshing = false;
 
+}
+
+function refreshSentInvitations(args) {
+	var pullRefresh = args.object;
+	sendInvitations = invitationModel.getSendInvitations(ownId);
+	page.bindingContext.accepted = filterInvitationByStatus(sendInvitations, 'ANGENOMMEN');
+	page.bindingContext.declined = filterInvitationByStatus(sendInvitations, 'ABGELEHNT');
+	page.bindingContext.pending = filterInvitationByStatus(sendInvitations, 'ANSTEHEND');
+	pullRefresh.refreshing = false;
+}
 // function removeFromLocalList(invitationObj, list) {
 // 	for (var i = 0; i < list.length; i++) {
 // 		var element = list[i];
@@ -76,6 +90,8 @@ function goBack() {
 	frameModule.topmost().goBack();
 };
 
+exports.refreshSentInvitations = refreshSentInvitations;
+exports.refreshReceivedInvitations = refreshReceivedInvitations;
 exports.filterInvitationByStatus = filterInvitationByStatus;
 exports.onDrawerButtonTap = onDrawerButtonTap;
 exports.details = details;
