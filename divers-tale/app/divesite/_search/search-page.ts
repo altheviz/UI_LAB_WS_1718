@@ -2,7 +2,7 @@ import { EventData } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { SearchViewModel } from "./favorite-view-model";
+import { SearchViewModel } from "./search-view-model";
 
 import { SearchBar } from "ui/search-bar";
 import { ListView } from "ui/list-view";
@@ -68,10 +68,9 @@ export function sBLoaded(args){
     if (isAndroid) { searchBar.android.clearFocus(); }
 }
 
-export function openListItem(args) {
+export function openListItem(args: EventData) {
     var navigationEntry = {
-        moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
-        context: {index: args.index}, //pass actual index
+        moduleName: "divesite/favorite/favorite-detail/favoriteMonitoring-page",
         //clearHistory: true
     };
     topmost().navigate(navigationEntry);

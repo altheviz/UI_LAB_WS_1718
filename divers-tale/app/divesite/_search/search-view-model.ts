@@ -40,8 +40,8 @@ export class SearchViewModel extends Observable {
     }
 
     private compare(a, b) {
-        if (a.name.charAt(0) < b.name.charAt(0)) { return -1; }
-        if (a.name.charAt(0) > b.name.charAt(0)) { return 1; }
+        if (a.name.charAt(0).toLowerCase() < b.name.charAt(0).toLowerCase()) { return -1; }
+        if (a.name.charAt(0).toLowerCase() > b.name.charAt(0).toLowerCase()) { return 1; }
 
         return 0;
     }
@@ -51,7 +51,6 @@ export class SearchViewModel extends Observable {
             this.searchResults.pop();
         }
 
-        newList.forEach(element => element.firstletter = element.name.charAt(0))
         newList.forEach(element => this.searchResults.push(element));
 
         this.searchResults.sort(this.compare);

@@ -1,6 +1,6 @@
 <StackLayout orientation="vertical">
-    <SearchBar id="favorite-searchBar" hint="Search" text="" loaded="sBLoaded" clear="onClear" submit="onSubmit" />
-    <ListView id="favorite-listview" items="{{ searchResults }}" navigatingTo="onNavigatingTo" loaded="onPageLoaded" itemTap="openListItem">
+    <SearchBar id="searchBar" hint="Search" text="" loaded="sBLoaded" clear="onClear" submit="onSubmit" />
+    <ListView id="search-listview" items="{{ searchResults }}" navigatingTo="onNavigatingTo" loaded="onPageLoaded" itemTap="openListItem">
         <ListView.itemTemplate>
             <GridLayout columns="auto, *, auto" rows="auto, 25" class="page-content">
                 <!--<Image id="fav-icon" src="{{ src }}" row="0" col="0" rowSpan="2" width="72" height="72" margin="10"/>-->
