@@ -108,8 +108,8 @@
                                     <TIL:TextInputLayout hint="Nickname" colSpan="2">
                                         <TextField id="nickname" text="{{ nickname }}" autocorrect="false" autocapitalizationType="none" row="0"  />
                                     </TIL:TextInputLayout>
-                                    <Label text="Geschlecht: " row="1" col="0" textWrap="true" style="margin: 5;margin-top: 10;" />
-                                    <dd:DropDown id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" col="1" class="dropdown" />
+                                    <Label text="Geschlecht" row="1" textWrap="true" visibility="{{ genderLabelVisible ? 'visible' : 'collapse' }}" style="font-size: 12p; margin: -35, 0, 0, 5" colSpan="2" />
+                                    <dd:DropDown hint="Geschlecht" id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" class="dropdown" selectedIndexChanged="genderChanged" colSpan="2" />
                                     <TIL:TextInputLayout hint="Alter" row="2" colSpan="2">
                                         <TextField id="age" text="{{ age }}" autocorrect="false" autocapitalizationType="none" row="2" col="1" keyboardType="number" />       
                                     </TIL:TextInputLayout>

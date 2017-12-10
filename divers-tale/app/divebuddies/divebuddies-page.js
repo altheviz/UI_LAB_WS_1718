@@ -212,6 +212,10 @@ function refreshBuddies(args) {
     pullRefresh.refreshing = false;
 }
 
+function genderChanged(args){
+    page.bindingContext.genderLabelVisible = true;
+}
+
 function loadAll(){
     var nickname = page.getViewById("nickname").text;
     var age = page.getViewById("age").text;
@@ -220,6 +224,13 @@ function loadAll(){
     var country = page.getViewById("country").text;
     var experience = page.getViewById("experience").text;
     var certificate = page.getViewById("certificate").text;
+
+    var dropdown = page.getViewById("sex");
+    var genderLabelVisible = false;
+    var sexValue = dropdown.selectedIndex
+    if (sexValue != null) {
+        genderLabelVisible = true;
+    }
 
     divebuddiesModel.empty();
     divebuddiesModel.load();
@@ -235,7 +246,8 @@ function loadAll(){
         myGroups: myGroups,
         groupTabSelected: groupTabSelected,
         sex: sex,
-        invitations: invitations
+        invitations: invitations,
+        genderLabelVisible: genderLabelVisible
 
     });
 
@@ -262,3 +274,4 @@ exports.addToGroup = addToGroup;
 exports.onSelectedIndexChanged = onSelectedIndexChanged;
 exports.removeBuddy = removeBuddy;
 exports.refreshBuddies = refreshBuddies;
+exports.genderChanged = genderChanged;
