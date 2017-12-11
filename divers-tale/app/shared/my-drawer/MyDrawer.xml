@@ -4,7 +4,13 @@ Feel free to customize layouts and components to change how your app drawer look
 -->
 <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left" loaded="onLoaded"
     xmlns:myDrawer="shared/my-drawer">
-    <StackLayout class="sidedrawer-header">
+    <StackLayout class="{{ 'sidedrawer-header' + (selectedPage === 'Profile' ? ' selected': '') }}"
+          route="profile/profile-page" tap="onNavigationItemTap">
+          // ToDo:
+          // mit class="sidedrawer-header" ist die insterlation nicht zu ende gekommen, später noch mal anschauen
+          //      Vermutlich broblem bei tns, nach neustart noch mal testen.
+          // Auf der Profileseite verschwiendet die footnote, css noch mal anschauen
+          // User Name, bild und mailadresse durch variablen oder zeiger ersetzen
         <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
         <Label class="sidedrawer-header-brand" text="User Name" />
         <Label class="footnote" text="username@mail.com" />
