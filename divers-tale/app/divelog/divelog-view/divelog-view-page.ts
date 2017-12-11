@@ -53,8 +53,8 @@ export function onOpenDivesiteClicked(args: EventData) {
     });
 }
 
-export function onBuddyClicked(obj, args: EventData) {
-    const component = <FlexboxLayout>args.object;
+export function onBuddyClicked(args: EventData) {
+    const component = args.object;
     const componentRoute = component.get("route");
     var divebuddy = divebuddiesData.divebuddies_data[0];
     var certs = [divebuddiesData.certification_data[0]];
