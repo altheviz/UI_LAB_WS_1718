@@ -4,7 +4,7 @@ import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 
 import { ProfileData } from "./profile-data";
-import { ProfileViewModel } from "./profile-view-model" //verwenden
+import { User } from "./User" //verwenden
 
 const vm = new ProfileData();
 /* ***********************************************************
