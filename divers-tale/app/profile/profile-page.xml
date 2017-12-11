@@ -3,7 +3,10 @@
   navigatingTo="onNavigatingTo"
   xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
   xmlns:myDrawer="shared/my-drawer"
-  xmlns="http://www.nativescript.org/tns.xsd">
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:TIL="nativescript-textinputlayout"
+  xmlns:dd="nativescript-drop-down"
+  loaded="pageLoaded">
   <ActionBar class="action-bar">
     <!--
     Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
@@ -61,43 +64,68 @@
           </Image>-->
           <FlexboxLayout flexDirection="row">
             <Label text="Name: "/>
-            <Label id="name" text="{{name}}"/>
+            <TextField class="input" text="{{ profile.name }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john doe"></TextField>
           </FlexboxLayout>
           <FlexboxLayout flexDirection="row">
             <Label text="Nickname: "/>
-            <Label id="nickname" text="{{nickname}}"/>
+            <TextField class="input" text="{{ profile.nickname }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="foo"></TextField>
           </FlexboxLayout>
 
           <FlexboxLayout flexDirection="row">
             <Label text="Email:"/>
-            <Label id="email" text="{{email}}"/>
+            <TextField class="input" text="{{ profile.email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john.doe@foo.com"></TextField>
           </FlexboxLayout>
 
           <FlexboxLayout flexDirection="row">
             <Label text="City: "/>
-            <Label id="city" text="{{city}}"/>
+            <TextField class="input" text="{{ profile.city }}" keyboardType="email" autocorrect="true" autocapitalizationType="none" hint="my city"></TextField>
           </FlexboxLayout>
           <FlexboxLayout flexDirection="row">
             <Label text="Region:"/>
-            <Label id="region" text="{{region}}"/>
+            <TextField class="input" text="{{ profile.region }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="bw"></TextField>
           </FlexboxLayout>
           <FlexboxLayout flexDirection="row">
             <Label text="Country:"/>
-            <Label id="country" text="{{country}}"/>
+            <TextField class="input" text="{{ profile.country }}" keyboardType="email" autocorrect="true" autocapitalizationType="none" hint="my country"></TextField>
           </FlexboxLayout>
 
           <FlexboxLayout flexDirection="row">
             <Label text="Sex:"/>
-            <Label id="sex" text="{{sex}}"/>
+            <TextField class="input" text="{{ profile.sex }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="man/woman"></TextField>
           </FlexboxLayout>
           <FlexboxLayout flexDirection="row">
             <Label text="Date of birth:"/>
-            <Label id="birthDate" text="{{birthDate}}"/>
+            <TextField class="input" text="{{ profile.birth }}" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" hint="19/02/2000"></TextField>
           </FlexboxLayout>
 
           <Button text="Dive History" />
           <Button text="Certifications" />
           <Button text="Documents" />
+
+          <!-- ToDo
+          probleme mit dem floating Label
+              laufzeitfehler
+          Bild einfügen
+          Eingabe für Datum, Geschlänicht
+          ? Eingaben gleichmässig untereinander
+
+          <!--        <Label text="Verification" class="settings-category"></Label>
+        <TIL:TextInputLayout hint="Verficator name">
+            <TextField text=""/>
+        </TIL:TextInputLayout>
+
+        <GridLayout rows="auto, auto, *" columns="auto, *">
+            <dd:DropDown items="{{ items }}" selectedIndex="{{ selectedIndex }}"
+                        opened="dropDownOpened" closed="dropDownClosed"
+                        selectedIndexChanged="dropDownSelectedIndexChanged"
+                        row="0" colSpan="2" />
+        </GridLayout>
+
+        <TIL:TextInputLayout hint="Certification #">
+            <TextField text="" keyboardType="number"/>
+        </TIL:TextInputLayout>
+        -->
+
         </StackLayout>
       </ScrollView>
     </nsDrawer:RadSideDrawer.mainContent>
