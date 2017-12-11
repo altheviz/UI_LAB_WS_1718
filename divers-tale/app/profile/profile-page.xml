@@ -97,8 +97,6 @@
             <Label id="birthDate" text="{{birthDate}}"/>
           </FlexboxLayout>
 
-          <Button text="Buddys" />
-          <Button text="Equipment" />
           <Button text="Dive History" />
           <Button text="Certifications" />
           <Button text="Documents" />

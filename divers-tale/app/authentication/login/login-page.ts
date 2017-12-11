@@ -37,7 +37,7 @@ export function login() {
         (new SnackBar()).simple("Please enter a valid email address.");
         return;
     }
-    
+
     completeLogin(user);
 }
 

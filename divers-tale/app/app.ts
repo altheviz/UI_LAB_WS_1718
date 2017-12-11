@@ -7,7 +7,8 @@ import * as app from "application";
 import "./bundle-config";
 
 app.start({
-    moduleName: "authentication/login/login-page",
+    //moduleName: "authentication/login/login-page",
+    moduleName: "profile\profile-page",
     backstackVisible: false
 });
 

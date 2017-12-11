@@ -4,7 +4,20 @@ import { DiveLog } from "./DiveLog";
 import { Buddy } from "./Buddy";
 import { Document } from "./Document";
 
-export class User {
+import { Observable } from "data/observable";
+
+
+export class UserViewModel extends Observable {
+    user: User;
+
+    constructor() {
+        super();
+        this.user = new User("","","","","","","",
+        new Date("February 1, 2000 00:00:00"),"");
+    }
+}
+
+export class User  {
     email: string;
     name: string;
     nickname: string;
@@ -15,9 +28,7 @@ export class User {
     dateOfBirth: Date;
     profileImage: string;
     certifications: Certification[];
-    equipment: Equipment[];
     diveHistory: DiveLog[];
-    buddys: Buddy[];
     documents: Document[];
 
     constructor(email: string,

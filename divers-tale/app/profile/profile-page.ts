@@ -1,12 +1,11 @@
-import { EventData } from "data/observable";
+import { EventData, Observable } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 
-import { ProfileData } from "./profile-data";
-import { User } from "./User" //verwenden
+import { UserViewModel } from "./User" //verwenden
 
-const vm = new ProfileData();
+const vm = new Observable();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -20,7 +19,7 @@ export function onNavigatingTo(args: NavigatedData) {
         return;
     }
     const page = <Page>args.object;
-    page.bindingContext = vm.loadData();
+    page.bindingContext = vm;
 }
 
 
