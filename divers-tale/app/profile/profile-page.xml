@@ -15,8 +15,6 @@
   <ActionItem icon="res://navigation/menu" android:visibility="collapsed"
     tap="onDrawerButtonTap" ios.position="left">
   </ActionItem>
-  <action-item tap="newButtonTap" ios.systemIcon="4" android.systemIcon="ic_menu_add" ios.position="right"
-    visibility="{{  'visible' }}" />
   <Label class="action-bar-title" text="Profile"></Label>
   </ActionBar>
 

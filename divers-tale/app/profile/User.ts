@@ -28,6 +28,8 @@ export class User  {
     dateOfBirth: Date;
     profileImage: string;
     certifications: Certification[];
+//    equipment: Equipment[];
+//    buddys: Buddy[];
     diveHistory: DiveLog[];
     documents: Document[];
 
@@ -41,9 +43,9 @@ export class User  {
                 dateOfBirth?: Date,
                 profileImage?: string,
                 certifications?: Certification[],
-                equipment?: Equipment[],
+//                equipment?: Equipment[],
                 diveHistory?: DiveLog[],
-                buddys?: Buddy[],
+//                buddys?: Buddy[],
                 documents?: Document[]) {
         this.email = email;
         this.name = name;
@@ -55,9 +57,9 @@ export class User  {
         this.dateOfBirth = dateOfBirth;
         this.profileImage = profileImage;
         this.certifications = certifications;
-        this.equipment = equipment;
+//        this.equipment = equipment;
         this.diveHistory = diveHistory;
-        this.buddys = buddys;
+//        this.buddys = buddys;
         this.documents = documents;
     }
 }
