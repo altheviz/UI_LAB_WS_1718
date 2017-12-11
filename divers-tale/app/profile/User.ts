@@ -8,12 +8,12 @@ import { Observable } from "data/observable";
 
 
 export class UserViewModel extends Observable {
-    user: User;
+    profile: User;
 
     constructor() {
         super();
-        this.user = new User("","","","","","","",
-        new Date("February 1, 2000 00:00:00"),"");
+        this.profile = new User("","","","","","","",
+        new Date("16-10-1990"),"https://madeiradivepoint.com/wp-content/uploads/2017/03/padi-open-water-scuba-diver.jpg");
     }
 }
 

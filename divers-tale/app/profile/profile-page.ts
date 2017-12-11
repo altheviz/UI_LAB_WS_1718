@@ -2,10 +2,11 @@ import { EventData, Observable } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
+import { GridLayout } from "ui/layouts/grid-layout";
 
 import { UserViewModel } from "./User" //verwenden
 
-const vm = new Observable();
+const vm = new UserViewModel();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -18,8 +19,9 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
+
     const page = <Page>args.object;
-    page.bindingContext = vm;
+    page.bindingContext = vm
 }
 
 
@@ -33,7 +35,21 @@ export function onDrawerButtonTap(args: EventData) {
     sideDrawer.showDrawer();
 }
 
+/* ***********************************************************
+* Use the "tap" event handler of the <GridLayout> component for handling navigation item taps.
+* The "tap" event handler of the app drawer <GridLayout> item is used to navigate the app
+* based on the tapped navigationItem's route.
+*************************************************************/
+/*
+export function onNavigationItemTap(args: EventData): void {
+    const component = <GridLayout>args.object;
+    const componentRoute = component.get("route");
 
-export function newButtonTap (args: EventData)  {
-    console.log("Hello, world!");
+    topmost().navigate({
+        moduleName: componentRoute,
+        transition: {
+            name: "fade"
+        }
+    });
 }
+*/
