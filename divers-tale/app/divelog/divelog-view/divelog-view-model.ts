@@ -1,5 +1,5 @@
 import { Observable } from "data/observable";
-import {DivelogService} from "./divelog-service";
+import {DivelogService} from "../divelog-service";
 
 export class DivelogViewModel extends Observable {
 

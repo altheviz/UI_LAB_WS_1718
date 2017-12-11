@@ -2,12 +2,8 @@ import { EventData } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { FlexboxLayout } from "tns-core-modules/ui/layouts/flexbox-layout";
 
-import { DivelogViewModel } from "./divelog-view-model";
-
-import * as switchModule from "tns-core-modules/ui/switch";
-import * as textViewModule from "tns-core-modules/ui/text-view";
+import { DiveSiteViewModel } from "./divesite-view-model";
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -23,7 +19,7 @@ export function onNavigatingTo(args: NavigatedData) {
     }
 
     const page = <Page>args.object;
-    page.bindingContext = new DivelogViewModel();
+    page.bindingContext = new DiveSiteViewModel();
 }
 
 /* ***********************************************************
@@ -34,4 +30,12 @@ export function onNavigatingTo(args: NavigatedData) {
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
+}
+
+export function onAdd(args: EventData) {
+    console.log("Add action item tapped.");
+}
+
+export function onDelete(args: EventData) {
+    console.log("Delete action item tapped.");
 }

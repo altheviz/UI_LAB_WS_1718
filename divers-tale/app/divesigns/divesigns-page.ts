@@ -2,14 +2,10 @@ import { EventData } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { FlexboxLayout } from "tns-core-modules/ui/layouts/flexbox-layout";
 
-import { DivelogViewModel } from "./divelog-view-model";
+import { DivesignsViewModel } from "./divesigns-view-model";
 
-import * as switchModule from "tns-core-modules/ui/switch";
-import * as textViewModule from "tns-core-modules/ui/text-view";
-import {DivelogService} from "./divelog-service";
-
+const vm = new DivesignsViewModel();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -23,10 +19,9 @@ export function onNavigatingTo(args: NavigatedData) {
         return;
     }
 
+    vm.initData();
     const page = <Page>args.object;
-    var service = new DivelogService();
-    var divelog = service.loadDivelog();
-    page.bindingContext = divelog;
+    page.bindingContext = vm;
 }
 
 /* ***********************************************************
