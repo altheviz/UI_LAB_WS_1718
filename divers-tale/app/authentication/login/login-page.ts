@@ -4,7 +4,7 @@ import { NavigatedData, Page } from "ui/page";
 import { SnackBar } from "nativescript-snackbar";
 
 import { User } from "../../profile/User";
-import * as AuthService from "../authentication-service";
+import { AuthService } from "../authentication-service";
 
 let viewModel = new Observable();
 

@@ -4,75 +4,79 @@ import { knownFolders } from "tns-core-modules/file-system";
 
 import { User } from "../profile/User";
 
-export function isValidEmail(email) {
-    return EmailValidator.validate(email);
-}
+export namespace AuthService {
 
-export function register(user: User): Promise<User> {
-    return new Promise<User>((resolve, reject) => {
-        resolve(getMockData());
-    });
-}
+    export function isValidEmail(email: string): boolean {
+        return EmailValidator.validate(email);
+    }
 
-export function login(user) {
-    if (user.email === "admin@foo.com" && user.password === "password123") {
+    export function register(user: User): Promise<User> {
         return new Promise<User>((resolve, reject) => {
-            let userRawData = readJSON("testdata/user.json");
-            let user = new User(
-                userRawData.email,
-                userRawData.name,
-                userRawData.nickname,
-                userRawData.city,
-                userRawData.region,
-                userRawData.country,
-                userRawData.sex,
-                userRawData.dateOfBirth,
-                userRawData.profileImage,
-                userRawData.certifications,
-                userRawData.diveHistory,
-                userRawData.documents
-            );
-            resolve(user);
+            resolve(getMockData());
         });
     }
-    return new Promise<undefined>((resolve, reject) => {
-        reject();
-    });
-}
 
-export function logout() {
-    return new Promise<undefined>((resolve, reject) => {
-        resolve();
-    });
-}
-
-function getMockData() {
-    let userRawData = readJSON("testdata/user.json");
-    let user = new User(
-        userRawData.email,
-        userRawData.name,
-        userRawData.nickname,
-        userRawData.city,
-        userRawData.region,
-        userRawData.country,
-        userRawData.sex,
-        userRawData.dateOfBirth,
-        userRawData.profileImage,
-        userRawData.certifications,
-        userRawData.diveHistory,
-        userRawData.documents
-    );
-
-    return user;
-}
-
-function readJSON(file: string): any {
-    if (!file) {
-        return {};
+    export function login(user: any): Promise<undefined> {
+        if (user.email === "admin@foo.com" && user.password === "password123") {
+            return new Promise<User>((resolve, reject) => {
+                let userRawData = readJSON("testdata/user.json");
+                let user = new User(
+                    userRawData.email,
+                    userRawData.name,
+                    userRawData.nickname,
+                    userRawData.city,
+                    userRawData.region,
+                    userRawData.country,
+                    userRawData.sex,
+                    userRawData.dateOfBirth,
+                    userRawData.profileImage,
+                    userRawData.certifications,
+                    userRawData.diveHistory,
+                    userRawData.documents
+                );
+                resolve(user);
+            });
+        }
+        return new Promise<undefined>((resolve, reject) => {
+            reject();
+        });
     }
 
-    let appFolder = knownFolders.currentApp();
-    let mockData = appFolder.getFile(file);
+    export function logout(): Promise<undefined> {
+        return new Promise<undefined>((resolve, reject) => {
+            resolve();
+        });
+    }
 
-    return JSON.parse(mockData.readTextSync());
+    function getMockData(): any {
+        let userRawData = readJSON("testdata/user.json");
+        let user = new User(
+            userRawData.email,
+            userRawData.name,
+            userRawData.nickname,
+            userRawData.city,
+            userRawData.region,
+            userRawData.country,
+            userRawData.sex,
+            userRawData.dateOfBirth,
+            userRawData.profileImage,
+            userRawData.certifications,
+            userRawData.diveHistory,
+            userRawData.documents
+        );
+
+        return user;
+    }
+
+    function readJSON(file: string): any {
+        if (!file) {
+            return {};
+        }
+
+        let appFolder = knownFolders.currentApp();
+        let mockData = appFolder.getFile(file);
+
+        return JSON.parse(mockData.readTextSync());
+    }
+
 }

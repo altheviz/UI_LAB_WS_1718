@@ -3,7 +3,7 @@ import { topmost } from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
 
 import { MyDrawerViewModel } from "./MyDrawer-view-model";
-import * as AuthService from "../../authentication/authentication-service";
+import { AuthService } from "../../authentication/authentication-service";
 
 /* ***********************************************************
 * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
