@@ -6,11 +6,6 @@ Feel free to customize layouts and components to change how your app drawer look
     xmlns:myDrawer="shared/my-drawer">
     <StackLayout class="{{ 'sidedrawer-header' + (selectedPage === 'Profile' ? ' selected': '') }}"
           route="profile/profile-page" tap="onNavigationItemTap">
-          // ToDo:
-          // mit class="sidedrawer-header" ist die insterlation nicht zu ende gekommen, später noch mal anschauen
-          //      Vermutlich broblem bei tns, nach neustart noch mal testen.
-          // Auf der Profileseite verschwiendet die footnote, css noch mal anschauen
-          // User Name, bild und mailadresse durch variablen oder zeiger ersetzen
         <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
         <Label class="sidedrawer-header-brand" text="User Name" />
         <Label class="footnote" text="username@mail.com" />
@@ -24,36 +19,19 @@ Feel free to customize layouts and components to change how your app drawer look
                 <Label row="0" col="1" text="Home" class="p-r-10" />
             </GridLayout>
 
-            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
-                route="browse/browse-page" tap="onNavigationItemTap">
-                <Label row="0" col="0" text="&#xf1ea;" class="fa" />
-                <Label row="0" col="1" text="Browse" class="p-r-10" />
-            </GridLayout>
-
-			<GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
-                route="search/search-page" tap="onNavigationItemTap">
-                <Label row="0" col="0" text="&#xf002;" class="fa" />
-                <Label row="0" col="1" text="Search" class="p-r-10" />
-            </GridLayout>
-
-            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Documents' ? ' selected': '') }}"
-                route="documents/documents-page"  tap="onNavigationItemTap">
-                <Label row="0" col="0" text="&#xf1ea;;" class="fa" />
-                <Label row="0" col="1" text="Documents" class="p-r-10" />
-            </GridLayout>
-
-            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
-                route="featured/featured-page" tap="onNavigationItemTap">
-                <Label row="0" col="0" text="&#xf005;" class="fa" />
-                <Label row="0" col="1" text="Featured" class="p-r-10" />
-            </GridLayout>
-
             <StackLayout class="hr-light"></StackLayout>
 
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
                 route="settings/settings-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf013;" class="fa" />
                 <Label row="0" col="1" text="Settings" class="p-r-10" />
+            </GridLayout>
+
+            <StackLayout class="hr-light"></StackLayout>
+            
+            <GridLayout columns="auto, *" class="sidedrawer-list-item" tap="onLogout">
+                <Label row="0" col="0" text="&#xf011;" class="fa" />
+                <Label row="0" col="1" text="Logout" class="p-r-10" />
             </GridLayout>
         </StackLayout>
     </ScrollView>

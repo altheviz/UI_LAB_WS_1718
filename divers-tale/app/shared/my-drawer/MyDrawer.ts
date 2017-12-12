@@ -3,6 +3,7 @@ import { topmost } from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
 
 import { MyDrawerViewModel } from "./MyDrawer-view-model";
+import * as AuthService from "../../authentication/authentication-service";
 
 /* ***********************************************************
 * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
@@ -29,4 +30,20 @@ export function onNavigationItemTap(args: EventData): void {
             name: "fade"
         }
     });
+}
+
+export function onLogout(args: EventData): void {
+    AuthService.logout()
+        .then(() => {
+            topmost().navigate({
+                moduleName: "authentication/login/login-page",
+                backstackVisible: false,
+                transition: {
+                    name: "fade"
+                }
+            });
+        })
+        .catch((err) => {
+            console.log("Logout failed: ", err);
+        });
 }
