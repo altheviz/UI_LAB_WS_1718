@@ -43,8 +43,8 @@ export function login() {
 
 function completeLogin(user) {
     AuthService.login(user)
-        .then(() => {
-            console.log("User logged in: ", JSON.stringify(user.email));
+        .then((response) => {
+            console.log("User logged in: ", JSON.stringify(response.email));
             topmost().navigate(homeModule);
         })
         .catch(() => {
