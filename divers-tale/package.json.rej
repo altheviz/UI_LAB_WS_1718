@@ -1,0 +1,15 @@
+diff a/divers-tale/package.json b/divers-tale/package.json	(rejected hunks)
+@@ -16,11 +16,11 @@
+     "lint": "tslint \"app/**/*.ts\""
+   },
+   "dependencies": {
+-    "nativescript-floatingactionbutton": "^4.1.3",
+     "elasticlunr": "^0.9.5",
+-    "nativescript-localstorage": "^1.1.5",
+     "nativescript-checkbox": "^3.0.3",
+     "nativescript-drop-down": "^3.2.0",
++    "nativescript-floatingactionbutton": "^4.1.3",
++    "nativescript-localstorage": "^1.1.5",
+     "nativescript-modal-datetimepicker": "^1.0.3",
+     "nativescript-pro-ui": "3.2.0",
+     "nativescript-theme-core": "1.0.4",

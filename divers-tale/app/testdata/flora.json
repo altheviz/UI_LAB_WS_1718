@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Kieselalgen",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Diatoms_through_the_microscope.jpg/300px-Diatoms_through_the_microscope.jpg",
+        "details": "https://de.wikipedia.org/wiki/Kieselalgen",
+        "description": "Die Kieselalgen oder Diatomeen (Bacillariophyta) bilden ein Taxon von Photosynthese betreibenden Protisten (Protista) und werden in die Gruppe der Stramenopilen (Stramenopila) eingeordnet. Alternativ werden sie auch als Bacillariophyceae geführt und in die Heterokontophyta gestellt. Man unterscheidet heute rund 6000 Arten. Es wird jedoch angenommen, dass insgesamt bis zu 100.000 Arten existieren.",
+        "tags": "Bacillariophyta, Protista, Stramenopila",
+        "type": "salt"
+    },
+    {
+        "name": "Spiegelndes Laichkraut",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Potamogeton-lucens-05-08-2009-064.jpg/300px-Potamogeton-lucens-05-08-2009-064.jpg",
+        "details": "https://de.wikipedia.org/wiki/Spiegelndes_Laichkraut",
+        "description": "Das Spiegelnde Laichkraut (Potamogeton lucens), auch Glänzendes Laichkraut genannt, ist eine Pflanzenart aus der Gattung Laichkräuter (Potamogeton) innerhalb der Familie der Laichkrautgewächse (Potamogetonaceae).",
+        "tags": "Potamogeton lucens, Potamogeton, Potamogetonaceae",
+        "type": "fresh"
+    },
+    {
+        "name": "Weiße Seerose",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nymphaea_alba_in_Duisburg.jpg/300px-Nymphaea_alba_in_Duisburg.jpg",
+        "details": "https://de.wikipedia.org/wiki/Wei%C3%9Fe_Seerose",
+        "description": "Die Weiße Seerose (Nymphaea alba), im Volksmund oft als Wasserlilie bezeichnet, ist eine Pflanzenart aus der Familie der Seerosengewächse (Nymphaeaceae). Sie gilt als typische Vertreterin der Schwimmblattpflanzen. Daher wird die Schwimmblattzone im Uferbereich von Seen, die auch eine Stufe der Verlandungsreihe bilden kann, als Seerosenzone bezeichnet.",
+        "tags": "Nymphaea alba, Nymphaeaceae",
+        "type": "fresh"
+    },
+    {
+        "name": "Schwimmfarne",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Salvinia_auriculata3.JPG/300px-Salvinia_auriculata3.JPG",
+        "details": "https://de.wikipedia.org/wiki/Schwimmfarne",
+        "description": "Die Gattung Schwimmfarne (Salvinia) gehört zu den Schwimmfarngewächsen und besteht aus zehn bis zwölf Arten, die mit Ausnahme der Art Salvinia natans in den Tropen Mittel- und Südamerikas beheimatet sind. Schwimmfarne kommen nur in stehenden oder langsam fließenden Gewässern vor. Sie kommen aufgrund menschlicher Einführungen weltweit vor.",
+        "tags": "Salvinia",
+        "type": "fresh"
+    },
+    {
+        "name": "Haptophyta",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Gephyrocapsa_oceanica_color.jpg/300px-Gephyrocapsa_oceanica_color.jpg",
+        "details": "https://de.wikipedia.org/wiki/Haptophyta",
+        "description": "Die Haptophyta (früher auch Prymnesiophytagenannt) sind überwiegend marin-planktonisch lebende, komplexe einzellige Algen.",
+        "tags": "früher auch Prymnesiophyta genannt",
+        "type": "salt"
+    },
+    {
+        "name": "Grundnessel",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Plant_-_Hydrilla_verticillata_-_Batu_kawa.jpg",
+        "details": "https://de.wikipedia.org/wiki/Grundnessel",
+        "description": "Die Grundnessel (Hydrilla verticillata) ist eine Wasserpflanzenart ausder Familie der Froschbissgewächse (Hydrocharitaceae). Sie ist die einzige Art der Gattung Hydrilla.",
+        "tags": "Hydrilla verticillata, Hydrocharitaceae",
+        "type": "fresh"
+    },
+    {
+        "name": "Laichkräuter",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/PotamogetonCrispus.jpg/300px-PotamogetonCrispus.jpg",
+        "details": "https://de.wikipedia.org/wiki/Laichkr%C3%A4uter",
+        "description": "Die Laichkräuter (Potamogeton) sind eine Pflanzengattung innerhalb der Familie der Laichkrautgewächse (Potamogetonaceae). Diese Wasserpflanzen sind in den gemäßigten und subtropischen Gebieten fast weltweit verbreitet. Die bekannteste und häufigste Art ist wohl das Schwimmende Laichkraut (Potamogeton natans), das große Schwimmblatt-Teppiche auf Gewässern bilden kann.",
+        "tags": "Potamogeton, Potamogetonaceae, Potamogeton natans",
+        "type": "fresh"
+    },
+    {
+        "name": "Seegrasgewächse",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Zostera_marina.jpeg/300px-Zostera_marina.jpeg",
+        "details": "https://de.wikipedia.org/wiki/Seegrasgew%C3%A4chse",
+        "description": "Die Seegrasgewächse (Zosteraceae) sind eine kleine Pflanzenfamilie aus der Ordnung der Froschlöffelartigen (Alismatales). Die nur zwei bis vier Gattungen mit bis zu 20 Arten gedeihen als submerse Wasserpflanzen im Salzwasser in den Küstengebieten fast weltweit, aber weitgehend außerhalb der Tropen.",
+        "tags": "Zosteraceae, Alismatales",
+        "type": "salt"
+    }
+]

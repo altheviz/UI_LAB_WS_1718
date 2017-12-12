@@ -8,7 +8,7 @@
 ### Teams and Features
 
 * **Foo:** Profile/Login + Mainpage + Settings
-* **Was cooles:** Checklist, Flora & Fauna
+* **Was cooles:** Checklist, Flora & Fauna, Dive signs
 * **Space Ponies:** Equipment + Diveset + Market
 * **Bestes Team:** Divesite
 * **Mauro:** Buddy + Invitation + Event

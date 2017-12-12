@@ -23,12 +23,13 @@ export function onLoaded(args: EventData): void {
 export function onNavigationItemTap(args: EventData): void {
     const component = <GridLayout>args.object;
     const componentRoute = component.get("route");
-
+    const pageName = component.get("pagename");
     topmost().navigate({
         moduleName: componentRoute,
         transition: {
             name: "fade"
-        }
+        },
+        context: { pageName: pageName }
     });
 }
 

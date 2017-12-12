@@ -1,0 +1,67 @@
+<Page
+    navigatingTo="onNavigatingTo"  
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:dd="nativescript-drop-down">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+
+        <Label class="action-bar-title" text="Market"></Label>
+    </ActionBar>
+
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="Market"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <nsDrawer:RadSideDrawer.mainContent>
+            <TabView selectedIndexChanged="onSelectedIndexChanged">
+                <TabView.items>
+                    <TabViewItem title="Search" textTransform="none" >
+                        <TabViewItem.view>
+                            <GridLayout rows="*, 60">
+                                <ListView items="{{ list }}" >
+                                    <ListView.itemTemplate>
+                                        <GridLayout columns="auto, *,auto, auto" tap="viewGroupDetails">
+                                            <Label text="{{ name }}" textWrap="true" style="margin: 10;" />
+                                            <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" style="margin: 10;" />
+                                        </GridLayout>
+                                    </ListView.itemTemplate>
+                                </ListView>
+                                <StackLayout row="1" orientation="horizontal">
+                                    <Button text="Verkaufen" width="100%" tap="newGroup" textTransform="none"/>
+                                </StackLayout>
+                            </GridLayout>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                </TabView.items>
+            </TabView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

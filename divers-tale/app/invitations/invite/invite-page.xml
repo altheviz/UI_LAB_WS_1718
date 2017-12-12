@@ -1,0 +1,18 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+	<Page.actionBar>
+		<ActionBar class="action-bar">
+      		<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+			<Label class="action-bar-title" text="Anfrage senden"></Label>
+    	</ActionBar>
+	</Page.actionBar>
+
+  <GridLayout rows="*, 60">
+  <StackLayout orientation="vertical" > 
+    <Label horizontalAlignment="center" fontSize="18" text="{{ heading }}" height="50" />       
+      <TextView id="message" text="{{ invitation.message }}" hint="Nachricht"/>
+    </StackLayout>
+    <StackLayout row="1" orientation="horizontal">
+      <Button text="Anfrage senden" color="white" backgroundColor="#3A53FF" tap="invite" width="100%" textTransform="none"/>
+    </StackLayout>
+  </GridLayout>
+</Page>

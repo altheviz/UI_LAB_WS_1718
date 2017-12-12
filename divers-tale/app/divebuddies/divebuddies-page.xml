@@ -1,0 +1,130 @@
+<Page
+    navigatingTo="onNavigatingTo"  
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:dd="nativescript-drop-down">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <ActionItem  tap="toInvitations">
+
+            <Button text="{{ invitations.length }}" style="font-size: 20; font-weight: bold; padding-top:10px" backgroundColor="#e83622" textAlignment="center" width="35" height="35" borderBottomLeftRadius="20" borderBottomRightRadius="20" borderTopLeftRadius="20" borderTopRightRadius="20" />
+        </ActionItem>
+
+
+        <Label class="action-bar-title" text="Divebuddies"></Label>
+    </ActionBar>
+
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="Divebuddies"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.mainContent>
+            <TabView selectedIndexChanged="onSelectedIndexChanged">
+                <TabView.items>
+                <TabViewItem title="Buddies" textTransform="none" >
+                    <TabViewItem.view>
+                    <ListView items="{{ myDivebuddies }}">
+                        <ListView.itemTemplate>
+                        <GridLayout columns="auto, *,auto, auto, auto, auto" tap="viewUserDetails">
+                            <Label text="{{ nickname }}" textWrap="true" style="margin: 10;" />
+                            <Label text="&#xf235;" class="font-awesome" col="2" tap="removeBuddy" style="margin: 10;" />
+                        </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="Gruppen" textTransform="none" >
+                    <TabViewItem.view>
+                      <GridLayout rows="*, 60">
+                        <ListView items="{{ myGroups }}" >
+                            <ListView.itemTemplate>
+                            <GridLayout columns="auto, *,auto, auto" tap="viewGroupDetails">
+                                <Label text="{{ name }}" textWrap="true" style="margin: 10;" />
+                                <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" style="margin: 10;" />
+                            </GridLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
+                        <StackLayout row="1" orientation="horizontal">
+                          <Button text="Gruppe hinzufügen" width="100%" tap="newGroup" textTransform="none"/>
+                        </StackLayout>
+                      </GridLayout>
+                    </TabViewItem.view>
+                </TabViewItem>
+                <TabViewItem title="Suche" textTransform="none">
+                    <TabViewItem.view>
+                      <GridLayout rows="*, 60">
+                        <ScrollView>
+                           <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
+                                <Label text="Benutzername: " row="0" col="0" textWrap="true" style="margin: 10;" />
+                                <TextField id="nickname" text="{{ nickname }}" autocorrect="false" autocapitalizationType="none" row="0" col="1"  />
+                                <Label text="Geschlecht: " row="1" col="0" textWrap="true" style="margin: 10;" />
+                                <dd:DropDown id="sex" items="{{ sex }}" selectedIndex="{{ selectedType }}" row="1" col="1" class="dropdown" />
+                                <Label text="Alter: " row="2" col="0" textWrap="true" style="margin: 10;" />
+                                <TextField id="age" text="{{ age }}" autocorrect="false" autocapitalizationType="none" row="2" col="1" keyboardType="number" />       
+                                <Label text="Stadt: " row="3" col="0" textWrap="true" style="margin: 10;" />
+                                <TextField id="city" text="{{ city }}" autocorrect="false" autocapitalizationType="none" row="3" col="1"  />     
+                                <Label text="Region: " row="4" col="0" textWrap="true" style="margin: 10;" />
+                                <TextField id="region" text="{{ region }}" autocorrect="false" autocapitalizationType="none" row="4" col="1" />  
+                                <Label text="Land: " row="5" col="0" textWrap="true" style="margin: 10;" />
+                                <TextField id="country" text="{{ country }}" autocorrect="false" autocapitalizationType="none" row="5" col="1" />             
+                                <Label text="Tauchgänge: " row="6" col="0" textWrap="true" style="margin: 10;" />
+                                <TextField id="experience" text="{{ experience }}" autocorrect="false" autocapitalizationType="none" row="6" col="1" keyboardType="number" />                               
+                                <Label text="Zertifikate: " row="7" col="0" textWrap="true" style="margin: 10;" />
+                                <TextField id="certificate" text="{{ certificate }}" autocorrect="false" autocapitalizationType="none" row="7" col="1" />  
+                            </GridLayout>
+                        </ScrollView>
+                        <StackLayout row="1" orientation="horizontal">
+                            <Button text="Suchen" tap="search" colSpan="2" width="100%" row="8" col="0" textTransform="none"/>                             
+                        </StackLayout>
+                      </GridLayout>
+                    </TabViewItem.view>
+                </TabViewItem>
+                </TabView.items>
+            </TabView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

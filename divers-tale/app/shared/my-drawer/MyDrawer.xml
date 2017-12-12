@@ -19,6 +19,48 @@ Feel free to customize layouts and components to change how your app drawer look
                 <Label row="0" col="1" text="Home" class="p-r-10" />
             </GridLayout>
 
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Divelogs' ? ' selected': '') }}"
+                route="divelog/divelog-list-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf02d;" class="fa" />
+                <Label row="0" col="1" text="Divelogs" class="p-r-10" />
+            </GridLayout>
+
+             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Flora' ? ' selected': '') }}"
+                route="florafauna/florafauna-page" pagename="flora" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf299;" class="fa" />
+                <Label row="0" col="1" text="Flora" class="p-r-10" />
+            </GridLayout>
+
+             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Fauna' ? ' selected': '') }}"
+                route="florafauna/florafauna-page" pagename="fauna" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf1d6;" class="fa" />
+                <Label row="0" col="1" text="Fauna" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Checklist' ? ' selected': '') }}"
+                route="checklist/checklist-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf005;" class="fa" />
+                <Label row="0" col="1" text="Checklist" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Events' ? ' selected': '') }}"
+                route="events/events-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf073;" class="fa" />
+                <Label row="0" col="1" text="Events" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Divebuddies' ? ' selected': '') }}"
+                route="divebuddies/divebuddies-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf0c0;" class="fa" />
+                <Label row="0" col="1" text="Divebuddies" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Market' ? ' selected': '') }}"
+                route="market/market-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf153;" class="fa" />
+                <Label row="0" col="1" text="Market" class="p-r-10" />
+            </GridLayout>
+
             <StackLayout class="hr-light"></StackLayout>
 
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"

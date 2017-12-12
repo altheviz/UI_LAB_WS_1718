@@ -1,0 +1,61 @@
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
+    xmlns:myDrawer="shared/my-drawer" 
+    xmlns="http://www.nativescript.org/tns.xsd">
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <Label class="action-bar-title" text="{{ titel }}"></Label>
+    </ActionBar>
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="{{ selectedPage }}"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.mainContent>
+            <scroll-view>
+                <stack-layout>
+                    <Image src="{{ fItem.img }}" />
+                    <Label text="{{ fItem.name }}" class="name"/>
+                    <Label text="{{ fItem.description }}" textWrap="true" />
+                    <Label text="{{ 'Wikipedia: ' + fItem.name }}" class="hyperlink" tap="openWiki"/>
+                    <Label text="{{ 'Tags: ' + fItem.tags }}" class="tags" textWrap="true" />
+                    <stack-layout height="400px"/></stack-layout>
+            </scroll-view>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

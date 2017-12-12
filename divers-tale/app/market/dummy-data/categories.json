@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Alle"
+    },
+    {
+        "id": 2,
+        "name": "Taucheranzüge"
+    }, 
+    {
+        "id": 3,
+        "name": "Flaschen"
+    },
+    {
+        "id": 4,
+        "name": "Tauchcomputer"
+    },
+    {
+        "id": 5,
+        "name": "Brillen"
+    }
+]

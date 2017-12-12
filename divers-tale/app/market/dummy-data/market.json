@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "mame": "Taucherbrille",
+        "brand": "Sunblocker 4000",
+        "cathegory": 4,
+        "condition": 1,
+        "sellBy": 1,
+        "boughtBy": 3,
+        "price": "10€",
+        "imgUrl": "https://d26hhearhq0yio.cloudfront.net/content/misterspex/produkte/grafiken/12-110120-0154-03_a1.jpg"
+    },
+    {
+        "id": 2,
+        "mame": "Der aller erste",
+        "brand": "Cool brand 1",
+        "cathegory": 1,
+        "condition": 3,
+        "sellBy": 1,
+        "boughtBy": 4,
+        "price": "2.5€",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Dykkerdragt.jpg"
+    },
+    {
+        "id": 3,
+        "mame": "Der moderne",
+        "brand": "Cool brand 1",
+        "cathegory": 1,
+        "condition": 2,
+        "sellBy": 2,
+        "boughtBy": 3,
+        "price": "95€",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/Scuba33.jpg"
+    },
+    {
+        "id": 4,
+        "mame": "Tauchcomputer 1",
+        "brand": "Dive Computers Extreme",
+        "cathegory": 3,
+        "condition": 1,
+        "sellBy": 3,
+        "boughtBy": null,
+        "price": "1500€",
+        "imgUrl": "https://www.unterwasser.de/fileadmin/_processed_/csm_Tech_128_ComputercheckCressileonardo_c6c2fc654e.jpg"
+    }
+]

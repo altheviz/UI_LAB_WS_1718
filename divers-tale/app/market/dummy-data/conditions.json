@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "description": "Neu"
+    },
+    {
+        "id": 2,
+        "description": "Gebraucht"
+    },
+    {
+        "id": 3,
+        "description": "Schrott"
+    }
+]
