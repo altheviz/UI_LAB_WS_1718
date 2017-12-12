@@ -5,6 +5,12 @@
 
 **Important:** Try to use static (offline) data as much as possible. Also, do the login offline first (JSON file), but prepare services so that we can switch easily.
 
+### Mock user data
+
+| Email | Password |
+|-------|----------|
+| admin@foo.com | password123 |
+
 ### Teams and Features
 
 * **Foo:** Profile/Login + Mainpage + Settings
