@@ -1,0 +1,13 @@
+{
+  "name": "mock-backend-service",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "./node_modules/json-server/bin/index.js --watch mock-backend-data.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.12.1"
+  }
+}
