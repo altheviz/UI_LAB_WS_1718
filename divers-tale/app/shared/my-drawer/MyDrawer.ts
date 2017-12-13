@@ -1,24 +1,24 @@
 import { EventData } from "data/observable";
 import { topmost } from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
+import { SnackBar } from "nativescript-snackbar";
 
 import { MyDrawerViewModel } from "./MyDrawer-view-model";
+import { AuthService } from "../../authentication/authentication-service";
+import { User } from "../../profile/User";
+import { UserService } from "../../profile/user-service";
 
-/* ***********************************************************
-* Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
-*************************************************************/
 export function onLoaded(args: EventData): void {
     const component = <GridLayout>args.object;
     const componentTitle = component.get("selectedPage");
-
-    component.bindingContext = new MyDrawerViewModel(componentTitle);
+    
+    // Get current user data and fill profile form
+    UserService.getCurrentUser()
+        .then((user) => {
+            component.bindingContext = new MyDrawerViewModel(componentTitle, user);
+        });
 }
 
-/* ***********************************************************
-* Use the "tap" event handler of the <GridLayout> component for handling navigation item taps.
-* The "tap" event handler of the app drawer <GridLayout> item is used to navigate the app
-* based on the tapped navigationItem's route.
-*************************************************************/
 export function onNavigationItemTap(args: EventData): void {
     const component = <GridLayout>args.object;
     const componentRoute = component.get("route");
@@ -30,4 +30,22 @@ export function onNavigationItemTap(args: EventData): void {
         },
         context: { pageName: pageName }
     });
+}
+
+export function onLogout(args: EventData): void {
+    AuthService.logout()
+        .then(() => {
+            console.info("LOGOUT SUCCESSFUL");
+            topmost().navigate({
+                moduleName: "authentication/login/login-page",
+                transition: {
+                    name: "fade"
+                },
+                backstackVisible: false,
+                clearHistory: true
+            });
+        })
+        .catch(() => {
+            (new SnackBar()).simple("Logout failed. Please try again.");
+        });
 }
