@@ -4,9 +4,9 @@ import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import { GridLayout } from "ui/layouts/grid-layout";
 
-import { UserViewModel } from "./User" //verwenden
+// import { UserViewModel } from "./User" //verwenden
 
-const vm = new UserViewModel();
+// const vm = new UserViewModel();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -21,7 +21,7 @@ export function onNavigatingTo(args: NavigatedData) {
     }
 
     const page = <Page>args.object;
-    page.bindingContext = vm
+    // page.bindingContext = vm
 }
 
 

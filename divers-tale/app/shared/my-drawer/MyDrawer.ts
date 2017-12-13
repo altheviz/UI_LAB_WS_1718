@@ -36,6 +36,7 @@ export function onNavigationItemTap(args: EventData): void {
 export function onLogout(args: EventData): void {
     AuthService.logout()
         .then(() => {
+            console.info("LOGOUT SUCCESSFUL");
             topmost().navigate({
                 moduleName: "authentication/login/login-page",
                 backstackVisible: false,

@@ -44,7 +44,7 @@ export function login() {
 function completeLogin(user) {
     AuthService.login(user)
         .then((response) => {
-            console.log("User logged in: ", JSON.stringify(response || ''));
+            console.info("LOGIN SUCCESSFUL", JSON.stringify(response || ''));
             topmost().navigate(homeModule);
         })
         .catch(() => {

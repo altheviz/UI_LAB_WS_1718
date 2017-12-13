@@ -3,6 +3,7 @@ import * as localStorage from "nativescript-localstorage";
 import * as EmailValidator from "email-validator";
 
 import { User } from "../profile/User";
+import { UserService } from "../profile/user-service";
 
 export namespace AuthService {
 
@@ -21,7 +22,7 @@ export namespace AuthService {
             .catch(errorHandler);
     }
 
-    export function login(user: any): Promise<any> {
+    export function login(user: any): Promise<User> {
         // IMPORTANT: Authentication route should use POST method
         // when implemented as real backend and therefore pass
         // the user credentials
@@ -32,7 +33,10 @@ export namespace AuthService {
                 // Write accessToken to local storage
                 localStorage.setItem("_accessToken_", response["accessToken"]);
                 // Get and return current user
-                return;
+                return UserService.getCurrentUser()
+                    .then((currentUser) => {
+                        return currentUser;
+                    });
             })
             .catch(errorHandler);
     }
@@ -52,12 +56,13 @@ export namespace AuthService {
 
     export function isLoggedIn(): boolean {
         let accessToken = localStorage.getItem("_accessToken_");
-        console.info(accessToken);
         if (!accessToken || accessToken === "") {
             return false;
         }
         return true;
     }
+
+    // Helper functions
 
     function errorHandler(response): Promise<any> {
         // Proper implementation needed
