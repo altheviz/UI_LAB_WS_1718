@@ -6,7 +6,7 @@ Feel free to customize layouts and components to change how your app drawer look
     xmlns:myDrawer="shared/my-drawer">
     <StackLayout class="{{ 'sidedrawer-header' + (selectedPage === 'Profile' ? ' selected': '') }}"
           route="profile/profile-page" tap="onNavigationItemTap">
-        <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
+        <Image class="profile-image" src="{{ user.profileImage }}" />
         <Label class="sidedrawer-header-brand" text="{{ user.name }}" />
         <Label class="footnote" text="{{ user.email }}" />
     </StackLayout>
