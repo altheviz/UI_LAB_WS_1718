@@ -48,6 +48,7 @@ export namespace AuthService {
             .then(responseErrorHandler)
             .then((response) => response.json())
             .then(() => {
+                UserService.resetCurrentUser();
                 localStorage.removeItem("_accessToken_");
                 return;
             })

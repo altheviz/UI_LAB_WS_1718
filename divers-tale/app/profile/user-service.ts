@@ -4,17 +4,29 @@ import { User } from "./User";
 
 export namespace UserService {
 
+    let currentUser: User;
+
     export function getCurrentUser(): Promise<User> {
+        if (currentUser) {
+            return new Promise((resolve, reject) => {
+                return resolve(currentUser);
+            });
+        }
         // IMPORTANT: API route should rather be something like
         // /users?current=true to fetch the currently logged in 
         // user identified by his bearer token
         return fetch(`${config.apiBaseURL}/users/1`)
             .then(responseErrorHandler)
             .then((response) => response.json())
-            .then((currentUser) => {
-                return createUserInstance(currentUser);
+            .then((user) => {
+                currentUser = createUserInstance(user);
+                return currentUser
             })
             .catch(errorHandler);
+    }
+
+    export function resetCurrentUser(): void {
+        currentUser = null;
     }
 
     // Helper functions
