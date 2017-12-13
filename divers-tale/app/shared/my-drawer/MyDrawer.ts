@@ -1,6 +1,7 @@
 import { EventData } from "data/observable";
 import { topmost } from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
+import { SnackBar } from "nativescript-snackbar";
 
 import { MyDrawerViewModel } from "./MyDrawer-view-model";
 import { AuthService } from "../../authentication/authentication-service";
@@ -44,7 +45,7 @@ export function onLogout(args: EventData): void {
                 clearHistory: true
             });
         })
-        .catch((err) => {
-            console.log("Logout failed: ", err);
+        .catch(() => {
+            (new SnackBar()).simple("Logout failed. Please try again.");
         });
 }
