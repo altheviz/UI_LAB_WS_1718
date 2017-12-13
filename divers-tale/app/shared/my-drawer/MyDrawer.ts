@@ -4,12 +4,18 @@ import { GridLayout } from "ui/layouts/grid-layout";
 
 import { MyDrawerViewModel } from "./MyDrawer-view-model";
 import { AuthService } from "../../authentication/authentication-service";
+import { User } from "../../profile/User";
+import { UserService } from "../../profile/user-service";
 
 export function onLoaded(args: EventData): void {
     const component = <GridLayout>args.object;
     const componentTitle = component.get("selectedPage");
-
-    component.bindingContext = new MyDrawerViewModel(componentTitle);
+    
+    // Get current user data and fill profile form
+    UserService.getCurrentUser()
+        .then((user) => {
+            component.bindingContext = new MyDrawerViewModel(componentTitle, user);
+        });
 }
 
 export function onNavigationItemTap(args: EventData): void {
