@@ -232,11 +232,11 @@ xmlns="http://www.nativescript.org/tns.xsd">
             <StackLayout height="1px" class="separation-line"></StackLayout>
             <Label text="Tank/Gas" class="settings-category"></Label>   
 
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ air }}">
                 <Label text="Air: "/>
                 <Label id="air" text="{{ air }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ ean }}">
                 <Label text="EAN: "/>
                 <Label id="ean" text="{{ ean }}"/>
                 <Label id="eanText" text="{{ eanText }}"/>
@@ -287,11 +287,11 @@ xmlns="http://www.nativescript.org/tns.xsd">
             <StackLayout height="1px" class="separation-line"></StackLayout>
             <Label text="Dry Suit" class="settings-category"></Label>   
 
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ drySuitGloves }}">
                 <Label text="Gloves: "/>
                 <Label id="drySuitGloves" text="{{ drySuitGloves }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ drySuitShoes }}">
                 <Label text="Shoes: "/>
                 <Label id="drySuitShoes" text="{{ drySuitShoes }}"/>
             </FlexboxLayout>
@@ -316,79 +316,79 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text="Current: "/>
                 <Label id="current" text="{{ current }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ sunny }}">
                 <Label text="Sunny: "/>
                 <Label id="sunny" text="{{ sunny }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ sunCloud }}">
                 <Label text="Sun Cloud: "/>
                 <Label id="sunCloud" text="{{ sunCloud }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ cloud }}">
                 <Label text="Clouds: "/>
                 <Label id="cloud" text="{{ cloud }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ rain }}">
                 <Label text="Rain: "/>
                 <Label id="rain" text="{{ rain }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ fresh }}">
                 <Label text="Fresh: "/>
                 <Label id="fresh" text="{{ fresh }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ salt }}">
                 <Label text="Salt: "/>
                 <Label id="salt" text="{{ salt }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ boat }}">
                 <Label text="Boat: "/>
                 <Label id="boat" text="{{ boat }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ night }}">
                 <Label text="Night: "/>
                 <Label id="night" text="{{ night }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ surf }}">
                 <Label text="Surf: "/>
                 <Label id="surf" text="{{ surf }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ waves }}">
                 <Label text="Waves: "/>
                 <Label id="waves" text="{{ waves }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ surge }}">
                 <Label text="Surge: "/>
                 <Label id="surge" text="{{ surge }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ wreck }}">
                 <Label text="Wreck: "/>
                 <Label id="wreck" text="{{ wreck }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ reef }}">
                 <Label text="Reef: "/>
                 <Label id="reef" text="{{ reef }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ deep }}">
                 <Label text="Deep: "/>
                 <Label id="deep" text="{{ deep }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ photo }}">
                 <Label text="Photo: "/>
                 <Label id="photo" text="{{ photo }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ drift }}">
                 <Label text="Drift: "/>
                 <Label id="drift" text="{{ drift }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ training }}">
                 <Label text="Training: "/>
                 <Label id="training" text="{{ training }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ survey }}">
                 <Label text="Survey: "/>
                 <Label id="survey" text="{{ survey }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ recovery }}">
                 <Label text="Recovery: "/>
                 <Label id="recovery" text="{{ recovery }}"/>
             </FlexboxLayout>
@@ -440,15 +440,15 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text="Name: "/>
                 <Label id="verificatorName" class="divelog-nav"  tap="onBuddyClicked" text="{{ verificatorName }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ instructor }}">
                 <Label text="Instructor: "/>
                 <Label id="instructor" text="{{ instructor }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ diveMaster }}">
                 <Label text="Divemaster: "/>
                 <Label id="diveMaster" text="{{ diveMaster }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout flexDirection="row" class="{{ buddy }}">
                 <Label text="Buddy: "/>
                 <Label id="buddy" text="{{ buddy }}"/>
             </FlexboxLayout>

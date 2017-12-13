@@ -37,8 +37,8 @@ export class DivelogViewModel extends Observable {
     public trim: number;
 
 // tank / gas
-    public air: boolean;
-    public ean: boolean;
+    public air: String;
+    public ean: String;
     public eanText: string;
     public tankType: string;
     public tankSize: string;
@@ -52,33 +52,33 @@ export class DivelogViewModel extends Observable {
     public wetSuitLongSuit: number;
 
 // dry suit
-    public drySuitGloves: boolean;
-    public drySuitShoes: boolean;
+    public drySuitGloves: String;
+    public drySuitShoes: String;
     public drySuit: string;
     public drySuitLiner: string;
 
 // conditions
     public viz: number;
     public current: string;
-    public sunny: boolean;
-    public sunCloud: boolean;
-    public cloud: boolean;
-    public rain: boolean;
-    public fresh: boolean;
-    public salt: boolean;
-    public boat: boolean;
-    public night: boolean;
-    public surf: boolean;
-    public waves: boolean;
-    public surge: boolean;
-    public wreck: boolean;
-    public reef: boolean;
-    public deep: boolean;
-    public photo: boolean;
-    public drift: boolean;
-    public training: boolean;
-    public survey: boolean;
-    public recovery: boolean;
+    public sunny: String;
+    public sunCloud: String;
+    public cloud: String;
+    public rain: String;
+    public fresh: String;
+    public salt: String;
+    public boat: String;
+    public night: String;
+    public surf: String;
+    public waves: String;
+    public surge: String;
+    public wreck: String;
+    public reef: String;
+    public deep: String;
+    public photo: String;
+    public drift: String;
+    public training: String;
+    public survey: String;
+    public recovery: String;
 
 // temperature
     public aboveSurface: number;
@@ -95,9 +95,9 @@ export class DivelogViewModel extends Observable {
 
 // verification
     public verificatorName: string;
-    public instructor: boolean;
-    public diveMaster: boolean;
-    public buddy: boolean;
+    public instructor: String;
+    public diveMaster: String;
+    public buddy: String;
     public certificationNumber: number;
 
     constructor() {
