@@ -1,8 +1,7 @@
+import * as config from "../shared/config";
+import * as localStorage from "nativescript-localstorage";
 import * as EmailValidator from "email-validator";
-import * as fetchModule from "fetch";
-import { knownFolders } from "tns-core-modules/file-system";
 
-import { MockDataService } from "../testdata/mock-data-service";
 import { User } from "../profile/User";
 
 export namespace AuthService {
@@ -12,48 +11,61 @@ export namespace AuthService {
     }
 
     export function register(user: User): Promise<User> {
-        return new Promise<User>((resolve, reject) => {
-            let user = getUserMockData();
-            resolve(user);
-        });
+        return fetch(`${config.apiBaseURL}/users`, {
+                method: "POST",
+                headers: new Headers({ "Content-Type": "application/json" }),
+                body: JSON.stringify(user)
+            })
+            .then(responseErrorHandler)
+            .then((response) => response.json())
+            .catch(errorHandler);
     }
 
-    export function login(user: any): Promise<User> {
-        if (user.email === "admin@foo.com" && user.password === "password123") {
-            return new Promise<User>((resolve, reject) => {
-                let user = getUserMockData();
-                resolve(user);
-            });
-        }
-        return new Promise<User>((resolve, reject) => {
+    export function login(user: any): Promise<any> {
+        // IMPORTANT: Authentication route should use POST method
+        // when implemented as real backend and therefore pass
+        // the user credentials
+        return fetch(`${config.apiBaseURL}/authenticate`)
+            .then(responseErrorHandler)
+            .then((response) => response.json())
+            .then((response) => {
+                // Write accessToken to local storage
+                localStorage.setItem("_accessToken_", response["accessToken"]);
+                // Get and return current user
+                return;
+            })
+            .catch(errorHandler);
+    }
+
+    export function logout(): Promise<undefined> {
+        // IMPORTANT: Authentication route should also use POST method
+        // when implemented as real backend
+        return fetch(`${config.apiBaseURL}/deauthenticate`)
+            .then(responseErrorHandler)
+            .then((response) => response.json())
+            .then(() => {
+                localStorage.removeItem("_accessToken_");
+                return;
+            })
+            .catch(errorHandler);
+    }
+
+    function errorHandler(response): Promise<any> {
+        // Proper implementation needed
+        // not just console.log ;)
+        console.error("HTTP REQUEST FAILED", JSON.stringify(response));
+        return new Promise((resolve, reject) => {
             reject();
         });
     }
 
-    export function logout(): Promise<undefined> {
-        return new Promise<undefined>((resolve, reject) => {
-            resolve();
-        });
-    }
-
-    function getUserMockData(): User {
-        let userRawData = MockDataService.getMockDataFor("user");
-        let user = new User(
-            userRawData.email,
-            userRawData.name,
-            userRawData.nickname,
-            userRawData.city,
-            userRawData.region,
-            userRawData.country,
-            userRawData.sex,
-            userRawData.dateOfBirth,
-            userRawData.profileImage,
-            userRawData.certifications,
-            userRawData.diveHistory,
-            userRawData.documents
-        );
-
-        return user;
+    function responseErrorHandler(response): Promise<any> {
+        if (!response || !response.status || response.status >= 300) {
+            return new Promise((resolve, reject) => {
+                reject(response);
+            });
+        }
+        return response;
     }
 
 }
