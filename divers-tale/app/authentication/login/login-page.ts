@@ -20,13 +20,26 @@ let registrationModule = {
 
 export function loaded(args) {
     const page = <Page>args.object;
+
+    // Fill in email if passed from registration form
+    if (page.navigationContext) {
+        let context = page.navigationContext;
+        if (context && context.email && context.email !== "") {
+            viewModel.set("email", context.email);
+        }
+    }
+
+    // Reset filled in password in form but
+    // leave email as is to facilitate login
+    viewModel.set("password", "");
+
     page.bindingContext = viewModel;
 }
 
 export function login() {
     let user = {
-        email: viewModel.get('email') || '',
-        password: viewModel.get('password') || ''
+        email: viewModel.get("email") || "",
+        password: viewModel.get("password") || ""
     };
 
     if (!user.email && !user.password) {
@@ -44,7 +57,7 @@ export function login() {
 function completeLogin(user) {
     AuthService.login(user)
         .then((response) => {
-            console.info("LOGIN SUCCESSFUL", JSON.stringify(response || ''));
+            console.info("LOGIN SUCCESSFUL", JSON.stringify(response || ""));
             topmost().navigate(homeModule);
         })
         .catch(() => {

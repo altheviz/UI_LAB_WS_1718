@@ -15,14 +15,18 @@ let loginModule = {
 };
 
 export function loaded(args) {
+    // Reset filled in data in form
+    viewModel.set("name", "");
+    viewModel.set("email", "");
+
     const page = <Page>args.object;
     page.bindingContext = viewModel;
 }
 
 export function register() {
     let user = {
-        email: viewModel.get('email') || '',
-        name: viewModel.get('name') || ''
+        email: viewModel.get("email") || "",
+        name: viewModel.get("name") || ""
     };
     if (!user.email && !user.name) {
         (new SnackBar()).simple("Please enter valid data.");
@@ -40,7 +44,10 @@ function completeRegistration(email: string, name: string) {
     let newUser = new User(email, name);
     AuthService.register(newUser)
         .then((response) => {
-            console.log("New user: ", JSON.stringify(response));
+            console.info("REGISTRATION SUCCESSFUL", JSON.stringify(response || ""));
+            loginModule["context"] = {
+                email: viewModel.get("email") || ""
+            };
             topmost().navigate(loginModule);
         })
         .catch(() => {
