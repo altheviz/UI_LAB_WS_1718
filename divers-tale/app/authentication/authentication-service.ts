@@ -50,6 +50,15 @@ export namespace AuthService {
             .catch(errorHandler);
     }
 
+    export function isLoggedIn(): boolean {
+        let accessToken = localStorage.getItem("_accessToken_");
+        console.info(accessToken);
+        if (!accessToken || accessToken === "") {
+            return false;
+        }
+        return true;
+    }
+
     function errorHandler(response): Promise<any> {
         // Proper implementation needed
         // not just console.log ;)
