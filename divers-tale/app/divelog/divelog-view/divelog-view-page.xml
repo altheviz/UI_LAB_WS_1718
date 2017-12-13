@@ -125,7 +125,8 @@ xmlns="http://www.nativescript.org/tns.xsd">
                     </FlexboxLayout>
                 <FlexboxLayout flexDirection="row">
                     <Label text="Location: "/>
-                    <Label id="diveNumber" text="{{ location }}"/>
+                    <Label id="locationIcon" class="fa fa-2x divelog-nav" text="&#xf041;"/>
+                    <Label id="diveNumber" class="divelog-nav" text="{{ location }}"/>
                 </FlexboxLayout>
                 <FlexboxLayout flexDirection="row">
                     <Label text="Date: "/>
@@ -437,7 +438,7 @@ xmlns="http://www.nativescript.org/tns.xsd">
 
             <FlexboxLayout flexDirection="row">
                 <Label text="Name: "/>
-                <Label id="verificatorName" text="{{ verificatorName }}"/>
+                <Label id="verificatorName" class="divelog-nav"  tap="onBuddyClicked" text="{{ verificatorName }}"/>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="row">
                 <Label text="Instructor: "/>
@@ -447,7 +448,7 @@ xmlns="http://www.nativescript.org/tns.xsd">
                 <Label text="Divemaster: "/>
                 <Label id="diveMaster" text="{{ diveMaster }}"/>
             </FlexboxLayout>
-            <FlexboxLayout flexDirection="row" tap="onBuddyClicked">
+            <FlexboxLayout flexDirection="row">
                 <Label text="Buddy: "/>
                 <Label id="buddy" text="{{ buddy }}"/>
             </FlexboxLayout>
