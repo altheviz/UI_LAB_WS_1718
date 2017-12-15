@@ -23,6 +23,7 @@
 
     .page-content-title {
         font-size: 32;
+        color: $accent-dark;
     }
 
     Label {
@@ -30,7 +31,7 @@
     }
 
     .hyperlink{
-        color: $accent-dark;
+        color: $accent-light;
         text-decoration: underline;
     }
 
