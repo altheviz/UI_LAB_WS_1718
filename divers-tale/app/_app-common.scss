@@ -1,9 +1,8 @@
-// Place any CSS rules you want to apply on both iOS and Android here.
-// This is where the vast majority of your CSS code goes.
-/* Font icon class*/
+// Font icon class
 .fa {
    font-family: "FontAwesome";
 }
+
 // Common page class
 .page-content {
     
@@ -21,11 +20,29 @@
         color: $page-icon-color;
         margin-top: 20%;
     }
+
+    .page-content-title {
+        font-size: 32;
+    }
+
+    Label {
+        font-size: 24;
+    }
+
+    .hyperlink{
+        color: $accent-dark;
+        text-decoration: underline;
+    }
+
+    .tags{
+        font-size: 16;
+    }
 }
 
-/* Action bar*/
+// ActionBar
 ActionBar .action-bar-title {
     horizontal-align: center;
+    color: $background;
 }
 
 // SidebarDrawer
@@ -40,4 +57,3 @@ ActionBar .action-bar-title {
     }
 
 }
-
