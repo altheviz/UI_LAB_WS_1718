@@ -16,6 +16,16 @@ This will spawn a web service on `http://localhost:3000`. The data for the servi
 
 All http-methods are available without further input.
 
+**IMPORTANT:** To be able to access the web service on real Android devices via `http://localhost:3000` you need to anable port forwarding. Luckily Google's Chrome make this fairly easy:
+
+1. Go to `chrome://inspect/#devices` in Chrome
+2. Click on "Port forwarding..."
+3. Add `3000` in field "Port" and `localhost:3000` in field "IP address and port"
+4. Make sure to enable "Enable port forwarding" checkbox
+5. Click "Done"
+
+Now you can go to your browser on your Android device and reach the web service under `http://localhost:3000` and of course also from within your Diver's Tale app.
+
 ## Example for mock data in `mock-backend-data.json`
 
 ```
