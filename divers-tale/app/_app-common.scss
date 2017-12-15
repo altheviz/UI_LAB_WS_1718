@@ -66,6 +66,19 @@
             }
         }
     }
+
+    .custom-list-item {
+        border-bottom-color: $page-icon-color;
+        border-bottom-width: 1;
+        padding-bottom: 15;
+        margin-bottom: 15;
+    }
+
+    // Dropdown menu
+    .drop-down-menu {
+        background-color: $page-icon-color;
+        padding: 5;
+    }
 }
 
 // ActionBar

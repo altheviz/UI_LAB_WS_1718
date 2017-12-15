@@ -7,13 +7,8 @@
     xmlns="http://www.nativescript.org/tns.xsd">
 
     <ActionBar class="action-bar">
-        <!--
-        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
-        -->
         <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
-        <!--
-        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
-        -->
+        
         <ActionItem icon="res://navigation/menu"
             android:visibility="collapsed"
             tap="onDrawerButtonTap"
@@ -22,154 +17,62 @@
         <Label class="action-bar-title" text="Settings"></Label>
     </ActionBar>
 
-    <!--
-    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
-    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
-    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
-    The RadSideDrawer component is designed to be used as a root element to the <Page> and
-    it shouldn't have any other siblings other than the <ActionBar> component.
-    -->
     <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
-        <!--
-        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
-        -->
         <nsDrawer:RadSideDrawer.drawerTransition>
             <nsDrawer:SlideInOnTopTransition/>
         </nsDrawer:RadSideDrawer.drawerTransition>
 
-        <!--
-        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
-        Always wrap content in a layout component.
-        -->
         <nsDrawer:RadSideDrawer.drawerContent>
             <StackLayout>
-                <!--
-                Use {N} custom components to reuse UI across your mobile app.
-                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
-                Learn more about custom components and how they can be used in this documentation article:
-                http://docs.nativescript.org/ui/basics#custom-components
-                -->
                 <myDrawer:MyDrawer selectedPage="Settings"/>
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
 
-        <!--
-        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
-        Always wrap content in a layout component.
-            <GridLayout class="page-content">
-                    <TextField text="{{ selectedIndex }}" row="1" col="1" />
-
-
-                    <TextField id="email" autocorrect="false" autocapitalizationType="none" />
-                    <Button text="DOIT" tap="showme" />
-        -->
         <nsDrawer:RadSideDrawer.mainContent>
-            <GridLayout
-                class="page-content"
-                columns="*, *"
-                rows="auto, auto, auto, auto, auto"
-                >
-                <Label
-                    class="label"
-                    row="0"
-                    col="0"
-                    text="Measurement unit:"
-                    fontSize="24"
-                    verticalAlignment="top"
-                    />
-                <dd:DropDown
-                    class="drop"
-                    style="background-color:#eee"
-                    row="0"
-                    col="1"
-                    items="{{ items }}"
-                    selectedIndex="{{ selectedIndex }}"
-                    opened="dropDownOpened"
-                    closed="dropDownClosed"
-                    selectedIndexChanged="dropDownSelectedIndexChanged"
-                    verticalAlignment="top"
-                    />
-                <Label
-                    class="label"
-                    row="1"
-                    col="0"
-                    text="Pressure Unit:"
-                    fontSize="24"
-                    verticalAlignment="top"
-                    />
-                <dd:DropDown
-                    class="drop"
-                    style="background-color:#eee"
-                    row="1"
-                    col="1"
-                    items="{{ press }}"
-                    selectedIndex="{{ selectedIndex }}"
-                    opened="dropDownOpened"
-                    closed="dropDownClosed"
-                    selectedIndexChanged="dropDownSelectedIndexChanged"
-                    verticalAlignment="top"
-                    />
-                <Label
-                    class="label"
-                    row="2"
-                    col="0"
-                    text="Temperature:"
-                    fontSize="24"
-                    verticalAlignment="top"
-                    />
-                <dd:DropDown
-                    class="drop"
-                    style="background-color:#eee"
-                    row="2"
-                    col="1"
-                    items="{{ temperature }}"
-                    selectedIndex="{{ selectedIndex }}"
-                    opened="dropDownOpened"
-                    closed="dropDownClosed"
-                    selectedIndexChanged="dropDownSelectedIndexChanged"
-                    verticalAlignment="top"
-                    />
-                <Label
-                    class="label"
-                    row="3"
-                    col="0"
-                    text="Time format:"
-                    fontSize="24"
-                    verticalAlignment="top"
-                    />
-                <dd:DropDown
-                    class="drop"
-                    style="background-color:#eee"
-                    row="3"
-                    col="1"
-                    items="{{ timeFormat }}"
-                    selectedIndex="{{ selectedIndex }}"
-                    opened="dropDownOpened"
-                    closed="dropDownClosed"
-                    selectedIndexChanged="dropDownSelectedIndexChanged"
-                    verticalAlignment="top"
-                    />
-                 <Label
-                    class="label"
-                    row="4"
-                    col="0"
-                    text="Date format:"
-                    fontSize="24"
-                    verticalAlignment="top"
-                    />
-                <dd:DropDown
-                    class="drop"
-                    style="background-color:#eee"
-                    row="4"
-                    col="1"
-                    items="{{ dateFormat }}"
-                    selectedIndex="{{ selectedIndex }}"
-                    opened="dropDownOpened"
-                    closed="dropDownClosed"
-                    selectedIndexChanged="dropDownSelectedIndexChanged"
-                    verticalAlignment="top"
-                    />
-            </GridLayout>
+            <ScrollView orientation="vertical" class="page-content">
+                <StackLayout orientation="vertical">
+                    <StackLayout orientation="vertical" class="custom-list-item">
+                        <Label class="label" text="Measurement unit"/>
+                        <dd:DropDown
+                            id="measurement-unit"
+                            class="drop-down-menu"
+                            selectedIndex="{{ measurementUnitSelectedIndex }}"
+                            selectedIndexChanged="measurementUnitChanged"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" class="custom-list-item">
+                        <Label class="label" text="Pressure unit"/>
+                        <dd:DropDown
+                            id="pressure-unit"
+                            class="drop-down-menu"
+                            selectedIndex="{{ pressureUnitSelectedIndex }}"
+                            selectedIndexChanged="pressureUnitChanged"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" class="custom-list-item">
+                        <Label class="label" text="Temperature unit"/>
+                        <dd:DropDown
+                            id="temperature-unit"
+                            class="drop-down-menu"
+                            selectedIndex="{{ temperatureUnitSelectedIndex }}"
+                            selectedIndexChanged="temperatureUnitChanged"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" class="custom-list-item">
+                        <Label class="label" text="Time format"/>
+                        <dd:DropDown
+                            id="time-format"
+                            class="drop-down-menu"
+                            selectedIndex="{{ timeFormatSelectedIndex }}"
+                            selectedIndexChanged="timeFormatChanged"/>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" class="custom-list-item">
+                        <Label class="label" text="Date format"/>
+                        <dd:DropDown
+                            id="date-format"
+                            class="drop-down-menu"
+                            selectedIndex="{{ dateFormatSelectedIndex }}"
+                            selectedIndexChanged="dateFormatChanged"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>
