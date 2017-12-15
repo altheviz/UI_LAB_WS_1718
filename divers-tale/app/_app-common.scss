@@ -77,12 +77,26 @@ ActionBar .action-bar-title {
 // SidebarDrawer
 .sidedrawer {
 
-    .profile-image {
-        margin: 10 0;
-        horizontal-align: left;
-        height: 65;
-        width: auto;
-        border-radius: 50%;
+    Label {
+        font-size: 18;
     }
 
+    .sidedrawer-header {
+
+        height: auto;
+        padding-bottom: 25;
+
+        Image.profile-image {
+            margin: 35 0 10;
+            horizontal-align: left;
+            height: 65;
+            max-height: 65;
+            width: auto;
+            border-radius: 50%;
+        }
+
+        Label.sidedrawer-header-brand, Label.footnote {
+            font-size: 14;
+        }
+    }
 }
