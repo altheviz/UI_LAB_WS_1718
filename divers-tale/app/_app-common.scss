@@ -6,6 +6,8 @@
 // Common page class
 .page-content {
 
+    margin: 25 10;
+
     .page-icon {
         font-size: 72;
         vertical-align: top;
@@ -17,6 +19,7 @@
     .page-content-title {
         font-size: 32;
         color: $accent-dark;
+        margin: 10 0 0 0;
     }
 
     Label {
@@ -30,6 +33,38 @@
 
     .tags{
         font-size: 16;
+    }
+
+    // List item with image and text
+    .list-item {
+
+        margin: 0;
+        padding: 15 0;
+
+        Image {
+            vertical-align: top;
+            width: 75;
+            height: auto;
+            margin-right: 15;
+            margin-top: 8;
+        }
+
+        .list-item-text{
+
+            vertical-align: top;
+
+            .list-item-headline, .list-item-headline Label {
+                font-size: 30;
+
+                .list-item-headline-icon {
+                    margin: 0 5;
+                    padding: 0;
+                }
+            }
+            .list-item-subline {
+                font-size: 18;
+            }
+        }
     }
 }
 

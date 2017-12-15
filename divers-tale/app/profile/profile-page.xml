@@ -57,9 +57,9 @@
     Always wrap content in a layout component.
     -->
     <nsDrawer:RadSideDrawer.mainContent>
-      <ScrollView>
+      <ScrollView class="page-content">
         <StackLayout orientation="vertical">
-          <Image src="{{ user.profileImage }}" width="200" height="200"/>
+          <Image class="header-image" src="{{ user.profileImage }}"/>
           <!--  <Image src="{{ docItem.img }}" />-->
           <FlexboxLayout flexDirection="row">
             <Label text="Name: "/>
