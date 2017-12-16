@@ -1,132 +1,81 @@
 <Page
-  class="page"
-  navigatingTo="onNavigatingTo"
-  xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
-  xmlns:myDrawer="shared/my-drawer"
-  xmlns="http://www.nativescript.org/tns.xsd"
-  xmlns:TIL="nativescript-textinputlayout"
-  xmlns:dd="nativescript-drop-down"
-  loaded="pageLoaded">
-  <ActionBar class="action-bar">
-    <!--
-    Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
-    -->
-  <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
-    <!--
-      Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
-    -->
-  <ActionItem icon="res://navigation/menu" android:visibility="collapsed"
-    tap="onDrawerButtonTap" ios.position="left">
-  </ActionItem>
-  <Label class="action-bar-title" text="Profile"></Label>
-  </ActionBar>
+    class="page"
+    navigatingTo="onNavigatingTo"
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:TIL="nativescript-textinputlayout"
+    xmlns:dd="nativescript-drop-down"
+    loaded="pageLoaded">
+    <ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed"
+        tap="onDrawerButtonTap" ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Profile"></Label>
+    </ActionBar>
 
-  <!--
-  RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
-  Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
-  http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
-  The RadSideDrawer component is designed to be used as a root element to the <Page> and
-  it shouldn't have any other siblings other than the <ActionBar> component.
-  -->
-  <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
-    <!--
-    Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
-    -->
-    <nsDrawer:RadSideDrawer.drawerTransition>
-      <nsDrawer:SlideInOnTopTransition/>
-    </nsDrawer:RadSideDrawer.drawerTransition>
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
 
-    <!--
-    Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
-    Always wrap content in a layout component.
-    -->
-    <nsDrawer:RadSideDrawer.drawerContent>
-      <StackLayout>
-        <!--
-        Use {N} custom components to reuse UI across your mobile app.
-        The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
-        Learn more about custom components and how they can be used in this documentation article:
-        http://docs.nativescript.org/ui/basics#custom-components
-        -->
-        <myDrawer:MyDrawer selectedPage="Profile"/>
-      </StackLayout>
-    </nsDrawer:RadSideDrawer.drawerContent>
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <myDrawer:MyDrawer selectedPage="Profile"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
 
-    <!--
-    Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
-    Always wrap content in a layout component.
-    -->
-    <nsDrawer:RadSideDrawer.mainContent>
-      <ScrollView>
-        <StackLayout orientation="vertical">
-          <Image src="{{ user.profileImage }}" width="200" height="200"/>
-          <!--  <Image src="{{ docItem.img }}" />-->
-          <FlexboxLayout flexDirection="row">
-            <Label text="Name: "/>
-            <TextField class="input" text="{{ user.name }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john doe"></TextField>
-          </FlexboxLayout>
-          <FlexboxLayout flexDirection="row">
-            <Label text="Nickname: "/>
-            <TextField class="input" text="{{ user.nickname }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="foo"></TextField>
-          </FlexboxLayout>
+        <nsDrawer:RadSideDrawer.mainContent>
+            <TabView selectedIndexChanged="onSelectedIndexChanged">
+                <TabView.items>
+                    <TabViewItem title="Information" textTransform="none">
+                        <TabViewItem.view>
+                            <ScrollView class="page-content" orientation="vertical">
+                                <StackLayout orientation="vertical" class="page-profile-information">
+                                    <Image class="header-image" src="{{ user.profileImage }}"/>
 
-          <FlexboxLayout flexDirection="row">
-            <Label text="Email:"/>
-            <TextField class="input" text="{{ user.email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john.doe@foo.com"></TextField>
-          </FlexboxLayout>
-
-          <FlexboxLayout flexDirection="row">
-            <Label text="City: "/>
-            <TextField class="input" text="{{ user.city }}" keyboardType="email" autocorrect="true" autocapitalizationType="none" hint="my city"></TextField>
-          </FlexboxLayout>
-          <FlexboxLayout flexDirection="row">
-            <Label text="Region:"/>
-            <TextField class="input" text="{{ user.region }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="bw"></TextField>
-          </FlexboxLayout>
-          <FlexboxLayout flexDirection="row">
-            <Label text="Country:"/>
-            <TextField class="input" text="{{ user.country }}" keyboardType="email" autocorrect="true" autocapitalizationType="none" hint="my country"></TextField>
-          </FlexboxLayout>
-
-          <FlexboxLayout flexDirection="row">
-            <Label text="Sex:"/>
-            <TextField class="input" text="{{ user.sex }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="man/woman"></TextField>
-          </FlexboxLayout>
-          <FlexboxLayout flexDirection="row">
-            <Label text="Date of birth:"/>
-            <TextField class="input" text="{{ user.dateOfBirth }}" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" hint="19/02/2000"></TextField>
-          </FlexboxLayout>
-
-          <Button text="Dive History" />
-          <Button text="Certifications" />
-          <Button text="Documents" />
-
-          <!-- ToDo
-          probleme mit dem floating Label
-              laufzeitfehler
-          Bild einfügen
-          Eingabe für Datum, Geschlänicht
-          ? Eingaben gleichmässig untereinander
-
-          <!--        <Label text="Verification" class="settings-category"></Label>
-        <TIL:TextInputLayout hint="Verficator name">
-            <TextField text=""/>
-        </TIL:TextInputLayout>
-
-        <GridLayout rows="auto, auto, *" columns="auto, *">
-            <dd:DropDown items="{{ items }}" selectedIndex="{{ selectedIndex }}"
-                        opened="dropDownOpened" closed="dropDownClosed"
-                        selectedIndexChanged="dropDownSelectedIndexChanged"
-                        row="0" colSpan="2" />
-        </GridLayout>
-
-        <TIL:TextInputLayout hint="Certification #">
-            <TextField text="" keyboardType="number"/>
-        </TIL:TextInputLayout>
-        -->
-
-        </StackLayout>
-      </ScrollView>
-    </nsDrawer:RadSideDrawer.mainContent>
-  </nsDrawer:RadSideDrawer>
+                                    <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
+                                        <Label text="Name: " row="0" col="0"/>
+                                        <TextField text="{{ user.name }}" autocorrect="false" hint="John Doe" row="0" col="1"/>
+                                    
+                                        <Label text="Nickname: " row="1" col="0"/>
+                                        <TextField text="{{ user.nickname }}" autocorrect="false" autocapitalizationType="none" hint="johnny" row="1" col="1"/>
+                                    
+                                        <Label text="Email:" row="2" col="0"/>
+                                        <TextField text="{{ user.email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john.doe@foo.com" row="2" col="1"/>
+                                    
+                                        <Label text="City: " row="3" col="0"/>
+                                        <TextField text="{{ user.city }}" autocorrect="true" hint="Karlsruhe" row="3" col="1"/>
+                                    
+                                        <Label text="Region:" row="4" col="0"/>
+                                        <TextField text="{{ user.region }}" autocorrect="false" hint="Baden-Württemberg" row="4" col="1"/>
+                                    
+                                        <Label text="Country:" row="5" col="0"/>
+                                        <TextField text="{{ user.country }}" autocorrect="true" hint="Deutschland" row="5" col="1"/>
+                                    
+                                        <Label text="Sex:" row="6" col="0"/>
+                                        <TextField text="{{ user.sex }}" autocorrect="false" autocapitalizationType="none" hint="male" row="6" col="1"/>
+                                    
+                                        <Label text="Date of birth:" row="7" col="0"/>
+                                        <TextField text="{{ user.dateOfBirth }}" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" hint="02/19/2000" row="7" col="1"/>
+                                    </GridLayout>
+                                </StackLayout>
+                            </ScrollView>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Certifications" textTransform="none">
+                        <TabViewItem.view>
+                            <Label text="Halo i bims"/>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Documents" textTransform="none">
+                        <TabViewItem.view>
+                            <Label text="Halo i bims"/>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                </TabView.items>
+            </TabView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
 </Page>

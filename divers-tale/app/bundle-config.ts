@@ -16,12 +16,6 @@ if ((global).TNS_WEBPACK) {
     // Authentication modules
     global.registerModule("authentication/login/login-page", () => require("./authentication/login/login-page"));
     global.registerModule("authentication/registration/registration-page", () => require("./authentication/registration/registration-page"));
-    
-    // Certificates module
-    global.registerModule("certificates/certificates-page", () => require("./certificates/certificates-page"));
-
-    // Documents module
-    global.registerModule("documents/documents-page", () => require("./documents/documents-page"));
 
     // Profile module
     global.registerModule("profile-page", () => require("./certificates/profile-page"));
