@@ -44,7 +44,6 @@ export namespace UserService {
             user.dateOfBirth || null,
             user.profileImage || "",
             user.certifications || [],
-            user.diveHistory || [],
             user.documents || []
         );
     }
