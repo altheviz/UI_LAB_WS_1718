@@ -17,6 +17,7 @@ export function onNavigatingTo(args: NavigatedData) {
     const page = <Page>args.object;
 
     page.bindingContext = ms;
+    console.log(JSON.stringify(ms))
     // TODO ...
 }
 

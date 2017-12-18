@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "mame": "Taucherbrille",
+        "name": "Taucherbrille",
         "brand": "Sunblocker 4000",
         "cathegory": 4,
         "condition": 1,
@@ -12,7 +12,7 @@
     },
     {
         "id": 2,
-        "mame": "Der aller erste",
+        "name": "Der aller erste",
         "brand": "Cool brand 1",
         "cathegory": 1,
         "condition": 3,
@@ -23,7 +23,7 @@
     },
     {
         "id": 3,
-        "mame": "Der moderne",
+        "name": "Der moderne",
         "brand": "Cool brand 1",
         "cathegory": 1,
         "condition": 2,
@@ -34,7 +34,7 @@
     },
     {
         "id": 4,
-        "mame": "Tauchcomputer 1",
+        "name": "Tauchcomputer 1",
         "brand": "Dive Computers Extreme",
         "cathegory": 3,
         "condition": 1,
