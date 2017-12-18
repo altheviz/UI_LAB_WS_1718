@@ -3,6 +3,9 @@ import { ObservableArray } from "data/observable-array";
 import * as  elasticlunr from "elasticlunr/elasticlunr";
 import { knownFolders } from "tns-core-modules/file-system";
 
+import { User } from "../profile/User";
+import { UserService } from "../profile/user-service";
+
 export class MarketItem {
     public id: number;
     public name: string;
@@ -51,7 +54,7 @@ export class MarketService extends Observable {
     private _categories: ObservableArray<Cathegory> = new ObservableArray<Cathegory>([]);
     private _conditions: ObservableArray<Condition> = new ObservableArray<Condition>([]);
 
-    private _inpersonateUser = 1;
+    private _impersonateUser = 1;
 
     public constructor() {
         super();
@@ -74,11 +77,11 @@ export class MarketService extends Observable {
         return new ObservableArray(this._items.filter(a => a.cathegory == catId));
     }
 
-    public getSummaryList(catId: number): Summary[] {
-        let items = this.getMarketItems(catId);
+    private makeSummaryList(list: ObservableArray<MarketItem>) : Summary[] {
         let result = new Array<Summary>();
-
-        items.forEach(e => {
+        list.sort((a: MarketItem, b: MarketItem) => {
+            return Math.sign(a.id - b.id);
+        }).forEach(e => {
             let x = new Summary();
             x.name = e.name + ' (' + e.brand + ')';
             x.imgUrl = e.imgUrl;
@@ -89,8 +92,22 @@ export class MarketService extends Observable {
 
             result.push(x);
         });
-
         return result;
+    }
+
+    public getSearchList(catId: number): Summary[] {
+        let items = new ObservableArray(this.getMarketItems(catId).filter(x => x.boughtBy === null && x.sellBy !== this._impersonateUser));
+        return this.makeSummaryList(items);
+    }
+
+    public getBoughtList(): Summary[] {
+        let items = new ObservableArray(this.getMarketItems(0).filter(x => x.boughtBy === this._impersonateUser));
+        return this.makeSummaryList(items);
+    }
+
+    public getSoldList(): Summary[] {
+        let items = new ObservableArray(this.getMarketItems(0).filter(x => x.sellBy === this._impersonateUser));
+        return this.makeSummaryList(items);
     }
 
     public getDetails(itemId: number): Details {

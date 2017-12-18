@@ -12,8 +12,9 @@ export class MarketViewModel extends Observable {
     constructor() {
         super();
 
-        let list = this.service.getSummaryList(0);
-        this.set("list", list);
+        this.set("searchItems", this.service.getSearchList(0));
+        this.set("boughtItems", this.service.getBoughtList());
+        this.set("soldItems", this.service.getSoldList());
     }
 
     public getDetails(id: number): Details {

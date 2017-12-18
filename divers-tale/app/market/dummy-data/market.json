@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Taucherbrille",
+        "name": "Sonnenbrille",
         "brand": "Sunblocker 4000",
         "cathegory": 4,
         "condition": 1,
@@ -42,5 +42,16 @@
         "boughtBy": null,
         "price": "1500€",
         "imgUrl": "https://www.unterwasser.de/fileadmin/_processed_/csm_Tech_128_ComputercheckCressileonardo_c6c2fc654e.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Tauchflaschen Doppel 12 L DIR Style",
+        "brand": "TEC-DIVESYSTEME",
+        "cathegory": 3,
+        "condition": 2,
+        "sellBy": 3,
+        "boughtBy": 1,
+        "price": "400€",
+        "imgUrl": "http://www.tec-divesysteme.com/WebRoot/Store2/Shops/61085486/Products/FD_0020_2210/Doppel_0020_12L_0020_DIR_0020_Style_ml.jpg"
     }
 ]
