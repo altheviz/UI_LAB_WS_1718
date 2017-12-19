@@ -10,5 +10,3 @@ divers-tale/.vscode/launch.json
 !divers-tale/app/events**/*.js
 !divers-tale/app/divebuddies**/*.js
 !divers-tale/app/invitations**/*.js
-divers-tale/app/events/events-service.js
-
