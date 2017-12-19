@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "elasticlunr": "^0.9.5",
+    "nativescript-drop-down": "^3.2.0",
     "nativescript-localstorage": "^1.1.5",
     "nativescript-pro-ui": "3.2.0",
     "nativescript-theme-core": "1.0.4",
