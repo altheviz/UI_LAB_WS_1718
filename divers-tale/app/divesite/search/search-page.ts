@@ -25,8 +25,7 @@ export function onNavigatingTo(args: NavigatedData) {
     }
 
     const page = <Page>args.object;
-    page.bindingContext = model;
-    model.set("searchResults", model.searchResults);
+    page.bindingContext = page;
 }
 
 /* ***********************************************************
@@ -37,34 +36,4 @@ export function onNavigatingTo(args: NavigatedData) {
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
-}
-
-export function onSubmit(args) {
-    var searchBar:SearchBar = <SearchBar>args.object;
-    console.log("Search submit result: "+searchBar.text);
-
-    model.filterSearchList(searchBar.text);
-    searchBar.dismissSoftInput();
-
-    model.set("searchResults", model.searchResults);
-}
-
-export function onClear(args) {
-    console.log("clear search-bar text");
-    var searchBar:SearchBar = <SearchBar>args.object;
-    
-    model.loadList();
-    searchBar.dismissSoftInput();
-}
-
-export function onPageLoaded(args) {
-    const page = <Page>args.object;
-    page.bindingContext = model;
-    model.set("searchResults", model.searchResults);
-
-}
-
-export function sBLoaded(args){
-    var searchBar:SearchBar = <SearchBar>args.object;
-    if (isAndroid) { searchBar.android.clearFocus(); }
 }
