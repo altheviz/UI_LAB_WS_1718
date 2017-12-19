@@ -4,6 +4,7 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 
 var config = require("../shared/config");
 var data = require("./static_data");
+var events_service = require("./events-service").EventsService;
 
 function convertDatestring(event) {
   var str = event.date.split(".");
@@ -58,43 +59,38 @@ function EventsViewModel() {
 
   viewModel.load = function() {
 
-    fetch(config.apiBaseURL + "/events")
-    .then(responseErrorHandler)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      data.forEach(function(element) {
-        var date = new Date(element.time + " UTC");
-        var day = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
-        
-        var canceledDate = null;
-        if (element.canceled) {
-          var str = element.canceledDate.split("-");
-          canceledDate = str[2] + "." + str[1] + "." + str[0];
-        }
+    events_service.getEvents()
+      .then(function (data) {
+        data.forEach(function(element) {
+          var date = new Date(element.time + " UTC");
+          var day = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+          
+          var canceledDate = null;
+          if (element.canceled) {
+            var str = element.canceledDate.split("-");
+            canceledDate = str[2] + "." + str[1] + "." + str[0];
+          }
 
-        viewModel.push({
-          id: element.id,
-          name: element.name,
-          divesite: viewModel.getDiveSiteById(element.divesite),
-          type: element.type,
-          date: day,
-          time: date.toLocaleTimeString().substring(0, 5),
-          comment: element.comment,
-          canceled: element.canceled,
-          canceledDate: canceledDate,
-          participants: element.participants,
-          creator: element.creator,
-          image: element.image
+          viewModel.push({
+            id: element.id,
+            name: element.name,
+            divesite: viewModel.getDiveSiteById(element.divesite),
+            type: element.type,
+            date: day,
+            time: date.toLocaleTimeString().substring(0, 5),
+            comment: element.comment,
+            canceled: element.canceled,
+            canceledDate: canceledDate,
+            participants: element.participants,
+            creator: element.creator,
+            image: element.image
+          });
         });
-      });
 
-      viewModel.sort(function(a,b) {
-        return new Date(convertDatestring(a)) - new Date(convertDatestring(b));
-      });
-    })
-    .catch(errorHandler);
+        viewModel.sort(function(a,b) {
+          return new Date(convertDatestring(a)) - new Date(convertDatestring(b));
+        });
+      })
   };
 
   viewModel.empty = function() {

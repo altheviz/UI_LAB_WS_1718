@@ -4,13 +4,12 @@ platforms/
 divers-tale/app**/*.android.css
 divers-tale/app**/*.ios.css
 divers-tale/app**/*.js
-<<<<<<< HEAD
 divers-tale/.vscode/launch.json
-=======
 
 !divers-tale/app/events**/*.js
 !divers-tale/app/divebuddies**/*.js
 !divers-tale/app/invitations**/*.js
 
+divers-tale/app/events/events-service.js
+
 .vscode/
->>>>>>> origin/master
