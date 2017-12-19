@@ -3,7 +3,9 @@
     navigatingTo="onNavigatingTo"  
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
-    xmlns="http://www.nativescript.org/tns.xsd">
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:PullRefresh="nativescript-pulltorefresh"
+    xmlns:TIL="nativescript-textinputlayout">
 
     <ActionBar class="action-bar">
         <!-- 
@@ -62,18 +64,21 @@
 				<TabView.items>
 					<TabViewItem title="Anfragen" textTransform="none" style="font-size: 18;">
 						<TabViewItem.view>
-							<ListView items="{{ receivedInvitations }}" visibility="{{ receivedInvitations.length > 0 ? 'visible' : 'hidden' }}">
-								<ListView.itemTemplate >
-									<GridLayout rows="auto, auto, auto" tap="details">
-										<Label text="{{ fromUser.nickname }}" style="font-weight: bold; margin: 10px" row="0" ></Label>
-										<Label text="{{ showInvitationDate, 'Anfrage gesendet: ' + showInvitationDate }}" row="1" ></Label>
-									</GridLayout>
-								</ListView.itemTemplate>
-							</ListView>
+                            <PullRefresh:PullToRefresh refresh="refreshReceivedInvitations">
+                                <ListView items="{{ receivedInvitations }}" visibility="{{ receivedInvitations.length > 0 ? 'visible' : 'hidden' }}">
+                                    <ListView.itemTemplate >
+                                        <GridLayout rows="auto, auto, auto" tap="details">
+                                            <Label text="{{ fromUser.nickname }}" style="font-weight: bold; margin: 10px" row="0" ></Label>
+                                            <Label text="{{ showInvitationDate, 'Anfrage gesendet: ' + showInvitationDate }}" row="1" ></Label>
+                                        </GridLayout>
+                                    </ListView.itemTemplate>
+                                </ListView>
+                            </PullRefresh:PullToRefresh>
 						</TabViewItem.view>
 					</TabViewItem>
 					<TabViewItem title="Gesendet" textTransform="none" style="font-size: 18;">
                         <TabViewItem.view>
+                        <PullRefresh:PullToRefresh refresh="refreshSentInvitations">
                             <TabView>
                                 <TabView.items>
                                     <TabViewItem title="Ausstehend" textTransform="none">
@@ -114,6 +119,7 @@
                                     </TabViewItem>
                                 </TabView.items>
                             </TabView>
+                            </PullRefresh:PullToRefresh>
                         </TabViewItem.view>
 					</TabViewItem>
 				</TabView.items>

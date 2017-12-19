@@ -22,41 +22,7 @@ var sex = new ObservableArray(["", "Männlich", "Weiblich"]);
 *************************************************************/
 function onNavigatingTo(args) {
     page = args.object;
-    var nickname = page.getViewById("nickname").text;
-    var age = page.getViewById("age").text;
-    var city = page.getViewById("city").text;
-    var region = page.getViewById("region").text;
-    var country = page.getViewById("country").text;
-    var experience = page.getViewById("experience").text;
-    var certificate = page.getViewById("certificate").text;
-
-    divebuddiesModel.empty();
-    divebuddiesModel.load();
-    
-
-
-    id = 1;//Wird über Session (oder so) übergeben
-    refreshMydivebuddies()
-    
-    invitations = invitationModel.getReceivedInvitations(id);
-    var pageData = new observableModule.fromObject({
-        myDivebuddies: myDivebuddies,
-        myGroups: myGroups,
-        groupTabSelected: groupTabSelected,
-        sex: sex,
-        invitations: invitations
-
-    });
-
-    
-    page.bindingContext = pageData;
-    page.getViewById("nickname").text = nickname;
-    page.getViewById("age").text = age;
-    page.getViewById("city").text = city;
-    page.getViewById("region").text = region;
-    page.getViewById("country").text = country;
-    page.getViewById("experience").text = experience;
-    page.getViewById("certificate").text = certificate;
+    loadAll();
 }
 
 function viewUserDetails(args) {
@@ -237,6 +203,65 @@ function toInvitations() {
     frameModule.topmost().navigate(navigationOptions);
 }
 
+
+
+function refreshBuddies(args) {
+    var pullRefresh = args.object;
+    // //make sure we have a timeout somewhere later
+    loadAll();
+    pullRefresh.refreshing = false;
+}
+
+function genderChanged(args){
+    page.bindingContext.genderLabelVisible = true;
+}
+
+function loadAll(){
+    var nickname = page.getViewById("nickname").text;
+    var age = page.getViewById("age").text;
+    var city = page.getViewById("city").text;
+    var region = page.getViewById("region").text;
+    var country = page.getViewById("country").text;
+    var experience = page.getViewById("experience").text;
+    var certificate = page.getViewById("certificate").text;
+
+    var dropdown = page.getViewById("sex");
+    var genderLabelVisible = false;
+    var sexValue = dropdown.selectedIndex
+    if (sexValue != null) {
+        genderLabelVisible = true;
+    }
+
+    divebuddiesModel.empty();
+    divebuddiesModel.load();
+
+
+
+    id = 1;//Wird über Session (oder so) übergeben
+    refreshMydivebuddies()
+
+    invitations = invitationModel.getReceivedInvitations(id);
+    var pageData = new observableModule.fromObject({
+        myDivebuddies: myDivebuddies,
+        myGroups: myGroups,
+        groupTabSelected: groupTabSelected,
+        sex: sex,
+        invitations: invitations,
+        genderLabelVisible: genderLabelVisible
+
+    });
+
+
+    page.bindingContext = pageData;
+    page.getViewById("nickname").text = nickname;
+    page.getViewById("age").text = age;
+    page.getViewById("city").text = city;
+    page.getViewById("region").text = region;
+    page.getViewById("country").text = country;
+    page.getViewById("experience").text = experience;
+    page.getViewById("certificate").text = certificate;
+}
+
 exports.toInvitations = toInvitations;
 exports.onNavigatingTo = onNavigatingTo;
 exports.onDrawerButtonTap = onDrawerButtonTap;
@@ -248,3 +273,5 @@ exports.deleteGroup = deleteGroup;
 exports.addToGroup = addToGroup;
 exports.onSelectedIndexChanged = onSelectedIndexChanged;
 exports.removeBuddy = removeBuddy;
+exports.refreshBuddies = refreshBuddies;
+exports.genderChanged = genderChanged;
