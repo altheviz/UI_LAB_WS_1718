@@ -16,6 +16,7 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
+    "nativescript-google-maps-sdk": "^2.4.3",
     "email-validator": "^1.1.1",
     "elasticlunr": "^0.9.5",
     "nativescript-checkbox": "^3.0.3",

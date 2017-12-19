@@ -9,19 +9,13 @@ if ((global).TNS_WEBPACK) {
     // General modules
     global.registerModule("shared/my-drawer/MyDrawer", () => require("./shared/my-drawer/MyDrawer"));
     global.registerModule("settings/settings-page", () => require("./settings/settings-page"));
-    
-    // Home module
+
+       // Home module
     global.registerModule("home/home-page", () => require("./home/home-page"));
 
     // Authentication modules
     global.registerModule("authentication/login/login-page", () => require("./authentication/login/login-page"));
     global.registerModule("authentication/registration/registration-page", () => require("./authentication/registration/registration-page"));
-    
-    // Certificates module
-    global.registerModule("certificates/certificates-page", () => require("./certificates/certificates-page"));
-
-    // Documents module
-    global.registerModule("documents/documents-page", () => require("./documents/documents-page"));
 
     // Profile module
     global.registerModule("profile-page", () => require("./certificates/profile-page"));
@@ -49,4 +43,9 @@ if ((global).TNS_WEBPACK) {
 
     // Market module
     global.registerModule("market/market-page", () => require("./market/market-page"));
+
+     // Divesites module
+     global.registerModule("divesite/divesite-page", () => require("./divesite/divesite-page"));
+     
+ 
 }

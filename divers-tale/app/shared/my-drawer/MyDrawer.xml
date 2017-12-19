@@ -13,6 +13,7 @@ Feel free to customize layouts and components to change how your app drawer look
 
     <ScrollView row="1">
         <StackLayout class="sidedrawer-content" row="1">
+
             <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
                 route="home/home-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf015;" class="fa" />
@@ -59,6 +60,12 @@ Feel free to customize layouts and components to change how your app drawer look
                 route="market/market-page" tap="onNavigationItemTap">
                 <Label row="0" col="0" text="&#xf153;" class="fa" />
                 <Label row="0" col="1" text="Market" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Dive Sites' ? ' selected': '') }}"
+                route="divesite/divesite-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf279;" class="fa" />
+                <Label row="0" col="1" text="Dive Sites" class="p-r-10" />
             </GridLayout>
 
             <StackLayout class="hr-light"></StackLayout>

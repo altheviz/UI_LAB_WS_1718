@@ -1,32 +1,61 @@
+import { DataService } from "../data-service";
 import { Observable } from "data/observable";
-import {FavoriteListItem} from "./favorite-list-item";
-import {DataService} from "../data-service";
+import { ObservableArray } from "data/observable-array";
+import { SearchListItem } from "./search-list-item";
 
+export class SearchViewModel extends Observable {
+    searchResults: ObservableArray<SearchListItem> = new ObservableArray<SearchListItem>();
 
-export class FavoriteViewModel extends Observable {
-
-    public favorites: Array<FavoriteListItem>;
-    
     constructor() {
         super();
-        // apply text for UI elements
-        let service = new DataService();
-        this.favorites = service.loadList();
 
-        //for each item get first letter
-        this.favorites.forEach(element => {
-            element.firstletter = element.name.charAt(0);
-        });
-
-        //sort 
-        this.favorites.sort(this.compare);
+        this.loadList();
     }
 
-    compare(a,b) {
-        if (a.firstletter < b.firstletter)
-          return -1;
-        if (a.firstletter > b.firstletter)
-          return 1;
+    /**
+     * filterSearchList
+     */
+    filterSearchList(searchText: string) {
+        console.log("Trying to filter: " + searchText);
+
+        const result = this.searchResults.filter(element =>
+            element.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+
+        while (this.searchResults.length > 0) {
+            this.searchResults.pop();
+        }
+
+        result.forEach(element => {
+            this.searchResults.push(element);
+        });
+
+        this.searchResults.sort(this.compare);
+    }
+
+    loadList() {
+        let service = new DataService();
+        let result = service.loadList();
+        this.updateSearchResults(result);
+    }
+
+    private compare(a, b) {
+        if (a.name.charAt(0) < b.name.charAt(0)) { return -1; }
+        if (a.name.charAt(0) > b.name.charAt(0)) { return 1; }
+
         return 0;
-      }
+    }
+
+    private updateSearchResults(newList) {
+        while (this.searchResults.length > 0) {
+            this.searchResults.pop();
+        }
+
+        newList.forEach(element => element.firstletter = element.name.charAt(0))
+        newList.forEach(element => this.searchResults.push(element));
+
+        this.searchResults.sort(this.compare);
+    }
 }
+
+export default SearchViewModel;
