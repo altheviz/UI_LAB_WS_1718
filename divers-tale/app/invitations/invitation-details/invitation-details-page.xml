@@ -1,0 +1,27 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+<Page.actionBar>
+	<ActionBar icon="" class="action-bar">
+		<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+		<Label class="action-bar-title" text="Anfrage bestätigen"></Label>
+	</ActionBar>
+</Page.actionBar>
+<ScrollView>
+	<StackLayout orientation="vertical">
+			<GridLayout rows="auto" columns="*">
+				<Label text=" {{ invitation.title }}" style="font-size: 22;" row="0" colSpan="2" textWrap="true" height="50"></Label>
+			</GridLayout>
+			<GridLayout rows="auto, auto, auto, auto" style="font-size: 19.5;" columns="*, 2*">
+				<Label text="Details: " row="0" col="0"  textWrap="true" style="font-weight:bold" colSpan="1" />
+				<Label text="{{ invitation.details }}" row="0" col="1" textWrap="true" colSpan="1" />
+				<Label text="Nachricht: " row="1" col="0" textWrap="true" style="font-weight:bold" colSpan="1" />
+				<Label text="{{ invitation.message }}" row="1" col="1" textWrap="true" colSpan="1" />
+				<Label text="Gesendet: " row="2" col="0" textWrap="true" style="font-weight:bold" colSpan="1" />
+				<Label text="{{ invitation.showInvitationDate }}" row="2" col="1"  textWrap="true" colSpan="1" />
+			</GridLayout>
+			<GridLayout rows="auto" columns="*, *">
+				<Button text="Annehmen" backgroundColor="#3A53FF" color="white" tap="accept" row="5" col="0" textTransform="none"></Button>
+				<Button text="Ablehnen"  tap="decline" row="5" col="1" textTransform="none"></Button>
+			</GridLayout>
+	</StackLayout>
+</ScrollView>
+</Page>

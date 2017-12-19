@@ -5,8 +5,20 @@ purpose of the file is to pass control to the app’s first module.
 */
 import * as app from "application";
 import "./bundle-config";
+import { AuthService } from "./authentication/authentication-service";
 
-app.start({ moduleName: "divesite/divesite-page" });
+// If user is already logged in he will be redirected to home view directly
+let initialModule = {
+    moduleName: "authentication/login/login-page",
+    backstackVisible: false
+};
+if (AuthService.isLoggedIn()) {
+    initialModule = {
+        moduleName: "home/home-page",
+        backstackVisible: false
+    };
+}
+app.start(initialModule);
 
 /*
 Do not place any code after the application has been started as it will not

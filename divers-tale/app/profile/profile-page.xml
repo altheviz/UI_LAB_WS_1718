@@ -1,0 +1,81 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:TIL="nativescript-textinputlayout"
+    xmlns:dd="nativescript-drop-down"
+    loaded="pageLoaded">
+    <ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed"
+        tap="onDrawerButtonTap" ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Profile"></Label>
+    </ActionBar>
+
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <myDrawer:MyDrawer selectedPage="Profile"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <nsDrawer:RadSideDrawer.mainContent>
+            <TabView selectedIndexChanged="onSelectedIndexChanged">
+                <TabView.items>
+                    <TabViewItem title="Information" textTransform="none">
+                        <TabViewItem.view>
+                            <ScrollView class="page-content" orientation="vertical">
+                                <StackLayout orientation="vertical" class="page-profile-information">
+                                    <Image class="header-image" src="{{ user.profileImage }}"/>
+
+                                    <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
+                                        <Label text="Name: " row="0" col="0"/>
+                                        <TextField text="{{ user.name }}" autocorrect="false" hint="John Doe" row="0" col="1"/>
+                                    
+                                        <Label text="Nickname: " row="1" col="0"/>
+                                        <TextField text="{{ user.nickname }}" autocorrect="false" autocapitalizationType="none" hint="johnny" row="1" col="1"/>
+                                    
+                                        <Label text="Email:" row="2" col="0"/>
+                                        <TextField text="{{ user.email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john.doe@foo.com" row="2" col="1"/>
+                                    
+                                        <Label text="City: " row="3" col="0"/>
+                                        <TextField text="{{ user.city }}" autocorrect="true" hint="Karlsruhe" row="3" col="1"/>
+                                    
+                                        <Label text="Region:" row="4" col="0"/>
+                                        <TextField text="{{ user.region }}" autocorrect="false" hint="Baden-Württemberg" row="4" col="1"/>
+                                    
+                                        <Label text="Country:" row="5" col="0"/>
+                                        <TextField text="{{ user.country }}" autocorrect="true" hint="Deutschland" row="5" col="1"/>
+                                    
+                                        <Label text="Sex:" row="6" col="0"/>
+                                        <TextField text="{{ user.sex }}" autocorrect="false" autocapitalizationType="none" hint="male" row="6" col="1"/>
+                                    
+                                        <Label text="Date of birth:" row="7" col="0"/>
+                                        <TextField text="{{ user.dateOfBirth }}" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" hint="02/19/2000" row="7" col="1"/>
+                                    </GridLayout>
+                                </StackLayout>
+                            </ScrollView>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Certifications" textTransform="none">
+                        <TabViewItem.view>
+                            <Label text="Halo i bims"/>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Documents" textTransform="none">
+                        <TabViewItem.view>
+                            <Label text="Halo i bims"/>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                </TabView.items>
+            </TabView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

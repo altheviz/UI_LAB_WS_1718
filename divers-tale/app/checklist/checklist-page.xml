@@ -1,0 +1,87 @@
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
+    xmlns:myDrawer="shared/my-drawer" 
+    xmlns="http://www.nativescript.org/tns.xsd">
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <action-item icon="res://edit" text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Neu" ios.position="right" android.position="popup" tap="newButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
+        <action-item text="Als Standard" ios.position="right" android.position="popup" tap="defaultButtonTap" visibility="{{ !(defaultList==listId) ? 'visible' : 'collapsed' }}" />
+        <action-item text="Zurücksetzen" ios.position="right" android.position="popup" tap="resetButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Liste wählen" ios.position="right" android.position="popup" tap="listButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Speichern" ios.position="right" android.position="popup" tap="saveButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelEditButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+        <Label class="action-bar-title" text="Checklist"></Label>
+    </ActionBar>
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="Checklist"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.mainContent>
+            <GridLayout rows="*, auto">
+                <stack-layout row="0">
+                    <Label text="{{ ((defaultList==listId) ? 'Standard - ' : '') + listName }}" class="titel" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                    <TextField id="textFieldListName" text="{{ listName }}" class="titel" hint="Name der Liste" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+                    <!-- normal -->
+                    <ListView items="{{ obsItems }}" id="checklist" itemTap="toggle" visibility="{{ !editMode ? 'visible' : 'collapsed' }}">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="*, auto">
+                                <Label text="{{ name }}"/>
+                                <Image src="{{ 'res://' + (checked ? 'checked' : 'unchecked') }}" height="40" decodeHeight="40" col="1" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                    <!-- edit mode -->
+                    <ListView items="{{ obsItems }}" id="checklistEdit" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="*, auto">
+                                <TextField text="{{ name }}"/>
+                                <Image src="res://delete" height="40" decodeHeight="40" col="1" tap="deleteItem" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </stack-layout>
+                <GridLayout columns="*, 50px" row="1" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
+                    <TextField id="newEntry" text="{{ newEntryText }}" hint="Neuer Eintrag" returnPress="addButtonTap"/>
+                    <Button id="addButton" text="+" tap="addButtonTap" col="1"/>
+                </GridLayout>
+            </GridLayout>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

@@ -1,0 +1,118 @@
+[
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Dive_hand_signal_Stop.png/120px-Dive_hand_signal_Stop.png",
+        "text": "Stopp!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Dive_hand_signal_Descend.png/120px-Dive_hand_signal_Descend.png",
+        "text": "Gehe nach unten! oder Ich gehe nach unten."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Dive_hand_signal_Ascend.png/120px-Dive_hand_signal_Ascend.png",
+        "text": "Gehe nach oben! oder Ich gehe nach oben."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Dive_hand_signal_OK_1.png/120px-Dive_hand_signal_OK_1.png",
+        "text": "Bist du OK? oder Ich bin OK!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Dive_hand_signal_OK_2.png/120px-Dive_hand_signal_OK_2.png",
+        "text": "OK-Signal\nmit dicken Handschuhen."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Dive_hand_signal_OK_surface_1.png/120px-Dive_hand_signal_OK_surface_1.png",
+        "text": "Ich bin OK!\nan der Oberfläche, aus großer Distanz sichtbar."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Dive_hand_signal_OK_surface_2.png/120px-Dive_hand_signal_OK_surface_2.png",
+        "text": "Ich bin OK!\nan der Oberfläche mit einer Hand, aus großer Distanz sichtbar."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Dive_hand_signal_Not_Right.png/120px-Dive_hand_signal_Not_Right.png",
+        "text": "Irgendetwas stimmt nicht oder Ich habe ein Problem\nEin Warnzeichen."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Dive_hand_signal_Help_surface_1.png/120px-Dive_hand_signal_Help_surface_1.png",
+        "text": "Ich brauche Hilfe! oder Ein Notfall!\nEin Notfallzeichen, das niemals grundlos gebraucht werden sollte."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Dive_hand_signal_Emergency_Out_of_air.png/120px-Dive_hand_signal_Emergency_Out_of_air.png",
+        "text": "Ich habe keine Luft mehr!\nEin Notfallzeichen, das niemals grundlos gebraucht werden sollte."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dive_hand_signal_Give_me_air.png/120px-Dive_hand_signal_Give_me_air.png",
+        "text": "Gib mir jetzt Luft!\nEin Notfallzeichen, das niemals grundlos gebraucht werden sollte."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Dive_hand_signal_Danger_there.png/120px-Dive_hand_signal_Danger_there.png",
+        "text": "Gefahr in dieser Richtung.\nEinWarnzeichen."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Dive_hand_signal-look.plain.svg/120px-Dive_hand_signal-look.plain.svg.png",
+        "text": "Schau dort!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Dive_hand_signal_Level_out.png/120px-Dive_hand_signal_Level_out.png",
+        "text": "Tauchtiefe konstant halten!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Dive_hand_signal_Turn_Around.png/120px-Dive_hand_signal_Turn_Around.png",
+        "text": "Umkehren!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Dive_hand_signal_Which_Way.png/120px-Dive_hand_signal_Which_Way.png",
+        "text": "In welche Richtung?"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Dive_hand_signal-cold.plain.svg/120px-Dive_hand_signal-cold.plain.svg.png",
+        "text": "Mir ist kalt."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Dive_hand_signal_Slow_down.png/120px-Dive_hand_signal_Slow_down.png",
+        "text": "Entspanne dich! oder Mach langsam! oder Beruhige dich!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Dive_hand_signal_Hold_on_to_each_other.png/120px-Dive_hand_signal_Hold_on_to_each_other.png",
+        "text": "Einander die Hände halten."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Dive_hand_signal_Buddy_up.png/120px-Dive_hand_signal_Buddy_up.png",
+        "text": "Gehe mit deinem Buddy!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Dive_hand_signal_Lead_and_follow.png/120px-Dive_hand_signal_Lead_and_follow.png",
+        "text": "Du führst und du folgst ihm/ihr!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Dive_hand_signal_Dont_know_1.png/120px-Dive_hand_signal_Dont_know_1.png",
+        "text": "Ich weiß nicht."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Dive_hand_signal_Boat.png/120px-Dive_hand_signal_Boat.png",
+        "text": "Boot oder Schiff"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Dive_hand_signal-tink.plain.svg/120px-Dive_hand_signal-tink.plain.svg.png",
+        "text": "Denk nach! oder Erinnere dich!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Dive_hand_signal-ear.plain.svg/120px-Dive_hand_signal-ear.plain.svg.png",
+        "text": "Kann den Druckausgleich im Ohr nicht herstellen."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Dive_hand_signal-danger.plain.svg/120px-Dive_hand_signal-danger.plain.svg.png",
+        "text": "Gefahr!\nEin Warnzeichen."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Dive-signal-night-ok.jpg/120px-Dive-signal-night-ok.jpg",
+        "text": "Alles OK?, Bei mir alles OK. oder Schau hier!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Dive-sign-night-danger.jpg/120px-Dive-sign-night-danger.jpg",
+        "text": "Achtung! oder Beachte mich!"
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Dive-sign-night-ok.jpg/120px-Dive-sign-night-ok.jpg",
+        "text": "Alle anderen Tauchzeichen können durch das Anleuchten der eigenen Hand angezeigt werden."
+    }
+]

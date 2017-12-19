@@ -1,0 +1,23 @@
+{
+  "authenticate": {
+    "accessToken": "953231de9955752c939146f33d5bbf36"
+  },
+  "deauthenticate": {},
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@foo.com",
+      "name": "John Doe",
+      "nickname": "Johnny",
+      "city": "Karlsruhe",
+      "region": "Baden-Württemberg",
+      "country": "Deutschland",
+      "sex": "male",
+      "dateOfBirth": "",
+      "profileImage": "https://madeiradivepoint.com/wp-content/uploads/2017/03/padi-open-water-scuba-diver.jpg",
+      "certifications": [],
+      "diveHistory": [],
+      "documents": []
+    }
+  ]
+}
