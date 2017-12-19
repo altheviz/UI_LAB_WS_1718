@@ -8,10 +8,14 @@ import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 import observable = require("data/observable");
 import { EquipmentViewModel } from "./equipment-view-model";
 import { DropDown } from "nativescript-drop-down";
+//import { TextField } from "tns-core-modules/ui/text-field/text-field";
+import { TextField } from "ui/text-field";
+
 
 
 const vm = new EquipmentViewModel();
 var viewModel: observable.Observable;
+let textFieldldDescription;
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -24,7 +28,17 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-pageLoaded(args);
+
+    const pageName: string = "EquipmentAdd";
+    vm.set("selectedPage", pageName);
+    vm.set("titel", pageName.substring(1));
+    const page = <Page>args.object;
+    vm.setupSearch(pageName);
+    let textFieldldDescription = page.getViewById("description");
+    
+
+    page.bindingContext = vm;
+    pageLoaded(args);
     
 }
 
@@ -45,22 +59,28 @@ export function pageLoaded(args: observable.EventData) {
     viewModel.set("selectedIndex", 0);
 
     page.bindingContext = viewModel;
+ 
+    
 }
+
 
 /* ***********************************************************
 * According to guidelines, if you have a drawer on your page, you should always
 * have a button that opens it. Get a reference to the RadSideDrawer view and
 * use the showDrawer() function to open the app drawer section.
 *************************************************************/
+exports.saveEntries = function() {
+    console.log("saveEntries");
+};
+
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
 
-exports.jacket = function() {
-    console.log("entries saved");
-}; 
-
+export function jacket(args: EventData) {
+    console.log("Drop Down openead");
+}
 
 export function dropDownOpened(args: EventData) {
     console.log("Drop Down opened");
