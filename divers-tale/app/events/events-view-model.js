@@ -222,7 +222,7 @@ function EventsViewModel() {
 
   viewModel.getNewEventId = function() {
     var id = 0;
-    fetch(config.apiBaseURL + "/events")
+    return fetch(config.apiBaseURL + "/events")
     .then(responseErrorHandler)
     .then(function (response) {
       return response.json();

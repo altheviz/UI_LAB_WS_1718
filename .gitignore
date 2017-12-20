@@ -6,6 +6,7 @@ divers-tale/app**/*.ios.css
 divers-tale/app**/*.js
 divers-tale/.vscode/launch.json
 .vscode/
+*.log
 
 !divers-tale/app/events**/*.js
 !divers-tale/app/divebuddies**/*.js

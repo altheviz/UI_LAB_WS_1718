@@ -65,7 +65,6 @@ exports.onNavigatingTo = function(args) {
   if (isNewEvent) {
 
     newEvent = {
-      id: eventsModel.getNewEventId(),
       name: "",
       type: "",
       time: "",
@@ -78,6 +77,11 @@ exports.onNavigatingTo = function(args) {
       canceledDate: null,
       image: "~/images/event.png"
     }
+
+    eventsModel.getNewEventId()
+      .then(function(id) {
+        newEvent.id = id;
+      });
 
     selectedType = null;
     selectedDivesite = null;
