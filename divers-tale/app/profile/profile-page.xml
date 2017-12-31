@@ -66,12 +66,36 @@
                     </TabViewItem>
                     <TabViewItem title="Certifications" textTransform="none">
                         <TabViewItem.view>
-                            <Label text="Halo i bims"/>
+                            <stack-layout>
+                                <ListView items="{{ user.certifications }}" itemTap="openCertificationsListItem">
+                                <ListView.itemTemplate>
+                                    <StackLayout orientation="horizontal"  height="90" class="listitem">
+                                        <Image src="{{ img }}" width="150" height="80"/>
+                                        <StackLayout orientation="vertical" >
+                                            <Label text="{{ name }} " class="title"  height="30"/>
+                                            <Label text="{{ description }}" height="50" textWrap="true"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ListView.itemTemplate>
+                                </ListView>
+                            </stack-layout>
                         </TabViewItem.view>
                     </TabViewItem>
                     <TabViewItem title="Documents" textTransform="none">
                         <TabViewItem.view>
-                            <Label text="Halo i bims"/>
+                            <stack-layout>
+                                <ListView items="{{ user.documents }}" itemTap="openDocumentsListItem">
+                                <ListView.itemTemplate>
+                                    <StackLayout orientation="horizontal"  height="90" class="listitem">
+                                        <Image src="{{ img }}" width="150" height="80"/>
+                                        <StackLayout orientation="vertical" >
+                                            <Label text="{{ name }} " class="title"  height="30"/>
+                                            <Label text="{{ description }}" height="50" textWrap="true"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ListView.itemTemplate>
+                                </ListView>
+                            </stack-layout>
                         </TabViewItem.view>
                     </TabViewItem>
                 </TabView.items>

@@ -1,0 +1,26 @@
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
+    xmlns:myDrawer="shared/my-drawer" 
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:TIL="nativescript-textinputlayout">
+    <ActionBar class="action-bar" title="Document Details">
+        <NavigationButton text="Zurück" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+        <action-item tap="deleteButtonTap" ios.systemIcon="16" android.systemIcon="ic_menu_delete" ios.position="right"
+           visibility="{{ isEditing ? 'collapse' : 'visible' }}" />
+        <action-item tap="editButtonTap" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
+           visibility="{{ isEditing ? 'collapse' : 'visible'  }}" />
+        <action-item tap="doneButtonTap" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"
+           visibility="{{ isEditing ? 'visible' : 'collapse' }}" />
+    </ActionBar>
+    <scroll-view>
+        <stack-layout>
+            <Image src="{{ document.img }}" tap="openImage"/>
+            <TIL:TextInputLayout hint="Name">
+                <TextField editable="false" id="docName" text="{{ document.name }}"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Description" row="1">
+                <TextView editable="false" id="docDes" text="{{ document.description }}"/>
+            </TIL:TextInputLayout>
+        <stack-layout height="400px"/></stack-layout>
+    </scroll-view>
+</Page>

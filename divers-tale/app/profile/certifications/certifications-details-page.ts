@@ -1,15 +1,14 @@
-import { EventData } from "data/observable";
+import { EventData, Observable } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
+import * as utils from "utils//utils";
+import * as dialogs from "ui/dialogs";
 
-import { DocumentsViewModel } from "./documents-view-model";
-
-
-const vm = new DocumentsViewModel();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
+let viewModel = new Observable();
 export function onNavigatingTo(args: NavigatedData) {
     /* ***********************************************************
     * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
@@ -19,21 +18,10 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
+
+    viewModel.set("certification", args.context.certification); 
     const page = <Page>args.object;
-    vm.loadDocuments();
-
-    page.bindingContext = vm;
-}
-
-export function openListItem(args: EventData){
-    var navigationEntry = {
-        moduleName: "documents/documents-details-page",
-        context: {
-            docItem: vm.get("documentList")[args["index"]],
-        },
-        animated: false
-    };
-    topmost().navigate(navigationEntry);
+    page.bindingContext = viewModel
 }
 
 /* ***********************************************************
@@ -43,10 +31,20 @@ export function openListItem(args: EventData){
 *************************************************************/
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
-    sideDrawer.showDrawer();
+    sideDrawer.showDrawer(); 
+}
+
+export function editButtonTap (args: EventData)  {
+    console.log("Test");//JSON.stringify(document));
 }
 
 
-export function newButtonTap (args: EventData)  {
-    console.log("Hello, world!");
+export function deleteButtonTap (args: EventData)  { 
+    dialogs.confirm("Do you want to delete this certification?").then(result => {
+        if (result) {
+            // delete item
+
+            // back to ListView
+        }
+    });
 }

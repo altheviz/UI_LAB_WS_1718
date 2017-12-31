@@ -11,7 +11,7 @@
         Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
         -->
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
-        <Label class="action-bar-title" text="Document Details"></Label>
+        <Label class="action-bar-title" text="Certification Details"></Label>
         <action-item tap="deleteButtonTap" ios.systemIcon="16" android.systemIcon="ic_menu_delete" ios.position="right"
            visibility="{{ 'visible' }}" />
         <action-item tap="editButtonTap" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
@@ -54,9 +54,9 @@
         <nsDrawer:RadSideDrawer.mainContent>
             <scroll-view>
                 <stack-layout>
-                    <Image src="{{ docItem.img }}" />
-                    <Label text="{{ docItem.name }}" class="title"/>
-                    <Label text="{{ docItem.description }}" textWrap="true" />
+                    <Image src="{{ certification.img }}" />
+                    <Label text="{{ certification.name }}" class="title"/>
+                    <Label text="{{ certification.description }}" textWrap="true" />
                     <stack-layout height="400px"/></stack-layout>
             </scroll-view>
         </nsDrawer:RadSideDrawer.mainContent>

@@ -29,6 +29,7 @@ export class User  {
         certifications?: Certification[],
         documents?: Document[]
     ) {
+        this.id = id;
         this.email = email;
         this.name = name;
         this.nickname = nickname;
