@@ -23,7 +23,9 @@ export function onNavigatingTo(args: NavigatedData) {
         return;
     }
 
-    viewModel.set("document", args.context.document); 
+    viewModel.set("document", args.context.documents[args.context.index]);
+    viewModel.set("index", args.context.index);
+    viewModel.set("documents", args.context.documents);
     viewModel.set("isEditing",false);
     const page = <Page>args.object;
     page.bindingContext = viewModel
@@ -76,7 +78,10 @@ export function deleteButtonTap (args: EventData)  {
     dialogs.confirm("Do you want to delete this document?").then(result => {
         if (result) {
             // delete item
+            const index = viewModel.get("index");
+            const documents = viewModel.get("documents");
 
+            documents.splice(index,1);
 
             goBack();// back to ListView
         }

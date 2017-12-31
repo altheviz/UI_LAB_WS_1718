@@ -3,8 +3,9 @@
     xmlns:myDrawer="shared/my-drawer" 
     xmlns="http://www.nativescript.org/tns.xsd"
     xmlns:TIL="nativescript-textinputlayout">
-    <ActionBar class="action-bar" title="Document Details">
-        <NavigationButton text="Zurück" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+    <ActionBar class="action-bar">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+        <Label class="action-bar-title" text="Document Details"></Label>
         <action-item tap="deleteButtonTap" ios.systemIcon="16" android.systemIcon="ic_menu_delete" ios.position="right"
            visibility="{{ isEditing ? 'collapse' : 'visible' }}" />
         <action-item tap="editButtonTap" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
@@ -14,11 +15,11 @@
     </ActionBar>
     <scroll-view>
         <stack-layout>
-            <Image src="{{ document.img }}" tap="openImage"/>
+            <Image src="{{ document.img }}" class="header-image" tap="openImage"/>
             <TIL:TextInputLayout hint="Name">
                 <TextField editable="false" id="docName" text="{{ document.name }}"/>
             </TIL:TextInputLayout>
-            <TIL:TextInputLayout hint="Description" row="1">
+            <TIL:TextInputLayout hint="Description">
                 <TextView editable="false" id="docDes" text="{{ document.description }}"/>
             </TIL:TextInputLayout>
         <stack-layout height="400px"/></stack-layout>
