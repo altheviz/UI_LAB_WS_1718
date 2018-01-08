@@ -18,16 +18,13 @@ export class DivesetViewModel extends Observable {
   ]
 
   public init() {
-    
-    let initLists = localStorage.getString("initLists") || null;
-    
-    console.log("value von initlists= " + initLists)
+    let initLists = localStorage.getString("initLists");
 
-    if(!initLists) {
-  	  localStorage.setString("initLists", JSON.stringify(this.initDivesets));
+    if(!initLists || initLists == null || initLists.length == 0) {
+      localStorage.setString("initLists", JSON.stringify(this.initDivesets));
     }
+    initLists = localStorage.getString("initLists");
     this.set("divesets", new ObservableArray(JSON.parse(initLists)));
-    
   }
 
   public getNewId(): number {
@@ -38,8 +35,6 @@ export class DivesetViewModel extends Observable {
   }
 
   public addToList(newDiveset: DivesetList) {
-  
-
    // hol die Objekte vom Persistenten Speicher.
    var tempDivesets = JSON.parse(localStorage.getString("initLists")); 
    
@@ -55,7 +50,7 @@ export class DivesetViewModel extends Observable {
    // füge objekte dem set hinzu
    this.set("divesets", new ObservableArray(JSON.parse(initLists)));
 
-   console.log("newDiveset values= " + newDiveset.id + newDiveset.name);
+   console.log("newDiveset values= id=" + newDiveset.id + " name=" + newDiveset.name);
   }
 
 }

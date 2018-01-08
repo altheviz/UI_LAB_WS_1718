@@ -52,8 +52,6 @@ export function onDrawerButtonTap(args: EventData) {
 
 
 export function newDivesetTap(args:EventData){ 
-    console.log("bt tap");
-
     dialogs.prompt({
         title: "Create new Diveset",
         message: "Add a new Diveset",
@@ -72,4 +70,8 @@ export function newDivesetTap(args:EventData){
             console.log("Dialog closed! " + r.result + " text: " + r.text);
         }
     });
+}
+
+export function detailDivesetTap(args:EventData) {
+    console.log("tap me");
 }

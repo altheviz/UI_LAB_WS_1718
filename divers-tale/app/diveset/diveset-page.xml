@@ -64,7 +64,7 @@
                
                       <list-view class="list-group" items="{{ divesets }}">
                             <list-view.itemTemplate>      
-                                <Label row="0" class="list-group-item" text="{{ name }}" />
+                                <Label row="0" class="list-group-item" text="{{ name }}" tap="detailDivesetTap" />
                             </list-view.itemTemplate>
                    </list-view>
                      
