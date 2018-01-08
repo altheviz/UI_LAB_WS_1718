@@ -13,9 +13,10 @@ var observableModule = require("data/observable")
 var ObservableArray = require("data/observable-array").ObservableArray;
 
 var bt: Button;
-var buttonState = 0;
+//var buttonState = 0;
 var page: Page;
 var vm: DivesetViewModel;
+
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -35,9 +36,6 @@ export function onNavigatingTo(args: NavigatedData) {
     vm.set("selectedPage", "Diveset");
     vm.init();
     page.bindingContext = vm;
-    
-    //var bt =<Button> page.getViewById("bt");
-    //page.bindingContext = pageData;
 }
 
 /* ***********************************************************
@@ -64,7 +62,8 @@ export function newDivesetTap(args:EventData){
             vm.addToList({
                 //hier der trick. schon das json verwenden :-)
                 id: vm.getNewId(),
-                name: r.text
+                name: r.text,
+                equipment: []
             });
         } else {
             console.log("Dialog closed! " + r.result + " text: " + r.text);
@@ -72,6 +71,14 @@ export function newDivesetTap(args:EventData){
     });
 }
 
-export function detailDivesetTap(args:EventData) {
-    console.log("tap me");
+export function detailDivesetTap(args: EventData) {
+    var navigationEntry = {
+        moduleName: "diveset/diveset-details-page",
+        context: {
+            divesets: vm.get("divesets").getItem(args["index"]),
+             parentPageName: vm.get("selectedPage")
+        }
+    };
+    topmost().navigate(navigationEntry);
+    
 }

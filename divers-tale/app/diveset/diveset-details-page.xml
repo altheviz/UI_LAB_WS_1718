@@ -18,7 +18,11 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Diveset"></Label>
+        <action-item text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
+        <action-item text="Speichern" ios.position="right" android.position="popup" tap="saveButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelEditButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+       
+        <Label class="action-bar-title" text="{{ titel }}"></Label>
     </ActionBar>
 
     <!--
@@ -48,7 +52,7 @@
                 Learn more about custom components and how they can be used in this documentation article:
                 http://docs.nativescript.org/ui/basics#custom-components
                 -->
-                <myDrawer:MyDrawer selectedPage="Diveset"/>
+                <myDrawer:MyDrawer selectedPage="{{ selectedPage }}"/>
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
 
@@ -56,19 +60,30 @@
         Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
         Always wrap content in a layout component.
         -->
-        <!-- todo -->
+        <!-- list-view id="ds" is required for the refresh after abbrechen -->
         <nsDrawer:RadSideDrawer.mainContent>
-            <GridLayout>       
-                      <list-view class="list-group" items="{{ divesets }}" itemTap="detailDivesetTap">
-                            <list-view.itemTemplate>      
-                                <Label row="0" class="list-group-item" text="{{ name }}" />
-                            </list-view.itemTemplate>
-                   </list-view>
-                     
-                       <Button id="bt" text="+" row="1" tap="newDivesetTap" class="fab-button" />
-
-            </GridLayout>
-              
+             <GridLayout rows="*, auto">
+ <stack-layout row="0">
+                        <Label text="{{ divesets.name }}" textWrap="true" style="font-size: 20; margin: 15;" />
+                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}">
+                             <ListView.itemTemplate>
+                                <GridLayout columns="*, auto" >
+                                  <Label class="list-group-item" text="{{ name }}" col="0" />
+                                </GridLayout>
+                            </ListView.itemTemplate>
+                         </list-view>
+                        <!-- editmode -->
+                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
+                             <ListView.itemTemplate>
+                                <GridLayout columns="*, auto" >
+                                  <Label class="list-group-item" text="{{ name }}" col="0" />
+                                  <Image src="res://ic_menu_delete" id="del" col="1" tap="removeFromListTap" style="margin: 10"  />
+                                </GridLayout>
+                            </ListView.itemTemplate>
+                         </list-view>
+</stack-layout>
+            </GridLayout>-->
+             
 
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>

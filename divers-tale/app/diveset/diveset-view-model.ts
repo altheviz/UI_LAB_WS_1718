@@ -5,6 +5,12 @@ import * as localStorage from "application-settings";
 interface DivesetList {
   id: number,
   name: string;
+  equipment: Equipment[]
+}
+
+interface Equipment {
+  id: number;
+  name: string;
 }
 
 export class DivesetViewModel extends Observable {
@@ -13,8 +19,19 @@ export class DivesetViewModel extends Observable {
   }
 
   private initDivesets: DivesetList[] = [
-    { id: 0, name: "Default Tauchset One"},
-    { id: 1, name: "Default Tauchset Two"}
+    { id: 0, name: "Baggersee Tauchset",
+    equipment: [
+      { id: 0, name: "Aqualung Axiom i3 XXL"},
+      { id: 1, name: "Aqualung Overall 7mm Balance"},
+      { id: 2, name: "Atomic Aquatics Z1"},
+      { id: 3, name: "Suunto ZOOP Novo"}
+
+    ]},
+    { id: 1, name: "Mittelmeer Tauchset", 
+    equipment: [
+      { id: 0, name: "Aqualung Axiom i3 XXL"},
+      { id: 1, name: "Aqualung Overall 7mm Balance"},
+    ]}
   ]
 
   public init() {
@@ -49,8 +66,6 @@ export class DivesetViewModel extends Observable {
    
    // füge objekte dem set hinzu
    this.set("divesets", new ObservableArray(JSON.parse(initLists)));
-
-   console.log("newDiveset values= id=" + newDiveset.id + " name=" + newDiveset.name);
   }
 
 }

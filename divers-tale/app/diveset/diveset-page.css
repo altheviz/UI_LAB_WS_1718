@@ -1,12 +1,1 @@
-.fab-button {
-
-    horizontal-align: right;
-    vertical-align: bottom;
-    background-color: #ff4081;
-    color: white;
-    margin: 15;
-    width: 70;
-    height: 70; 
-    font-size: 25vw;
-    clip-path: circle(80% at 50% 50%);
-}
+.fab-button{horizontal-align:right;vertical-align:bottom;background-color:#3A53FF;color:white;margin:15;width:70;height:70;font-size:25vw;clip-path:circle(80% at 50% 50%)}
