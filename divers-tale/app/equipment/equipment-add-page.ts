@@ -33,13 +33,9 @@ export function onNavigatingTo(args: NavigatedData) {
     vm.set("selectedPage", pageName);
     vm.set("titel", pageName.substring(1));
     const page = <Page>args.object;
-    vm.setupSearch(pageName);
-    let textFieldldDescription = page.getViewById("description");
     
-
     page.bindingContext = vm;
     pageLoaded(args);
-    
 }
 
 export function pageLoaded(args: observable.EventData) {
