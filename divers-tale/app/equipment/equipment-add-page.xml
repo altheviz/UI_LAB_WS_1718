@@ -61,7 +61,7 @@
         <StackLayout>
 
         <AbsoluteLayout>
-            <Button dock="bottom" text="Speichern" tap="saveEntries"></Button>
+            <Button dock="bottom" text="Speichern" tap="saveEntriesTap"></Button>
         </AbsoluteLayout>
 
         <AbsoluteLayout>

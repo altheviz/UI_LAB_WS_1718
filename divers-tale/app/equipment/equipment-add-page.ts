@@ -65,9 +65,11 @@ export function pageLoaded(args: observable.EventData) {
 * have a button that opens it. Get a reference to the RadSideDrawer view and
 * use the showDrawer() function to open the app drawer section.
 *************************************************************/
-exports.saveEntries = function() {
-    console.log("saveEntries");
-};
+export function saveEntriesTap(args:EventData) {
+    console.log("saveEntriesTap");
+    console.log("saveEntriesTap");
+    console.log("saveEntriesTap");
+}
 
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
