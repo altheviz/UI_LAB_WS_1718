@@ -33,7 +33,7 @@ export function onNavigatingTo(args: NavigatedData) {
     vm.set("selectedPage", pageName);
     vm.set("titel", pageName.substring(1));
     const page = <Page>args.object;
-    
+    console.log("sss");
     page.bindingContext = vm;
     pageLoaded(args);
 }
@@ -65,7 +65,7 @@ export function pageLoaded(args: observable.EventData) {
 * have a button that opens it. Get a reference to the RadSideDrawer view and
 * use the showDrawer() function to open the app drawer section.
 *************************************************************/
-export function saveEntriesTap(args:EventData) {
+export function saveEntriesTap(args: EventData) {
     console.log("saveEntriesTap");
     console.log("saveEntriesTap");
     console.log("saveEntriesTap");

@@ -61,7 +61,7 @@
         <StackLayout>
 
         <AbsoluteLayout>
-            <Button dock="bottom" text="Speichern" tap="saveEntriesTap"></Button>
+            <Button dock="bottom" id="bt_add" text="Speichern" tap="saveEntriesTap" class="fab-button"/>
         </AbsoluteLayout>
 
         <AbsoluteLayout>
