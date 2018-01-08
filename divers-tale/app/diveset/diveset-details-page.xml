@@ -1,0 +1,90 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd" >
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <action-item text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
+        <action-item text="Speichern" ios.position="right" android.position="popup" tap="saveButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelEditButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+       
+        <Label class="action-bar-title" text="{{ titel }}"></Label>
+    </ActionBar>
+
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer selectedPage="{{ selectedPage }}"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
+        <!-- list-view id="ds" is required for the refresh after abbrechen -->
+        <nsDrawer:RadSideDrawer.mainContent>
+             <GridLayout rows="*, auto">
+ <stack-layout row="0">
+                        <Label text="{{ divesets.name }}" textWrap="true" style="font-size: 20; margin: 15;" />
+                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}">
+                             <ListView.itemTemplate>
+                                <GridLayout columns="*, auto" >
+                                  <Label class="list-group-item" text="{{ name }}" col="0" />
+                                </GridLayout>
+                            </ListView.itemTemplate>
+                         </list-view>
+                        <!-- editmode -->
+                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
+                             <ListView.itemTemplate>
+                                <GridLayout columns="*, auto" >
+                                  <Label class="list-group-item" text="{{ name }}" col="0" />
+                                  <Image src="res://ic_menu_delete" id="del" col="1" tap="removeFromListTap" style="margin: 10"  />
+                                </GridLayout>
+                            </ListView.itemTemplate>
+                         </list-view>
+</stack-layout>
+            </GridLayout>-->
+             
+
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>
