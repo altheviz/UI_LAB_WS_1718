@@ -1,0 +1,25 @@
+<Page
+  class="page"
+  navigatingTo="onNavigatingTo"
+  navigatingFrom="onNavigatingFrom"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:CheckBox="nativescript-checkbox">
+  <Page.actionBar>
+    <ActionBar class="action-bar" title="Buddies hinzufügen">
+      <ActionItem>
+        <Label text="&#xf00c;" class="font-awesome" tap="addUsersToGroup"/>
+      </ActionItem>
+      <ActionItem>
+        <Label text="&#xf00d;" class="font-awesome" tap="goBack"/>
+      </ActionItem>
+    </ActionBar>
+  </Page.actionBar>
+    <ListView id="listview" items="{{ users }}">
+        <ListView.itemTemplate>
+          <GridLayout columns="auto, *,auto, auto" tap="viewUserDetails">
+              <Label text="{{ nickname }}" textWrap="true" />
+              <CheckBox:CheckBox id="{{ id }}" class="font-awesome" col="2" checked="false" />
+          </GridLayout>
+        </ListView.itemTemplate>
+    </ListView>
+</Page>

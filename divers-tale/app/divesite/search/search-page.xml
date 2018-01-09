@@ -1,0 +1,3 @@
+<StackLayout orientation="vertical">
+    <Label text="Test"/>
+</StackLayout>

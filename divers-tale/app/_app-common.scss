@@ -1,17 +1,16 @@
-// Place any CSS rules you want to apply on both iOS and Android here.
-// This is where the vast majority of your CSS code goes.
-/* Font icon class*/
+// Font icon class
 .fa {
    font-family: "FontAwesome";
 }
+
 // Common page class
 .page-content {
-    
-    .page-placeholder {
-        color: $page-icon-color;
-        font-size: $page-content-placeholder-font-size;
-        vertical-align: center;
-        horizontal-align: center;
+
+    margin: 25 10;
+
+    .header-image {
+        width: 100%;
+        height: auto;
     }
 
     .page-icon {
@@ -21,10 +20,101 @@
         color: $page-icon-color;
         margin-top: 20%;
     }
+
+    .page-content-title {
+        font-size: 32;
+        color: $accent-dark;
+        margin: 10 0 0 0;
+    }
+
+    Label {
+        font-size: 24;
+    }
+
+    .hyperlink{
+        color: $accent-light;
+        text-decoration: underline;
+    }
+
+    .tags{
+        font-size: 16;
+    }
+
+    // List item with image and text
+    .list-item {
+
+        margin: 0;
+        padding: 15 0;
+
+        Image {
+            vertical-align: top;
+            width: 75;
+            height: auto;
+            margin-right: 15;
+            margin-top: 8;
+        }
+
+        .list-item-text{
+
+            vertical-align: top;
+
+            .list-item-headline, .list-item-headline Label {
+                font-size: 30;
+
+                .list-item-headline-icon {
+                    margin: 0 5;
+                    padding: 0;
+                }
+            }
+            .list-item-subline {
+                font-size: 18;
+            }
+        }
+    }
+
+    .custom-list-item {
+        border-bottom-color: $page-icon-color;
+        border-bottom-width: 1;
+        padding-bottom: 15;
+        margin-bottom: 15;
+    }
+
+    // Dropdown menu
+    .drop-down-menu {
+        background-color: $page-icon-color;
+        padding: 5;
+    }
 }
 
-/* Action bar*/
+// ActionBar
 ActionBar .action-bar-title {
     horizontal-align: center;
+    color: $background;
 }
 
+// SidebarDrawer
+.sidedrawer {
+
+    Label {
+        font-size: 18;
+    }
+
+    .sidedrawer-header {
+
+        height: auto;
+        padding-bottom: 25;
+
+        Image.profile-image {
+            margin: 35 0 10;
+            horizontal-align: left;
+            height: 65;
+            max-height: 65;
+            width: auto;
+            border-radius: 50%;
+        }
+
+        Label.sidedrawer-header-brand, Label.footnote {
+            font-size: 14;
+        }
+    }
+}

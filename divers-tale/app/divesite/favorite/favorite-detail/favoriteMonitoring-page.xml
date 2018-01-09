@@ -1,0 +1,29 @@
+<Page 
+    xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" 
+    xmlns:mapTab="divesite/map" 
+    xmlns:favoriteTab="divesite/favorite" 
+    xmlns:searchTab="divesite/search" 
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
+    xmlns:myDrawer="shared/my-drawer">>
+    <ActionBar class="action-bar">
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <Label class="action-bar-title" text="{{ diveSites }}"></Label>
+        <!-- Add visibility tag to ensure this is only activated in favorite tab? visibility="{{ receivedInvitations.length > 0 ? 'visible' : 'hidden' }}
+        -->
+        <ActionItem id="myaction" tap="onDelete" ios.systemIcon="16" ios.position="right" text="{{ mycaption }}" android.position="popup"></ActionItem>
+    </ActionBar>
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <myDrawer:MyDrawer selectedPage="Hello"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <nsDrawer:RadSideDrawer.mainContent>
+            <Label text="Hello, world!"/>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>
