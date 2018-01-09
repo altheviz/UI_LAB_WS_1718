@@ -10,6 +10,8 @@ import * as switchModule from "tns-core-modules/ui/switch";
 import * as textViewModule from "tns-core-modules/ui/text-view";
 import {DivelogService} from "../divelog-service";
 
+var divebuddiesData = require("../../divebuddies/static_data");
+
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -37,4 +39,30 @@ export function onNavigatingTo(args: NavigatedData) {
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
+}
+
+export function onOpenDivesiteClicked(args: EventData) {
+    const component = <FlexboxLayout>args.object;
+    const componentRoute = component.get("route");
+    topmost().navigate( {
+        moduleName: "divesite/favorite/favorite-detail/favoriteMonitoring-page",
+        //context: {info: "something you want to pass to your page"},
+        transition: {
+            name: "fade"
+        }
+    });
+}
+
+export function onBuddyClicked(args: EventData) {
+    const component = args.object;
+    const componentRoute = component.get("route");
+    var divebuddy = divebuddiesData.divebuddies_data[0];
+    var certs = [divebuddiesData.certification_data[0]];
+    topmost().navigate( {
+        moduleName: "divebuddies/user-details/user-details-page",
+        context: { user: divebuddy, certifications: certs},
+        transition: {
+            name: "fade"
+        }
+    });
 }

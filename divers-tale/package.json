@@ -16,8 +16,8 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
-    "elasticlunr": "^0.9.5",
     "email-validator": "^1.1.1",
+    "elasticlunr": "^0.9.5",
     "nativescript-camera": "^3.2.1",
     "nativescript-checkbox": "^3.0.3",
     "nativescript-drop-down": "^3.2.0",

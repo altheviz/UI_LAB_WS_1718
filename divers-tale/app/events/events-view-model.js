@@ -2,9 +2,9 @@ var frameModule = require("ui/frame");
 
 var ObservableArray = require("data/observable-array").ObservableArray;
 
+var config = require("../shared/config");
 var data = require("./static_data");
-
-var events_data = data.events_data;
+var events_service = require("./events-service").EventsService;
 
 function convertDatestring(event) {
   var str = event.date.split(".");
@@ -37,40 +37,60 @@ function createEventData(event) {
   return res;
 }
 
+function responseErrorHandler(response) {
+  if (!response || !response.status || response.status >= 300) {
+    return new Promise(function (resolve, reject) {
+      reject(response);
+    });
+  }
+  return response;
+}
+
+function errorHandler(response) {
+  console.error("HTTP REQUEST FAILED", JSON.stringify(response));
+  return new Promise(function (resolve, reject) {
+      reject();
+  });
+}
+
 function EventsViewModel() {
 
   var viewModel = new ObservableArray();
 
   viewModel.load = function() {
-    events_data.forEach(function(element) {
-      var date = new Date(element.time + " UTC");
-      var day = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
-      
-      var canceledDate = null;
-      if (element.canceled) {
-        var str = element.canceledDate.split("-");
-        canceledDate = str[2] + "." + str[1] + "." + str[0];
-      }
 
-      viewModel.push({
-        id: element.id,
-        name: element.name,
-        divesite: viewModel.getDiveSiteById(element.divesite),
-        type: element.type,
-        date: day,
-        time: date.toLocaleTimeString().substring(0, 5),
-        comment: element.comment,
-        canceled: element.canceled,
-        canceledDate: canceledDate,
-        participants: element.participants,
-        creator: element.creator,
-        image: element.image
-      });
-    });
+    events_service.getEvents()
+      .then(function (data) {
+        data.forEach(function(element) {
+          var date = new Date(element.time + " UTC");
+          var day = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+          
+          var canceledDate = null;
+          if (element.canceled) {
+            var str = element.canceledDate.split("-");
+            canceledDate = str[2] + "." + str[1] + "." + str[0];
+          }
 
-    viewModel.sort(function(a,b) {
-      return new Date(convertDatestring(a)) - new Date(convertDatestring(b));
-    });
+          viewModel.push({
+            id: element.id,
+            name: element.name,
+            divesite: viewModel.getDiveSiteById(element.divesite),
+            type: element.type,
+            date: day,
+            time: date.toLocaleTimeString().substring(0, 5),
+            comment: element.comment,
+            canceled: element.canceled,
+            canceledDate: canceledDate,
+            participants: element.participants,
+            creator: element.creator,
+            image: element.image
+          });
+        });
+
+        viewModel.sort(function(a,b) {
+          return new Date(convertDatestring(a)) - new Date(convertDatestring(b));
+        });
+      })
   };
 
   viewModel.empty = function() {
@@ -87,18 +107,32 @@ function EventsViewModel() {
       }
     };
 
-    for (var i = 0; i < events_data.length; i++) {
-      if (events_data[i].id === event.id) {
-        events_data[i] = createEventData(event);
-        break;
-      }
-    }
+    fetch(config.apiBaseURL + "/events/" + event.id, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(createEventData(event))
+    })
+    .catch (function (error) {
+      console.log('Request failed', error);
+    });
   }
 
   viewModel.add = function(event) {
     viewModel.changeUserEventStatus(event, "Ja");
     viewModel.push(event);
-    events_data.push(createEventData(event));
+
+    fetch(config.apiBaseURL + "/events", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(createEventData(event))
+    })
+    .catch (function (error) {
+      console.log('Request failed', error);
+    });
   }
 
   viewModel.delete = function(event) {
@@ -109,12 +143,12 @@ function EventsViewModel() {
       }
     }
 
-    for (var i = 0; i < events_data.length; i++) {
-      if (events_data[i].id === event.id) {
-        events_data.splice(i, 1);
-        break;
-      }
-    }
+    fetch(config.apiBaseURL + "/events/" + event.id, {
+      method: 'DELETE'
+    })
+    .catch (function (error) {
+      console.log('Request failed', error);
+    });
   }
 
   viewModel.getParticipants = function(event) {
@@ -188,12 +222,27 @@ function EventsViewModel() {
 
   viewModel.getNewEventId = function() {
     var id = 0;
-    viewModel.forEach(function(element) {
-      if (element.id > id) {
-        id = element.id;
-      }
+    return fetch(config.apiBaseURL + "/events")
+    .then(responseErrorHandler)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      data.forEach(function(element) {
+        if (element.id > id) {
+          id = element.id;
+        }
+      });
+      return id + 1;
+    })
+    .catch(function() {
+      viewModel.forEach(function(element) {
+        if (element.id > id) {
+          id = element.id;
+        }
+      });
+      return id + 1;
     });
-    return id + 1;
   }
 
   viewModel.getCertificateById = function(id) {

@@ -1,0 +1,46 @@
+<Page 
+    xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page" 
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
+    xmlns:myDrawer="shared/my-drawer">>
+    <ActionBar class="action-bar">
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <Label class="action-bar-title" text="{{ diveSites }}"></Label>
+        <ActionItem id="deleteAction" tap="onMap" ios.systemIcon="16" ios.position="right" text="Show on Map" android.position="popup"></ActionItem>
+    </ActionBar>
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <myDrawer:MyDrawer selectedPage="Hello"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <nsDrawer:RadSideDrawer.mainContent>
+            <!-- TODO show Pin on map inside actionitem -->
+            <ScrollView orientation="vertical">
+                <GridLayout columns="auto, *" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto">
+                    <Label text="Name: " col="0" row="0"/>
+                    <Label id="favInfo-name" text="{{ infos.name }}" col="1" row="0"/>
+                    <Label text="Location: " col="0" row="1"/>
+                    <Label id="favInfo-location" text="{{ infos.location }}" col="1" row="1"/>
+                    <Label text="Country: " col="0" row="2"/>
+                    <Label id="favInfo-country" text="{{ infos.country }}" col="1" row="2"/>
+                    <Label text="Description: " col="0" row="3"/>
+                    <Label id="favInfo-description" text="{{ infos.description }}" col="1" row="3" textWrap="true"/>
+                    <Label text="Width (m): " col="0" row="4"/>
+                    <Label id="favInfo-width" text="{{ infos.geoData.widthInM }}" col="1" row="4"/>
+                    <Label text="Length (m): " col="0" row="5"/>
+                    <Label id="favInfo-length" text="{{ infos.geoData.lengthInM }}" col="1" row="5"/>
+                    <Label text="Avg. Depth (m): " col="0" row="6"/>
+                    <Label id="favInfo-depthAvg" text="{{ infos.geoData.depthAvgInM }}" col="1" row="6"/>
+                    <Label text="Max. Depth (m): " col="0" row="7"/>
+                    <Label id="favInfo-depthMax" text="{{ infos.geoData.depthMaxInM }}" col="1" row="7"/>
+                    <Label text="Height (m): " col="0" row="8"/>
+                    <Label id="favInfo-height" text="{{ infos.geoData.heightInM }}" col="1" row="8"/>
+                </GridLayout>
+            </ScrollView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

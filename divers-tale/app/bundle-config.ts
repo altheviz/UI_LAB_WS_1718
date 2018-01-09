@@ -9,8 +9,8 @@ if ((global).TNS_WEBPACK) {
     // General modules
     global.registerModule("shared/my-drawer/MyDrawer", () => require("./shared/my-drawer/MyDrawer"));
     global.registerModule("settings/settings-page", () => require("./settings/settings-page"));
-    
-    // Home module
+
+       // Home module
     global.registerModule("home/home-page", () => require("./home/home-page"));
 
     // Authentication modules
@@ -43,4 +43,9 @@ if ((global).TNS_WEBPACK) {
 
     // Market module
     global.registerModule("market/market-page", () => require("./market/market-page"));
+
+     // Divesites module
+     global.registerModule("divesite/divesite-page", () => require("./divesite/divesite-page"));
+     
+ 
 }

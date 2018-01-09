@@ -46,11 +46,13 @@
                     <TabViewItem title="Search" textTransform="none" >
                         <TabViewItem.view>
                             <GridLayout rows="*, 60">
-                                <ListView items="{{ list }}" >
+                                <ListView items="{{ searchItems }}" id="marketList">
                                     <ListView.itemTemplate>
-                                        <GridLayout columns="auto, *,auto, auto" tap="viewGroupDetails">
-                                            <Label text="{{ name }}" textWrap="true" style="margin: 10;" />
-                                            <Label text="&#xf014;" class="font-awesome" col="2" tap="deleteGroup" style="margin: 10;" />
+                                        <GridLayout columns="auto, *, auto" rows="auto, auto" tap="viewGroupDetails">
+                                            <Image src="{{ imgUrl }}" width="120" decodeWidth="120" height="80" stretch="aspectFill" row="0" col="0" rowSpan="2"/>
+                                            <Label text="{{ name }}" textWrap="true" col="1" row="0" style="margin: 10;" />
+                                            <Label text="{{ condition }}" textWrap="true" col="1" row="1" style="margin: 10;" />
+                                            <Label text="{{ price }}" textWrap="true" col="2" row="0" style="margin: 10;" horizontalAlignment="right" rowSpan="2" />
                                         </GridLayout>
                                     </ListView.itemTemplate>
                                 </ListView>
@@ -58,6 +60,34 @@
                                     <Button text="Verkaufen" width="100%" tap="newGroup" textTransform="none"/>
                                 </StackLayout>
                             </GridLayout>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Bought" textTransform="none" >
+                        <TabViewItem.view>
+                            <ListView items="{{ boughtItems }}" id="boughtItemsList">
+                                    <ListView.itemTemplate>
+                                        <GridLayout columns="auto, *, auto" rows="auto, auto" tap="viewGroupDetails">
+                                            <Image src="{{ imgUrl }}" width="120" decodeWidth="120" height="80" stretch="aspectFill" row="0" col="0" rowSpan="2"/>
+                                            <Label text="{{ name }}" textWrap="true" col="1" row="0" style="margin: 10;" />
+                                            <Label text="{{ condition }}" textWrap="true" col="1" row="1" style="margin: 10;" />
+                                            <Label text="{{ price }}" textWrap="true" col="2" row="0" style="margin: 10;" horizontalAlignment="right" rowSpan="2" />
+                                        </GridLayout>
+                                    </ListView.itemTemplate>
+                                </ListView>
+                        </TabViewItem.view>
+                    </TabViewItem>
+                    <TabViewItem title="Sold" textTransform="none" >
+                        <TabViewItem.view>
+                            <ListView items="{{ soldItems }}" id="soldItemsList">
+                                    <ListView.itemTemplate>
+                                        <GridLayout columns="auto, *, auto" rows="auto, auto" tap="viewGroupDetails">
+                                            <Image src="{{ imgUrl }}" width="120" decodeWidth="120" height="80" stretch="aspectFill" row="0" col="0" rowSpan="2"/>
+                                            <Label text="{{ name }}" textWrap="true" col="1" row="0" style="margin: 10;" />
+                                            <Label text="{{ condition }}" textWrap="true" col="1" row="1" style="margin: 10;" />
+                                            <Label text="{{ price }}" textWrap="true" col="2" row="0" style="margin: 10;" horizontalAlignment="right" rowSpan="2" />
+                                        </GridLayout>
+                                    </ListView.itemTemplate>
+                                </ListView>
                         </TabViewItem.view>
                     </TabViewItem>
                 </TabView.items>
