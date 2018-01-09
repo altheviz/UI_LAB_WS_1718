@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Aqualung Axiom i3 XXL",
+        "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "purchaseDate": "27.11.2017",
+        "purchasePrice": "250",
+        "nextInspection": "27.11.2018"
+    },
+    {
+        "name": "Iqualung Axiom i4 S",
+        "description": "Beschreibung 2",
+        "purchaseDate": "01.03.2015",
+        "purchasePrice": "125",
+        "nextInspection": "01.03.2018"
+    },
+    {
+        "name": "Unkonwn ABCii1",
+        "description": "",
+        "purchaseDate": "01.12.2017",
+        "purchasePrice": "373",
+        "nextInspection": "01.12.2018"
+    },
+    {
+        "name": "DSF ii1",
+        "description": "",
+        "purchaseDate": "01.12.2017",
+        "purchasePrice": "373",
+        "nextInspection": "01.12.2018"
+    },
+    {
+        "name": "as fd 222",
+        "description": "",
+        "purchaseDate": "01.12.2017",
+        "purchasePrice": "373",
+        "nextInspection": "01.12.2018"
+    },
+    {
+        "name": "Kaki ii1",
+        "description": "",
+        "purchaseDate": "01.12.2017",
+        "purchasePrice": "373",
+        "nextInspection": "01.12.2018"
+    },
+    {
+        "name": "Chamber ii1",
+        "description": "",
+        "purchaseDate": "01.12.2017",
+        "purchasePrice": "373",
+        "nextInspection": "01.12.2018"
+    },
+    {
+        "name": "And he choose the easy way",
+        "description": "",
+        "purchaseDate": "01.12.2017",
+        "purchasePrice": "373",
+        "nextInspection": "01.12.2018"
+    }
+]
