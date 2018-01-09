@@ -45,11 +45,13 @@ export function onOpenDivesiteClicked(args: EventData) {
     const component = <FlexboxLayout>args.object;
     const componentRoute = component.get("route");
     topmost().navigate( {
-        moduleName: "divesite/favorite/favorite-detail/favoriteMonitoring-page",
+        moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
         //context: {info: "something you want to pass to your page"},
         transition: {
             name: "fade"
-        }
+        },
+        //TODO pass actual index
+        context: {index: 1},
     });
 }
 
