@@ -2,16 +2,11 @@ import { EventData } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
-import { FlexboxLayout } from "tns-core-modules/ui/layouts/flexbox-layout";
 
-import { DivelogViewModel } from "./divelog-view-model";
+import { EquipmentViewModel } from "./equipment-view-model";
 
-import * as switchModule from "tns-core-modules/ui/switch";
-import * as textViewModule from "tns-core-modules/ui/text-view";
-import {DivelogService} from "../divelog-service";
 
-var divebuddiesData = require("../../divebuddies/static_data");
-
+const vm = new EquipmentViewModel();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -24,11 +19,31 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-
+    const pageName: string = "Equipment";
+    vm.set("selectedPage", pageName);
+    vm.set("titel", pageName.substring(1));
     const page = <Page>args.object;
-    var service = new DivelogService();
-    var divelog = service.loadDivelog();
-    page.bindingContext = divelog;
+    vm.setupSearch(pageName);
+    let view = page.getViewById("textFieldSearch");
+    if (view) {
+        view.on("textChange", (data: EventData) => {
+            vm.search(data["value"]);
+        }, this);
+    }
+    page.bindingContext = vm;
+
+}
+
+export function openListItem(args: EventData){
+    var navigationEntry = {
+        moduleName: "equipment/equipment-detail-page",
+        context: {
+            fItem: vm.get("fList")[args["index"]],
+            parentPageName: vm.get("selectedPage")
+        },
+        animated: false
+    };
+    topmost().navigate(navigationEntry);
 }
 
 /* ***********************************************************
@@ -41,30 +56,10 @@ export function onDrawerButtonTap(args: EventData) {
     sideDrawer.showDrawer();
 }
 
-export function onOpenDivesiteClicked(args: EventData) {
-    const component = <FlexboxLayout>args.object;
-    const componentRoute = component.get("route");
-    topmost().navigate( {
-        moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
-        //context: {info: "something you want to pass to your page"},
-        transition: {
-            name: "fade"
-        },
-        //TODO pass actual index
-        context: {index: 1},
-    });
-}
-
-export function onBuddyClicked(args: EventData) {
-    const component = args.object;
-    const componentRoute = component.get("route");
-    var divebuddy = divebuddiesData.divebuddies_data[0];
-    var certs = [divebuddiesData.certification_data[0]];
-    topmost().navigate( {
-        moduleName: "divebuddies/user-details/user-details-page",
-        context: { user: divebuddy, certifications: certs},
-        transition: {
-            name: "fade"
-        }
-    });
-}
+exports.jacket = function() {
+    var navigationEntry = {
+        moduleName: "equipment/equipment-add-page",
+        animated: false
+    };
+    topmost().navigate(navigationEntry);
+}; 
