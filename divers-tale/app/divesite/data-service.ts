@@ -11,6 +11,14 @@ export class DataService {
     }
 
     loadEntry(index: number) {
-        return this.listData[index];
+        var newArr = []; 
+        
+        this.listData.forEach(element => {
+            if (element.id == index) {
+                newArr.push(element);
+            }
+        });
+        
+        return newArr[0];
     } 
 }

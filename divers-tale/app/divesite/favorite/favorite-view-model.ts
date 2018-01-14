@@ -18,7 +18,7 @@ export class SearchViewModel extends Observable {
     filterSearchList(searchText: string) {
         console.log("Trying to filter: " + searchText);
 
-        const result = this.searchResults.filter(element =>
+        const result = this.searchResults.filter(element => 
             element.name.toLowerCase().includes(searchText.toLowerCase())
         );
 

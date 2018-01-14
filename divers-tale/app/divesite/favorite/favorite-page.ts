@@ -69,9 +69,10 @@ export function sBLoaded(args){
 }
 
 export function openListItem(args) {
+    console.dir(model.searchResults);
     var navigationEntry = {
         moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
-        context: {index: args.index}, //pass actual index
+        context: {index: model.searchResults.getItem(args.index).id}, //pass actual index
         //clearHistory: true
     };
     topmost().navigate(navigationEntry);
