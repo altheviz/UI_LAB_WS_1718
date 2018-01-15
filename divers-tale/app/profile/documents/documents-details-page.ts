@@ -59,7 +59,9 @@ export function openImage() {
             .then(function(selection) {
                 selection.forEach(function(selected) {
                 // process the selected image
-                console.log(" - " + selected.uri);
+                selected.getImage().then(function(imagesource){
+                    viewModel.get("document").img= imagesource;
+                })
             });
         }).catch(function (e) {
         // process error

@@ -1,64 +1,36 @@
 <Page class="page" navigatingTo="onNavigatingTo" 
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
     xmlns:myDrawer="shared/my-drawer" 
-    xmlns="http://www.nativescript.org/tns.xsd">
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:TIL="nativescript-textinputlayout">
     <ActionBar class="action-bar">
-        <!-- 
-        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
-        -->
-        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
-        <!-- 
-        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
-        -->
-        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
         <Label class="action-bar-title" text="Certification Details"></Label>
         <action-item tap="deleteButtonTap" ios.systemIcon="16" android.systemIcon="ic_menu_delete" ios.position="right"
-           visibility="{{ 'visible' }}" />
+           visibility="{{ isEditing ? 'collapse' : 'visible' }}" />
         <action-item tap="editButtonTap" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
-           visibility="{{ 'visible' }}" />
-        
+           visibility="{{ isEditing ? 'collapse' : 'visible'  }}" />
+        <action-item tap="doneButtonTap" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"
+           visibility="{{ isEditing ? 'visible' : 'collapse' }}" />
     </ActionBar>
-    <!--
-    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
-    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
-    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
-    The RadSideDrawer component is designed to be used as a root element to the <Page> and
-    it shouldn't have any other siblings other than the <ActionBar> component.
-    -->
-    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
-        <!--
-        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
-        -->
-        <nsDrawer:RadSideDrawer.drawerTransition>
-            <nsDrawer:SlideInOnTopTransition/>
-        </nsDrawer:RadSideDrawer.drawerTransition>
-        <!--
-        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
-        Always wrap content in a layout component.
-        -->
-        <nsDrawer:RadSideDrawer.drawerContent>
-            <StackLayout>
-                <!--
-                Use {N} custom components to reuse UI across your mobile app.
-                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
-                Learn more about custom components and how they can be used in this documentation article:
-                http://docs.nativescript.org/ui/basics#custom-components
-                -->
-                <myDrawer:MyDrawer selectedPage="Documents"/>
-            </StackLayout>
-        </nsDrawer:RadSideDrawer.drawerContent>
-        <!--
-        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
-        Always wrap content in a layout component.
-        -->
-        <nsDrawer:RadSideDrawer.mainContent>
-            <scroll-view>
-                <stack-layout>
-                    <Image src="{{ certification.img }}" />
-                    <Label text="{{ certification.name }}" class="title"/>
-                    <Label text="{{ certification.description }}" textWrap="true" />
-                    <stack-layout height="400px"/></stack-layout>
-            </scroll-view>
-        </nsDrawer:RadSideDrawer.mainContent>
-    </nsDrawer:RadSideDrawer>
+    <scroll-view>
+        <stack-layout>
+            <Image src="{{ certification.img }}" class="header-image" tap="openImage"/>
+            <TIL:TextInputLayout hint="Name">
+                <TextField editable="false" id="docName" text="{{ certification.name }}"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Diver No">
+                <TextView editable="false" id="docDiverNo" text="{{ certification.diverNo }}"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Certification Date">
+                <TextView editable="false" id="docCertDate" text="{{ certification.certDate }}" tap="selectDate"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Instructor No">
+                <TextView editable="false" id="docInstructorNo" text="{{ certification.instructorNo }}"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Description">
+                <TextView editable="false" id="docDes" text="{{ certification.description }}"/>
+            </TIL:TextInputLayout>
+        <stack-layout height="400px"/></stack-layout>
+    </scroll-view>
 </Page>

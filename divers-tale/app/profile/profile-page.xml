@@ -38,9 +38,9 @@
                         <TabViewItem.view>
                             <ScrollView class="page-content" orientation="vertical">
                                 <StackLayout orientation="vertical" class="page-profile-information">
-                                    <Image class="header-image" src="{{ user.profileImage }}"/>
+                                    <Image class="header-image" src="{{ user.profileImage }}" tap="openImage"/>
 
-                                    <!-- <TIL:TextInputLayout hint="Name">
+                                    <TIL:TextInputLayout hint="Name">
                                         <TextField text="{{ user.name }}" id="userName" editable="false" autocorrect="false"/>
                                     </TIL:TextInputLayout> 
                                     <TIL:TextInputLayout hint="Nickname">
@@ -58,36 +58,15 @@
                                     <TIL:TextInputLayout hint="Country">
                                         <TextField text="{{ user.country }}" id="userCountry" editable="false" autocorrect="true"/> 
                                     </TIL:TextInputLayout>
-                                    <!-- <dd:DropDown hint="Sex" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" />
-                                    <TIL:TextInputLayout hint="Date of birth">
-                                        <TextField text="{{ user.dateOfBirth }}" autocorrect="false" autocapitalizationType="none" tap="selectDate"/>
-                                    </TIL:TextInputLayout>  --> -->
 
-                                    <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
-                                        <Label text="Name: " row="0" col="0"/>
-                                        <TextField text="{{ user.name }}" autocorrect="false" hint="John Doe" row="0" col="1"/>
+                                    <TIL:TextInputLayout hint="Sex">
+                                        <TextField text="{{ user.sex }}" id="userSex" editable="false" autocorrect="true"/> 
+                                    </TIL:TextInputLayout>
+                                    <!-- <dd:DropDown hint="Sex" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" /> -->
+                                    <TIL:TextInputLayout hint="Date of birth">
+                                        <TextField text="{{ user.dateOfBirth }}" id="userDateOfBirth" editable="false" autocorrect="false" tap="selectDate"/> 
+                                    </TIL:TextInputLayout>
                                     
-                                        <Label text="Nickname: " row="1" col="0"/>
-                                        <TextField text="{{ user.nickname }}" autocorrect="false" autocapitalizationType="none" hint="johnny" row="1" col="1"/>
-                                    
-                                        <Label text="Email:" row="2" col="0"/>
-                                        <TextField text="{{ user.email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john.doe@foo.com" row="2" col="1"/>
-                                    
-                                        <Label text="City: " row="3" col="0"/>
-                                        <TextField text="{{ user.city }}" autocorrect="true" hint="Karlsruhe" row="3" col="1"/>
-                                    
-                                        <Label text="Region:" row="4" col="0"/>
-                                        <TextField text="{{ user.region }}" autocorrect="false" hint="Baden-Württemberg" row="4" col="1"/>
-                                    
-                                        <Label text="Country:" row="5" col="0"/>
-                                        <TextField text="{{ user.country }}" autocorrect="true" hint="Deutschland" row="5" col="1"/>
-                                    
-                                        <Label text="Sex:" row="6" col="0"/>
-                                        <TextField text="{{ user.sex }}" autocorrect="false" autocapitalizationType="none" hint="male" row="6" col="1"/> 
-                                    
-                                       <Label text="Date of birth:" row="7" col="0"/>
-                                        <TextField text="{{ user.dateOfBirth }}" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" hint="02/19/2000" row="7" col="1"/>
-                                    </GridLayout>
                                 </StackLayout>
                             </ScrollView>
                         </TabViewItem.view>
