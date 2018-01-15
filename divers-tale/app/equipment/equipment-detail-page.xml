@@ -48,7 +48,7 @@
         -->
         <nsDrawer:RadSideDrawer.mainContent>
             <scroll-view>
-                <stack-layout>
+                <stack-layout class="page-content">
                     <StackLayout orientation="horizontal" style="padding: 5">
                         <Label text="Name: " class="name"/>
                         <Label text="{{ fItem.name }}" class="name"/>

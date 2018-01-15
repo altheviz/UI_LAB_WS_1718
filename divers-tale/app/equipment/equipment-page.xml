@@ -3,7 +3,8 @@
     navigatingTo="onNavigatingTo"  
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
-    xmlns="http://www.nativescript.org/tns.xsd">
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:FAB="nativescript-floatingactionbutton">
 
     <ActionBar class="action-bar">
         <!-- 
@@ -57,18 +58,19 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-         <stack-layout>
-        <ListView items="{{ fList }}" id="fList" itemTap="openListItem">
+         <!--<stack-layout>-->
+        <GridLayout rows="*, 60">
+        <ListView class="list-group" items="{{ fList }}" id="fList" itemTap="openListItem">
           <ListView.itemTemplate>
               <GridLayout rows="auto, auto" columns="160px, *" class="listitem">
-                <Label text="{{ name }}" row="0" col="1"/>
+                <Label text="{{ name }}" row="0" col="1" class="list-group-item"/>
               </GridLayout>
-              
           </ListView.itemTemplate>
         </ListView>
-        <Button dock="bottom" text="Add Equipment" tap="jacket"></Button>
-      </stack-layout>
-       
+        <FAB:fab row="5" tap="jacket" rippleColor="#f1f1f1" class="fab-button" icon="res://ic_add_white"/>
+        </GridLayout>
+        
+        <!--</stack-layout> -->
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>

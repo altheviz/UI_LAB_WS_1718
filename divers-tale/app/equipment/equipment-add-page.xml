@@ -4,7 +4,8 @@
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
     xmlns="http://www.nativescript.org/tns.xsd"
-    xmlns:dd="nativescript-drop-down" loaded="pageLoaded">
+    xmlns:dd="nativescript-drop-down" loaded="pageLoaded"
+    xmlns:FAB="nativescript-floatingactionbutton">
 
     <ActionBar class="action-bar">
         <!-- 
@@ -64,12 +65,13 @@
             <Button dock="bottom" id="bt_add" text="Speichern" tap="saveEntriesTap" class="fab-button"/>
         </AbsoluteLayout>
 
-        <AbsoluteLayout>
-            <TextField colspan="2" left="10" top="50" width="100%" id="name" autocorrect="false" hint="TEST" autocapitalizationType="none" />
+        <AbsoluteLayout class="page-content">
+            <TextField colspan="2" left="10" top="50" width="100%" id="name" autocorrect="false" hint="Name" autocapitalizationType="none" />
             <TextField colspan="2" left="10" top="100" width="100%" id="description" hint="Beschreibung" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
             <TextField colspan="2" left="10" top="150" width="100%" id="purchaseDate" hint="Einkaufsdatum" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" />
             <TextField colspan="2" left="10" top="200" width="100%" id="purchasePrice" hint="Einkaufspreis" keyboardType="number" autocorrect="false" autocapitalizationType="none" />
             <TextField colspan="2" left="10" top="250" width="100%" id="nextInspection" hint="Nächste Inspektion" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" />
+        
         </AbsoluteLayout>
         
         <GridLayout rows="auto, auto, *" columns="auto, *">
@@ -78,10 +80,10 @@
                  selectedIndexChanged="dropDownSelectedIndexChanged"
                  row="0" colSpan="2" />  
         </GridLayout>
-
         
+        <FAB:fab row="5" tap="saveEntriesTap" rippleColor="#f1f1f1" class="fab-button" icon="res://ic_add_white"/>
         </StackLayout>
-       
+        
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>
