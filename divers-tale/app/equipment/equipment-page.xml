@@ -59,12 +59,12 @@
         -->
         <nsDrawer:RadSideDrawer.mainContent>
          <!--<stack-layout>-->
-        <GridLayout rows="*, 60">
+        <GridLayout>
         <ListView class="list-group" items="{{ fList }}" id="fList" itemTap="openListItem">
           <ListView.itemTemplate>
-              <GridLayout rows="auto, auto" columns="160px, *" class="listitem">
+              
                 <Label text="{{ name }}" row="0" col="1" class="list-group-item"/>
-              </GridLayout>
+              
           </ListView.itemTemplate>
         </ListView>
         <FAB:fab row="5" tap="jacket" rippleColor="#f1f1f1" class="fab-button" icon="res://ic_add_white"/>

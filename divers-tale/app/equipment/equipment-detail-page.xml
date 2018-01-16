@@ -11,6 +11,10 @@
         Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
         -->
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+         <action-item text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
+          <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}" />
+         <action-item text="Löschen" ios.position="right" android.position="popup" tap="deleteButtonTap" />
+        
         <Label class="action-bar-title" text="Details"></Label>
     </ActionBar>
     <!--
@@ -49,26 +53,27 @@
         <nsDrawer:RadSideDrawer.mainContent>
             <scroll-view>
                 <stack-layout class="page-content">
-                    <StackLayout orientation="horizontal" style="padding: 5">
-                        <Label text="Name: " class="name"/>
-                        <Label text="{{ fItem.name }}" class="name"/>
+                    <StackLayout orientation="horizontal" >
+                        <Label text="Name: " />
+                        <Label text="{{ fItem.name }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                         <TextField text="{{ fItem.name }}" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
                     </StackLayout>
-                    <StackLayout orientation="horizontal" style="padding: 5">
-                        <Label text="Bezeichnung: " class="name"/>
+                    <StackLayout orientation="horizontal" >
+                        <Label text="Bezeichnung: "/>
                         <Label text="{{ fItem.description }}" textWrap="true" />
                     </StackLayout>
-                    <StackLayout orientation="horizontal" style="padding: 5">
-                        <Label text="Kaufdatum: " class="name"/>
-                        <Label text="{{ fItem.purchaseDate }}" class="name"/>
+                    <StackLayout orientation="horizontal" >
+                        <Label text="Kaufdatum: " />
+                        <Label text="{{ fItem.purchaseDate }}"/>
                     </StackLayout>
-                    <StackLayout orientation="horizontal" style="padding: 5">
-                        <Label text="Kaufpreis: " class="name"/>
-                        <Label text="{{ fItem.purchasePrice }}" class="name" />
-                        <Label text=" €" class="name"/>
+                    <StackLayout orientation="horizontal">
+                        <Label text="Kaufpreis: "/>
+                        <Label text="{{ fItem.purchasePrice }}" />
+                        <Label text=" €" />
                     </StackLayout>
-                    <StackLayout orientation="horizontal" style="padding: 5">
-                        <Label text="Inspektionsdatum: " class="name"/>
-                        <Label text="{{ fItem.nextInspection }}" class="name" />
+                    <StackLayout orientation="horizontal">
+                        <Label text="Inspektionsdatum: "/>
+                        <Label text="{{ fItem.nextInspection }}" />
                     </StackLayout>
                     <stack-layout height="400px"/></stack-layout>
             </scroll-view>

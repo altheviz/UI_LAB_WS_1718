@@ -20,6 +20,7 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
+        
         <Label class="action-bar-title" text="Equipment Hinzufügen"></Label>
     </ActionBar>
 
@@ -59,13 +60,13 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-        <StackLayout>
+        <StackLayout class="page-content">
 
         <AbsoluteLayout>
             <Button dock="bottom" id="bt_add" text="Speichern" tap="saveEntriesTap" class="fab-button"/>
         </AbsoluteLayout>
 
-        <AbsoluteLayout class="page-content">
+        <AbsoluteLayout >
             <TextField colspan="2" left="10" top="50" width="100%" id="name" autocorrect="false" hint="Name" autocapitalizationType="none" />
             <TextField colspan="2" left="10" top="100" width="100%" id="description" hint="Beschreibung" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
             <TextField colspan="2" left="10" top="150" width="100%" id="purchaseDate" hint="Einkaufsdatum" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" />

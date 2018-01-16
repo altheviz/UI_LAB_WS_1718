@@ -21,6 +21,7 @@ export function onNavigatingTo(args: NavigatedData) {
     vm.set("fItem", args.context.fItem);
     vm.set("selectedPage", "Details");
     vm.set("titel", "Details");
+    vm.set("editMode", false);
     const page = <Page>args.object;
     page.bindingContext = vm
 }
@@ -39,4 +40,19 @@ export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
+
+export function editButtonTap(args: EventData) {
+    vm.set("editMode", true);
+    console.log("edit - edit mode true");
+}
+
+export function cancelButtonTap(args: EventData) {
+    vm.set("editMode", false);
+    console.log("cancel - edit mode false");
+}
+
+export function deleteButtonTap(args: EventData) {
+    console.log("delete - edit mode false");
+}
+
 
