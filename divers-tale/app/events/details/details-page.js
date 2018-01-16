@@ -81,8 +81,12 @@ exports.editEvent = function() {
 }
 
 exports.viewDivesite = function() {
-  console.log("Go to divesite " + event.divesite.id +" [" + event.divesite.name + "]");
   frameModule.topmost().navigate("divesite/divesite-page");
+  var navigationOptions = {
+    moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
+    context: { index: event.divesite.id }
+  }
+  frameModule.topmost().navigate(navigationOptions);
 };
 
 exports.viewDivebuddy = function(args) {
