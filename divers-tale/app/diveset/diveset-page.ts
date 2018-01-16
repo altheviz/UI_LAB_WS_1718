@@ -34,6 +34,7 @@ export function onNavigatingTo(args: NavigatedData) {
     vm = new DivesetViewModel();
     page = <Page>args.object;
     vm.set("selectedPage", "Diveset");
+    vm.set("editMode", false);
     vm.init();
     page.bindingContext = vm;
 }

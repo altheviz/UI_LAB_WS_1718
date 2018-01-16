@@ -34,6 +34,7 @@ export class DivesetViewModel extends Observable {
     ]}
   ]
 
+
   public init() {
     let initLists = localStorage.getString("initLists");
 
@@ -66,6 +67,20 @@ export class DivesetViewModel extends Observable {
    
    // füge objekte dem set hinzu
    this.set("divesets", new ObservableArray(JSON.parse(initLists)));
+  }
+
+  public removeDiveset(divesetToRemove: DivesetList) {
+    
+    var tmp = localStorage.getString("initLists");
+    var newValues = JSON.parse(tmp);
+   
+    let removeSelectedDiveset = newValues.findIndex((e) => divesetToRemove.id == e.id);
+
+    newValues.splice(removeSelectedDiveset, 1);
+    localStorage.setString("initLists", JSON.stringify(newValues));
+
+    tmp = localStorage.getString("initLists");
+    this.set("divesets", new ObservableArray(JSON.parse(tmp)));
   }
 
 }

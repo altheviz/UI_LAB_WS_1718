@@ -29,7 +29,7 @@ export function onNavigatingTo(args: NavigatedData) {
     vm.set("titel",  args.context.parentPageName.substring(0) + " Details");
     vm.set("editMode", false);
     page = <Page>args.object;
-    page.bindingContext = vm
+    page.bindingContext = vm;
     
 }
 
@@ -63,4 +63,18 @@ export function removeFromListTap(args: EventData) {
 export function saveButtonTap(args: EventData) {
     vm.set("editMode", false);
     console.log("save me tap");
+}
+
+export function deleteButtonTap(args: EventData) {
+    let divesetInitPage = { moduleName: "diveset/diveset-page" };
+    
+    var divesetToRemove = vm.get("divesets");
+    vm.removeDiveset(divesetToRemove);
+    vm.set("editMode", false);
+
+    topmost().navigate(divesetInitPage);
+}
+
+export function newEquipmentTab(args: EventData) {
+    console.log("add equipment into diveset");
 }
