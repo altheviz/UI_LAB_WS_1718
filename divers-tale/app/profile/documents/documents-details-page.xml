@@ -6,12 +6,12 @@
     <ActionBar class="action-bar">
         <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
         <Label class="action-bar-title" text="Document Details"></Label>
-        <action-item tap="deleteButtonTap" ios.systemIcon="16" android.systemIcon="ic_menu_delete" ios.position="right"
-           visibility="{{ isEditing ? 'collapse' : 'visible' }}" />
-        <action-item tap="editButtonTap" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
-           visibility="{{ isEditing ? 'collapse' : 'visible'  }}" />
-        <action-item tap="doneButtonTap" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"
-           visibility="{{ isEditing ? 'visible' : 'collapse' }}" />
+        <action-item tap="deleteButtonTap" text="Delete" ios.systemIcon="16" android.systemIcon="ic_menu_delete" ios.position="right"
+           visibility="{{ isEditing ? 'collapse' : 'visible' }}" android.position="popup"/>
+        <action-item tap="editButtonTap" text="Edit" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
+           visibility="{{ isEditing ? 'collapse' : 'visible'  }}" android.position="popup"/>
+        <action-item tap="doneButtonTap" text="Done" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"
+           visibility="{{ isEditing ? 'visible' : 'collapse' }}" android.position="popup"/>
     </ActionBar>
     <scroll-view>
         <stack-layout>
