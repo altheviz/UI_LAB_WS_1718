@@ -11,9 +11,10 @@
         Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
         -->
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
-         <action-item text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
-          <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}" />
-         <action-item text="Löschen" ios.position="right" android.position="popup" tap="deleteButtonTap" />
+            <action-item text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
+            <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}" />
+            <action-item text="Löschen" ios.position="right" android.position="popup" tap="deleteButtonTap" />
+            <action-item text="Bestätigen" ios.position="right" android.position="popup" tap="confirmEdit" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
         
         <Label class="action-bar-title" text="Details"></Label>
     </ActionBar>
@@ -55,26 +56,32 @@
                 <stack-layout class="page-content">
                     <StackLayout orientation="horizontal" >
                         <Label text="Name: " />
-                        <Label text="{{ fItem.name }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
-                         <TextField text="{{ fItem.name }}" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+                        <Label text="{{ equipment.name }}"  visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                         <TextField text="{{ equipment.name }}" id="name" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
                     </StackLayout>
                     <StackLayout orientation="horizontal" >
                         <Label text="Bezeichnung: "/>
-                        <Label text="{{ fItem.description }}" textWrap="true" />
+                        <Label text="{{ equipment.description }}" textWrap="true" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                        <TextField text="{{ equipment.description }}" id="description" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
                     </StackLayout>
                     <StackLayout orientation="horizontal" >
                         <Label text="Kaufdatum: " />
-                        <Label text="{{ fItem.purchaseDate }}"/>
+                        <Label text="{{ equipment.purchaseDate }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                        <TextField text="{{ equipment.purchaseDate }}" id="purchaseDate" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
                     </StackLayout>
                     <StackLayout orientation="horizontal">
                         <Label text="Kaufpreis: "/>
-                        <Label text="{{ fItem.purchasePrice }}" />
-                        <Label text=" €" />
+                        <Label text="{{ equipment.purchasePrice }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                        <Label text=" €" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                        <TextField text="{{ equipment.purchasePrice }}" id="purchasePrice" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+                        <Label text=" €" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
                     </StackLayout>
                     <StackLayout orientation="horizontal">
                         <Label text="Inspektionsdatum: "/>
-                        <Label text="{{ fItem.nextInspection }}" />
+                        <Label text="{{ equipment.nextInspection }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+                        <TextField text="{{ equipment.nextInspection }}" id="nextInspection" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
                     </StackLayout>
+                    <Label text="{{ equipment.id }}" id="equipId" visibility="collapsed"/>
                     <stack-layout height="400px"/></stack-layout>
             </scroll-view>
         </nsDrawer:RadSideDrawer.mainContent>

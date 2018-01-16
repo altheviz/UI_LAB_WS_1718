@@ -10,12 +10,16 @@ import { EquipmentViewModel } from "./equipment-view-model";
 import { DropDown } from "nativescript-drop-down";
 //import { TextField } from "tns-core-modules/ui/text-field/text-field";
 import { TextField } from "ui/text-field";
+import view = require("ui/core/view");
+import label = require("ui/text-field");
 
 
-
+var observableModule = require("data/observable")
+var ObservableArray = require("data/observable-array").ObservableArray;
 const vm = new EquipmentViewModel();
 var viewModel: observable.Observable;
 let textFieldldDescription;
+var page: Page;
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -33,13 +37,12 @@ export function onNavigatingTo(args: NavigatedData) {
     vm.set("selectedPage", pageName);
     vm.set("titel", pageName.substring(1));
     const page = <Page>args.object;
-    console.log("sss");
     page.bindingContext = vm;
     pageLoaded(args);
 }
 
 export function pageLoaded(args: observable.EventData) {
-    var page = <pages.Page>args.object;
+    page = <pages.Page>args.object;
     var items = new observableArray.ObservableArray();
 
     viewModel = new observable.Observable();
@@ -65,9 +68,22 @@ export function pageLoaded(args: observable.EventData) {
 * have a button that opens it. Get a reference to the RadSideDrawer view and
 * use the showDrawer() function to open the app drawer section.
 *************************************************************/
-export function saveEntriesTap(args: EventData) {
-    console.log("saveEntriesTap");
-    console.log("saveEntriesTap");
+export function saveEntriesTap(args) {
+    var eqName = (<TextField>page.getViewById("name")).text;
+    var eqDescription = (<TextField>page.getViewById("description")).text
+    var eqEinkaufdatum = (<TextField>page.getViewById("purchaseDate")).text
+    var eqEpreis = (<TextField>page.getViewById("purchasePrice")).text
+    var eqInspektion = (<TextField>page.getViewById("nextInspection")).text
+    var eqType = (<TextField>page.getViewById("name")).text
+
+    vm.addToList({
+        id: vm.getNewId(),
+        name: eqName,
+        description: eqDescription,
+        purchaseDate: eqEinkaufdatum,
+        purchasePrice:eqEpreis,
+        nextInspection: eqInspektion,
+    })
     console.log("saveEntriesTap");
 }
 
