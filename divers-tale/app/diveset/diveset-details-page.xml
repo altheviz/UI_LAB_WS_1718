@@ -77,7 +77,7 @@
                             </ListView.itemTemplate>
                          </list-view>
                         <!-- editmode -->
-                         <TextField text="{{ divesets.name }}" textWrap="true" class="h1" visibility="{{editMode ? 'visible' : 'collapsed' }}"/>
+                         <TextField text="{{ divesets.name }}" textWrap="true" class="h1" id="name" visibility="{{editMode ? 'visible' : 'collapsed' }}"/>
                          <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
                              <ListView.itemTemplate>
                                 <GridLayout columns="*, auto" >

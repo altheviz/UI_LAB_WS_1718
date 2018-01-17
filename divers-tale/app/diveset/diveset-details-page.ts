@@ -61,8 +61,28 @@ export function removeFromListTap(args: EventData) {
 }
 
 export function saveButtonTap(args: EventData) {
+    let nameToChange = (<TextField>page.getViewById("name")).text;
+    
+    let divesetToChange = {
+        name: nameToChange,
+        id: vm.get("divesets").id,
+        equipment: vm.get("divesets").equipment
+    }
+    vm.editDiveset(divesetToChange);
+    
+    vm.set("divesets", divesetToChange);
     vm.set("editMode", false);
-    console.log("save me tap");
+    
+    let navigationEntry = {
+        moduleName: "diveset/diveset-details-page",
+        context: {
+            divesets: vm.get("divesets"),
+            parentPageName: vm.get("selectedPage")
+        }
+    };
+    topmost().navigate(navigationEntry);
+    refreshList();
+
 }
 
 export function deleteButtonTap(args: EventData) {

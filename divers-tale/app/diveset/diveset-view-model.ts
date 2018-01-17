@@ -70,17 +70,26 @@ export class DivesetViewModel extends Observable {
   }
 
   public removeDiveset(divesetToRemove: DivesetList) {
-    
     var tmp = localStorage.getString("initLists");
     var newValues = JSON.parse(tmp);
-   
     let removeSelectedDiveset = newValues.findIndex((e) => divesetToRemove.id == e.id);
-
     newValues.splice(removeSelectedDiveset, 1);
     localStorage.setString("initLists", JSON.stringify(newValues));
-
     tmp = localStorage.getString("initLists");
     this.set("divesets", new ObservableArray(JSON.parse(tmp)));
   }
+
+
+  public editDiveset(divesetToChange: DivesetList) {
+    let tmpDivesets = JSON.parse(localStorage.getString("initLists"));
+
+    //was macht daS?
+    tmpDivesets.splice(divesetToChange.id, 1, divesetToChange);
+    
+    localStorage.setString("initLists", JSON.stringify(tmpDivesets));
+    var initLists = localStorage.getString("initLists");
+    this.set("divesets", new ObservableArray(JSON.parse(initLists)));
+  }
+
 
 }
