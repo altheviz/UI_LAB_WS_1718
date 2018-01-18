@@ -58,7 +58,7 @@
                         orientation="horizontal"
                         tap="onItemTap"
                         route="divelog/divelog-view/divelog-view-page"
-                        class="list-item">
+                        class="list-item" id="{{ id }}">
                         <Image src="https://erconsult.com.au/wp-content/uploads/2015/04/placeholder-600x400.png"/>
                         <StackLayout orientation="vertical" class="list-item-text">
                             <StackLayout orientation="horizontal" class="list-item-headline">

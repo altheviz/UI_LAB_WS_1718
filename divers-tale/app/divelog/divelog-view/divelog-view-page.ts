@@ -26,11 +26,32 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
+    debugger;
+    
 
     const page = <Page>args.object;
+
     var service = new DivelogService();
     var settings = SettingService.loadSettings();
     var divelog = service.loadDivelog();
+    var divelogs = service.loadList();
+
+    if (page.navigationContext == null && !divelogs.isEmpty) {
+        divelog = divelogs[0];
+    } else {
+        const divelogId = page.navigationContext.divelogId;
+
+        if (divelogId == null) {
+            divelog = divelogs[0];
+        } else {
+
+            for (const d of divelogs) {
+                if (d.id == divelogId) {
+                    divelog = d;
+                }
+            }
+        }
+    }
     page.bindingContext = divelog;
 
     setMeasureUnits(page, divelog, settings);
@@ -177,6 +198,10 @@ function determineDrySuitContent(page: Page, divelog: DivelogViewModel) {
     if(liner === null || liner.trim.length === 0) {
         linerContainer.className = "hidden";
     }
+}
+
+{
+
 }
 
 function determineConditionsContent(page: Page, divelog: DivelogViewModel) {
