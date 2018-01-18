@@ -39,6 +39,7 @@ export function onNavigatingTo(args: NavigatedData) {
     determineDrySuitContent(page, divelog);
     determineConditionsContent(page, divelog);
     determineTemperatureContent(page, divelog);
+    determineCommentContent(page, divelog);
     determineVerificationContent(page, divelog);
 }
 
@@ -311,6 +312,15 @@ function determineTemperatureContent(page: Page, divelog: DivelogViewModel) {
 
     if(tempGroundLevel === null) {
         tempGroundLevelContainer.className = "hidden";
+    }
+}
+
+function determineCommentContent(page: Page, divelog: DivelogViewModel) {
+    let commentContainer = page.getViewById("commentContainer");
+    let comment = divelog.comment;
+
+    if(comment === null || comment.trim.length === 0) {
+        commentContainer.className = "hidden";
     }
 }
 
