@@ -47,7 +47,7 @@
     "night": "false",
     "surf": "false",
     "waves": "false",
-    "surge": "false",
+    "surge": "true",
     "wreck": "false",
     "reef": "false",
     "deep": "false",

@@ -95,7 +95,7 @@
                 <FlexboxLayout flexDirection="row">
                     <Label text="Pres: "/>
                     <Label id="firstPressure" text="{{ firstPressure }}"/>
-                    <Label text=" bar/psi"/>
+                    <Label id="firstPressureUnit" class="small-margin-left" text=" bar/psi"/>
                 </FlexboxLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
@@ -126,7 +126,7 @@
                 <FlexboxLayout flexDirection="row">
                     <Label text="Safety Stop Level: "/>
                     <Label id="safetyLevel" text="{{ safetyLevel }}"/>
-                    <Label text=" m/ft"/>
+                    <Label id="safetyStopUnit" class="small-margin-left" text="m/ft"/>
                 </FlexboxLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
@@ -147,7 +147,7 @@
                 <FlexboxLayout flexDirection="row">
                     <Label text="Pres: "/>
                     <Label id="secondPressure" text="{{ secondPressure }}"/>
-                    <Label text=" bar/psi"/>
+                    <Label id="secondPressureUnit" class="small-margin-left" text=" bar/psi"/>
                 </FlexboxLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
@@ -166,75 +166,68 @@
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Tank/Gas" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row" class="{{ air }}">
-                    <Label text="Air: "/>
-                    <Label id="air" text="{{ air }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ ean }}">
-                    <Label text="EAN: "/>
-                    <Label id="ean" text="{{ ean }}"/>
+                <FlexboxLayout flexDirection="row">
+                    <Label text="Gas: "/>
+                    <Label id="gas" text=""/>
                     <Label id="eanText" text="{{ eanText }}"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="tankTypeContainer" flexDirection="row">
                     <Label text="Type: "/>
-                    <Label id="tankType" text="{{ tankType }}"/>
+                    <Label text="{{ tankType }}"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="tankSizeContainer" flexDirection="row">
                     <Label text="Size: "/>
-                    <Label id="tankSize" text="{{ tankSize }}"/>
+                    <Label text="{{ tankSize }}"/>
                 </FlexboxLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Wet Suit" class="settings-category"></Label>   
 
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="wetSuitHelmetContainer" flexDirection="row">
                     <Label text="Helmet: "/>
-                    <Label id="wetSuitHelmet" text="{{ wetSuitHelmet }}"/>
-                    <Label text=" mm"/>
+                    <Label text="{{ wetSuitHelmet }}"/>
+                    <Label id="wetSuitHelmetUnit" class="small-margin-left" text="mm"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="wetSuitGlovesContainer" flexDirection="row">
                     <Label text="Gloves: "/>
-                    <Label id="wetSuitGloves" text="{{ wetSuitGloves }}"/>
-                    <Label text=" mm"/>
+                    <Label  text="{{ wetSuitGloves }}"/>
+                    <Label id="wetSuitGlovesUnit" class="small-margin-left" text="mm"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="wetSuitShoesContainer" flexDirection="row">
                     <Label text="Shoes: "/>
-                    <Label id="wetSuitShoes" text="{{ wetSuitShoes }}"/>
-                    <Label text=" mm"/>
+                    <Label text="{{ wetSuitShoes }}"/>
+                    <Label id="wetSuitShoesUnit" class="small-margin-left" text="mm"/>
                 </FlexboxLayout>
                 <FlexboxLayout flexDirection="row">
                     <Label text="Short Suit: "/>
-                    <Label id="wetSuitShortSuit" text="{{ wetSuitShortSuit }}"/>
-                    <Label text=" mm"/>
+                    <Label text="{{ wetSuitShortSuit }}"/>
+                    <Label id="wetSuitShortSuitUnit" class="small-margin-left" text="mm"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="wetSuitUnderwearContainer" flexDirection="row">
                     <Label text="Underwear: "/>
-                    <Label id="wetSuitUnderwear" text="{{ wetSuitUnderwear }}"/>
-                    <Label text=" mm"/>
+                    <Label text="{{ wetSuitUnderwear }}"/>
+                    <Label id="wetSuitUnderwearUnit" class="small-margin-left" text="mm"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="wetSuitLongSuitContainer" flexDirection="row">
                     <Label text="Long Suit: "/>
-                    <Label id="wetSuitLongSuit" text="{{ wetSuitLongSuit }}"/>
-                    <Label text=" mm"/>
+                    <Label text="{{ wetSuitLongSuit }}"/>
+                    <Label id="wetSuitLongSuitUnit" class="small-margin-left" text="mm"/>
                 </FlexboxLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Dry Suit" class="settings-category"></Label>   
 
-                <FlexboxLayout flexDirection="row" class="{{ drySuitGloves }}">
-                    <Label text="Gloves: "/>
-                    <Label id="drySuitGloves" text="{{ drySuitGloves }}"/>
+                <FlexboxLayout id="drySuitGlovesContainer" flexDirection="row">
+                    <Label text="Gloves"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ drySuitShoes }}">
-                    <Label text="Shoes: "/>
-                    <Label id="drySuitShoes" text="{{ drySuitShoes }}"/>
+                <FlexboxLayout id="drySuitShoesContainer" flexDirection="row">
+                    <Label text="Shoes"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="drySuitContainer" flexDirection="row">
                     <Label text="Suit: "/>
                     <Label id="drySuit" text="{{ drySuit }}"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="drySuitLinerContainer" flexDirection="row">
                     <Label text="Liner: "/>
                     <Label id="drySuitLiner" text="{{ drySuitLiner }}"/>
                 </FlexboxLayout>
@@ -242,109 +235,38 @@
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Conditions" class="settings-category"></Label>   
 
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="vizContainer" flexDirection="row">
                     <Label text="Viz: "/>
                     <Label id="viz" text="{{ viz }}"/>
-                    <Label text=" m/ft"/>
+                    <Label id="vizUnit" class="small-margin-left" text="m/ft"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="currentContainer" flexDirection="row">
                     <Label text="Current: "/>
                     <Label id="current" text="{{ current }}"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ sunny }}">
-                    <Label text="Sunny: "/>
-                    <Label id="sunny" text="{{ sunny }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ sunCloud }}">
-                    <Label text="Sun Cloud: "/>
-                    <Label id="sunCloud" text="{{ sunCloud }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ cloud }}">
-                    <Label text="Clouds: "/>
-                    <Label id="cloud" text="{{ cloud }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ rain }}">
-                    <Label text="Rain: "/>
-                    <Label id="rain" text="{{ rain }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ fresh }}">
-                    <Label text="Fresh: "/>
-                    <Label id="fresh" text="{{ fresh }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ salt }}">
-                    <Label text="Salt: "/>
-                    <Label id="salt" text="{{ salt }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ boat }}">
-                    <Label text="Boat: "/>
-                    <Label id="boat" text="{{ boat }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ night }}">
-                    <Label text="Night: "/>
-                    <Label id="night" text="{{ night }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ surf }}">
-                    <Label text="Surf: "/>
-                    <Label id="surf" text="{{ surf }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ waves }}">
-                    <Label text="Waves: "/>
-                    <Label id="waves" text="{{ waves }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ surge }}">
-                    <Label text="Surge: "/>
-                    <Label id="surge" text="{{ surge }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ wreck }}">
-                    <Label text="Wreck: "/>
-                    <Label id="wreck" text="{{ wreck }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ reef }}">
-                    <Label text="Reef: "/>
-                    <Label id="reef" text="{{ reef }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ deep }}">
-                    <Label text="Deep: "/>
-                    <Label id="deep" text="{{ deep }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ photo }}">
-                    <Label text="Photo: "/>
-                    <Label id="photo" text="{{ photo }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ drift }}">
-                    <Label text="Drift: "/>
-                    <Label id="drift" text="{{ drift }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ training }}">
-                    <Label text="Training: "/>
-                    <Label id="training" text="{{ training }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ survey }}">
-                    <Label text="Survey: "/>
-                    <Label id="survey" text="{{ survey }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ recovery }}">
-                    <Label text="Recovery: "/>
-                    <Label id="recovery" text="{{ recovery }}"/>
+
+                <FlexboxLayout id="conditionsContainer" flexDirection="row">
+                    <Label text="Conditions: "/>
+                    <Label id="conditions" text=""/>
                 </FlexboxLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Temperature" class="settings-category"></Label>   
                 
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="tempAboveSurfaceContainer"flexDirection="row">
                     <Label text="Temp. above: "/>
-                    <Label id="aboveSurface" text="{{ aboveSurface }}"/>
-                    <Label text=" °C/°F"/>
+                    <Label id="tempAboveSurface" text="{{ aboveSurface }}"/>
+                    <Label id="tempAboveSurfaceUnit" class="small-margin-left" text="°C/°F"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="tempBelowSurfaceContainer" flexDirection="row">
                     <Label text="Temp. below: "/>
-                    <Label id="belowSurface" text="{{ belowSurface }}"/>
-                    <Label text=" °C/°F"/>
+                    <Label id="tempBelowSurface" text="{{ belowSurface }}"/>
+                    <Label id="tempBelowSurfaceUnit" class="small-margin-left" text="°C/°F"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="tempGroundLevelContainer" flexDirection="row">
                     <Label text="Temp. ground: "/>
-                    <Label id="groundLevel" text="{{ groundLevel }}"/>
-                    <Label text=" °C/°F"/>
+                    <Label id="tempGroundLevel" text="{{ belowSurface }}"/>
+                    <Label id="tempGroundLevelUnit" class="small-margin-left" text="°C/°F"/>
                 </FlexboxLayout>
 
                 <FlexboxLayout flexDirection="row">
@@ -371,23 +293,15 @@
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Verification" class="settings-category"></Label>   
 
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="verificatorNameContainer" flexDirection="row">
                     <Label text="Name: "/>
                     <Label id="verificatorName" class="divelog-nav"  tap="onBuddyClicked" text="{{ verificatorName }}"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ instructor }}">
-                    <Label text="Instructor: "/>
-                    <Label id="instructor" text="{{ instructor }}"/>
+                <FlexboxLayout id="verificatorTypeContainer" flexDirection="row" class="{{ instructor }}">
+                    <Label text="Verificator Type: "/>
+                    <Label id="verificatorType" text="{{ instructor }}"/>
                 </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ diveMaster }}">
-                    <Label text="Divemaster: "/>
-                    <Label id="diveMaster" text="{{ diveMaster }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ buddy }}">
-                    <Label text="Buddy: "/>
-                    <Label id="buddy" text="{{ buddy }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="certificationNumberContainer" flexDirection="row">
                     <Label text="Certification #: "/>
                     <Label id="certificationNumber" text="{{ certificationNumber }}"/>
                 </FlexboxLayout>
