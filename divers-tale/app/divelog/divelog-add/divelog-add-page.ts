@@ -164,7 +164,7 @@ export function buttonTap(args: EventData) {
 
     let divelogs = divelogsService.loadDivelogs();
 
-    divelogs.push(diveModel);
+    divelogs.unshift(diveModel);
 
     localStorage.setItem("divelogs", JSON.stringify(divelogs));
 
