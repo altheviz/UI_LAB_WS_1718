@@ -318,6 +318,7 @@ function determineVerificationContent(page: Page, divelog: DivelogViewModel) {
     let verificatorNameContainer = page.getViewById("verificatorNameContainer");
     let verificatorName = divelog.verificatorName;
     let verificatorTypeContainer = page.getViewById("verificatorTypeContainer");
+    let verificatorTypeLabel = page.getViewById("verificatorType");
     let certificationNumber = divelog.certificationNumber;
     let certificationNumberContainer = page.getViewById("certificationNumberContainer");
 
@@ -334,6 +335,8 @@ function determineVerificationContent(page: Page, divelog: DivelogViewModel) {
     if(divelog.buddy === "true") {
         verificatorType = "Buddy";
     }
+
+    verificatorTypeLabel.set("text", verificatorType);
 
     if(certificationNumber === null) {
         certificationNumberContainer.className = "hidden";

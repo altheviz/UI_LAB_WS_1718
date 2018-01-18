@@ -68,7 +68,7 @@
                         <Label id="date" text="{{ date }}"/>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row">
-                        <Label text="Dive site:"/>
+                        <Label text="Dive site: "/>
                         <Label id="diveSite" text="{{ diveSite }}"/>
                     </FlexboxLayout>
                 </FlexboxLayout>
@@ -299,7 +299,7 @@
                 </FlexboxLayout>
                 <FlexboxLayout id="verificatorTypeContainer" flexDirection="row" class="{{ instructor }}">
                     <Label text="Verificator Type: "/>
-                    <Label id="verificatorType" text="{{ instructor }}"/>
+                    <Label id="verificatorType"/>
                 </FlexboxLayout>
                 <FlexboxLayout id="certificationNumberContainer" flexDirection="row">
                     <Label text="Certification #: "/>
