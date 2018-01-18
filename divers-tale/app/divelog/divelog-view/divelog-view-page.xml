@@ -269,7 +269,7 @@
                     <Label id="tempGroundLevelUnit" class="small-margin-left" text="°C/°F"/>
                 </FlexboxLayout>
 
-                <FlexboxLayout flexDirection="row">
+                <FlexboxLayout id="commentContainer" flexDirection="row">
                     <Label text="Comments: "/>
                     <Label id="comment" text="{{ comment }}"/>
                 </FlexboxLayout>
