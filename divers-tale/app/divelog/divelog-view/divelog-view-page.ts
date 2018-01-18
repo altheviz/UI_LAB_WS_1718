@@ -27,8 +27,8 @@ export function onNavigatingTo(args: NavigatedData) {
 
     const page = <Page>args.object;
     var service = new DivelogService();
-    var divelog = service.loadDivelog();
-    page.bindingContext = divelog;
+    var divelog = service.loadDivelogs();
+    page.bindingContext = divelog[0];
 }
 
 /* ***********************************************************
