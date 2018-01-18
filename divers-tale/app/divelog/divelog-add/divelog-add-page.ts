@@ -7,6 +7,8 @@ import observable = require("data/observable");
 import observableArray = require("data/observable-array");
 import pages = require("ui/page");
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
+import { Settings } from "../../settings/Settings";
+import { SettingService } from "../../settings/settings-service";
 
 import {DivelogViewModel} from "../divelog-view/divelog-view-model"
 
@@ -31,6 +33,57 @@ export function onNavigatingTo(args: NavigatedData) {
 
     const page = <Page>args.object;
     page.bindingContext = new DivelogViewModel();
+    var settings = SettingService.loadSettings();
+
+    setMeasureUnits(page, settings);
+}
+
+function setMeasureUnits(page :Page, settings: Settings) {
+    
+    var pressureHint :string;
+
+    let firstPressureHint = page.getViewById("firstPressureHint");    
+    let secondPressureHint = page.getViewById("secondPressureHint");    
+    pressureHint = "Pressure (" + settings.getPressureUnit() + ")";
+
+    firstPressureHint.set("hint", pressureHint);
+    secondPressureHint.set("hint", pressureHint);
+
+    var measurementAbbreviation :string;
+    if(settings.getMeasurementUnit() === "meter") {
+        measurementAbbreviation = "(m)";    
+    } else {
+        measurementAbbreviation = "(ft)";
+    }
+    
+    let avg = page.getViewById("avg");
+    avg.set("hint", avg.get("hint") + " " + measurementAbbreviation);
+    
+    let depth = page.getViewById("depth");
+    depth.set("hint", depth.get("hint") + " " + measurementAbbreviation);
+
+    let level = page.getViewById("level");
+    level.set("hint", level.get("hint") + " " + measurementAbbreviation);
+    
+    let viz = page.getViewById("viz");
+    viz.set("hint", viz.get("hint") + " " + measurementAbbreviation);
+
+    var tempAbbreviation :string;
+    if(settings.getTemperatureUnit() === "celsius") {
+        tempAbbreviation = "(°C)";
+    } else {
+        tempAbbreviation = "(°F)";
+    }
+
+    let tempAboveSurface = page.getViewById("tempAboveSurface")
+    tempAboveSurface.set("hint", tempAboveSurface.get("hint") + " " + tempAbbreviation);
+
+    let tempBelowSurface = page.getViewById("tempBelowSurface")
+    tempBelowSurface.set("hint", tempBelowSurface.get("hint") + " " + tempAbbreviation);
+
+    let tempGroundLevel = page.getViewById("tempGroundLevel")
+    tempGroundLevel.set("hint", tempGroundLevel.get("hint") + " " + tempAbbreviation);
+
 }
 
 /* ***********************************************************
