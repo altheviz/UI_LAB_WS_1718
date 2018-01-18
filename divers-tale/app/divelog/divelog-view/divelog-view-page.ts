@@ -24,11 +24,30 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-
+    debugger;
+    
+    const service = new DivelogService();
+    const divelogs = service.loadDivelogs();
+    let divelog;
     const page = <Page>args.object;
-    var service = new DivelogService();
-    var divelog = service.loadDivelogs();
-    page.bindingContext = divelog[0];
+
+    if (page.navigationContext == null && !divelogs.isEmpty) {
+        divelog = divelogs[0];
+    } else {
+        const divelogId = page.navigationContext.divelogId;
+
+        if (divelogId == null) {
+            divelog = divelogs[0];
+        } else {
+
+            for (const d of divelogs) {
+                if (d.id == divelogId) {
+                    divelog = d;
+                }
+            }
+        }
+    }
+    page.bindingContext = divelog;
 }
 
 /* ***********************************************************
