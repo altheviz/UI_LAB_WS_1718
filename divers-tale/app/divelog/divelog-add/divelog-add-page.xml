@@ -99,7 +99,7 @@
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
-                    <TIL:TextInputLayout hint="Pressure (bar/psi)">
+                    <TIL:TextInputLayout id="firstPressureHint" hint="Pressure">
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
@@ -114,11 +114,11 @@
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
-                    <TIL:TextInputLayout hint="Avg (m/ft)">
+                    <TIL:TextInputLayout id="avg" hint="Avg">
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
-                    <TIL:TextInputLayout hint="Depth (m/ft)">
+                    <TIL:TextInputLayout id="depth" hint="Depth">
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
@@ -129,7 +129,7 @@
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
-                    <TIL:TextInputLayout hint="Level (m/ft)">
+                    <TIL:TextInputLayout id="level" hint="Level">
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
@@ -145,7 +145,7 @@
                     <TIL:TextInputLayout hint="O2%">
                         <TextField text=""/>
                     </TIL:TextInputLayout>
-                    <TIL:TextInputLayout hint="Pressure (bar/psi)">
+                    <TIL:TextInputLayout id="secondPressureHint" hint="Pressure">
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
@@ -183,36 +183,31 @@
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Wet Suit" class="settings-category"></Label>
-                    <FlexboxLayout flexDirection="row">
-                        <Label class="fa" text="&#xf2cd;"></Label>
-                        <TextField hint="Helmet"></TextField>
-                        <Label text="mm"></Label>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label class="fa" text="&#xf2cd;"></Label>
-                        <TextField hint="Glove"></TextField>
-                        <Label text="mm"></Label>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label class="fa" text="&#xf2cd;"></Label>
-                        <TextField hint="Shoe"></TextField>
-                        <Label text="mm"></Label>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label class="fa" text="&#xf2cd;"></Label>
-                        <TextField hint="Short suit"></TextField>
-                        <Label text="mm"></Label>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label class="fa" text="&#xf2cd;"></Label>
-                        <TextField hint="Suit underwear"></TextField>
-                        <Label text="mm"></Label>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label class="fa" text="&#xf2cd;"></Label>
-                        <TextField hint="Long suit"></TextField>
-                        <Label text="mm"></Label>
-                    </FlexboxLayout>
+                    <TIL:TextInputLayout hint="Helmet (mm)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Glove (mm)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Shoe (mm)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Short suit (mm)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+                    <TIL:TextInputLayout hint="Suit underwear (mm)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
+
+                    <TIL:TextInputLayout hint="Long suit (mm)">
+                        <TextField text=""/>
+                    </TIL:TextInputLayout>
+
 
                     <StackLayout class="separation-line"></StackLayout>
 
@@ -238,7 +233,7 @@
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Conditions" class="settings-category"></Label>
-                    <TIL:TextInputLayout hint="Viz (m/ft)">
+                    <TIL:TextInputLayout id="viz" hint="Viz">
                         <TextField text=""/>
                     </TIL:TextInputLayout>
 
@@ -344,19 +339,15 @@
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Temperature" class="settings-category"></Label>
-                    <TIL:TextInputLayout hint="Above surface">
+                    <TIL:TextInputLayout id="tempAboveSurface" hint="Above surface">
                         <TextField text="" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
-                    <TIL:TextInputLayout hint="Below surface">
+                    <TIL:TextInputLayout id="tempBelowSurface" hint="Below surface">
                         <TextField text="" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
-                    <TIL:TextInputLayout hint="Ground level">
-                        <TextField text="" keyboardType="number"/>
-                    </TIL:TextInputLayout>
-
-                    <TIL:TextInputLayout hint="Ground level">
+                    <TIL:TextInputLayout id="tempGroundLevel" hint="Ground level">
                         <TextField text="" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
