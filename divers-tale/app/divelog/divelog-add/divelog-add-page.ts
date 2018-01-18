@@ -3,6 +3,7 @@ import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import { FlexboxLayout } from "tns-core-modules/ui/layouts/flexbox-layout";
+import { TextField } from "tns-core-modules/ui/text-field";
 import observable = require("data/observable");
 import observableArray = require("data/observable-array");
 import pages = require("ui/page");
@@ -14,9 +15,13 @@ import {DivelogViewModel} from "../divelog-view/divelog-view-model"
 
 import * as switchModule from "tns-core-modules/ui/switch";
 import * as textViewModule from "tns-core-modules/ui/text-view";
+import { ModalDatetimepicker } from "nativescript-modal-datetimepicker";
 
 var viewModel: observable.Observable;
 
+var datePicker = new ModalDatetimepicker();
+
+var page;
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -31,7 +36,7 @@ export function onNavigatingTo(args: NavigatedData) {
         return;
     }
 
-    const page = <Page>args.object;
+    page = <Page>args.object;
     page.bindingContext = new DivelogViewModel();
     var settings = SettingService.loadSettings();
 
@@ -83,7 +88,45 @@ function setMeasureUnits(page :Page, settings: Settings) {
 
     let tempGroundLevel = page.getViewById("tempGroundLevel")
     tempGroundLevel.set("hint", tempGroundLevel.get("hint") + " " + tempAbbreviation);
+}
 
+export function selectDate() {
+    datePicker.pickDate({
+        title: "Bitte Datum auswählen:",
+        theme: "light",
+        minDate: new Date(),
+        is24HourView: true
+      }).then(result => {
+        var date = new Date();
+        var formattedDate = date.getDay() + "." + date.getMonth() + "." + date.getFullYear();
+        var dateField = page.getViewById("dateField");
+
+        dateField.text = formattedDate;
+
+      }).catch(error => {
+        console.log("DatePicker error: " + error);
+      });
+}
+
+export function selectTime(args: EventData) {
+    const component = <TextField>args.object;
+    const componentId = component.get("id");
+
+    datePicker.pickDate({
+        title: "Bitte Uhrzeit auswählen:",
+        theme: "light",
+        minDate: new Date(),
+        is24HourView: true
+      }).then(result => {
+        var date = new Date();
+        var formattedTime = date.getHours() + ":" + date.getMinutes();
+        var timeField = page.getViewById(componentId);
+
+        timeField.text = formattedTime;
+
+      }).catch(error => {
+        console.log("DatePicker error: " + error);
+      });
 }
 
 /* ***********************************************************

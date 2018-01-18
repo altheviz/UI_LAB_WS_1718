@@ -73,7 +73,7 @@
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Date">
-                        <TextField text="" keyboardType="datetime"/>
+                        <TextField id="dateField" editable="false" tap="selectDate"/>
                     </TIL:TextInputLayout>
                     
                     <TIL:TextInputLayout hint="Dive Site">
@@ -88,7 +88,7 @@
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Time">
-                        <TextField text=""/>
+                        <TextField id="firstEntryTimeField" editable="false" tap="selectTime"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="PG">
@@ -111,22 +111,22 @@
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Bottom Time (min)">
-                        <TextField text=""/>
+                        <TextField text="" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="avg" hint="Avg">
-                        <TextField text=""/>
+                        <TextField text="" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="depth" hint="Depth">
-                        <TextField text=""/>
+                        <TextField text="" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Safety Stop" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Duration (min)">
-                        <TextField text=""/>
+                        <TextField text="" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="level" hint="Level">
@@ -137,7 +137,7 @@
 
                     <Label text="Entry" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Time">
-                        <TextField text=""/>
+                        <TextField id="secondEntryTimeField" editable="false" tap="selectTime"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="PG">
                         <TextField text=""/>
