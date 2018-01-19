@@ -20,7 +20,7 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        
+        <action-item text="Hinzufügen" ios.position="right" android.position="popup" tap="saveEntriesTap"/>
         <Label class="action-bar-title" text="Equipment Hinzufügen"></Label>
     </ActionBar>
 
@@ -61,11 +61,6 @@
         -->
         <nsDrawer:RadSideDrawer.mainContent>
         <StackLayout class="page-content">
-
-        <AbsoluteLayout>
-            <Button dock="bottom" id="bt_add" text="Speichern" tap="saveEntriesTap" class="fab-button"/>
-        </AbsoluteLayout>
-
         <AbsoluteLayout >
             <TextField colspan="2" left="10" top="50" width="100%" id="name" autocorrect="false" hint="Name" autocapitalizationType="none" />
             <TextField colspan="2" left="10" top="100" width="100%" id="description" hint="Beschreibung" keyboardType="email" autocorrect="false" autocapitalizationType="none" />

@@ -6,7 +6,7 @@ import { NavigatedData, Page } from "ui/page";
 import { EquipmentViewModel } from "./equipment-view-model";
 
 
-const vm = new EquipmentViewModel();
+var vm: EquipmentViewModel;
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -19,17 +19,13 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
+
+    vm = new EquipmentViewModel();
     const pageName: string = "Equipment";
     vm.set("selectedPage", pageName);
     vm.set("titel", pageName.substring(1));
     const page = <Page>args.object;
-    vm.setupSearch(pageName);
-    let view = page.getViewById("textFieldSearch");
-    if (view) {
-        view.on("textChange", (data: EventData) => {
-            vm.search(data["value"]);
-        }, this);
-    }
+    vm.init();
     page.bindingContext = vm;
 
 }
@@ -38,7 +34,7 @@ export function openListItem(args: EventData){
     var navigationEntry = {
         moduleName: "equipment/equipment-detail-page",
         context: {
-            fItem: vm.get("fList")[args["index"]],
+            equipment: vm.get("equipment").getItem(args["index"]),
             parentPageName: vm.get("selectedPage")
         },
         animated: false
