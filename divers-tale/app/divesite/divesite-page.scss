@@ -1,0 +1,26 @@
+Page {
+    background-color: white;
+    font-size: 20;
+  }
+  
+  ListView {
+    margin: 5;
+    border-radius: 0;
+    separator-color: #000000;
+  }
+  
+  Label {
+    horizontal-align: left;
+    vertical-align: center;
+  }
+  
+  Button {
+    background-color: #326ee5;
+    color: #ffffff;
+  }
+  
+  .font-awesome {
+    font-family: "FontAwesome";
+    font-size: 30;
+    color: #326ee5;
+  } 

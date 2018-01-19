@@ -33,9 +33,7 @@ export function onDrawerButtonTap(args: EventData) {
 }
 
 export function onAdd(args: EventData) {
-    console.log("Add action item tapped.");
 }
 
 export function onDelete(args: EventData) {
-    console.log("Delete action item tapped.");
 }

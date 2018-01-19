@@ -19,7 +19,6 @@ export function onDrawerButtonTap(args: EventData) {
 }
 
 export function onMap(args) {
-    console.log("Show on Map tapped.");
     var navigationEntry = {
         moduleName: "divesite/map/map-page",
         clearHistory: true,
