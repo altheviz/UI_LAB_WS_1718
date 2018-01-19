@@ -33,7 +33,7 @@ export function onNavigatingTo(args: NavigatedData) {
     var divelog = service.loadDivelog();
     page.bindingContext = divelog;
 
-    setMeasureUnits(page, settings);
+    setMeasureUnits(page, divelog, settings);
     determineGasContent(page, divelog);
     determineWetSuitContent(page, divelog);
     determineDrySuitContent(page, divelog);
@@ -43,30 +43,30 @@ export function onNavigatingTo(args: NavigatedData) {
     determineVerificationContent(page, divelog);
 }
 
-function setMeasureUnits(page: Page, settings: Settings) {
+function setMeasureUnits(page: Page, divelog: DivelogViewModel, settings: Settings) {
     let measurementUnitAbbreviation = getMeasurementUnitAbbreviation(settings.getMeasurementUnit());
     let tempUnitAbbreviation = getTemperatureUnitAbbreviation(settings.getTemperatureUnit());
 
-    let firstPressureUnit = page.getViewById("firstPressureUnit");
-    firstPressureUnit.set("text", settings.getPressureUnit());
+    let firstPressure = page.getViewById("firstPressure");
+    firstPressure.set("text", divelog.firstPressure + " " + settings.getPressureUnit());
 
-    let secondPressureUnit = page.getViewById("secondPressureUnit");
-    secondPressureUnit.set("text", settings.getPressureUnit());
+    let secondPressure = page.getViewById("secondPressure");
+    secondPressure.set("text", divelog.secondPressure + " " + settings.getPressureUnit());
 
-    let vizUnit = page.getViewById("vizUnit");
-    vizUnit.set("text", measurementUnitAbbreviation);
+    let viz = page.getViewById("viz");
+    viz.set("text", divelog.viz + " " + measurementUnitAbbreviation);
 
-    let safetyStopUnit = page.getViewById("safetyStopUnit");
-    safetyStopUnit.set("text", measurementUnitAbbreviation);
+    let safetyStopLevel = page.getViewById("safetyLevel");
+    safetyStopLevel.set("text", divelog.safetyLevel + " " + measurementUnitAbbreviation);
 
-    let tempAboveSurfaceUnit = page.getViewById("tempAboveSurfaceUnit");
-    tempAboveSurfaceUnit.set("text", tempUnitAbbreviation);
+    let tempAboveSurface = page.getViewById("tempAboveSurface");
+    tempAboveSurface.set("text", divelog.aboveSurface + " " + tempUnitAbbreviation);
 
-    let tempBelowSurfaceUnit = page.getViewById("tempBelowSurfaceUnit");
-    tempBelowSurfaceUnit.set("text", tempUnitAbbreviation);
+    let tempBelowSurface = page.getViewById("tempBelowSurface");
+    tempBelowSurface.set("text", divelog.belowSurface + " " + tempUnitAbbreviation);
 
-    let tempGroundLevelUnit = page.getViewById("tempGroundLevelUnit");
-    tempGroundLevelUnit.set("text", tempUnitAbbreviation);
+    let tempGroundLevel = page.getViewById("tempGroundLevel");
+    tempGroundLevel.set("text", divelog.groundLevel + " " + tempUnitAbbreviation);
 }
 
 function getMeasurementUnitAbbreviation(measurementUnit: String) {
@@ -90,10 +90,10 @@ function determineGasContent(page: Page, divelog: DivelogViewModel) {
     let gasLabel = page.getViewById("gas");
     let gasText = "";
 
-    if(divelog.air) {
+    if(divelog.air === "true") {
         gasText = "Air";
     } else {
-        gasText = "EAN, " + divelog.eanText;
+        gasText = "EAN - " + divelog.eanText;
     }
 
     gasLabel.set("text", gasText);
