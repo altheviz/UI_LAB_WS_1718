@@ -1,4 +1,5 @@
 import {DivelogListItem} from "./divelog-list/divelog-list-item";
+import { DivelogViewModel } from "./divelog-view/divelog-view-model";
 
 
 export class DivelogService {
@@ -11,12 +12,42 @@ export class DivelogService {
     }
 
 
-    loadList(){
+    loadDivelogs(){
         return this.listData;
     }
+    
+    saveDivelog(divelog: DivelogViewModel) {
+        const divelogs = this.loadDivelogs();
+        this.deleteDivelog(divelog.id);
 
-    loadDivelog() {
-        return this.logData;
+        for (const d of divelogs) {
+            if (d.id == divelog.id) {
+                divelogs.splice(divelogs.indexOf(d), 1);
+            }
+        }
+
+        divelogs.unshift(divelog);
+        localStorage.setItem("divelogs", JSON.stringify(divelogs));
+    }
+
+    loadDivelog(id: number) {
+        const divelogs = this.loadDivelogs();
+        let divelog;
+        if (id == null && !divelogs.isEmpty) {
+            divelog = divelogs[0];
+        } else {
+            if (id == null) {
+                divelog = divelogs[0];
+            } else {
+
+                for (const d of divelogs) {
+                    if (d.id == id) {
+                        divelog = d;
+                    }
+                }
+            }
+        }
+        return divelog;
     }
 
     deleteDivelog(id: number) {

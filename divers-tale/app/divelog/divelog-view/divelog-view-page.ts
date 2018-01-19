@@ -9,12 +9,8 @@ import { DivelogViewModel } from "./divelog-view-model";
 import * as switchModule from "tns-core-modules/ui/switch";
 import * as textViewModule from "tns-core-modules/ui/text-view";
 import {DivelogService} from "../divelog-service";
-<<<<<<< HEAD
 import { Settings } from "../../settings/Settings";
 import { SettingService } from "../../settings/settings-service";
-=======
-import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
->>>>>>> bff8513... added ability to delete divelogs
 
 var divebuddiesData = require("../../divebuddies/static_data");
 const service = new DivelogService();
@@ -31,27 +27,16 @@ export function onNavigatingTo(args: NavigatedData) {
         return;
     }
 
+
     const page = <Page>args.object;
     var settings = SettingService.loadSettings();
-    var divelog = service.loadDivelog();
-    var divelogs = service.loadList();
+    const divelogs = service.loadDivelogs();
+    let divelogId;
 
-    if (page.navigationContext == null && !divelogs.isEmpty) {
-        divelog = divelogs[0];
-    } else {
-        const divelogId = page.navigationContext.divelogId;
-
-        if (divelogId == null) {
-            divelog = divelogs[0];
-        } else {
-
-            for (const d of divelogs) {
-                if (d.id == divelogId) {
-                    divelog = d;
-                }
-            }
-        }
+    if(page.navigationContext != null) {
+        divelogId = page.navigationContext.divelogId;
     }
+    const divelog = service.loadDivelog(divelogId);
     page.bindingContext = divelog;
 
     setMeasureUnits(page, divelog, settings);
@@ -421,6 +406,21 @@ export function onDeleteButtonTap(args: EventData) {
 
     topmost().navigate( {
         moduleName: route,
+        transition: {
+            name: "fade"
+        }
+    });
+}
+
+export function onEditButtonTap(args: EventData) {
+    const component = args.object;
+    const route = component.get("route");
+    const divelogId = component.get("id");
+    debugger;
+
+    topmost().navigate( {
+        moduleName: route,
+        context: {divelogId: divelogId},
         transition: {
             name: "fade"
         }

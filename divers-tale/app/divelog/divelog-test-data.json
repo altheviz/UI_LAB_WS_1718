@@ -1,4 +1,4 @@
-{
+[{
     "id": 1,
     "diveNumber": 1,
     "location": "Karlsruhe (DE)",
@@ -68,4 +68,4 @@
     "diveMaster": "true",
     "buddy": "false",
     "certificationNumber": 0   
-}
+}]

@@ -32,12 +32,19 @@ export function onNavigatingTo(args: NavigatedData) {
     * Skipping the re-initialization on back navigation means the user will see the
     * page in the same data state that he left it in before navigating.
     *************************************************************/
+
     if (args.isBackNavigation) {
         return;
     }
 
     page = <Page>args.object;
-    page.bindingContext = new DivelogViewModel();
+    const divelogId = page.navigationContext.divelogId;
+    if (divelogId != null) {
+        page.bindingContext = divelogsService.loadDivelog(divelogId);
+    } else {
+        page.bindingContext = new DivelogViewModel();
+    }
+
     divelogsService = new DivelogService();
     var settings = SettingService.loadSettings();
 
@@ -80,6 +87,7 @@ function setMeasureUnits(page :Page, settings: Settings) {
     } else {
         tempAbbreviation = "(°F)";
     }
+
 
     let tempAboveSurface = page.getViewById("tempAboveSurface")
     tempAboveSurface.set("hint", tempAboveSurface.get("hint") + " " + tempAbbreviation);
@@ -152,15 +160,24 @@ export function pageLoaded(args: observable.EventData) {
     }
 
     viewModel.set("items", items);
-    page.bindingContext = viewModel;
+
+    const divelogId = page.navigationContext.divelogId;
+    if (divelogId != null) {
+        page.bindingContext = divelogsService.loadDivelog(divelogId);
+    } else {
+        page.bindingContext = new DivelogViewModel();
+    }
 }
 
 
 export function buttonTap(args: EventData) {
-    let diveModel = new DivelogViewModel();
-    const id = Math.floor(Math.random() * (100000 - 0 + 1));
+    let diveModel = page.bindingContext;
 
-    diveModel.id = id;
+    if (page.bindingContext.id == null) {
+        const id = Math.floor(Math.random() * (100000 - 0 + 1));
+        diveModel.id = id;
+    }
+
     diveModel.diveNumber = page.getViewById("dive#").get("text");
     diveModel.location = page.getViewById("location").get("text");
     diveModel.date = page.getViewById("date").get("text");
@@ -256,11 +273,7 @@ export function buttonTap(args: EventData) {
     // diveModel.buddy = page.getViewById("buddy").get("text");
     diveModel.certificationNumber = page.getViewById("certificationNumber").get("text");
 
-    let divelogs = divelogsService.loadDivelogs();
-
-    divelogs.unshift(diveModel);
-
-    localStorage.setItem("divelogs", JSON.stringify(divelogs));
+    divelogsService.saveDivelog(diveModel);
 
     const component = <FlexboxLayout>args.object;
     const componentRoute = component.get("route");
