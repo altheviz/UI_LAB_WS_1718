@@ -85,6 +85,11 @@ export function saveEntriesTap(args) {
         nextInspection: eqInspektion,
     })
     console.log("saveEntriesTap");
+
+    let navigationEntry = {
+        moduleName: "equipment/equipment-page"
+    };
+    topmost().navigate(navigationEntry);
 }
 
 export function onDrawerButtonTap(args: EventData) {
