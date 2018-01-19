@@ -8,6 +8,6 @@ export class DivelogListModel extends Observable {
     constructor() {
         super();
         let service = new DivelogService();
-        this.divelogs = service.loadList();
+        this.divelogs = service.loadDivelogs();
     }
 }

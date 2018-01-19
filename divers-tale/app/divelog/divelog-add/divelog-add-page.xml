@@ -65,98 +65,97 @@
 
                     <Label class="settings-category" text="General"></Label>
                     <TIL:TextInputLayout hint="Dive#">
-                        <TextField text="" keyboardType="number" autocorrect="false" autocapitalizationType="none"/>
+                        <TextField id="dive#" text="{{ diveNumber }}" keyboardType="number" autocorrect="false" autocapitalizationType="none"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Location">
-                        <TextField text=""/>
+                        <TextField id="location" text=" {{ location }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Date">
-                        <TextField id="dateField" editable="false" tap="selectDate"/>
+                        <TextField id="dateField" editable="false" text="{{ date }}" tap="selectDate"/>
                     </TIL:TextInputLayout>
                     
                     <TIL:TextInputLayout hint="Dive Site">
-                        <TextField text=""/>
+                        <TextField id="diveSite" text="{{ diveSite }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Entry" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="SI">
-                        <TextField text=""/>
+                        <TextField id="si" text="{{ si }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Time">
-                        <TextField id="firstEntryTimeField" editable="false" tap="selectTime"/>
+                        <TextField id="firstEntryTime" text="{{ firstEntryTime }}" editable="false" tap="selectTime"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="PG">
-                        <TextField text=""/>
+                        <TextField id="firstPg" text="{{ firstPg }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="RNT">
-                        <TextField text=""/>
+                        <TextField id="rnt" text="{{ rnt }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="firstPressureHint" hint="Pressure">
-                        <TextField text=""/>
+                        <TextField id="firstPressure" text="{{ firstPressure }}"/>
                     </TIL:TextInputLayout>
-
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Time" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="RNT">
-                        <TextField text=""/>
+                        <TextField id="rnt" text="{{ rnt }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Bottom Time (min)">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="bottomTime" text="{{ bottomTime }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="avg" hint="Avg">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="avg" text="{{ avg }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="depth" hint="Depth">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="depth" text="{{ depth }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Safety Stop" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Duration (min)">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="safetyTime" text="{{ safetyTime }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="level" hint="Level">
-                        <TextField text=""/>
+                        <TextField id="safetyLevel" text="{{ safetyLevel }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Entry" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Time">
-                        <TextField id="secondEntryTimeField" editable="false" tap="selectTime"/>
+                        <TextField id="secondEntryTime" text="{{ secondEntryTime }}" editable="false" tap="selectTime"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="PG">
-                        <TextField text=""/>
+                        <TextField id="secondPg" text="{{ secondPg }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="O2%">
-                        <TextField text=""/>
+                        <TextField id="oxygenPercentage" text="{{ oxygenPercentage }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout id="secondPressureHint" hint="Pressure">
-                        <TextField text=""/>
+                        <TextField id="secondPressure" text="{{ secondPressure }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Weight" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Ditch (kg/lbs)">
-                        <TextField text=""/>
+                        <TextField id="ditch" text="{{ ditch }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="Trim (kg/lbs)">
-                        <TextField text=""/>
+                        <TextField id="trim" text="{{ trim }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
@@ -164,220 +163,218 @@
                     <Label text="Tank/Gas" class="settings-category"></Label>
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Air" row="0" col="0"></Label>
-                        <Switch checked="false" row="0" col="1"/>
+                        <Switch id="air" checked="false" row="0" col="1"/>
                     </GridLayout>
                     <GridLayout row="auto" columns="* auto">
                         <TIL:TextInputLayout hint="EAN">
-                            <TextField row="0" col="2"/>
+                            <TextField id="ean" row="0" col="2"/>
                         </TIL:TextInputLayout>
-                        <Switch checked="false" row="0" col="1"/>
+                        <Switch id="eanText" checked="false" row="0" col="1"/>
                     </GridLayout>
 
                     <TIL:TextInputLayout hint="Type">
-                        <TextField text=""/>
+                        <TextField id="tankType" text="{{ tankType }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="Size">
-                        <TextField text=""/>
+                        <TextField id="tankSize" text="{{ tankSize }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Wet Suit" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Helmet (mm)">
-                        <TextField text=""/>
+                        <TextField id="wetSuitHelmet" text="{{ wetSuitHelmet }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Glove (mm)">
-                        <TextField text=""/>
+                        <TextField id="wetSuitGloves" text="{{ wetSuitGloves }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Shoe (mm)">
-                        <TextField text=""/>
+                        <TextField id="wetSuitShoes" text="{{ wetSuitShoes }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Short suit (mm)">
-                        <TextField text=""/>
+                        <TextField id="wetSuitShortSuit" text="{{ wetSuitShortSuit }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Suit underwear (mm)">
-                        <TextField text=""/>
+                        <TextField id="wetSuitUnderwear" text="{{ wetSuitUnderwear }}"/>
                     </TIL:TextInputLayout>
 
 
                     <TIL:TextInputLayout hint="Long suit (mm)">
-                        <TextField text=""/>
+                        <TextField id="wetSuitLongSuit" text="{{ wetSuitLongSuit }}"/>
                     </TIL:TextInputLayout>
-
-
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Dry Suit" class="settings-category"></Label>
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Gloves"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="drySuitGloves" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Shoes"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="drySuitShoes" checked="false"/>
                     </GridLayout>
 
                     <TIL:TextInputLayout hint="Suit">
-                        <TextField text=""/>
+                        <TextField id="drySuit" text="{{ drySuit }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Liner">
-                        <TextField text=""/>
+                        <TextField id="drySuitLiner" text="{{ drySuitLiner }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Conditions" class="settings-category"></Label>
                     <TIL:TextInputLayout id="viz" hint="Viz">
-                        <TextField text=""/>
+                        <TextField id="viz" text="{{ viz }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Current">
-                        <TextField text=""/>
+                        <TextField id="current" text="{{ current }}"/>
                     </TIL:TextInputLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Sunny"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="sunny" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Sun/Cloud"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="sunCloud" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Cloud"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="cloud" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Rain"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="rain" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Fresh"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="fresh" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Salt"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="salt" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Boat"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="boat" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Night"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="night" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Surf"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="surf" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Waves"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="waves" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Surge"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="surge" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Wreck"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="wreck" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Reef"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="reef" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Deep"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="deep" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Photo"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="photo" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Drift"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="drift" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Training"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="training" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Survey"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="survey" checked="false"/>
                     </GridLayout>
 
                     <GridLayout row="auto" columns="* auto">
                         <Label text="Recovery"></Label>
-                        <Switch checked="false"/>
+                        <Switch id="recovery" checked="false"/>
                     </GridLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Temperature" class="settings-category"></Label>
                     <TIL:TextInputLayout id="tempAboveSurface" hint="Above surface">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="aboveSurface" text="{{ aboveSurface }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="tempBelowSurface" hint="Below surface">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="belowSurface" text="{{ belowSurface }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout id="tempGroundLevel" hint="Ground level">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="groundLevel" text="{{ groundLevel }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Comment" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Comment">
-                        <TextField text=""/>
+                        <TextField id="comment" text="comment"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Time" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Previous time">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="previousTime" text="previousTime" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="This dive">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="thisDive" text="thisDive" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Total time">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="totalTime" text="totalTime" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Verification" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Verficator name">
-                        <TextField text=""/>
+                        <TextField id="verificatorName" text="verificatorName"/>
                     </TIL:TextInputLayout>
 
                     <GridLayout rows="auto, auto, *" columns="auto, *">
@@ -388,8 +385,10 @@
                     </GridLayout>
 
                     <TIL:TextInputLayout hint="Certification #">
-                        <TextField text="" keyboardType="number"/>
+                        <TextField id="certificationNumber" text="certificationNumber" keyboardType="number"/>
                     </TIL:TextInputLayout>
+
+                    <Button tap="buttonTap" text="save" route="divelog/divelog-list/divelog-list-page"/>
                 </StackLayout>
             </ScrollView>
         </nsDrawer:RadSideDrawer.mainContent>
