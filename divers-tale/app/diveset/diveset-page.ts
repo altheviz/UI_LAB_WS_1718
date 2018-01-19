@@ -13,10 +13,8 @@ var observableModule = require("data/observable")
 var ObservableArray = require("data/observable-array").ObservableArray;
 
 var bt: Button;
-//var buttonState = 0;
 var page: Page;
 var vm: DivesetViewModel;
-
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
@@ -48,7 +46,6 @@ export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
-
 
 export function newDivesetTap(args:EventData){ 
     dialogs.prompt({

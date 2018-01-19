@@ -52,22 +52,17 @@ export function editButtonTap(args: EventData) {
     vm.set("editMode", true);
 }
 
-
 function refreshList() {
     (<ListView>page.getViewById("ds")).refresh();
 }
 
-function refreshListx() {
+function refreshCheckButtons() {
     (<ListView>page.getViewById("dx")).refresh();
 }
 
 export function cancelEditButtonTap (args: EventData)  {
     vm.set("editMode", false);
     refreshList();
-}
-
-export function removeFromListTap(args: EventData) {
-    console.log("delete me tap");
 }
 
 export function saveButtonTap(args: EventData) {
@@ -92,41 +87,19 @@ export function saveButtonTap(args: EventData) {
     };
     topmost().navigate(navigationEntry);
     refreshList();
-
 }
 
 export function deleteButtonTap(args: EventData) {
     let divesetInitPage = { moduleName: "diveset/diveset-page" };
-    
     var divesetToRemove = vm.get("divesets");
     vm.removeDiveset(divesetToRemove);
     vm.set("editMode", false);
-
     topmost().navigate(divesetInitPage);
 }
 
-
 export function toggle(args: EventData) {
-    refreshListx();
     let ds = vm.get("divesets");
     let x = ds.equipment[args["index"]]; 
     x.checked = !x.checked;
-    vm.editEquipment(x);
-    refreshListx();
+    refreshCheckButtons();
 }
-
-/**export function onSwitchLoaded(args) {
-    //this.get("divesets").equipment.getItems(args["index"]).checked
-    var x = vm.get("divesets").getItem(args["index"]); 
-    console.log("checked?? = " + x.checked);
-
-    let sw = <Switch>args.object;
-    sw.on("checkedChange", (args) => {
-       
-      console.log("im right here in the switch");
-      console.log("sw.checked= " + sw.checked);
-    })
-    
-}*/
-
-

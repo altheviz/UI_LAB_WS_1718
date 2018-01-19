@@ -25,8 +25,8 @@ export class DivesetViewModel extends Observable {
   private initDivesets: DivesetList[] = [
     { id: 0, name: "Baggersee Tauchset",
     equipment: [
-      { id: 0, name: "test1", checked: false},
-      { id: 1, name: "test2", checked: true},
+      { id: 0, name: "Aqualung Axiom i3 XXL", checked: false},
+      { id: 1, name: "Aqualung Overall 7mm Balance", checked: true},
       { id: 3, name: "Suunto ZOOP Novo", checked: false}
 
     ]},
@@ -37,6 +37,7 @@ export class DivesetViewModel extends Observable {
     ]}
   ];
   
+  //hier wird die equipment liste mit den werten vom equipment befuellt
   public emvInit() {
     this.evm.init();
     var eqList = localStorage.getString("initEqList");
@@ -46,20 +47,18 @@ export class DivesetViewModel extends Observable {
     });
     
     localStorage.setString("initLists", JSON.stringify(this.initDivesets));
-    //console.log("zustand nach befüllen= " + JSON.stringify(this.initDivesets));
+ 
     var x = localStorage.getString("initLists");
     this.set("divesets", new ObservableArray(JSON.parse(x)));
   }
 
   public init() {
-    
     let initLists = localStorage.getString("initLists");
     
     if(!initLists || initLists == null || initLists.length == 0) {
       localStorage.setString("initLists", JSON.stringify(this.initDivesets));
       this.emvInit();
     }
-    //this.emvInit();
     
     initLists = localStorage.getString("initLists");
     
@@ -74,8 +73,6 @@ export class DivesetViewModel extends Observable {
   }
 
   public addToList(newDiveset: DivesetList) {
-   
-   
     // hol die Objekte vom Persistenten Speicher.
    var tempDivesets = JSON.parse(localStorage.getString("initLists")); 
    
@@ -83,17 +80,13 @@ export class DivesetViewModel extends Observable {
    tempDivesets.push(newDiveset);
   
    if(newDiveset.equipment.length == 0) {
-    console.log("equipment is empty" + JSON.stringify(newDiveset.equipment)); 
-    let eqlist = localStorage.getString("initEqList");
-    newDiveset.equipment = JSON.parse(eqlist); 
-    console.log("equipment is full" + JSON.stringify(newDiveset.equipment)); 
+     let eqlist = localStorage.getString("initEqList");
+     newDiveset.equipment = JSON.parse(eqlist);  
    };
 
    // speichere die Objekte wieder im persistenten Speicher 
    localStorage.setString("initLists", JSON.stringify(tempDivesets));
    
-   
-
    // kann hier vlt auch weggelassen werden? unnötiger zwischenschritt?
    var initLists = localStorage.getString("initLists");
    
@@ -105,33 +98,26 @@ export class DivesetViewModel extends Observable {
     var tmp = localStorage.getString("initLists");
     var newValues = JSON.parse(tmp);
     let removeSelectedDiveset = newValues.findIndex((e) => divesetToRemove.id == e.id);
+    
     newValues.splice(removeSelectedDiveset, 1);
+    
     localStorage.setString("initLists", JSON.stringify(newValues));
    
     tmp = localStorage.getString("initLists");
     this.set("divesets", new ObservableArray(JSON.parse(tmp)));
   }
 
-
   public editDiveset(divesetToChange: DivesetList) {
     let tmp = localStorage.getString("initLists");
     var newValues = JSON.parse(tmp);
     let replaceSelectedItem = newValues.findIndex((e) => divesetToChange.id == e.id);
+    
     newValues.splice(replaceSelectedItem, 1, divesetToChange);
+    
     localStorage.setString("initLists", JSON.stringify(newValues));
+    
     tmp = localStorage.getString("initLists");
     this.set("divesets", new ObservableArray(JSON.parse(tmp)));
   }
-
-  public editEquipment(checked: boolean) {
-    //TODOvar tmp = localStorage.getString("initLists");
-    console.log("check it= " + JSON.stringify(checked));
-  }
-
-
-  /**public getEquipmentFromList() {
-    console.log("hier bin ich");
-    this.emvInit();
-  }*/
 
 }

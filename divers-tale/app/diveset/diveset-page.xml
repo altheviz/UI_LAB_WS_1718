@@ -59,16 +59,15 @@
         -->
         <!-- todo -->
         <nsDrawer:RadSideDrawer.mainContent>
-            <GridLayout rows="auto, *">       
-                      <list-view row="1" class="list-group" items="{{ divesets }}" itemTap="detailDivesetTap">
-                            <list-view.itemTemplate>      
-                                <Label row="0" class="list-group-item" text="{{ name }}" />
-                            </list-view.itemTemplate>
-                   </list-view>
+          <GridLayout rows="auto, *">       
+            <list-view row="1" class="list-group" items="{{ divesets }}" itemTap="detailDivesetTap">
+              <list-view.itemTemplate>      
+                <Label row="0" class="list-group-item" text="{{ name }}" />
+              </list-view.itemTemplate>
+            </list-view>
                      
-                       <FAB:fab row="1" rippleColor="#f1f1f1" class="fab-button" tap="newDivesetTap" icon="res://ic_add_white" />
-            </GridLayout>
-              
+            <FAB:fab row="1" rippleColor="#f1f1f1" class="fab-button" tap="newDivesetTap" icon="res://ic_add_white" />
+          </GridLayout>
 
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
