@@ -27,25 +27,13 @@ export function onNavigatingTo(args: NavigatedData) {
     }
 
     const divelogs = service.loadDivelogs();
-    let divelog;
     const page = <Page>args.object;
+    let divelogId;
 
-    if (page.navigationContext == null && !divelogs.isEmpty) {
-        divelog = divelogs[0];
-    } else {
-        const divelogId = page.navigationContext.divelogId;
-
-        if (divelogId == null) {
-            divelog = divelogs[0];
-        } else {
-
-            for (const d of divelogs) {
-                if (d.id == divelogId) {
-                    divelog = d;
-                }
-            }
-        }
+    if(page.navigationContext != null) {
+        divelogId = page.navigationContext.divelogId;
     }
+    const divelog = service.loadDivelog(divelogId);
     page.bindingContext = divelog;
 }
 
@@ -99,4 +87,17 @@ export function onDeleteButtonTap(args: EventData) {
     });
 }
 
+export function onEditButtonTap(args: EventData) {
+    const component = args.object;
+    const route = component.get("route");
+    const divelogId = component.get("id");
+    debugger;
+
+    topmost().navigate( {
+        moduleName: route,
+        context: {divelogId: divelogId},
+        transition: {
+            name: "fade"
+        }
+    });
 }

@@ -65,98 +65,98 @@
 
                     <Label class="settings-category" text="General"></Label>
                     <TIL:TextInputLayout hint="Dive#">
-                        <TextField id="dive#" text="" keyboardType="number" autocorrect="false" autocapitalizationType="none"/>
+                        <TextField id="dive#" text="{{ diveNumber }}" keyboardType="number" autocorrect="false" autocapitalizationType="none"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Location">
-                        <TextField id="location" text=""/>
+                        <TextField id="location" text=" {{ location }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Date">
-                        <TextField id="date" text="" keyboardType="datetime"/>
+                        <TextField id="date" text="{{ date }}" keyboardType="datetime"/>
                     </TIL:TextInputLayout>
                     
                     <TIL:TextInputLayout hint="Dive Site">
-                        <TextField id="diveSite" text=""/>
+                        <TextField id="diveSite" text="{{ diveSite }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Entry" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="SI">
-                        <TextField id="si" text=""/>
+                        <TextField id="si" text="{{ si }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Time">
-                        <TextField id="firstEntryTime" text=""/>
+                        <TextField id="firstEntryTime" text="{{ firstEntryTime }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="PG">
-                        <TextField id="firstPg" text=""/>
+                        <TextField id="firstPg" text="{{ firstPg }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="RNT">
-                        <TextField id="rnt" text=""/>
+                        <TextField id="rnt" text="{{ rnt }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Pressure (bar/psi)">
-                        <TextField id="firstPressure" text=""/>
+                        <TextField id="firstPressure" text="{{ firstPressure }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Time" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="RNT">
-                        <TextField id="rnt" text=""/>
+                        <TextField id="rnt" text="{{ rnt }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Bottom Time (min)">
-                        <TextField id="bottomTime" text=""/>
+                        <TextField id="bottomTime" text="{{ bottomTime }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Avg (m/ft)">
-                        <TextField id="avg" text=""/>
+                        <TextField id="avg" text="{{ avg }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Depth (m/ft)">
-                        <TextField id="depth" text=""/>
+                        <TextField id="depth" text="{{ depth }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Safety Stop" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Duration (min)">
-                        <TextField id="safetyTime" text=""/>
+                        <TextField id="safetyTime" text="{{ safetyTime }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Level (m/ft)">
-                        <TextField id="safetyLevel" text=""/>
+                        <TextField id="safetyLevel" text="{{ safetyLevel }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Entry" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Time">
-                        <TextField id="secondEntryTime" text=""/>
+                        <TextField id="secondEntryTime" text="{{ secondEntryTime }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="PG">
-                        <TextField id="secondPg" text=""/>
+                        <TextField id="secondPg" text="{{ secondPg }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="O2%">
-                        <TextField id="oxygenPercentage" text=""/>
+                        <TextField id="oxygenPercentage" text="{{ oxygenPercentage }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="Pressure (bar/psi)">
-                        <TextField id="secondPressure" text=""/>
+                        <TextField id="secondPressure" text="{{ secondPressure }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Weight" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Ditch (kg/lbs)">
-                        <TextField id="ditch" text=""/>
+                        <TextField id="ditch" text="{{ ditch }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="Trim (kg/lbs)">
-                        <TextField id="trim" text=""/>
+                        <TextField id="trim" text="{{ trim }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
@@ -174,10 +174,10 @@
                     </GridLayout>
 
                     <TIL:TextInputLayout hint="Type">
-                        <TextField id="tankType" text=""/>
+                        <TextField id="tankType" text="{{ tankType }}"/>
                     </TIL:TextInputLayout>
                     <TIL:TextInputLayout hint="Size">
-                        <TextField id="tankSize" text=""/>
+                        <TextField id="tankSize" text="{{ tankSize }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
@@ -186,32 +186,32 @@
                     <FlexboxLayout flexDirection="row">
                         <Label class="fa" text="&#xf2cd;"></Label>
                         <TextField id="wetSuitHelmet" hint="Helmet"></TextField>
-                        <Label text="mm"></Label>
+                        <Label text="{{ wetSuitHelmet }}"></Label>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row">
                         <Label class="fa" text="&#xf2cd;"></Label>
                         <TextField id="wetSuitGloves" hint="Glove"></TextField>
-                        <Label text="mm"></Label>
+                        <Label text="{{ wetSuitGloves }}"></Label>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row">
                         <Label class="fa" text="&#xf2cd;"></Label>
                         <TextField id="wetSuitShoes" hint="Shoe"></TextField>
-                        <Label text="mm"></Label>
+                        <Label text="{{ wetSuitShoes }}"></Label>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row">
                         <Label class="fa" text="&#xf2cd;"></Label>
                         <TextField id="wetSuitShortSuit" hint="Short suit"></TextField>
-                        <Label text="mm"></Label>
+                        <Label text="{{ wetSuitShortSuit }}"></Label>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row">
                         <Label class="fa" text="&#xf2cd;"></Label>
                         <TextField id="wetSuitUnderwear" hint="Suit underwear"></TextField>
-                        <Label text="mm"></Label>
+                        <Label text="{{ wetSuitUnderwear }}"></Label>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row">
                         <Label class="fa" text="&#xf2cd;"></Label>
                         <TextField id="wetSuitLongSuit" hint="Long suit"></TextField>
-                        <Label text="mm"></Label>
+                        <Label text="{{ wetSuitLongSuit }}"></Label>
                     </FlexboxLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
@@ -228,22 +228,22 @@
                     </GridLayout>
 
                     <TIL:TextInputLayout hint="Suit">
-                        <TextField id="drySuit" text=""/>
+                        <TextField id="drySuit" text="{{ drySuit }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Liner">
-                        <TextField id="drySuitLiner" text=""/>
+                        <TextField id="drySuitLiner" text="{{ drySuitLiner }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Conditions" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Viz (m/ft)">
-                        <TextField id="viz" text=""/>
+                        <TextField id="viz" text="{{ viz }}"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Current">
-                        <TextField id="current" text=""/>
+                        <TextField id="current" text="{{ current }}"/>
                     </TIL:TextInputLayout>
 
                     <GridLayout row="auto" columns="* auto">
@@ -345,44 +345,44 @@
 
                     <Label text="Temperature" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Above surface">
-                        <TextField id="aboveSurface" text="" keyboardType="number"/>
+                        <TextField id="aboveSurface" text="aboveSurface" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Below surface">
-                        <TextField id="belowSurface" text="" keyboardType="number"/>
+                        <TextField id="belowSurface" text="belowSurface" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Ground level">
-                        <TextField id="groundLevel" text="" keyboardType="number"/>
+                        <TextField id="groundLevel" text="groundLevel" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Comment" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Comment">
-                        <TextField id="comment" text=""/>
+                        <TextField id="comment" text="comment"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Time" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Previous time">
-                        <TextField id="previousTime" text="" keyboardType="number"/>
+                        <TextField id="previousTime" text="previousTime" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="This dive">
-                        <TextField id="thisDive" text="" keyboardType="number"/>
+                        <TextField id="thisDive" text="thisDive" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Total time">
-                        <TextField id="totalTime" text="" keyboardType="number"/>
+                        <TextField id="totalTime" text="totalTime" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Verification" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Verficator name">
-                        <TextField id="verificatorName" text=""/>
+                        <TextField id="verificatorName" text="verificatorName"/>
                     </TIL:TextInputLayout>
 
                     <GridLayout rows="auto, auto, *" columns="auto, *">
@@ -393,7 +393,7 @@
                     </GridLayout>
 
                     <TIL:TextInputLayout hint="Certification #">
-                        <TextField id="certificationNumber" text="" keyboardType="number"/>
+                        <TextField id="certificationNumber" text="certificationNumber" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <Button tap="buttonTap" text="save" route="divelog/divelog-list/divelog-list-page"/>
