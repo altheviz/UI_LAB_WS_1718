@@ -18,6 +18,7 @@
                     ios.position="left">
         </ActionItem>
         <Label class="action-bar-title" text="Divelog"></Label>
+        <action-item icon="res://edit" text="Löschen" id="{{ id }}" ios.position="right" android.position="popup" tap="onDeleteButtonTap" route="divelog/divelog-list/divelog-list-page" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
     </ActionBar>
     <!--
     RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.

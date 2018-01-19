@@ -9,9 +9,10 @@ import { DivelogViewModel } from "./divelog-view-model";
 import * as switchModule from "tns-core-modules/ui/switch";
 import * as textViewModule from "tns-core-modules/ui/text-view";
 import {DivelogService} from "../divelog-service";
+import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
 
 var divebuddiesData = require("../../divebuddies/static_data");
-
+const service = new DivelogService();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -24,9 +25,7 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-    debugger;
-    
-    const service = new DivelogService();
+
     const divelogs = service.loadDivelogs();
     let divelog;
     const page = <Page>args.object;
@@ -65,7 +64,6 @@ export function onOpenDivesiteClicked(args: EventData) {
     const componentRoute = component.get("route");
     topmost().navigate( {
         moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
-        //context: {info: "something you want to pass to your page"},
         transition: {
             name: "fade"
         },
@@ -86,4 +84,19 @@ export function onBuddyClicked(args: EventData) {
             name: "fade"
         }
     });
+}
+
+export function onDeleteButtonTap(args: EventData) {
+    const component = args.object;
+    const route = component.get("route");
+    service.deleteDivelog(component.get("id"));
+
+    topmost().navigate( {
+        moduleName: route,
+        transition: {
+            name: "fade"
+        }
+    });
+}
+
 }
