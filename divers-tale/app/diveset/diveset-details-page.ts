@@ -1,11 +1,15 @@
-import { EventData, Observable } from "data/observable";
+import { Image } from 'ui/image';
+import { EventData, Observable, PropertyChangeData } from "data/observable";
+import { ObservableArray } from "data/observable-array";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { DivesetViewModel } from "./diveset-view-model";
 import { ListView } from "ui/list-view"
 import { NavigatedData, Page } from "ui/page";
 import * as dialogs from "ui/dialogs";
-import { TextField } from "ui/text-field"
+import { TextField } from "ui/text-field";
+import { Switch } from "ui/switch";
+import { Label } from "ui/label";
 
 var vm: DivesetViewModel;
 var page: Page;
@@ -23,6 +27,7 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
+    
     vm = new DivesetViewModel;
     vm.set("divesets", args.context.divesets);
     vm.set("selectedPage", args.context.parentPageName.substring(0));
@@ -47,8 +52,13 @@ export function editButtonTap(args: EventData) {
     vm.set("editMode", true);
 }
 
+
 function refreshList() {
     (<ListView>page.getViewById("ds")).refresh();
+}
+
+function refreshListx() {
+    (<ListView>page.getViewById("dx")).refresh();
 }
 
 export function cancelEditButtonTap (args: EventData)  {
@@ -95,6 +105,28 @@ export function deleteButtonTap(args: EventData) {
     topmost().navigate(divesetInitPage);
 }
 
-export function newEquipmentTab(args: EventData) {
-    console.log("add equipment into diveset");
+
+export function toggle(args: EventData) {
+    refreshListx();
+    let ds = vm.get("divesets");
+    let x = ds.equipment[args["index"]]; 
+    x.checked = !x.checked;
+    vm.editEquipment(x);
+    refreshListx();
 }
+
+/**export function onSwitchLoaded(args) {
+    //this.get("divesets").equipment.getItems(args["index"]).checked
+    var x = vm.get("divesets").getItem(args["index"]); 
+    console.log("checked?? = " + x.checked);
+
+    let sw = <Switch>args.object;
+    sw.on("checkedChange", (args) => {
+       
+      console.log("im right here in the switch");
+      console.log("sw.checked= " + sw.checked);
+    })
+    
+}*/
+
+

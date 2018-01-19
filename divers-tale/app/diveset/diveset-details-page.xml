@@ -20,9 +20,9 @@
             ios.position="left">
         </ActionItem>
         <action-item text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
-         <action-item text="Löschen" ios.position="right" android.position="popup" tap="deleteButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}" />
-        <action-item text="Speichern" ios.position="right" android.position="popup" tap="saveButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+         <action-item text="Speichern" ios.position="right" android.position="popup" tap="saveButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
         <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelEditButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Löschen" ios.position="right" android.position="popup" tap="deleteButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
        
         <Label class="action-bar-title" text="{{ titel }}"></Label>
     </ActionBar>
@@ -67,29 +67,37 @@
             <GridLayout rows="*, auto">
               
  <stack-layout row="0">
- <Label text="{{ divesets.name }}" textWrap="true" class="h1" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
-            
-                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}">
+                <Label text="{{ divesets.name }}" textWrap="true" class="h1" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
+                    <ListView class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}">
                              <ListView.itemTemplate>
                                 <GridLayout columns="*, auto" >
-                                  <Label class="list-group-item" text="{{ name }}" col="0" />
+                                    <Label class="list-group-item" text="{{ name }}" col="0" visibility="{{ checked ? 'visible' : 'collapsed' }}"/>
                                 </GridLayout>
                             </ListView.itemTemplate>
-                         </list-view>
+                         </ListView>
+                        
                         <!-- editmode -->
                          <TextField text="{{ divesets.name }}" textWrap="true" class="h1" id="name" visibility="{{editMode ? 'visible' : 'collapsed' }}"/>
-                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
+                         <ListView class="list-group" id="dx" items="{{ divesets.equipment }}" itemTap="toggle" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
                              <ListView.itemTemplate>
                                 <GridLayout columns="*, auto" >
-                                  <Label class="list-group-item" text="{{ name }}" col="0" />
-                                  <Image src="res://ic_menu_delete" id="del" col="1" tap="removeFromListTap" />
+                                  <Label class="list-group-item" text="{{ name }}" col="0"  />
+                             <!-- image tut schonmal    
+                          
+                           <!--<Image src="{{'res://' + (checked ? 'checked' : 'unchecked') }}" height="40" decodeHeight="40" col="1" />-->
+                        <Switch checked="{{ checked }}" col="1" />
+
+
+
+
+
                                 </GridLayout>
                             </ListView.itemTemplate>
-                         </list-view>
+                         </ListView>
 
                          
 </stack-layout>
-  <FAB:fab row="1" tap="newEvent" rippleColor="#f1f1f1" tap="newEquipmentTab" class="fab-button" icon="res://ic_add_white" />
+  <!--<FAB:fab row="1" tap="newEvent" rippleColor="#f1f1f1" tap="newEquipmentTab" class="fab-button" icon="res://ic_add_white" />-->
             </GridLayout>-->
              
 

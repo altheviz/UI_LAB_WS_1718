@@ -52,8 +52,8 @@ export function onDrawerButtonTap(args: EventData) {
 
 export function newDivesetTap(args:EventData){ 
     dialogs.prompt({
-        title: "Create new Diveset",
-        message: "Add a new Diveset",
+        title: "Add Diveset",
+        message: "Create an new Diveset",
         cancelButtonText: "Cancel",
         okButtonText: "OK",
         defaultText: "",
@@ -64,7 +64,7 @@ export function newDivesetTap(args:EventData){
                 //hier der trick. schon das json verwenden :-)
                 id: vm.getNewId(),
                 name: r.text,
-                equipment: []
+                equipment: [] //TODO hier haraldinho
             });
         } else {
             console.log("Dialog closed! " + r.result + " text: " + r.text);
@@ -73,6 +73,7 @@ export function newDivesetTap(args:EventData){
 }
 
 export function detailDivesetTap(args: EventData) {
+    
     var navigationEntry = {
         moduleName: "diveset/diveset-details-page",
         context: {
