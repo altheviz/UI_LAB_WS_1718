@@ -59,7 +59,7 @@
                                 </ListView>
                                 <FAB:fab tap="" width="70"
                                     height="70"
-                                    icon="res://white_plus"
+                                    icon="res://ic_add_white"
                                     rippleColor="#f1f1f1"
                                     class="fab-button fa" route="divelog/divelog-add/divelog-add-page"/>
                             </GridLayout>

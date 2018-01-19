@@ -6,23 +6,18 @@ import { FlexboxLayout } from "tns-core-modules/ui/layouts/flexbox-layout";
 import { TextField } from "tns-core-modules/ui/text-field";
 import observable = require("data/observable");
 import observableArray = require("data/observable-array");
-import pages = require("ui/page");
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 import { Settings } from "../../settings/Settings";
 import { SettingService } from "../../settings/settings-service";
-import {DivelogService} from "../divelog-service";
 import {DivelogViewModel} from "../divelog-view/divelog-view-model"
-
-import * as switchModule from "tns-core-modules/ui/switch";
-import * as textViewModule from "tns-core-modules/ui/text-view";
 import { ModalDatetimepicker } from "nativescript-modal-datetimepicker";
+import {DivelogService} from "../divelog-service";
 
 var viewModel: observable.Observable;
+var page: Page;
+const divelogsService = new DivelogService();
 
 var datePicker = new ModalDatetimepicker();
-var divelogsService;
-var page;
-
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -36,16 +31,20 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-
     page = <Page>args.object;
-    const divelogId = page.navigationContext.divelogId;
+    let divelogId;
+
+    if (page.navigationContext != null) {
+        divelogId = page.navigationContext.divelogId;
+    }
     if (divelogId != null) {
         page.bindingContext = divelogsService.loadDivelog(divelogId);
     } else {
         page.bindingContext = new DivelogViewModel();
     }
 
-    divelogsService = new DivelogService();
+    page = <Page>args.object;
+    page.bindingContext = new DivelogViewModel();
     var settings = SettingService.loadSettings();
 
     setMeasureUnits(page, settings);
@@ -88,7 +87,6 @@ function setMeasureUnits(page :Page, settings: Settings) {
         tempAbbreviation = "(°F)";
     }
 
-
     let tempAboveSurface = page.getViewById("tempAboveSurface")
     tempAboveSurface.set("hint", tempAboveSurface.get("hint") + " " + tempAbbreviation);
 
@@ -107,10 +105,10 @@ export function selectDate() {
         is24HourView: true
       }).then(result => {
         var date = new Date();
-        var formattedDate = date.getDay() + "." + date.getMonth() + "." + date.getFullYear();
+        var formattedDate = date.getDay() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
         var dateField = page.getViewById("dateField");
 
-        dateField.text = formattedDate;
+        dateField.set("text", formattedDate);
 
       }).catch(error => {
         console.log("DatePicker error: " + error);
@@ -131,7 +129,7 @@ export function selectTime(args: EventData) {
         var formattedTime = date.getHours() + ":" + date.getMinutes();
         var timeField = page.getViewById(componentId);
 
-        timeField.text = formattedTime;
+        timeField.set("text", formattedTime);
 
       }).catch(error => {
         console.log("DatePicker error: " + error);
@@ -149,7 +147,6 @@ export function onDrawerButtonTap(args: EventData) {
 }
 
 export function pageLoaded(args: observable.EventData) {
-    var page = <pages.Page>args.object;
     var items = new observableArray.ObservableArray();
     var verifierTypes = ["Instructor", "Divemaster", "Buddy"];
 
@@ -160,8 +157,11 @@ export function pageLoaded(args: observable.EventData) {
     }
 
     viewModel.set("items", items);
+    let divelogId;
 
-    const divelogId = page.navigationContext.divelogId;
+    if (page.navigationContext != null) {
+        divelogId = page.navigationContext.divelogId;
+    }
     if (divelogId != null) {
         page.bindingContext = divelogsService.loadDivelog(divelogId);
     } else {
@@ -169,8 +169,8 @@ export function pageLoaded(args: observable.EventData) {
     }
 }
 
-
 export function buttonTap(args: EventData) {
+    debugger;
     let diveModel = page.bindingContext;
 
     if (page.bindingContext.id == null) {
@@ -180,7 +180,7 @@ export function buttonTap(args: EventData) {
 
     diveModel.diveNumber = page.getViewById("dive#").get("text");
     diveModel.location = page.getViewById("location").get("text");
-    diveModel.date = page.getViewById("date").get("text");
+    diveModel.date = page.getViewById("dateField").get("text");
     diveModel.diveSite = page.getViewById("diveSite").get("text");
 
 // Entry 1

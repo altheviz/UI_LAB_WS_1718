@@ -60,7 +60,7 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
- <ScrollView>
+            <ScrollView>
                 <StackLayout class="page-content">
 
                     <Label class="settings-category" text="General"></Label>
@@ -394,4 +394,3 @@
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
 </Page>
-

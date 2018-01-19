@@ -1,21 +1,24 @@
-import {DivelogListItem} from "./divelog-list/divelog-list-item";
-import { DivelogViewModel } from "./divelog-view/divelog-view-model";
-
+import * as localStorage from "nativescript-localstorage";
+import {DivelogViewModel} from "./divelog-view/divelog-view-model";
 
 export class DivelogService {
-    private listData;
     private logData;
 
     constructor() {
-        this.listData = require("./divelog-list-test-data.json");
-        this.logData = require("./divelog-test-data.json");
     }
 
+    loadDivelogs() {
+        let divelogs = localStorage.getItem('divelogs');
 
-    loadDivelogs(){
-        return this.listData;
+        if (divelogs == null) {
+            divelogs = new Array<DivelogViewModel> ();
+        } else {
+            divelogs = JSON.parse(divelogs);
+        }
+
+        return divelogs;
     }
-    
+
     saveDivelog(divelog: DivelogViewModel) {
         const divelogs = this.loadDivelogs();
         this.deleteDivelog(divelog.id);
@@ -51,14 +54,17 @@ export class DivelogService {
     }
 
     deleteDivelog(id: number) {
-        const divelogs = JSON.parse(localStorage.getItem('divelogs'));
+        let divelogs = localStorage.getItem('divelogs');
 
-        for (const divelog of divelogs) {
-            if (divelog.id == id) {
-                divelogs.splice(divelogs.indexOf(divelog), 1);
+        if (divelogs != null) {
+            divelogs = JSON.parse(divelogs);
+            for (const divelog of divelogs) {
+                if (divelog.id == id) {
+                    divelogs.splice(divelogs.indexOf(divelog), 1);
+                }
             }
-        }
 
-        localStorage.setItem("divelogs", JSON.stringify(divelogs));
+            localStorage.setItem("divelogs", JSON.stringify(divelogs));
+        }
     }
 }

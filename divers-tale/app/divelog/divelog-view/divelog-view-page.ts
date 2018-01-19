@@ -3,11 +3,7 @@ import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import { FlexboxLayout } from "tns-core-modules/ui/layouts/flexbox-layout";
-
 import { DivelogViewModel } from "./divelog-view-model";
-
-import * as switchModule from "tns-core-modules/ui/switch";
-import * as textViewModule from "tns-core-modules/ui/text-view";
 import {DivelogService} from "../divelog-service";
 import { Settings } from "../../settings/Settings";
 import { SettingService } from "../../settings/settings-service";
@@ -27,16 +23,17 @@ export function onNavigatingTo(args: NavigatedData) {
         return;
     }
 
-
     const page = <Page>args.object;
+
     var settings = SettingService.loadSettings();
-    const divelogs = service.loadDivelogs();
+
     let divelogId;
 
     if(page.navigationContext != null) {
         divelogId = page.navigationContext.divelogId;
     }
     const divelog = service.loadDivelog(divelogId);
+
     page.bindingContext = divelog;
 
     setMeasureUnits(page, divelog, settings);
@@ -183,10 +180,6 @@ function determineDrySuitContent(page: Page, divelog: DivelogViewModel) {
     if(liner === null || liner.trim.length === 0) {
         linerContainer.className = "hidden";
     }
-}
-
-{
-
 }
 
 function determineConditionsContent(page: Page, divelog: DivelogViewModel) {
