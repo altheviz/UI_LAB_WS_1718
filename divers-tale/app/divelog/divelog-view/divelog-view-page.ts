@@ -9,11 +9,15 @@ import { DivelogViewModel } from "./divelog-view-model";
 import * as switchModule from "tns-core-modules/ui/switch";
 import * as textViewModule from "tns-core-modules/ui/text-view";
 import {DivelogService} from "../divelog-service";
+<<<<<<< HEAD
 import { Settings } from "../../settings/Settings";
 import { SettingService } from "../../settings/settings-service";
+=======
+import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
+>>>>>>> bff8513... added ability to delete divelogs
 
 var divebuddiesData = require("../../divebuddies/static_data");
-
+const service = new DivelogService();
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
@@ -26,12 +30,8 @@ export function onNavigatingTo(args: NavigatedData) {
     if (args.isBackNavigation) {
         return;
     }
-    debugger;
-    
 
     const page = <Page>args.object;
-
-    var service = new DivelogService();
     var settings = SettingService.loadSettings();
     var divelog = service.loadDivelog();
     var divelogs = service.loadList();
@@ -392,7 +392,6 @@ export function onOpenDivesiteClicked(args: EventData) {
     const componentRoute = component.get("route");
     topmost().navigate( {
         moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
-        //context: {info: "something you want to pass to your page"},
         transition: {
             name: "fade"
         },
@@ -409,6 +408,19 @@ export function onBuddyClicked(args: EventData) {
     topmost().navigate( {
         moduleName: "divebuddies/user-details/user-details-page",
         context: { user: divebuddy, certifications: certs},
+        transition: {
+            name: "fade"
+        }
+    });
+}
+
+export function onDeleteButtonTap(args: EventData) {
+    const component = args.object;
+    const route = component.get("route");
+    service.deleteDivelog(component.get("id"));
+
+    topmost().navigate( {
+        moduleName: route,
         transition: {
             name: "fade"
         }

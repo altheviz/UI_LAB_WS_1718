@@ -18,4 +18,16 @@ export class DivelogService {
     loadDivelog() {
         return this.logData;
     }
+
+    deleteDivelog(id: number) {
+        const divelogs = JSON.parse(localStorage.getItem('divelogs'));
+
+        for (const divelog of divelogs) {
+            if (divelog.id == id) {
+                divelogs.splice(divelogs.indexOf(divelog), 1);
+            }
+        }
+
+        localStorage.setItem("divelogs", JSON.stringify(divelogs));
+    }
 }
