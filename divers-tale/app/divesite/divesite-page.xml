@@ -34,11 +34,6 @@
                             <favoriteTab:favorite-page/>
                         </TabViewItem.view>
                     </TabViewItem>
-                    <TabViewItem title="{{ search }}">
-                        <TabViewItem.view>
-                            <searchTab:search-page/>
-                        </TabViewItem.view>
-                    </TabViewItem>
                 </TabView.items>
             </TabView>
         </nsDrawer:RadSideDrawer.mainContent>

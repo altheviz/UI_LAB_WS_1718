@@ -40,7 +40,6 @@ export function onDrawerButtonTap(args: EventData) {
 
 export function onSubmit(args) {
     var searchBar:SearchBar = <SearchBar>args.object;
-    console.log("Search submit result: "+searchBar.text);
 
     model.filterSearchList(searchBar.text);
     searchBar.dismissSoftInput();
@@ -49,7 +48,6 @@ export function onSubmit(args) {
 }
 
 export function onClear(args) {
-    console.log("clear search-bar text");
     var searchBar:SearchBar = <SearchBar>args.object;
     
     model.loadList();
