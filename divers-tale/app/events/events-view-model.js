@@ -5,6 +5,7 @@ var ObservableArray = require("data/observable-array").ObservableArray;
 var config = require("../shared/config");
 var data = require("./static_data");
 var events_service = require("./events-service").EventsService;
+var divesites_service = require("../divesite/data-service");
 
 function convertDatestring(event) {
   var str = event.date.split(".");
@@ -163,7 +164,8 @@ function EventsViewModel() {
   }
 
   viewModel.getAllDivesites = function() {
-    return data.divesites_data;
+    var service = new divesites_service.DataService();
+    return service.loadList();
   }
 
   viewModel.getUserEventStatus = function(event) {
@@ -201,8 +203,9 @@ function EventsViewModel() {
   }
 
   viewModel.getDiveSiteById = function(id) {
-    for (var i = 0; i < data.divesites_data.length; i++) {
-      var divesite = data.divesites_data[i];
+    var divesites = viewModel.getAllDivesites();
+    for (var i = 0; i < divesites.length; i++) {
+      var divesite = divesites[i];
       if (divesite.id === id) {
         return divesite;
       }
