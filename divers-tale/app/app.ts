@@ -9,7 +9,7 @@ import { AuthService } from "./authentication/authentication-service";
 
 // If user is already logged in he will be redirected to home view directly
 let initialModule = {
-    moduleName: "home/home-page",
+    moduleName: "authentication/login/login-page",
     backstackVisible: false
 };
 if (AuthService.isLoggedIn()) {
