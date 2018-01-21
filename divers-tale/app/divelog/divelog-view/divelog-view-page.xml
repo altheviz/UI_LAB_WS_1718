@@ -66,7 +66,7 @@
                     <TextField id="date" text="{{ date }}" editable="false"/>
                 </TIL:TextInputLayout>
                 <TIL:TextInputLayout hint="Divesite">
-                    <TextField id="diveSite" text="{{'&#xf041; ' +  diveSite }}" class="fa fa-2x divelog-nav" editable="false" tap="onOpenDivesiteClicked"/>
+                    <TextField id="diveSite" text="{{ diveSite }}" class="fa fa-2x divelog-nav" editable="false" tap="onOpenDivesiteClicked"/>
                 </TIL:TextInputLayout>
                 
                 <StackLayout class="separation-line"></StackLayout>

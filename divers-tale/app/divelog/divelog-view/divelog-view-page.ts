@@ -367,14 +367,22 @@ export function onDrawerButtonTap(args: EventData) {
 
 export function onOpenDivesiteClicked(args: EventData) {
     const component = <FlexboxLayout>args.object;
-    const componentRoute = component.get("route");
+    const diveSite = component.get("text");
+    const diveSiteListData = require("../../divesite/dummyData.json");
+    let index = 1;
+
+    for (const ds of diveSiteListData) {
+        if (ds.name == diveSite) {
+            index = ds.id;
+        }
+    }
+
     topmost().navigate( {
         moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
         transition: {
             name: "fade"
         },
-        //TODO pass actual index
-        context: {index: 1},
+        context: {index: index}
     });
 }
 
@@ -409,7 +417,6 @@ export function onEditButtonTap(args: EventData) {
     const component = args.object;
     const route = component.get("route");
     const divelogId = component.get("id");
-    debugger;
 
     topmost().navigate( {
         moduleName: route,
