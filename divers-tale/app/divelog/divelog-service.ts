@@ -11,7 +11,8 @@ export class DivelogService {
         let divelogs = localStorage.getItem('divelogs');
 
         if (divelogs == null) {
-            divelogs = new Array<DivelogViewModel> ();
+            divelogs = JSON.parse(JSON.stringify(require("./divelog-test-data.json")));
+
         } else {
             divelogs = JSON.parse(divelogs);
         }
