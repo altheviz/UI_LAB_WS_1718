@@ -170,7 +170,6 @@ export function pageLoaded(args: observable.EventData) {
 }
 
 export function buttonTap(args: EventData) {
-    debugger;
     let diveModel = page.bindingContext;
 
     if (page.bindingContext.id == null) {
