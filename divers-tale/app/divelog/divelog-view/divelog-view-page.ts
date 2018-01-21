@@ -70,6 +70,12 @@ function setMeasureUnits(page: Page, divelog: DivelogViewModel, settings: Settin
 
     let tempGroundLevel = page.getViewById("tempGroundLevel");
     tempGroundLevel.set("text", divelog.groundLevel + " " + tempUnitAbbreviation);
+
+    let average1 = page.getViewById("average1")
+    average1.set("text", divelog.average1 + " " + measurementUnitAbbreviation);
+
+    let average2 = page.getViewById("average2")
+    average2.set("text", divelog.average2 + " " + measurementUnitAbbreviation);
 }
 
 function getMeasurementUnitAbbreviation(measurementUnit: String) {
