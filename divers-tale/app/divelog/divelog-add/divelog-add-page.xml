@@ -352,29 +352,29 @@
 
                     <Label text="Comment" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Comment">
-                        <TextField id="comment" text="comment"/>
+                        <TextField id="comment" text="{{ comment }}"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Time" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Previous time">
-                        <TextField id="previousTime" text="previousTime" keyboardType="number"/>
+                        <TextField id="previousTime" text="{{ previousTime }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="This dive">
-                        <TextField id="thisDive" text="thisDive" keyboardType="number"/>
+                        <TextField id="thisDive" text="{{ thisDive }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <TIL:TextInputLayout hint="Total time">
-                        <TextField id="totalTime" text="totalTime" keyboardType="number"/>
+                        <TextField id="totalTime" text="{{ totalTime }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <StackLayout class="separation-line"></StackLayout>
 
                     <Label text="Verification" class="settings-category"></Label>
                     <TIL:TextInputLayout hint="Verficator name">
-                        <TextField id="verificatorName" text="verificatorName"/>
+                        <TextField id="verificatorName" text="{{ verificatorName }}"/>
                     </TIL:TextInputLayout>
 
                     <GridLayout rows="auto, auto, *" columns="auto, *">
@@ -385,7 +385,7 @@
                     </GridLayout>
 
                     <TIL:TextInputLayout hint="Certification #">
-                        <TextField id="certificationNumber" text="certificationNumber" keyboardType="number"/>
+                        <TextField id="certificationNumber" text="{{ certificationNumber }}" keyboardType="number"/>
                     </TIL:TextInputLayout>
 
                     <Button tap="buttonTap" text="save" route="divelog/divelog-list/divelog-list-page"/>
