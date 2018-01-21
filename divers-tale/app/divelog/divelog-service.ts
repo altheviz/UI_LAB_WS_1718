@@ -10,7 +10,7 @@ export class DivelogService {
     loadDivelogs() {
         let divelogs = localStorage.getItem('divelogs');
 
-        if (divelogs == null) {
+        if (divelogs == null || JSON.parse(divelogs).length < 1) {
             divelogs = JSON.parse(JSON.stringify(require("./divelog-test-data.json")));
 
         } else {
