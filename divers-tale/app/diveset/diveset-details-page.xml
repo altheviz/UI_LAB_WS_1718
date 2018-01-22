@@ -3,9 +3,10 @@
     navigatingTo="onNavigatingTo"  
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
-    xmlns="http://www.nativescript.org/tns.xsd" >
+    xmlns="http://www.nativescript.org/tns.xsd" 
+    xmlns:FAB="nativescript-floatingactionbutton" >
 
-    <ActionBar class="action-bar">
+    <ActionBar class="action-bar" >
         <!-- 
         Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
         -->
@@ -19,8 +20,9 @@
             ios.position="left">
         </ActionItem>
         <action-item text="Editieren" ios.position="right" android.position="popup" tap="editButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
-        <action-item text="Speichern" ios.position="right" android.position="popup" tap="saveButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+         <action-item text="Speichern" ios.position="right" android.position="popup" tap="saveButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
         <action-item text="Abbrechen" ios.position="right" android.position="popup" tap="cancelEditButtonTap" visibility="{{ editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item text="Löschen" ios.position="right" android.position="popup" tap="deleteButtonTap" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
        
         <Label class="action-bar-title" text="{{ titel }}"></Label>
     </ActionBar>
@@ -62,28 +64,34 @@
         -->
         <!-- list-view id="ds" is required for the refresh after abbrechen -->
         <nsDrawer:RadSideDrawer.mainContent>
-             <GridLayout rows="*, auto">
- <stack-layout row="0">
-                        <Label text="{{ divesets.name }}" textWrap="true" style="font-size: 20; margin: 15;" />
-                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}">
-                             <ListView.itemTemplate>
-                                <GridLayout columns="*, auto" >
-                                  <Label class="list-group-item" text="{{ name }}" col="0" />
-                                </GridLayout>
-                            </ListView.itemTemplate>
-                         </list-view>
-                        <!-- editmode -->
-                         <list-view class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
-                             <ListView.itemTemplate>
-                                <GridLayout columns="*, auto" >
-                                  <Label class="list-group-item" text="{{ name }}" col="0" />
-                                  <Image src="res://ic_menu_delete" id="del" col="1" tap="removeFromListTap" style="margin: 10"  />
-                                </GridLayout>
-                            </ListView.itemTemplate>
-                         </list-view>
-</stack-layout>
+            <GridLayout rows="*, auto"> 
+              <stack-layout row="0">
+                <Label text="{{ divesets.name }}" textWrap="true" class="h1" visibility="{{ !editMode ? 'visible' : 'collapsed' }}" />
+                <ListView class="list-group" id="ds" items="{{ divesets.equipment }}" visibility="{{ !editMode ? 'visible' : 'collapsed' }}">
+                  <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" >
+                      <Label class="list-group-item" text="{{ name }}" col="0" visibility="{{ checked ? 'visible' : 'collapsed' }}"/>
+                    </GridLayout>
+                  </ListView.itemTemplate>
+                </ListView>
+                        
+                  <!-- editmode -->
+                <TextField text="{{ divesets.name }}" textWrap="true" class="h1" id="name" visibility="{{editMode ? 'visible' : 'collapsed' }}"/>
+                  <ListView class="list-group" id="dx" items="{{ divesets.equipment }}" itemTap="toggle" visibility="{{ editMode ? 'visible' : 'collapsed' }}">
+                    <ListView.itemTemplate>
+                      <GridLayout columns="*, auto" >
+                        <Label class="list-group-item" text="{{ name }}" col="0"  />   
+                        
+                        <Label class="icon fa" visibility="{{ checked ? 'visible' : 'collapsed' }}" text="&#xf14a;" col="1"></Label>
+                        <Label class="icon fa" visibility="{{ !checked ? 'visible' : 'collapsed' }}" text="&#xf096;" col="1"></Label>       
+                       <!--<Image src="{{'res://' + (checked ? 'checked' : 'unchecked') }}" height="40" decodeHeight="40" col="1" />-->
+                        <!--Img could be changed with the switch button
+                        <Switch checked="{{ checked }}" col="1" />-->
+                      </GridLayout>
+                    </ListView.itemTemplate>
+                  </ListView>
+              </stack-layout>
             </GridLayout>-->
-             
 
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>

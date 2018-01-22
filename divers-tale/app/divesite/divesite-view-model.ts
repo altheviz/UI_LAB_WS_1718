@@ -3,7 +3,7 @@ import { Observable } from "data/observable";
 // TODO extract into constant into single module
 const diveSitesText = "Dive Sites";
 const mapText = "Map";
-const favoriteText = "Favorite";
+const favoriteText = "Favorites";
 const searchText = "Search";
 
 export class DiveSiteViewModel extends Observable {

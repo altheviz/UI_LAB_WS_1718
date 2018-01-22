@@ -3,6 +3,7 @@
     navigatingTo="onNavigatingTo"
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
+    xmlns:TIL="nativescript-textinputlayout"
     xmlns="http://www.nativescript.org/tns.xsd">
     <ActionBar class="action-bar">
         <!--
@@ -18,6 +19,8 @@
                     ios.position="left">
         </ActionItem>
         <Label class="action-bar-title" text="Divelog"></Label>
+        <action-item icon="res://edit" text="Editieren" id="{{ id }}" ios.position="right" android.position="popup" tap="onEditButtonTap" route="divelog/divelog-add/divelog-add-page" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
+        <action-item icon="res://edit" text="Löschen" id="{{ id }}" ios.position="right" android.position="popup" tap="onDeleteButtonTap" route="divelog/divelog-list/divelog-list-page" visibility="{{ !editMode ? 'visible' : 'collapsed' }}"/>
     </ActionBar>
     <!--
     RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
@@ -53,344 +56,181 @@
             <ScrollView>
             <StackLayout class="page-content">
                 <Label text="General" class="settings-category"></Label>
-                <FlexboxLayout flexDirection="column" tap="onOpenDivesiteClicked">
-                    <FlexboxLayout flexDirection="row">
-                        <Label text="Dive number: "/>
-                        <Label id="diveNumber" text="{{diveNumber}}"/>
-                        </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label text="Location: "/>
-                        <Label id="locationIcon" class="fa fa-2x divelog-nav" text="&#xf041;"/>
-                        <Label id="diveNumber" class="divelog-nav" text="{{ location }}"/>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label text="Date: "/>
-                        <Label id="date" text="{{ date }}"/>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row">
-                        <Label text="Dive site:"/>
-                        <Label id="diveSite" text="{{ diveSite }}"/>
-                    </FlexboxLayout>
-                </FlexboxLayout>
+                <TIL:TextInputLayout hint="Dive #">
+                    <TextField id="diveNumber" text="{{ diveNumber }} " editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Location">
+                    <TextField id="locationIcon" text="{{location }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Date">
+                    <TextField id="date" text="{{ date }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Divesite">
+                    <TextField id="diveSite" text="{{ diveSite }}" class="fa fa-2x divelog-nav" editable="false" tap="onOpenDivesiteClicked"/>
+                </TIL:TextInputLayout>
                 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Entry" class="settings-category"></Label>                
-
-                <FlexboxLayout>
-                        <Label text="SI: "/>
-                        <Label id="si" text="{{ si }}"/>
-                    </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Entry: "/>
-                    <Label id="firstEntryTime" text="{{ firstEntryTime }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="PG: "/>
-                    <Label id="firstPg" text="{{ firstPg }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="RNT: "/>
-                    <Label id="rnt" text="{{ rnt }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Pres: "/>
-                    <Label id="firstPressure" text="{{ firstPressure }}"/>
-                    <Label text=" bar/psi"/>
-                </FlexboxLayout>
+                <TIL:TextInputLayout hint="SI">
+                    <TextField id="si" text="{{ si }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Entry">
+                    <TextField id="firstEntryTime" text="{{ firstEntryTime }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="PG">
+                    <TextField id="firstPg" text="{{ firstPg }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="RNT">
+                    <TextField id="rnt" text="{{ rnt }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Pressure">
+                    <TextField id="firstPressure" text="{{ firstPressure }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Time" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Bottom Time: "/>
-                    <Label id="bottomTime" text="{{ bottomTime }}"/>
-                    <Label text=" min"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Average: "/>
-                    <Label id="average1" text="{{ average1 }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Average: "/>
-                    <Label id="average2" text="{{ average2 }}"/>
-                </FlexboxLayout>
+                <TIL:TextInputLayout hint="Bottom Time">
+                    <TextField id="bottomTime" text="{{ bottomTime + ' min' }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Average">
+                    <TextField id="average1" text="{{ average1 }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Average">
+                    <TextField id="average2" text="{{ average2 }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
-                <Label text="Stops" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Safety Stop Time: "/>
-                    <Label id="safetyTime" text="{{ safetyTime }}"/>
-                    <Label text=" min"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Safety Stop Level: "/>
-                    <Label id="safetyLevel" text="{{ safetyLevel }}"/>
-                    <Label text=" m/ft"/>
-                </FlexboxLayout>
+                <Label text="Stops" class="settings-category"></Label>
+                <TIL:TextInputLayout hint="Safety Stop Time">
+                    <TextField id="safetyTime" text="{{ safetyTime + ' min' }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Safety Stop Level">
+                    <TextField id="safetyLevel" text="{{ safetyLevel }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
-                <Label text="Entry" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Entry Time: "/>
-                    <Label id="secondEntryTime" text="{{ secondEntryTime }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="PG: "/>
-                    <Label id="secondPg" text="{{ secondPg }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="O2%: "/>
-                    <Label id="oxygenPercentage" text="{{ oxygenPercentage }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Pres: "/>
-                    <Label id="secondPressure" text="{{ secondPressure }}"/>
-                    <Label text=" bar/psi"/>
-                </FlexboxLayout>
+                <Label text="Entry" class="settings-category"></Label>
+                <TIL:TextInputLayout hint="Entry Time">
+                    <TextField id="secondEntryTime" text="{{ secondEntryTime }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="PG">
+                    <TextField id="secondPg" text="{{ secondPg }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="O2%">
+                    <TextField id="oxygenPercentage" text="{{ oxygenPercentage }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Pressure">
+                    <TextField id="secondPressure" text="{{ secondPressure }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
-                <Label text="Weight" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Ditch: "/>
-                    <Label id="ditch" text="{{ ditch }}"/>
-                    <Label text=" kg/lbs"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Trim: "/>
-                    <Label id="trim" text="{{ trim }}"/>
-                    <Label text=" kg/lbs"/>
-                </FlexboxLayout>
+                <Label text="Weight" class="settings-category"></Label>
+                <TIL:TextInputLayout hint="Ditch">
+                    <TextField id="ditch" text="{{ ditch + ' kg/lbs'}}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Trim">
+                    <TextField id="trim" text="{{ trim + ' kg/lbs'}}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
-                <Label text="Tank/Gas" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row" class="{{ air }}">
-                    <Label text="Air: "/>
-                    <Label id="air" text="{{ air }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ ean }}">
-                    <Label text="EAN: "/>
-                    <Label id="ean" text="{{ ean }}"/>
-                    <Label id="eanText" text="{{ eanText }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Type: "/>
-                    <Label id="tankType" text="{{ tankType }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Size: "/>
-                    <Label id="tankSize" text="{{ tankSize }}"/>
-                </FlexboxLayout>
+                <Label text="Tank/Gas" class="settings-category"></Label>
+                <TIL:TextInputLayout hint="Gas">
+                    <TextField id="gas" text="" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Type" id="tankTypeContainer">
+                    <TextField text="{{ tankType }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Size" id="tankSizeContainer">
+                    <TextField text="{{ tankSize }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Wet Suit" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Helmet: "/>
-                    <Label id="wetSuitHelmet" text="{{ wetSuitHelmet }}"/>
-                    <Label text=" mm"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Gloves: "/>
-                    <Label id="wetSuitGloves" text="{{ wetSuitGloves }}"/>
-                    <Label text=" mm"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Shoes: "/>
-                    <Label id="wetSuitShoes" text="{{ wetSuitShoes }}"/>
-                    <Label text=" mm"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Short Suit: "/>
-                    <Label id="wetSuitShortSuit" text="{{ wetSuitShortSuit }}"/>
-                    <Label text=" mm"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Underwear: "/>
-                    <Label id="wetSuitUnderwear" text="{{ wetSuitUnderwear }}"/>
-                    <Label text=" mm"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Long Suit: "/>
-                    <Label id="wetSuitLongSuit" text="{{ wetSuitLongSuit }}"/>
-                    <Label text=" mm"/>
-                </FlexboxLayout>
+                <TIL:TextInputLayout hint="Helmet" id="wetSuitHelmetContainer">
+                    <TextField text="{{ wetSuitHelmet + ' mm' }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Gloves" id="wetSuitGlovesContainer">
+                    <TextField text="{{ wetSuitGloves + ' mm' }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Shoes" id="wetSuitShoesContainer">
+                    <TextField text="{{ wetSuitShoes + ' mm' }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Short Suit" id="wetSuitShortSuitContainer">
+                    <TextField text="{{ wetSuitShortSuit + ' mm' }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Underwear" id="wetSuitUnderwearContainer">
+                    <TextField text="{{ wetSuitUnderwear + ' mm' }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Long Suit" id="wetSuitLongSuitContainer">
+                    <TextField text="{{ wetSuitLongSuit + ' mm' }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Dry Suit" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row" class="{{ drySuitGloves }}">
-                    <Label text="Gloves: "/>
-                    <Label id="drySuitGloves" text="{{ drySuitGloves }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ drySuitShoes }}">
-                    <Label text="Shoes: "/>
-                    <Label id="drySuitShoes" text="{{ drySuitShoes }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Suit: "/>
-                    <Label id="drySuit" text="{{ drySuit }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Liner: "/>
-                    <Label id="drySuitLiner" text="{{ drySuitLiner }}"/>
-                </FlexboxLayout>
+                <TIL:TextInputLayout hint="Gloves" id="drySuitGlovesContainer">
+                    <TextField text="" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Shoes" id="drySuitShoesContainer">
+                    <TextField text="" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Suit" id="drySuitContainer">
+                    <TextField id="drySuit" text="{{ drySuit }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Liner" id="drySuitLinerContainer">
+                    <TextField id="drySuitLiner" text="{{ drySuitLiner }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
-                <Label text="Conditions" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Viz: "/>
-                    <Label id="viz" text="{{ viz }}"/>
-                    <Label text=" m/ft"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Current: "/>
-                    <Label id="current" text="{{ current }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ sunny }}">
-                    <Label text="Sunny: "/>
-                    <Label id="sunny" text="{{ sunny }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ sunCloud }}">
-                    <Label text="Sun Cloud: "/>
-                    <Label id="sunCloud" text="{{ sunCloud }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ cloud }}">
-                    <Label text="Clouds: "/>
-                    <Label id="cloud" text="{{ cloud }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ rain }}">
-                    <Label text="Rain: "/>
-                    <Label id="rain" text="{{ rain }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ fresh }}">
-                    <Label text="Fresh: "/>
-                    <Label id="fresh" text="{{ fresh }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ salt }}">
-                    <Label text="Salt: "/>
-                    <Label id="salt" text="{{ salt }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ boat }}">
-                    <Label text="Boat: "/>
-                    <Label id="boat" text="{{ boat }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ night }}">
-                    <Label text="Night: "/>
-                    <Label id="night" text="{{ night }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ surf }}">
-                    <Label text="Surf: "/>
-                    <Label id="surf" text="{{ surf }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ waves }}">
-                    <Label text="Waves: "/>
-                    <Label id="waves" text="{{ waves }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ surge }}">
-                    <Label text="Surge: "/>
-                    <Label id="surge" text="{{ surge }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ wreck }}">
-                    <Label text="Wreck: "/>
-                    <Label id="wreck" text="{{ wreck }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ reef }}">
-                    <Label text="Reef: "/>
-                    <Label id="reef" text="{{ reef }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ deep }}">
-                    <Label text="Deep: "/>
-                    <Label id="deep" text="{{ deep }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ photo }}">
-                    <Label text="Photo: "/>
-                    <Label id="photo" text="{{ photo }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ drift }}">
-                    <Label text="Drift: "/>
-                    <Label id="drift" text="{{ drift }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ training }}">
-                    <Label text="Training: "/>
-                    <Label id="training" text="{{ training }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ survey }}">
-                    <Label text="Survey: "/>
-                    <Label id="survey" text="{{ survey }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ recovery }}">
-                    <Label text="Recovery: "/>
-                    <Label id="recovery" text="{{ recovery }}"/>
-                </FlexboxLayout>
+                <Label text="Conditions" class="settings-category"></Label>
+                <TIL:TextInputLayout hint="Viz">
+                    <TextField id="viz" text="{{ viz }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout id="currentContainer" hint="Current">
+                    <TextField id="current" text="{{ current }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout id="conditionsContainer" hint="Conditions">
+                    <TextField id="conditions" text="" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
                 <Label text="Temperature" class="settings-category"></Label>   
+                <TIL:TextInputLayout id="tempAboveSurfaceContainer" hint="Temp. above">
+                    <TextField id="tempAboveSurface" text="{{ aboveSurface }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout id="tempBelowSurfaceContainer" hint="Temp. below">
+                    <TextField id="tempBelowSurface" text="{{ belowSurface }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout id="tempGroundLevelContainer" hint="Temp. ground">
+                    <TextField id="tempGroundLevel" text="{{ groundLevel }}" editable="false"/>
+                </TIL:TextInputLayout>
                 
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Temp. above: "/>
-                    <Label id="aboveSurface" text="{{ aboveSurface }}"/>
-                    <Label text=" °C/°F"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Temp. below: "/>
-                    <Label id="belowSurface" text="{{ belowSurface }}"/>
-                    <Label text=" °C/°F"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Temp. ground: "/>
-                    <Label id="groundLevel" text="{{ groundLevel }}"/>
-                    <Label text=" °C/°F"/>
-                </FlexboxLayout>
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Comments: "/>
-                    <Label id="comment" text="{{ comment }}"/>
-                </FlexboxLayout>
+                <TIL:TextInputLayout id="commentContainer" hint="Comment">
+                    <TextField id="comment" text="{{ comment }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
-                <Label text="Time" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Previous Time: "/>
-                    <Label id="previousTime" text="{{ previousTime }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="This Time: "/>
-                    <Label id="thisDive" text="{{ thisDive }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Total Time: "/>
-                    <Label id="totalTime" text="{{ totalTime }}"/>
-                </FlexboxLayout>
+                <Label text="Time" class="settings-category"></Label>
+                <TIL:TextInputLayout hint="Previous Time">
+                    <TextField id="previousTime" text="{{ previousTime }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="This Time">
+                    <TextField id="thisDive" text="{{ thisDive }}" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout hint="Total Time">
+                    <TextField id="totalTime" text="{{ totalTime }}" editable="false"/>
+                </TIL:TextInputLayout>
 
                 <StackLayout class="separation-line"></StackLayout>
-                <Label text="Verification" class="settings-category"></Label>   
-
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Name: "/>
-                    <Label id="verificatorName" class="divelog-nav"  tap="onBuddyClicked" text="{{ verificatorName }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ instructor }}">
-                    <Label text="Instructor: "/>
-                    <Label id="instructor" text="{{ instructor }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ diveMaster }}">
-                    <Label text="Divemaster: "/>
-                    <Label id="diveMaster" text="{{ diveMaster }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row" class="{{ buddy }}">
-                    <Label text="Buddy: "/>
-                    <Label id="buddy" text="{{ buddy }}"/>
-                </FlexboxLayout>
-                <FlexboxLayout flexDirection="row">
-                    <Label text="Certification #: "/>
-                    <Label id="certificationNumber" text="{{ certificationNumber }}"/>
-                </FlexboxLayout>
+                <Label text="Verification" class="settings-category"></Label>
+                <TIL:TextInputLayout id="verificatorNameContainer" hint="Verificator Name">
+                    <TextField id="verificatorName" class="divelog-nav" text="{{ verificatorName }}" editable="false" tap="onBuddyClicked"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout id="verificatorTypeContainer" hint="Verificator Type">
+                    <TextField id="verificatorType" text="" editable="false"/>
+                </TIL:TextInputLayout>
+                <TIL:TextInputLayout id="certificationNumberContainer" hint="Certification #">
+                    <TextField id="certificationNumber" text="{{ certificationNumber }}" editable="false"/>
+                </TIL:TextInputLayout>
             </StackLayout>
             </ScrollView>
         </nsDrawer:RadSideDrawer.mainContent>

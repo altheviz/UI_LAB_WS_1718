@@ -25,18 +25,20 @@
 
     <nsDrawer:RadSideDrawer.mainContent>
       <PullRefresh:PullToRefresh refresh="refreshList">
-        <GridLayout rows="auto, *">
+        <GridLayout class="page-content" rows="auto, *">
             <ListView row="1" items="{{ eventsModel }}">
               <ListView.itemTemplate>
-                <GridLayout rows="auto, auto" columns="auto, auto, auto" tap="viewDetails">
-                  <Image width="100" heiht="100" stretch="aspectFill" src="{{ image }}" style="margin-top: 15px; margin-bottom: 15px;" rowSpan="2"/>
-                  <Label text="{{ name }}" style="font-weight: bold; margin: 10px" col="1" textWrap="true" />
-                  <Label visibility="{{ canceled ? 'visible' : 'collapse' }}" text="Abgesagt!" style="color: #c42323; margin: 10px" row="1" col="1" textWrap="true"/>
-                  <Label visibility="{{ canceled ? 'collapsed' : 'visible' }}" text="{{ date + ' um ' + time + ' Uhr'}}" style="margin: 10px" row="1" col="1" textWrap="true"/>
-                </GridLayout>
+                <StackLayout orientation="horizontal" class="list-item" tap="viewDetails">
+                  <Image width="75" stretch="aspectFill" src="{{ image }}" rowSpan="2"/>
+                  <StackLayout orientation="vertical" class="list-item-text">
+                    <Label class="list-item-headline" text="{{ name }}"/>
+                    <Label visibility="{{ canceled ? 'collapsed' : 'visible' }}" class="list-item-subline" text="{{ date + ' um ' + time + ' Uhr' }}"/>
+                    <Label visibility="{{ canceled ? 'visible' : 'collapse' }}" class="list-item-subline" text="Abgesagt!" style="color: #c42323;"/>
+                  </StackLayout>
+                </StackLayout>
               </ListView.itemTemplate>
             </ListView>
-          <FAB:fab row="1" tap="newEvent" rippleColor="#f1f1f1" class="fab-button" icon="res://ic_add_white"/>
+          <FAB:fab margin="15" width="70" height="70" row="1" tap="newEvent" rippleColor="#f1f1f1" class="fab-button" icon="res://ic_add_white"/>
         </GridLayout>
       </PullRefresh:PullToRefresh> 
     </nsDrawer:RadSideDrawer.mainContent>

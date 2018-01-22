@@ -40,7 +40,6 @@ export function onDrawerButtonTap(args: EventData) {
 
 export function onSubmit(args) {
     var searchBar:SearchBar = <SearchBar>args.object;
-    console.log("Search submit result: "+searchBar.text);
 
     model.filterSearchList(searchBar.text);
     searchBar.dismissSoftInput();
@@ -49,7 +48,6 @@ export function onSubmit(args) {
 }
 
 export function onClear(args) {
-    console.log("clear search-bar text");
     var searchBar:SearchBar = <SearchBar>args.object;
     
     model.loadList();
@@ -71,7 +69,7 @@ export function sBLoaded(args){
 export function openListItem(args) {
     var navigationEntry = {
         moduleName: "divesite/favorite/favorite-detail/favoriteInfo-page",
-        context: {index: args.index}, //pass actual index
+        context: {index: model.searchResults.getItem(args.index).id}, //pass actual index
         //clearHistory: true
     };
     topmost().navigate(navigationEntry);

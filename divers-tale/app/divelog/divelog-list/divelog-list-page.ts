@@ -35,8 +35,11 @@ export function onDrawerButtonTap(args: EventData) {
 export function onItemTap(args: EventData) {
     const component = <FlexboxLayout>args.object;
     const componentRoute = component.get("route");
+    const divelogId = component.get("id");
+
     topmost().navigate({
         moduleName: componentRoute,
+        context: {divelogId: divelogId},
         transition: {
             name: "fade"
         }

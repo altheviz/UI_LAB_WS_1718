@@ -58,7 +58,7 @@
                         orientation="horizontal"
                         tap="onItemTap"
                         route="divelog/divelog-view/divelog-view-page"
-                        class="list-item">
+                        class="list-item" id="{{ id }}">
                         <Image src="https://erconsult.com.au/wp-content/uploads/2015/04/placeholder-600x400.png"/>
                         <StackLayout orientation="vertical" class="list-item-text">
                             <StackLayout orientation="horizontal" class="list-item-headline">
@@ -72,7 +72,7 @@
             </ListView>
             <FAB:fab tap="onFabTap" width="70"
                     height="70"
-                    icon="res://white_plus"
+                    icon="res://ic_add_white"
                     rippleColor="#f1f1f1"
                     class="fab-button fa" route="divelog/divelog-add/divelog-add-page"/>
         </GridLayout>

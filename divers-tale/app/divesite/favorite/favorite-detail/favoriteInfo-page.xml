@@ -20,25 +20,25 @@
         <nsDrawer:RadSideDrawer.mainContent>
             <!-- TODO show Pin on map inside actionitem -->
             <ScrollView orientation="vertical">
-                <GridLayout columns="auto, *" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto">
-                    <Label text="Name: " col="0" row="0"/>
-                    <Label id="favInfo-name" text="{{ infos.name }}" col="1" row="0"/>
-                    <Label text="Location: " col="0" row="1"/>
-                    <Label id="favInfo-location" text="{{ infos.location }}" col="1" row="1"/>
-                    <Label text="Country: " col="0" row="2"/>
-                    <Label id="favInfo-country" text="{{ infos.country }}" col="1" row="2"/>
-                    <Label text="Description: " col="0" row="3"/>
-                    <Label id="favInfo-description" text="{{ infos.description }}" col="1" row="3" textWrap="true"/>
-                    <Label text="Width (m): " col="0" row="4"/>
-                    <Label id="favInfo-width" text="{{ infos.geoData.widthInM }}" col="1" row="4"/>
-                    <Label text="Length (m): " col="0" row="5"/>
-                    <Label id="favInfo-length" text="{{ infos.geoData.lengthInM }}" col="1" row="5"/>
-                    <Label text="Avg. Depth (m): " col="0" row="6"/>
-                    <Label id="favInfo-depthAvg" text="{{ infos.geoData.depthAvgInM }}" col="1" row="6"/>
-                    <Label text="Max. Depth (m): " col="0" row="7"/>
-                    <Label id="favInfo-depthMax" text="{{ infos.geoData.depthMaxInM }}" col="1" row="7"/>
-                    <Label text="Height (m): " col="0" row="8"/>
-                    <Label id="favInfo-height" text="{{ infos.geoData.heightInM }}" col="1" row="8"/>
+                 <GridLayout columns="auto, *" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto, auto" class="wrapper">
+                    <Label text="Name: "  col="0" row="0" class="descriptor" style="font-weight: bold" textWrap="true" />
+                    <Label id="favInfo-name" text="{{ infos.name }}" col="1" row="0" class="description"/>
+                    <Label text="Location: " col="0" row="1" class="descriptor" style="font-weight: bold" textWrap="true" />
+                    <Label id="favInfo-location" text="{{ infos.location }}" col="1" row="1" class="description"/>
+                    <Label text="Country: " col="0" row="2" class="descriptor" style="font-weight: bold" textWrap="true" />
+                    <Label id="favInfo-country" text="{{ infos.country }}" col="1" row="2" class="description"/>
+                    <Label text="Description: " col="0" row="3" class="descriptor" style="font-weight: bold" textWrap="true" />
+                    <Label id="favInfo-description" text="{{ infos.description }}"  colSpan="2" col="0" row="4" textWrap="true" class="description"/>
+                    <Label text="Width (m): " col="0" row="5" style="font-weight: bold" class="descriptor"/>
+                    <Label id="favInfo-width" text="{{ infos.geoData.widthInM }}" col="1" row="5" class="description"/>
+                    <Label text="Length (m): " col="0" row="6" style="font-weight: bold" class="descriptor"/>
+                    <Label id="favInfo-length" text="{{ infos.geoData.lengthInM }}" col="1" row="6" class="description"/>
+                    <Label text="Avg. Depth (m): " col="0" row="7" style="font-weight: bold" class="descriptor"/>
+                    <Label id="favInfo-depthAvg" text="{{ infos.geoData.depthAvgInM }}" col="1" row="7" class="description"/>
+                    <Label text="Max. Depth (m): " col="0" row="8" style="font-weight: bold" class="descriptor"/>
+                    <Label id="favInfo-depthMax" text="{{ infos.geoData.depthMaxInM }}" col="1" row="8" class="description"/>
+                    <Label text="Height (m): " col="0" row="9" style="font-weight: bold" class="descriptor"/>
+                    <Label id="favInfo-height" text="{{ infos.geoData.heightInM }}" col="1" row="9" class="description"/>
                 </GridLayout>
             </ScrollView>
         </nsDrawer:RadSideDrawer.mainContent>

@@ -3,6 +3,11 @@ import { ObservableArray } from "data/observable-array";
 import * as  elasticlunr from "elasticlunr/elasticlunr";
 import { knownFolders } from "tns-core-modules/file-system";
 
+import { EventData } from "data/observable";
+import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
+import { topmost } from "ui/frame";
+import {FlexboxLayout} from "tns-core-modules/ui/layouts/flexbox-layout";
+
 import { User } from "../profile/User";
 import { UserService } from "../profile/user-service";
 

@@ -24,19 +24,14 @@
         <nsDrawer:RadSideDrawer.mainContent>
             <TabView selectedIndexChanged="onSelectedIndexChanged">
                 <TabView.items>
-                    <TabViewItem title="{{ map }}">
+                    <TabViewItem title="{{ map }}" textTransform="none">
                         <TabViewItem.view>
                             <mapTab:map-page/>
                         </TabViewItem.view>
                     </TabViewItem>
-                    <TabViewItem title="{{ favorite }}">
+                    <TabViewItem title="{{ favorite }}" textTransform="none">
                         <TabViewItem.view>
                             <favoriteTab:favorite-page/>
-                        </TabViewItem.view>
-                    </TabViewItem>
-                    <TabViewItem title="{{ search }}">
-                        <TabViewItem.view>
-                            <searchTab:search-page/>
                         </TabViewItem.view>
                     </TabViewItem>
                 </TabView.items>

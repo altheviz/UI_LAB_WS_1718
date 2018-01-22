@@ -52,11 +52,9 @@ function onMapReady(args) {
 }
 
 function onMarkerSelect(args) {
-   console.log("Clicked on " +args.marker.title);
 }
 
 function onCameraChanged(args) {
-    console.log("Camera changed: " + JSON.stringify(args.camera));
 }
 
 exports.onMapReady = onMapReady;

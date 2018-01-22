@@ -3,7 +3,8 @@
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
     xmlns="http://www.nativescript.org/tns.xsd"
-    xmlns:dd="nativescript-drop-down">
+    xmlns:dd="nativescript-drop-down"
+    xmlns:FAB="nativescript-floatingactionbutton">
 
     <ActionBar class="action-bar">
         <!-- 
@@ -56,9 +57,11 @@
                                         </GridLayout>
                                     </ListView.itemTemplate>
                                 </ListView>
-                                <StackLayout row="1" orientation="horizontal">
-                                    <Button text="Verkaufen" width="100%" tap="newGroup" textTransform="none"/>
-                                </StackLayout>
+                                <FAB:fab tap="" width="70"
+                                    height="70"
+                                    icon="res://ic_add_white"
+                                    rippleColor="#f1f1f1"
+                                    class="fab-button fa" route="divelog/divelog-add/divelog-add-page"/>
                             </GridLayout>
                         </TabViewItem.view>
                     </TabViewItem>

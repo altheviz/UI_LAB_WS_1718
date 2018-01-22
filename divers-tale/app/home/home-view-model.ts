@@ -14,7 +14,7 @@ export class HomeViewModel extends Observable {
 
         // Divelog
         this.divelogService = new DivelogService();
-        this.lastDivelog = this.divelogService.loadList()[0];
+        this.lastDivelog = this.divelogService.loadDivelogs()[0];
 
         // Events
         this.events = [
