@@ -81,7 +81,10 @@
                     <ListView.itemTemplate>
                       <GridLayout columns="*, auto" >
                         <Label class="list-group-item" text="{{ name }}" col="0"  />   
-                        <Image src="{{'res://' + (checked ? 'checked' : 'unchecked') }}" height="40" decodeHeight="40" col="1" />
+                        
+                        <Label class="icon fa" visibility="{{ checked ? 'visible' : 'collapsed' }}" text="&#xf14a;" col="1"></Label>
+                        <Label class="icon fa" visibility="{{ !checked ? 'visible' : 'collapsed' }}" text="&#xf096;" col="1"></Label>       
+                       <!--<Image src="{{'res://' + (checked ? 'checked' : 'unchecked') }}" height="40" decodeHeight="40" col="1" />-->
                         <!--Img could be changed with the switch button
                         <Switch checked="{{ checked }}" col="1" />-->
                       </GridLayout>
