@@ -6,13 +6,18 @@
     xmlns="http://www.nativescript.org/tns.xsd"
     xmlns:TIL="nativescript-textinputlayout"
     xmlns:dd="nativescript-drop-down"
+    xmlns:FAB="nativescript-floatingactionbutton"
     loaded="pageLoaded">
-    <ActionBar class="action-bar">
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed"
-        tap="onDrawerButtonTap" ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="Profile"></Label>
+    <ActionBar class="action-bar" >
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed"
+            tap="onDrawerButtonTap" ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Profile"></Label>
+        <action-item tap="editButtonTap" text="Edit" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
+            visibility="{{ isEditing || !isEditVisble ? 'collapse' : 'visible' }}" android.position="popup"/>
+        <action-item tap="doneButtonTap" text="Done" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"
+            visibility="{{ isEditing && isEditVisble ? 'visible' : 'collapse' }}" android.position="popup" />
     </ActionBar>
 
     <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
@@ -33,45 +38,75 @@
                         <TabViewItem.view>
                             <ScrollView class="page-content" orientation="vertical">
                                 <StackLayout orientation="vertical" class="page-profile-information">
-                                    <Image class="header-image" src="{{ user.profileImage }}"/>
+                                    <Image class="header-image" src="{{ user.profileImage }}" tap="openImage"/>
 
-                                    <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto" columns="auto, *">
-                                        <Label text="Name: " row="0" col="0"/>
-                                        <TextField text="{{ user.name }}" autocorrect="false" hint="John Doe" row="0" col="1"/>
+                                    <TIL:TextInputLayout hint="Name">
+                                        <TextField text="{{ user.name }}" id="userName" editable="false" autocorrect="false"/>
+                                    </TIL:TextInputLayout> 
+                                    <TIL:TextInputLayout hint="Nickname">
+                                        <TextField text="{{ user.nickname }}" id="userNickname" editable="false" autocorrect="false" autocapitalizationType="none" />
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Email">
+                                        <TextField text="{{ user.email }}" id="userEmail" editable="false" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="City">
+                                        <TextField text="{{ user.city }}"  id="userCity" editable="false" autocorrect="true"/>
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Region">
+                                        <TextField text="{{ user.region }}" id="userRegion" editable="false" autocorrect="false"/>
+                                    </TIL:TextInputLayout>
+                                    <TIL:TextInputLayout hint="Country">
+                                        <TextField text="{{ user.country }}" id="userCountry" editable="false" autocorrect="true"/> 
+                                    </TIL:TextInputLayout>
+
+                                    <TIL:TextInputLayout hint="Sex">
+                                        <TextField text="{{ user.sex }}" id="userSex" editable="false" autocorrect="true"/> 
+                                    </TIL:TextInputLayout>
+                                    <!-- <dd:DropDown hint="Sex" items="{{ types }}" selectedIndex="{{ selectedType }}" selectedIndexChanged="typeChanged" /> -->
+                                    <TIL:TextInputLayout hint="Date of birth">
+                                        <TextField text="{{ user.dateOfBirth }}" id="userDateOfBirth" editable="false" autocorrect="false" tap="selectDate"/> 
+                                    </TIL:TextInputLayout>
                                     
-                                        <Label text="Nickname: " row="1" col="0"/>
-                                        <TextField text="{{ user.nickname }}" autocorrect="false" autocapitalizationType="none" hint="johnny" row="1" col="1"/>
-                                    
-                                        <Label text="Email:" row="2" col="0"/>
-                                        <TextField text="{{ user.email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="john.doe@foo.com" row="2" col="1"/>
-                                    
-                                        <Label text="City: " row="3" col="0"/>
-                                        <TextField text="{{ user.city }}" autocorrect="true" hint="Karlsruhe" row="3" col="1"/>
-                                    
-                                        <Label text="Region:" row="4" col="0"/>
-                                        <TextField text="{{ user.region }}" autocorrect="false" hint="Baden-Württemberg" row="4" col="1"/>
-                                    
-                                        <Label text="Country:" row="5" col="0"/>
-                                        <TextField text="{{ user.country }}" autocorrect="true" hint="Deutschland" row="5" col="1"/>
-                                    
-                                        <Label text="Sex:" row="6" col="0"/>
-                                        <TextField text="{{ user.sex }}" autocorrect="false" autocapitalizationType="none" hint="male" row="6" col="1"/>
-                                    
-                                        <Label text="Date of birth:" row="7" col="0"/>
-                                        <TextField text="{{ user.dateOfBirth }}" keyboardType="datetime" autocorrect="false" autocapitalizationType="none" hint="02/19/2000" row="7" col="1"/>
-                                    </GridLayout>
                                 </StackLayout>
                             </ScrollView>
                         </TabViewItem.view>
                     </TabViewItem>
                     <TabViewItem title="Certifications" textTransform="none">
                         <TabViewItem.view>
-                            <Label text="Halo i bims"/>
+                            <grid-layout rows="auto, *">
+                                <ListView row="1" items="{{ user.certifications }}" itemTap="openCertificationsListItem">
+                                <ListView.itemTemplate>
+                                    <StackLayout orientation="horizontal"  height="90" class="listitem">
+                                        <Image src="{{ img }}" width="150" height="80"/>
+                                        <StackLayout orientation="vertical" >
+                                            <Label text="{{ name }} " class="title"  height="30"/>
+                                            <Label text="{{ description }}" height="50" textWrap="true"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ListView.itemTemplate>
+                                </ListView>
+                               <FAB:fab tap="onFabTapCerti" row="1" icon="res://white_plus"
+                                    rippleColor="#f1f1f1" class="fab-button"/>
+                            </grid-layout>
                         </TabViewItem.view>
                     </TabViewItem>
                     <TabViewItem title="Documents" textTransform="none">
                         <TabViewItem.view>
-                            <Label text="Halo i bims"/>
+                            <grid-layout rows="auto, *">
+                                <ListView row="1" items="{{ user.documents }}" itemTap="openDocumentsListItem">
+                                    <ListView.itemTemplate>
+                                        <StackLayout orientation="horizontal"  height="90" class="listitem">
+                                            <Image src="{{ img }}" width="150" height="80"/>
+                                            <StackLayout orientation="vertical" >
+                                                <Label text="{{ name }} " class="title"  height="30"/>
+                                                <Label text="{{ description }}" height="50" textWrap="true"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ListView.itemTemplate>
+                                </ListView>
+                                 <FAB:fab tap="onFabTapDoc" row="1" icon="res://white_plus"
+                                    rippleColor="#f1f1f1" class="fab-button"/>
+                            </grid-layout>
                         </TabViewItem.view>
                     </TabViewItem>
                 </TabView.items>

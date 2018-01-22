@@ -1,0 +1,36 @@
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns:nsDrawer="nativescript-pro-ui/sidedrawer" 
+    xmlns:myDrawer="shared/my-drawer" 
+    xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:TIL="nativescript-textinputlayout">
+    <ActionBar class="action-bar">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="goBack" style="color: #ffffff"/>
+        <Label class="action-bar-title" text="Certification Details"></Label>
+        <action-item tap="deleteButtonTap" text="Delete" ios.systemIcon="16" android.systemIcon="ic_menu_delete" ios.position="right"
+           visibility="{{ isEditing ? 'collapse' : 'visible' }}" android.position="popup"/>
+        <action-item tap="editButtonTap" text="Edit" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"
+           visibility="{{ isEditing ? 'collapse' : 'visible'  }}" android.position="popup"/>
+        <action-item tap="doneButtonTap" text="Done" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right"
+           visibility="{{ isEditing ? 'visible' : 'collapse' }}" android.position="popup"/>
+    </ActionBar>
+    <scroll-view>
+        <stack-layout>
+            <Image src="{{ certification.img }}" class="header-image" tap="openImage"/>
+            <TIL:TextInputLayout hint="Name">
+                <TextField editable="false" id="docName" text="{{ certification.name }}"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Diver No">
+                <TextView editable="false" id="docDiverNo" text="{{ certification.diverNo }}"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Certification Date">
+                <TextView editable="false" id="docCertDate" text="{{ certification.certDate }}" tap="selectDate"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Instructor No">
+                <TextView editable="false" id="docInstructorNo" text="{{ certification.instructorNo }}"/>
+            </TIL:TextInputLayout>
+            <TIL:TextInputLayout hint="Description">
+                <TextView editable="false" id="docDes" text="{{ certification.description }}"/>
+            </TIL:TextInputLayout>
+        <stack-layout height="400px"/></stack-layout>
+    </scroll-view>
+</Page>

@@ -1,10 +1,12 @@
-import { EventData } from "data/observable";
+import { EventData, fromObject } from "data/observable";
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 import { FlexboxLayout } from "tns-core-modules/ui/layouts/flexbox-layout";
 
 import { HomeViewModel } from "./home-view-model";
+
+let viewModel = new HomeViewModel();
 
 export function onOpenDetails(args: EventData) {
     let component = <FlexboxLayout>args.object;
@@ -23,7 +25,7 @@ export function onNavigatingTo(args: NavigatedData) {
     }
 
     const page = <Page>args.object;
-    page.bindingContext = new HomeViewModel();
+    page.bindingContext = fromObject(viewModel);
 }
 
 export function onDrawerButtonTap(args: EventData) {

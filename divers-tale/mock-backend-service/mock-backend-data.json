@@ -15,9 +15,50 @@
       "sex": "male",
       "dateOfBirth": "",
       "profileImage": "https://madeiradivepoint.com/wp-content/uploads/2017/03/padi-open-water-scuba-diver.jpg",
-      "certifications": [],
+      "certifications": [
+        {
+          "name": "PADI OWD",
+          "diverNo":"1234567-ABC",
+          "certDate":"",
+          "instructorNo":"ABCD-2343894",
+          "description": "PADI Open Water Diver",
+          "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Muster_des_Personalausweises_VS.jpg"
+        },
+        {
+          "name": "PADI OWD1",
+          "diverNo":"1234567-ABC",
+          "certDate":"",
+          "instructorNo":"ABCD-2343894",
+          "description": "PADI Open Water Diver",
+          "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Muster_des_Personalausweises_VS.jpg"
+        },
+        {
+          "name": "PADI OWD2",
+          "diverNo":"1234567-ABC",
+          "certDate":"",
+          "instructorNo":"ABCD-2343894",
+          "description": "PADI Open Water Diver",
+          "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Muster_des_Personalausweises_VS.jpg"
+        }
+      ],
       "diveHistory": [],
-      "documents": []
+      "documents": [
+        {
+          "name": "Perso",
+          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam ",
+          "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Muster_des_Personalausweises_VS.jpg"
+        },
+        {
+          "name": "Perso1",
+          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam ",
+          "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Muster_des_Personalausweises_VS.jpg"
+        },
+        {
+          "name": "Perso2",
+          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam ",
+          "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Muster_des_Personalausweises_VS.jpg"
+        }
+      ]
     }
   ],
   "events": [
