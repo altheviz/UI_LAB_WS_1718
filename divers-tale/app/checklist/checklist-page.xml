@@ -63,7 +63,9 @@
                         <ListView.itemTemplate>
                             <GridLayout columns="*, auto">
                                 <Label text="{{ name }}"/>
-                                <Image src="{{ 'res://' + (checked ? 'checked' : 'unchecked') }}" height="40" decodeHeight="40" col="1" />
+                                <Label class="icon fa" visibility="{{ checked ? 'visible' : 'collapsed' }}" text="&#xf14a;" col="1"></Label>
+                                <Label class="icon fa" visibility="{{ !checked ? 'visible' : 'collapsed' }}" text="&#xf096;" col="1"></Label>
+                                <!--<Image src="{{ 'res://' + (checked ? 'checked' : 'unchecked') }}" height="40" decodeHeight="40" col="1" />-->
                             </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>
@@ -72,7 +74,8 @@
                         <ListView.itemTemplate>
                             <GridLayout columns="*, auto">
                                 <TextField text="{{ name }}"/>
-                                <Image src="res://delete" height="40" decodeHeight="40" col="1" tap="deleteItem" />
+                                <Label class="icon fa" text="&#xf014;" col="1" tap="deleteItem"></Label>
+                                <!--<Image src="res://delete" height="40" decodeHeight="40" col="1" tap="deleteItem" /> -->
                             </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>
