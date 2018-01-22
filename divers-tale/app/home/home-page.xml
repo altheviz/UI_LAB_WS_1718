@@ -37,7 +37,6 @@
                         tap="onOpenDetails"
                         route="divelog/divelog-view/divelog-view-page"
                         class="list-item">
-                        <Image src="https://erconsult.com.au/wp-content/uploads/2015/04/placeholder-600x400.png"/>
                         <StackLayout orientation="vertical" class="list-item-text">
                             <StackLayout orientation="horizontal" class="list-item-headline">
                                 <Label class="fa fa-2x list-item-headline-icon" text="&#xf041;&#160;"/>
@@ -57,7 +56,7 @@
                                 tap="onOpenDetails"
                                 route="events/events-page"
                                 class="list-item">
-                                <Image src="https://erconsult.com.au/wp-content/uploads/2015/04/placeholder-600x400.png"/>
+                                <Image src="{{ image }}"/>
                                 <StackLayout orientation="vertical" class="list-item-text">
                                     <Label class="list-item-headline" text="{{ name }}"/>
                                     <Label class="list-item-subline" text="{{ comment }}"/>
